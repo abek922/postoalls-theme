@@ -42,7 +42,7 @@
         "hide_on_scroll": false,
         "show_separation_border": true,
         "reduce_padding": true,
-        "logo": "{{ shop.brand.logo }}",
+        "logo": "shopify://shop_images/logo_C3ECE2.png",
         "logo_max_width": 180,
         "logo_mobile_max_width": 100,
         "menu": "main-menu",
@@ -60,7 +60,8 @@
         "show_country_name": false,
         "show_country_flag": true,
         "show_locale_selector": true,
-        "transparent_header_text_color": "#ffffff"
+        "transparent_header_text_color": "#ffffff",
+        "transparent_logo": "shopify://shop_images/logo_FFFFFF.png"
       }
     }
   },
