@@ -217,21 +217,10 @@
             "link_url": "",
             "link_text": "View all"
           }
-        },
-        "collection_dnq9ma": {
-          "type": "collection",
-          "settings": {
-            "collection": "2025fw",
-            "products_count": 8,
-            "title": "",
-            "link_url": "",
-            "link_text": "View all"
-          }
         }
       },
       "block_order": [
-        "collection-1",
-        "collection_dnq9ma"
+        "collection-1"
       ],
       "settings": {
         "color_scheme": "",
