@@ -9,6 +9,40 @@
  */
 {
   "sections": {
+    "video_7zzEfL": {
+      "type": "video",
+      "blocks": {
+        "play_zLVMJP": {
+          "type": "play",
+          "disabled": true,
+          "settings": {
+            "icon_color": "#ffffff"
+          }
+        },
+        "heading_PgAywm": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "text": "Video",
+            "heading_tag": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "play_zLVMJP",
+        "heading_PgAywm"
+      ],
+      "name": "t:sections.video.presets.video.name",
+      "settings": {
+        "autoplay": true,
+        "show_controls": false,
+        "video_size": "fill",
+        "video": "shopify://files/videos/post_25fw_movie.mp4",
+        "mobile_video": "shopify://files/videos/Post O'alls 25FW.mp4",
+        "external_video_url": "",
+        "text_color": "#ffffff"
+      }
+    },
     "slideshow": {
       "type": "slideshow",
       "blocks": {
@@ -53,40 +87,6 @@
         "cycle_speed": 5,
         "background": "#000000",
         "controls_color": "#ffffff"
-      }
-    },
-    "video_7zzEfL": {
-      "type": "video",
-      "blocks": {
-        "play_zLVMJP": {
-          "type": "play",
-          "disabled": true,
-          "settings": {
-            "icon_color": "#ffffff"
-          }
-        },
-        "heading_PgAywm": {
-          "type": "heading",
-          "disabled": true,
-          "settings": {
-            "text": "Video",
-            "heading_tag": "h2"
-          }
-        }
-      },
-      "block_order": [
-        "play_zLVMJP",
-        "heading_PgAywm"
-      ],
-      "name": "t:sections.video.presets.video.name",
-      "settings": {
-        "autoplay": true,
-        "show_controls": false,
-        "video_size": "fill",
-        "video": "shopify://files/videos/post_25fw_movie.mp4",
-        "mobile_video": "shopify://files/videos/Post O'alls 25FW.mp4",
-        "external_video_url": "",
-        "text_color": "#ffffff"
       }
     },
     "multi-column": {
@@ -583,8 +583,8 @@
     }
   },
   "order": [
-    "slideshow",
     "video_7zzEfL",
+    "slideshow",
     "multi-column",
     "media_grid_hiLxhb",
     "shop-the-look",
