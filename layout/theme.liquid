@@ -44,7 +44,8 @@
         "imports": {
           "vendor": "{{ 'vendor.min.js' | asset_url }}",
           "theme": "{{ 'theme.js' | asset_url }}",
-          "photoswipe": "{{ 'photoswipe.min.js' | asset_url }}"
+          "photoswipe": "{{ 'photoswipe.min.js' | asset_url }}",
+          "theme-add": "{{ 'add.js' | asset_url }}"
         }
       }
     </script>
@@ -55,6 +56,7 @@
     {{ content_for_header }}
 
     {{- 'theme.css' | asset_url | stylesheet_tag: preload: true -}}
+    {{- 'add.css' | asset_url | stylesheet_tag: preload: true -}}
   </head>
 
   {% liquid
