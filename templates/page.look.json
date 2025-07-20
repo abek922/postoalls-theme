@@ -36,11 +36,102 @@
             "product_5": "",
             "product_6": ""
           }
+        },
+        "look_T9irfb": {
+          "type": "look",
+          "settings": {
+            "title": "LOOK 01",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "look_aWEM8n": {
+          "type": "look",
+          "settings": {
+            "title": "LOOK 01",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "look_kEgizh": {
+          "type": "look",
+          "settings": {
+            "title": "LOOK 01",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "look_zjfjex": {
+          "type": "look",
+          "settings": {
+            "title": "LOOK 01",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "look_FXyaPt": {
+          "type": "look",
+          "settings": {
+            "title": "LOOK 01",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "look_3ADebM": {
+          "type": "look",
+          "settings": {
+            "title": "LOOK 01",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "look_eqcFLc": {
+          "type": "look",
+          "settings": {
+            "title": "LOOK 01",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
         }
       },
       "block_order": [
         "look_1",
-        "look_2"
+        "look_2",
+        "look_T9irfb",
+        "look_aWEM8n",
+        "look_kEgizh",
+        "look_zjfjex",
+        "look_FXyaPt",
+        "look_3ADebM",
+        "look_eqcFLc"
       ],
       "settings": {
         "color_scheme": "scheme-1",
