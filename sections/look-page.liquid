@@ -100,24 +100,23 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.8);
     border: none;
-    border-radius: 50%;
-    width: 44px;
-    height: 44px;
+    border-radius: 0;
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: all 0.2s ease;
     z-index: 2;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: none;
   }
 
   .look-page__nav-button:hover {
-    background: white;
-    transform: translateY(-50%) scale(1.05);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.95);
+    transform: translateY(-50%);
   }
 
   .look-page__nav-button--prev {
@@ -129,9 +128,11 @@
   }
 
   .look-page__nav-button svg {
-    width: 18px;
-    height: 18px;
-    fill: currentColor;
+    width: 12px;
+    height: 12px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
     color: #333;
   }
 
@@ -249,8 +250,8 @@
     }
 
     .look-page__nav-button {
-      width: 40px;
-      height: 40px;
+      width: 28px;
+      height: 28px;
     }
 
     .look-page__nav-button--prev {
@@ -357,12 +358,12 @@
             {%- if valid_looks.size > 1 -%}
               <button class="look-page__nav-button look-page__nav-button--prev" data-action="prev-look" type="button">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <polyline points="15,18 9,12 15,6"></polyline>
                 </svg>
               </button>
               <button class="look-page__nav-button look-page__nav-button--next" data-action="next-look" type="button">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <polyline points="9,18 15,12 9,6"></polyline>
                 </svg>
               </button>
             {%- endif -%}
