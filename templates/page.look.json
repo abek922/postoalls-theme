@@ -15,7 +15,7 @@
         "look_1": {
           "type": "look",
           "settings": {
-            "image": "shopify://shop_images/colmun-img.jpg",
+            "image": "shopify://shop_images/m-1.jpg",
             "title": "LOOK 01",
             "product_1": "catskills-post-oalls-gildan-tee-white-dead-stock",
             "product_2": "catskills-ny-2-post-oalls-gildan-tee-white-dead-stock",
@@ -28,6 +28,7 @@
         "look_2": {
           "type": "look",
           "settings": {
+            "image": "shopify://shop_images/m-2.jpg",
             "title": "LOOK 02",
             "product_1": "",
             "product_2": "",
@@ -40,6 +41,7 @@
         "look_T9irfb": {
           "type": "look",
           "settings": {
+            "image": "shopify://shop_images/m-3.jpg",
             "title": "LOOK 01",
             "product_1": "",
             "product_2": "",
