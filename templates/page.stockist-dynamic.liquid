@@ -1,0 +1,298 @@
+{% comment %}
+  Dynamic Stockist Page Template with Metafields
+  メタフィールドを使用した動的な取扱店舗一覧ページ
+  
+  必要なメタフィールド設定:
+  - page.metafields.stockist.regions (JSON)
+  - page.metafields.stockist.show_inquiry (boolean)
+  - page.metafields.stockist.inquiry_email (email)
+{% endcomment %}
+
+{%- style -%}
+  .dynamic-stockist-page {
+    padding: 60px 0;
+  }
+
+  .dynamic-stockist-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .dynamic-stockist-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .dynamic-stockist-title {
+    font-size: 36px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+
+  .dynamic-stockist-content {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: #666;
+  }
+
+  .dynamic-stockist-tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .dynamic-stockist-tab {
+    padding: 12px 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+
+  .dynamic-stockist-tab:hover,
+  .dynamic-stockist-tab.active {
+    color: #000;
+  }
+
+  .dynamic-stockist-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #000;
+  }
+
+  .dynamic-stockist-panel {
+    display: none;
+  }
+
+  .dynamic-stockist-panel.active {
+    display: block;
+  }
+
+  .dynamic-stockist-region {
+    margin-bottom: 40px;
+  }
+
+  .dynamic-stockist-region-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .dynamic-stockist-stores {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  .dynamic-stockist-store {
+    padding: 20px;
+    background-color: #f8f8f8;
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+  }
+
+  .dynamic-stockist-store:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+  }
+
+  .dynamic-stockist-store-name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .dynamic-stockist-store-info {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+  }
+
+  .dynamic-stockist-store-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #0066cc;
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  .dynamic-stockist-store-link:hover {
+    text-decoration: underline;
+  }
+
+  .dynamic-stockist-inquiry {
+    text-align: center;
+    margin-top: 60px;
+    padding: 40px;
+    background-color: #f5f5f5;
+  }
+
+  .dynamic-stockist-inquiry-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+
+  .dynamic-stockist-inquiry-text {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+  .dynamic-stockist-inquiry-button {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+  }
+
+  .dynamic-stockist-inquiry-button:hover {
+    background-color: #333;
+  }
+
+  @media screen and (max-width: 768px) {
+    .dynamic-stockist-title {
+      font-size: 28px;
+    }
+
+    .dynamic-stockist-tabs {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .dynamic-stockist-stores {
+      grid-template-columns: 1fr;
+    }
+  }
+{%- endstyle -%}
+
+<div class="dynamic-stockist-page">
+  <div class="dynamic-stockist-container">
+    {% comment %} ページヘッダー {% endcomment %}
+    <div class="dynamic-stockist-header">
+      <h1 class="dynamic-stockist-title">{{ page.title }}</h1>
+      {% if page.content != blank %}
+        <div class="dynamic-stockist-content">
+          {{ page.content }}
+        </div>
+      {% endif %}
+    </div>
+
+    {% comment %} メタフィールドからデータを取得 {% endcomment %}
+    {% assign regions_data = page.metafields.stockist.regions.value | default: page.metafields.stockist.regions %}
+    
+    {% if regions_data %}
+      {% comment %} タブナビゲーション {% endcomment %}
+      <div class="dynamic-stockist-tabs">
+        {% for region in regions_data %}
+          <button class="dynamic-stockist-tab {% if forloop.first %}active{% endif %}" data-tab="region-{{ forloop.index }}">
+            {{ region.name }}
+          </button>
+        {% endfor %}
+      </div>
+
+      {% comment %} タブコンテンツ {% endcomment %}
+      {% for region in regions_data %}
+        <div class="dynamic-stockist-panel {% if forloop.first %}active{% endif %}" id="region-{{ forloop.index }}">
+          {% if region.areas %}
+            {% for area in region.areas %}
+              <div class="dynamic-stockist-region">
+                <h2 class="dynamic-stockist-region-title">{{ area.name }}</h2>
+                
+                {% if area.stores %}
+                  <div class="dynamic-stockist-stores">
+                    {% for store in area.stores %}
+                      <div class="dynamic-stockist-store">
+                        <h3 class="dynamic-stockist-store-name">{{ store.name }}</h3>
+                        <div class="dynamic-stockist-store-info">
+                          {% if store.address %}
+                            <p>{{ store.address | newline_to_br }}</p>
+                          {% endif %}
+                          {% if store.phone %}
+                            <p>TEL: {{ store.phone }}</p>
+                          {% endif %}
+                          {% if store.hours %}
+                            <p>{{ store.hours }}</p>
+                          {% endif %}
+                        </div>
+                        {% if store.website %}
+                          <a href="{{ store.website }}" class="dynamic-stockist-store-link" target="_blank" rel="noopener">
+                            ウェブサイト
+                          </a>
+                        {% endif %}
+                      </div>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+      {% endfor %}
+    {% else %}
+      {% comment %} デフォルトのストッキストセクションを表示 {% endcomment %}
+      {% section 'stockist' %}
+    {% endif %}
+
+    {% comment %} お問い合わせセクション {% endcomment %}
+    {% if page.metafields.stockist.show_inquiry == true %}
+      <div class="dynamic-stockist-inquiry">
+        <h3 class="dynamic-stockist-inquiry-title">新規お取引に関するお問い合わせ</h3>
+        <p class="dynamic-stockist-inquiry-text">Wholesale/new business inquiries</p>
+        {% if page.metafields.stockist.inquiry_email %}
+          <a href="mailto:{{ page.metafields.stockist.inquiry_email }}" class="dynamic-stockist-inquiry-button">
+            お問い合わせ
+          </a>
+        {% else %}
+          <a href="/pages/contact" class="dynamic-stockist-inquiry-button">
+            お問い合わせ
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const tabs = document.querySelectorAll('.dynamic-stockist-tab');
+    const panels = document.querySelectorAll('.dynamic-stockist-panel');
+    
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', function() {
+        // Remove active class from all
+        tabs.forEach(t => t.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+        
+        // Add active class to current
+        tab.classList.add('active');
+        document.getElementById('region-' + (index + 1)).classList.add('active');
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Dynamic Stockist Page",
+  "settings": []
+}
+{% endschema %}
