@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -6,12 +15,12 @@
         "look_1": {
           "type": "look",
           "settings": {
-            "image": "",
+            "image": "shopify://shop_images/colmun-img.jpg",
             "title": "LOOK 01",
-            "product_1": "",
-            "product_2": "",
-            "product_3": "",
-            "product_4": "",
+            "product_1": "catskills-post-oalls-gildan-tee-white-dead-stock",
+            "product_2": "catskills-ny-2-post-oalls-gildan-tee-white-dead-stock",
+            "product_3": "empire-state-building-nyt-x-post-oalls-hanes-beefy-tee-white-mono-dead-stock",
+            "product_4": "empire-state-building-nyt-x-post-oalls-hanes-beefy-tee-white-mono-dead-stock",
             "product_5": "",
             "product_6": ""
           }
@@ -19,7 +28,6 @@
         "look_2": {
           "type": "look",
           "settings": {
-            "image": "",
             "title": "LOOK 02",
             "product_1": "",
             "product_2": "",
@@ -37,8 +45,7 @@
       "settings": {
         "color_scheme": "scheme-1",
         "show_breadcrumb": true,
-        "page_title_position": "center",
-        "navigation_style": "thumbnails"
+        "page_title_position": "center"
       }
     }
   },
