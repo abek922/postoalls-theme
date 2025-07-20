@@ -16,7 +16,7 @@
           "type": "look",
           "settings": {
             "image": "shopify://shop_images/m-1.jpg",
-            "title": "LOOK 01",
+            "title": "ITEMS",
             "product_1": "catskills-post-oalls-gildan-tee-white-dead-stock",
             "product_2": "catskills-ny-2-post-oalls-gildan-tee-white-dead-stock",
             "product_3": "empire-state-building-nyt-x-post-oalls-hanes-beefy-tee-white-mono-dead-stock",
@@ -51,9 +51,23 @@
             "product_6": ""
           }
         },
+        "look_YqmERY": {
+          "type": "look",
+          "settings": {
+            "image": "shopify://shop_images/m-4.jpg",
+            "title": "LOOK 01",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
         "look_aWEM8n": {
           "type": "look",
           "settings": {
+            "image": "shopify://shop_images/m-5.jpg",
             "title": "LOOK 01",
             "product_1": "",
             "product_2": "",
@@ -66,6 +80,7 @@
         "look_kEgizh": {
           "type": "look",
           "settings": {
+            "image": "shopify://shop_images/m-6.jpg",
             "title": "LOOK 01",
             "product_1": "",
             "product_2": "",
@@ -78,6 +93,7 @@
         "look_zjfjex": {
           "type": "look",
           "settings": {
+            "image": "shopify://shop_images/m-7.jpg",
             "title": "LOOK 01",
             "product_1": "",
             "product_2": "",
@@ -90,6 +106,7 @@
         "look_FXyaPt": {
           "type": "look",
           "settings": {
+            "image": "shopify://shop_images/m-8.jpg",
             "title": "LOOK 01",
             "product_1": "",
             "product_2": "",
@@ -102,6 +119,7 @@
         "look_3ADebM": {
           "type": "look",
           "settings": {
+            "image": "shopify://shop_images/m-9.jpg",
             "title": "LOOK 01",
             "product_1": "",
             "product_2": "",
@@ -112,6 +130,129 @@
           }
         },
         "look_eqcFLc": {
+          "type": "look",
+          "settings": {
+            "image": "shopify://shop_images/m-10.jpg",
+            "title": "LOOK 01",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "look_7VkV7j": {
+          "type": "look",
+          "settings": {
+            "image": "shopify://shop_images/w-1.jpg",
+            "title": "LOOK 01",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "look_HEBknp": {
+          "type": "look",
+          "settings": {
+            "image": "shopify://shop_images/w-2.jpg",
+            "title": "LOOK 01",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "look_eK7tEb": {
+          "type": "look",
+          "settings": {
+            "title": "LOOK 01",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "look_yVHzqi": {
+          "type": "look",
+          "settings": {
+            "title": "LOOK 01",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "look_MBkwFw": {
+          "type": "look",
+          "settings": {
+            "title": "LOOK 01",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "look_ywgPfy": {
+          "type": "look",
+          "settings": {
+            "title": "LOOK 01",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "look_MkbrnY": {
+          "type": "look",
+          "settings": {
+            "title": "LOOK 01",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "look_9WkbM4": {
+          "type": "look",
+          "settings": {
+            "title": "LOOK 01",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "look_nFcbew": {
+          "type": "look",
+          "settings": {
+            "title": "LOOK 01",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "look_rheb4F": {
           "type": "look",
           "settings": {
             "title": "LOOK 01",
@@ -128,17 +269,26 @@
         "look_1",
         "look_2",
         "look_T9irfb",
+        "look_YqmERY",
         "look_aWEM8n",
         "look_kEgizh",
         "look_zjfjex",
         "look_FXyaPt",
         "look_3ADebM",
-        "look_eqcFLc"
+        "look_eqcFLc",
+        "look_7VkV7j",
+        "look_HEBknp",
+        "look_eK7tEb",
+        "look_yVHzqi",
+        "look_MBkwFw",
+        "look_ywgPfy",
+        "look_MkbrnY",
+        "look_9WkbM4",
+        "look_nFcbew",
+        "look_rheb4F"
       ],
       "settings": {
-        "color_scheme": "scheme-1",
-        "show_breadcrumb": true,
-        "page_title_position": "center"
+        "color_scheme": "scheme-1"
       }
     }
   },
