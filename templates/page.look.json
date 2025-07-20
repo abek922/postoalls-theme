@@ -1,0 +1,48 @@
+{
+  "sections": {
+    "main": {
+      "type": "look-page",
+      "blocks": {
+        "look_1": {
+          "type": "look",
+          "settings": {
+            "image": "",
+            "title": "LOOK 01",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "look_2": {
+          "type": "look",
+          "settings": {
+            "image": "",
+            "title": "LOOK 02",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        }
+      },
+      "block_order": [
+        "look_1",
+        "look_2"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "show_breadcrumb": true,
+        "page_title_position": "center",
+        "navigation_style": "thumbnails"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
