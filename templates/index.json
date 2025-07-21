@@ -155,6 +155,7 @@
         "column-2": {
           "type": "image_with_text",
           "settings": {
+            "image": "shopify://shop_images/batten_2.jpg",
             "title": "Column title",
             "heading_tag": "h3",
             "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
