@@ -26,3 +26,12 @@ https://support.maestrooo.com/
 ## デザイン
 
 * カラー：#D4E5E2
+
+## 画像サイズ
+
+Banner
+PC:1920 × 1080
+SP:1080 × 1350
+
+Column
+1080 × 1350
