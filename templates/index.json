@@ -92,14 +92,14 @@
       ],
       "name": "t:sections.slideshow.presets.slideshow.name",
       "settings": {
-        "allow_transparent_header": true,
-        "show_next_section_button": true,
+        "allow_transparent_header": false,
+        "show_next_section_button": false,
         "media_size": "auto",
         "show_initial_transition": false,
         "autoplay": true,
         "autoplay_pause_on_video": true,
         "cycle_speed": 5,
-        "background": "#000000",
+        "background": "#1c1c1c",
         "controls_color": "#ffffff"
       }
     },
