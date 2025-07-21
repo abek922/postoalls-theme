@@ -56,7 +56,7 @@
         "sidebar_open_second_level_menus": true,
         "layout": "drawer",
         "show_icons": true,
-        "show_country_selector": true,
+        "show_country_selector": false,
         "show_country_name": false,
         "show_country_flag": false,
         "show_locale_selector": true,
