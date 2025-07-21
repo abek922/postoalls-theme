@@ -660,9 +660,9 @@
         "color_scheme": "",
         "separate_section_with_border": true,
         "image_size": "auto",
-        "subheading": "Keep me updated",
-        "title": "Newsletter",
-        "content": "<p>A short sentence describing what someone will receive by subscribing.</p>",
+        "subheading": "",
+        "title": "<strong>Post O'Alls Members</strong>",
+        "content": "",
         "button_text": "Subscribe",
         "overlay_color": "#000000",
         "overlay_opacity": 0
