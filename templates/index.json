@@ -240,11 +240,11 @@
     "media_grid_hiLxhb": {
       "type": "media-grid",
       "blocks": {
-        "image_eNeWxG": {
+        "image_PNTYwb": {
           "type": "image",
           "settings": {
-            "color_scheme": "",
-            "column_count": "8",
+            "color_scheme": "scheme-4",
+            "column_count": "3",
             "row_count": 2,
             "title": "",
             "heading_tag": "h4",
@@ -293,7 +293,7 @@
         }
       },
       "block_order": [
-        "image_eNeWxG",
+        "image_PNTYwb",
         "image_UQf6MB",
         "image_bPkEMr"
       ],
@@ -363,6 +363,51 @@
         "title": "Shop the look",
         "content": "",
         "popover_title": "Shop the look"
+      }
+    },
+    "multi_column_pCfQW3": {
+      "type": "multi-column",
+      "blocks": {
+        "image_with_text_MK8ac7": {
+          "type": "image_with_text",
+          "settings": {
+            "image": "shopify://shop_images/column-img_2025_FALL_AND_WINTER_COLLECTION.jpg",
+            "title": "2025 FW",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "shopify://pages/look-2025fw",
+            "link_text": ""
+          }
+        },
+        "image_with_text_3dMGjJ": {
+          "type": "image_with_text",
+          "settings": {
+            "image": "shopify://shop_images/column-img.jpg",
+            "title": "2025 SS",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "shopify://pages/look-2025fw",
+            "link_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_MK8ac7",
+        "image_with_text_3dMGjJ"
+      ],
+      "name": "t:sections.multi_column.presets.multi_column.name",
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "columns_per_row": 3,
+        "stack_on_mobile": false,
+        "overlap_image": false,
+        "content_alignment": "center",
+        "text_alignment": "start",
+        "spacing": "md",
+        "subheading": "",
+        "title": "LOOK",
+        "content": ""
       }
     },
     "featured-collections": {
@@ -676,6 +721,7 @@
     "blog-posts",
     "media_grid_hiLxhb",
     "shop-the-look",
+    "multi_column_pCfQW3",
     "featured-collections",
     "collection-list",
     "before-after",
