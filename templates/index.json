@@ -400,7 +400,7 @@
         "color_scheme": "",
         "separate_section_with_border": true,
         "columns_per_row": 2,
-        "stack_on_mobile": false,
+        "stack_on_mobile": true,
         "overlap_image": false,
         "content_alignment": "center",
         "text_alignment": "center",
