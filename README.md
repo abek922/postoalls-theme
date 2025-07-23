@@ -25,7 +25,10 @@ https://support.maestrooo.com/
 
 ## デザイン
 
-* カラー：#D4E5E2
+### カラー
+LOGO：#D4E5E2
+商品バックグラウンド：#E9E8E4
+ページバックグラウンド：#EFEFEF
 
 ## 画像サイズ
 
