@@ -106,7 +106,9 @@
       "block_order": [
         "image_VBweqx"
       ],
-      "custom_css": [],
+      "custom_css": [
+        ".prose {top: 100px;}"
+      ],
       "name": "t:sections.slideshow.presets.slideshow.name",
       "settings": {
         "allow_transparent_header": false,
