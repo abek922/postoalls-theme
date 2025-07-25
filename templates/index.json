@@ -122,7 +122,8 @@
     "custom_liquid_nCJLE3": {
       "type": "custom-liquid",
       "custom_css": [
-        "div {padding: 0.5rem;}"
+        "div {padding: 0.5rem;}",
+        "p {text-decoration: underline;}"
       ],
       "name": "t:sections.custom_liquid.presets.custom_liquid.name",
       "settings": {
