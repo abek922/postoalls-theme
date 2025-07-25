@@ -92,6 +92,9 @@
         "buy_buttons",
         "complementary_products"
       ],
+      "custom_css": [
+        "h3 {font-size: 12px; line-height: 10px; margin-bottom: 2rem;}"
+      ],
       "settings": {
         "color_scheme": "",
         "container_size": "lg",
