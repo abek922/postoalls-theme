@@ -24,7 +24,7 @@
             "desktop_text_position": "sm:place-self-center sm:text-center",
             "content_max_width": 1200,
             "button_1_text": "",
-            "button_1_link": "shopify://collections",
+            "button_1_link": "",
             "button_1_style": "solid",
             "button_1_background": "#ffffff",
             "button_1_text_color": "#000000",
@@ -79,7 +79,7 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/top-banner-pc_2x_f6d55157-5bcf-4fe4-9e2d-fa5491bbab3c.jpg",
-            "mobile_image": "shopify://shop_images/top-banner-sp_2x_cf789260-bffd-4f3c-a266-342f770276d0.jpg",
+            "mobile_image": "shopify://shop_images/top-banner-sp_2x_2d3a78d8-5e83-44ba-8bc6-8ec111692074.jpg",
             "subheading": "",
             "title": "",
             "mobile_text_position": "place-self-end-center text-center",
