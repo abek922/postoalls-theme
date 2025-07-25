@@ -45,7 +45,7 @@
         "video_nV6ebV"
       ],
       "custom_css": [
-        "div {margin-bottom:40px;}"
+        "div {margin-bottom: 40px;}"
       ],
       "settings": {
         "allow_transparent_header": true,
@@ -117,6 +117,21 @@
         "cycle_speed": 5,
         "background": "#1c1c1c",
         "controls_color": "#ffffff"
+      }
+    },
+    "custom_liquid_nCJLE3": {
+      "type": "custom-liquid",
+      "custom_css": [
+        "div {padding: 0.5rem;}"
+      ],
+      "name": "t:sections.custom_liquid.presets.custom_liquid.name",
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "liquid": "<p>POST O'ALLS　2025 fall winter </p>",
+        "text_alignment": "start"
       }
     },
     "video_7zzEfL": {
@@ -733,6 +748,7 @@
     "slideshow",
     "custom_liquid_7LqEDK",
     "slideshow_qCX6Up",
+    "custom_liquid_nCJLE3",
     "video_7zzEfL",
     "multi-column",
     "blog-posts",
