@@ -44,6 +44,9 @@
       "block_order": [
         "video_nV6ebV"
       ],
+      "custom_css": [
+        "section {padding-bottom: 20px;}"
+      ],
       "settings": {
         "allow_transparent_header": true,
         "show_next_section_button": false,
@@ -58,6 +61,7 @@
     },
     "custom_liquid_7LqEDK": {
       "type": "custom-liquid",
+      "disabled": true,
       "name": "t:sections.custom_liquid.presets.custom_liquid.name",
       "settings": {
         "color_scheme": "",
