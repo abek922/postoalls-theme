@@ -37,13 +37,13 @@
     "header": {
       "type": "header",
       "settings": {
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-2",
         "enable_sticky": true,
         "hide_on_scroll": false,
         "show_separation_border": true,
         "reduce_padding": false,
-        "logo": "shopify://shop_images/logo_C3ECE2_95242fe0-cb35-4e0c-8238-a9245961a031.png",
-        "logo_max_width": 300,
+        "logo": "shopify://shop_images/donut_ess_2_1ce6499a-0fac-4c90-8978-b4152d9b0b1b.png",
+        "logo_max_width": 90,
         "logo_mobile_max_width": 175,
         "menu": "main-menu",
         "sidebar_menu": "",
