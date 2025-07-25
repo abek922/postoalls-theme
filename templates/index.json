@@ -107,7 +107,7 @@
         "image_VBweqx"
       ],
       "custom_css": [
-        ".prose {top: 100px;}"
+        ".place-self-end-center {transform: translateY(-1rem);}"
       ],
       "name": "t:sections.slideshow.presets.slideshow.name",
       "settings": {
