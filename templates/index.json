@@ -56,6 +56,18 @@
         "controls_color": "#ffffff"
       }
     },
+    "custom_liquid_7LqEDK": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom_liquid.presets.custom_liquid.name",
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "liquid": "<div style=height:1px;></div>",
+        "text_alignment": "center"
+      }
+    },
     "slideshow_qCX6Up": {
       "type": "slideshow",
       "blocks": {
@@ -715,6 +727,7 @@
   },
   "order": [
     "slideshow",
+    "custom_liquid_7LqEDK",
     "slideshow_qCX6Up",
     "video_7zzEfL",
     "multi-column",
