@@ -45,7 +45,7 @@
         "video_nV6ebV"
       ],
       "custom_css": [
-        "section {padding-bottom: 20px;}"
+        "div {margin-bottom:40px;}"
       ],
       "settings": {
         "allow_transparent_header": true,
