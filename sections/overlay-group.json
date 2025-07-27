@@ -27,6 +27,7 @@
     },
     "newsletter-popup": {
       "type": "newsletter-popup",
+      "disabled": true,
       "settings": {
         "color_scheme": "",
         "apparition_delay": 5,
@@ -43,7 +44,7 @@
       "type": "privacy-banner",
       "settings": {
         "color_scheme": "",
-        "title": "🍪 Cookie policy",
+        "title": "Cookie policy",
         "content": "<p>We use cookies and similar technologies to provide the best experience on our website. Refer to our Privacy Policy for more information.</p>"
       }
     }
