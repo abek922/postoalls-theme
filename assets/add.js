@@ -1,7 +1,7 @@
 // ヘッダースクロール制御の追加設定
 document.addEventListener('DOMContentLoaded', function() {
   // カスタムスクロール閾値を設定（ピクセル単位）
-  const SCROLL_THRESHOLD = 2800; // この値を調整してスクロール位置を変更可能
+  const SCROLL_THRESHOLD = 300; // この値を調整してスクロール位置を変更可能
   
   // ヘッダー要素を取得
   const header = document.querySelector('.header');
