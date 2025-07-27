@@ -2,7 +2,7 @@
 :has(.shopify-section:first-child [allow-transparent-header]):not(:has(.shopify-section--header ~ .shopify-section-group-header-group)) .header:not(.is-solid, :has(.header__primary-nav [open], .header__secondary-nav [open], .header-search[open])) .header__logo {
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition: opacity 0s ease, visibility 0s ease;
 }
 
 /* 通常ヘッダー時のロゴを表示 */
@@ -15,5 +15,5 @@
 
 /* スクロール位置の調整 - より下まで透明ヘッダーを維持 */
 #header-scroll-tracker {
-  top: var(--header-scroll-tracker-offset, 300px) !important; /* デフォルトの10pxから300pxに変更 */
+  top: var(--header-scroll-tracker-offset, 800px) !important; /* デフォルトの10pxから300pxに変更 */
 }
