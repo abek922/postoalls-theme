@@ -1,4 +1,35 @@
-<div class="look-title-section" style="
+{
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading Style",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ],
+      "default": "h1"
+    },<div class="look-title-section" style="
   background-color: {{ section.settings.background_color }};
   color: {{ section.settings.text_color }};
   padding-top: {{ section.settings.padding_top }}px;
@@ -7,7 +38,8 @@
   <div class="page-width">
     <div class="look-title-content">
       {% if section.settings.title != blank %}
-        <h1 class="look-title-main">{{ section.settings.title }}</h1>
+        {% assign title_tag = section.settings.heading_tag | default: 'h1' %}
+        <{{ title_tag }} class="look-title-main">{{ section.settings.title }}</{{ title_tag }}>
       {% endif %}
       
       {% if section.settings.subtitle != blank %}
@@ -29,40 +61,29 @@
   }
   
   .look-title-main {
-    font-size: 3.2rem;
-    font-weight: 300;
-    letter-spacing: 0.2em;
-    margin: 0 0 20px 0;
-    line-height: 1.2;
+    margin: 0 0 16px 0;
+    line-height: 1.3;
+    letter-spacing: 0.1em;
   }
   
   .look-title-subtitle {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 400;
-    letter-spacing: 0.3em;
+    letter-spacing: 0.2em;
     margin: 0;
     opacity: 0.8;
   }
   
   @media screen and (max-width: 768px) {
-    .look-title-main {
-      font-size: 2.4rem;
-      letter-spacing: 0.1em;
-    }
-    
     .look-title-subtitle {
-      font-size: 1.2rem;
-      letter-spacing: 0.2em;
+      font-size: 1rem;
+      letter-spacing: 0.15em;
     }
   }
   
   @media screen and (max-width: 480px) {
-    .look-title-main {
-      font-size: 2rem;
-    }
-    
     .look-title-subtitle {
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
   }
 </style>

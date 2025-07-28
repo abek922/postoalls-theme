@@ -5,7 +5,7 @@
   padding-bottom: {{ section.settings.padding_bottom }}px;
 ">
   <div class="page-width">
-    <div class="look-text-content text-{{ section.settings.text_alignment }} text-size-{{ section.settings.text_size }}">
+    <div class="look-text-content text-{{ section.settings.text_alignment }}">
       {% if section.settings.text != blank %}
         <div class="look-text-body">
           {{ section.settings.text | newline_to_br }}
@@ -26,61 +26,8 @@
   }
   
   .look-text-body {
-    font-weight: 300;
-    line-height: 1.8;
+    line-height: 1.6;
     margin: 0;
-  }
-  
-  .text-left {
-    text-align: left;
-  }
-  
-  .text-center {
-    text-align: center;
-  }
-  
-  .text-right {
-    text-align: right;
-  }
-  
-  .text-size-small .look-text-body {
-    font-size: 1.4rem;
-  }
-  
-  .text-size-medium .look-text-body {
-    font-size: 1.6rem;
-  }
-  
-  .text-size-large .look-text-body {
-    font-size: 1.8rem;
-  }
-  
-  @media screen and (max-width: 768px) {
-    .text-size-small .look-text-body {
-      font-size: 1.3rem;
-    }
-    
-    .text-size-medium .look-text-body {
-      font-size: 1.5rem;
-    }
-    
-    .text-size-large .look-text-body {
-      font-size: 1.6rem;
-    }
-  }
-  
-  @media screen and (max-width: 480px) {
-    .text-size-small .look-text-body {
-      font-size: 1.2rem;
-    }
-    
-    .text-size-medium .look-text-body {
-      font-size: 1.4rem;
-    }
-    
-    .text-size-large .look-text-body {
-      font-size: 1.5rem;
-    }
   }
 </style>
 
@@ -113,26 +60,6 @@
         }
       ],
       "default": "center"
-    },
-    {
-      "type": "select",
-      "id": "text_size",
-      "label": "Text Size",
-      "options": [
-        {
-          "value": "small",
-          "label": "Small"
-        },
-        {
-          "value": "medium",
-          "label": "Medium"
-        },
-        {
-          "value": "large",
-          "label": "Large"
-        }
-      ],
-      "default": "large"
     },
     {
       "type": "color",
