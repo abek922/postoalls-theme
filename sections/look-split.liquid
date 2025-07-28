@@ -108,6 +108,27 @@
     width: 100%;
   }
   
+  .page-width {
+    max-width: var(--page-width, 1200px);
+    margin: 0 auto;
+    padding-left: var(--page-padding, 2rem);
+    padding-right: var(--page-padding, 2rem);
+  }
+  
+  @media screen and (max-width: 768px) {
+    .page-width {
+      padding-left: var(--page-padding-mobile, 1.5rem);
+      padding-right: var(--page-padding-mobile, 1.5rem);
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .page-width {
+      padding-left: var(--page-padding-mobile, 1rem);
+      padding-right: var(--page-padding-mobile, 1rem);
+    }
+  }
+  
   .look-split-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
