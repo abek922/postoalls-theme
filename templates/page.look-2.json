@@ -1,15 +1,30 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-page",
-      "disabled": true
+      "disabled": true,
+      "settings": {
+        "color_scheme": "",
+        "show_title": true,
+        "page_width": "xs"
+      }
     },
     "look_title": {
       "type": "look-title",
       "settings": {
-        "title": "2025 SPRING & SUMMER COLLECTION",
-        "subtitle": "ONE OCEAN, ALL LANDS",
-        "background_color": "#F5F5F5",
+        "title": "2025 F/W LOOK",
+        "heading_tag": "h1",
+        "subtitle": "サブタイトル",
+        "background_color": "#f5f5f5",
         "text_color": "#333333",
         "padding_top": 80,
         "padding_bottom": 40
@@ -18,9 +33,9 @@
     "look_text": {
       "type": "look-text",
       "settings": {
-        "text": "海と向き合うとき感じる心地よさを、忙しい日々の中でnanameicaの服と共に過ごしたい。シンプルで機能的、いつでも快適。",
+        "text": "ここにテキストを追加",
         "text_alignment": "center",
-        "background_color": "#FFFFFF",
+        "background_color": "#ffffff",
         "text_color": "#666666",
         "padding_top": 40,
         "padding_bottom": 40
@@ -30,11 +45,20 @@
       "type": "look-split",
       "settings": {
         "layout": "text_left",
-        "image": "",
-        "title": "Layer lightly",
-        "text": "Featuring elements of a Harrington jacket, including a dog-ear collar and ribbed hem, this outdoor vest is constructed from recycled nylon taffeta, making it lightweight and comfortable to wear. The distinctive red color, woven with black weft yarns and post-dyed, has a depth that creates dramatic shadows on its surface.",
+        "image": "shopify://shop_images/w-1.jpg",
+        "title": "タイトル",
+        "heading_tag": "h3",
+        "text": "テキスト",
+        "product_1": "25fw_2106r-bmc",
+        "product_2": "25fw_3105-12db",
+        "product_3": "",
+        "product_4": "",
+        "product_5": "",
+        "product_6": "",
+        "product_7": "",
+        "product_8": "",
         "text_alignment": "left",
-        "background_color": "#FFFFFF",
+        "background_color": "#ffffff",
         "text_color": "#333333",
         "padding_top": 60,
         "padding_bottom": 60
@@ -43,7 +67,7 @@
     "look_full_image_1": {
       "type": "look-full-image",
       "settings": {
-        "image": "",
+        "image": "shopify://shop_images/top-banner-pc.jpg",
         "image_height": "large",
         "enable_parallax": false,
         "overlay_opacity": 0,
@@ -55,11 +79,20 @@
       "type": "look-split",
       "settings": {
         "layout": "text_right",
-        "image": "",
+        "image": "shopify://shop_images/m-1.jpg",
         "title": "Black at the sea",
+        "heading_tag": "h2",
         "text": "A simple jacket accented with a stand collar. Wear it oversized for a contemporary look. The wool/linen fabric has a texture that's expressive even in black. The reversible design with removable change buttons allows you to enjoy the navy side as well.",
+        "product_1": "25fw_2106r-bmg",
+        "product_2": "25fw_3105-12wd",
+        "product_3": "",
+        "product_4": "",
+        "product_5": "",
+        "product_6": "",
+        "product_7": "",
+        "product_8": "",
         "text_alignment": "left",
-        "background_color": "#F9F9F9",
+        "background_color": "#f9f9f9",
         "text_color": "#333333",
         "padding_top": 60,
         "padding_bottom": 60
@@ -68,7 +101,6 @@
     "look_full_image_2": {
       "type": "look-full-image",
       "settings": {
-        "image": "",
         "image_height": "medium",
         "enable_parallax": true,
         "overlay_opacity": 20,
@@ -80,11 +112,19 @@
       "type": "look-split",
       "settings": {
         "layout": "text_left",
-        "image": "",
-        "title": "By sea, by day",  
+        "title": "By sea, by day",
+        "heading_tag": "h2",
         "text": "A fresh take on a sports jacket popular in the UK, re-imagined in a crew style. The outer material is a 2-layer cotton twill GORE-TEX Fabrics that is highly waterproof and breathable. An inner wind guard at your waist reduces the intrusion of cold air.",
+        "product_1": "",
+        "product_2": "",
+        "product_3": "",
+        "product_4": "",
+        "product_5": "",
+        "product_6": "",
+        "product_7": "",
+        "product_8": "",
         "text_alignment": "left",
-        "background_color": "#FFFFFF",
+        "background_color": "#ffffff",
         "text_color": "#333333",
         "padding_top": 60,
         "padding_bottom": 80
@@ -94,7 +134,7 @@
   "order": [
     "main",
     "look_title",
-    "look_text", 
+    "look_text",
     "look_split_1",
     "look_full_image_1",
     "look_split_2",
