@@ -96,6 +96,7 @@
     }
   },
   "order": [
+    "main",
     "look_title",
     "look_text", 
     "look_split_1",
