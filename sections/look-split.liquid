@@ -17,13 +17,26 @@
           </div>
         {% endif %}
         
-        {% if section.settings.product_list != blank %}
+        {% assign has_products = false %}
+        {% for i in (1..8) %}
+          {% assign product_key = 'product_' | append: i %}
+          {% if section.settings[product_key] != blank %}
+            {% assign has_products = true %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+        
+        {% if has_products %}
           <div class="look-split-products">
-            {% assign product_lines = section.settings.product_list | split: "
-" %}
-            {% for line in product_lines %}
-              {% if line != blank %}
-                <p class="product-item">{{ line }}</p>
+            {% for i in (1..8) %}
+              {% assign product_key = 'product_' | append: i %}
+              {% assign product = section.settings[product_key] %}
+              {% if product != blank %}
+                <p class="product-item">
+                  <a href="{{ product.url }}" class="product-link">
+                    {{ product.title }} {{ product.price | money }}
+                  </a>
+                </p>
               {% endif %}
             {% endfor %}
           </div>
@@ -126,6 +139,17 @@
     margin: 8px 0;
     opacity: 0.8;
     font-family: monospace;
+  }
+  
+  .product-link {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+  
+  .product-link:hover {
+    opacity: 0.6;
+    text-decoration: underline;
   }
   
   .look-split-image {
@@ -234,11 +258,44 @@
       "default": "Featuring elements of a Harrington jacket, including a dog-ear collar and ribbed hem, this outdoor vest is constructed from recycled nylon taffeta, making it lightweight and comfortable to wear."
     },
     {
-      "type": "textarea",
-      "id": "product_list",
-      "label": "Product List (One per line)",
-      "info": "Enter product information, one item per line",
-      "default": "Zip Up Wind Vest [SUAS412U] $350.0+tax\nKODENSHI Pocket Tee [SUHS419U] $200.0+tax\nWind Shorts [SUDS407U] $300.0+tax"
+      "type": "product",
+      "id": "product_1",
+      "label": "Product 1"
+    },
+    {
+      "type": "product",
+      "id": "product_2",
+      "label": "Product 2"
+    },
+    {
+      "type": "product",
+      "id": "product_3",
+      "label": "Product 3"
+    },
+    {
+      "type": "product",
+      "id": "product_4",
+      "label": "Product 4"
+    },
+    {
+      "type": "product",
+      "id": "product_5",
+      "label": "Product 5"
+    },
+    {
+      "type": "product",
+      "id": "product_6",
+      "label": "Product 6"
+    },
+    {
+      "type": "product",
+      "id": "product_7",
+      "label": "Product 7"
+    },
+    {
+      "type": "product",
+      "id": "product_8",
+      "label": "Product 8"
     },
     {
       "type": "select",
