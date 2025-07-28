@@ -64,7 +64,12 @@
           >
         {% else %}
           <div class="look-split-placeholder">
-            <p>画像を追加してください</p>
+            <svg width="60" height="60" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
+              <rect width="60" height="60" rx="4" fill="currentColor" fill-opacity="0.1"/>
+              <rect x="12" y="18" width="36" height="24" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <circle cx="22" cy="26" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <path d="m45 35-5-5-8 8-4-4-3 3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            </svg>
           </div>
         {% endif %}
       </div>
@@ -188,6 +193,11 @@
     align-items: center;
     justify-content: center;
     color: #999;
+    border: 2px dashed #e0e0e0;
+  }
+  
+  .look-split-placeholder svg {
+    opacity: 0.5;
   }
   
   @media screen and (max-width: 768px) {

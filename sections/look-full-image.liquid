@@ -28,7 +28,12 @@
     {% else %}
       <div class="look-full-image-placeholder height-{{ section.settings.image_height }}">
         <div class="placeholder-content">
-          <p>横いっぱいの画像を追加してください</p>
+          <svg width="80" height="80" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+            <rect width="80" height="80" rx="6" fill="currentColor" fill-opacity="0.1"/>
+            <rect x="16" y="24" width="48" height="32" rx="3" stroke="currentColor" stroke-width="2" fill="none"/>
+            <circle cx="30" cy="34" r="4" stroke="currentColor" stroke-width="2" fill="none"/>
+            <path d="m60 48-6-6-10 10-6-6-4 4" stroke="currentColor" stroke-width="2" fill="none"/>
+          </svg>
         </div>
       </div>
     {% endif %}
