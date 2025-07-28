@@ -1,0 +1,107 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true
+    },
+    "look_title": {
+      "type": "look-title",
+      "settings": {
+        "title": "2025 SPRING & SUMMER COLLECTION",
+        "subtitle": "ONE OCEAN, ALL LANDS",
+        "background_color": "#F5F5F5",
+        "text_color": "#333333",
+        "padding_top": 80,
+        "padding_bottom": 40
+      }
+    },
+    "look_text": {
+      "type": "look-text",
+      "settings": {
+        "text": "海と向き合うとき感じる心地よさを、忙しい日々の中でnanameicaの服と共に過ごしたい。シンプルで機能的、いつでも快適。",
+        "text_alignment": "center",
+        "text_size": "large",
+        "background_color": "#FFFFFF",
+        "text_color": "#666666",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "look_split_1": {
+      "type": "look-split",
+      "settings": {
+        "layout": "text_left",
+        "image": "",
+        "title": "Layer lightly",
+        "text": "Featuring elements of a Harrington jacket, including a dog-ear collar and ribbed hem, this outdoor vest is constructed from recycled nylon taffeta, making it lightweight and comfortable to wear. The distinctive red color, woven with black weft yarns and post-dyed, has a depth that creates dramatic shadows on its surface.",
+        "product_list": "Zip Up Wind Vest [SUAS412U] $350.0+tax\nKODENSHI Pocket Tee [SUHS419U] $200.0+tax\nWind Shorts [SUDS407U] $300.0+tax",
+        "text_alignment": "left",
+        "background_color": "#FFFFFF",
+        "text_color": "#333333",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "look_full_image_1": {
+      "type": "look-full-image",
+      "settings": {
+        "image": "",
+        "image_height": "large",
+        "enable_parallax": false,
+        "overlay_opacity": 0,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "look_split_2": {
+      "type": "look-split",
+      "settings": {
+        "layout": "text_right",
+        "image": "",
+        "title": "Black at the sea",
+        "text": "A simple jacket accented with a stand collar. Wear it oversized for a contemporary look. The wool/linen fabric has a texture that's expressive even in black. The reversible design with removable change buttons allows you to enjoy the navy side as well.",
+        "product_list": "Wool Linen Jacket [SUAS405U] $520.0+tax\nnanamica Loopwheel COOLMAX Jersey Tee [SUHF377U] $96.0+tax\nWool Linen Pants [SUCS404U] $400.0+tax",
+        "text_alignment": "left",
+        "background_color": "#F9F9F9",
+        "text_color": "#333333",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "look_full_image_2": {
+      "type": "look-full-image",
+      "settings": {
+        "image": "",
+        "image_height": "medium",
+        "enable_parallax": true,
+        "overlay_opacity": 20,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "look_split_3": {
+      "type": "look-split",
+      "settings": {
+        "layout": "text_left",
+        "image": "",
+        "title": "By sea, by day",  
+        "text": "A fresh take on a sports jacket popular in the UK, re-imagined in a crew style. The outer material is a 2-layer cotton twill GORE-TEX Fabrics that is highly waterproof and breathable. An inner wind guard at your waist reduces the intrusion of cold air.",
+        "product_list": "GORE-TEX Crew Jacket [SUAS403U] $900.0+tax\nSweat Pants [SUCF362U] $330.0+tax\nGORE-TEX Chukka Boots [SUSF350U] $610.0+tax",
+        "text_alignment": "left",
+        "background_color": "#FFFFFF",
+        "text_color": "#333333",
+        "padding_top": 60,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": [
+    "look_title",
+    "look_text", 
+    "look_split_1",
+    "look_full_image_1",
+    "look_split_2",
+    "look_full_image_2",
+    "look_split_3"
+  ]
+}

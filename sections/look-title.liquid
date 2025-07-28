@@ -1,0 +1,126 @@
+<div class="look-title-section" style="
+  background-color: {{ section.settings.background_color }};
+  color: {{ section.settings.text_color }};
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+">
+  <div class="page-width">
+    <div class="look-title-content">
+      {% if section.settings.title != blank %}
+        <h1 class="look-title-main">{{ section.settings.title }}</h1>
+      {% endif %}
+      
+      {% if section.settings.subtitle != blank %}
+        <p class="look-title-subtitle">{{ section.settings.subtitle }}</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .look-title-section {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .look-title-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .look-title-main {
+    font-size: 3.2rem;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    margin: 0 0 20px 0;
+    line-height: 1.2;
+  }
+  
+  .look-title-subtitle {
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    margin: 0;
+    opacity: 0.8;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .look-title-main {
+      font-size: 2.4rem;
+      letter-spacing: 0.1em;
+    }
+    
+    .look-title-subtitle {
+      font-size: 1.2rem;
+      letter-spacing: 0.2em;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .look-title-main {
+      font-size: 2rem;
+    }
+    
+    .look-title-subtitle {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Look Title",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "2025 SPRING & SUMMER COLLECTION"
+    },
+    {
+      "type": "text", 
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "ONE OCEAN, ALL LANDS"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#F5F5F5"
+    },
+    {
+      "type": "color",
+      "id": "text_color", 
+      "label": "Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Look Title",
+      "category": "Look"
+    }
+  ]
+}
+{% endschema %}

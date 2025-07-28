@@ -1,0 +1,279 @@
+<div class="look-full-image-section" style="
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+">
+  <div class="look-full-image-container height-{{ section.settings.image_height }}{% if section.settings.enable_parallax %} parallax-enabled{% endif %}">
+    {% if section.settings.image != blank %}
+      <div class="look-full-image-wrapper">
+        <img 
+          src="{{ section.settings.image | image_url: width: 1920 }}"
+          srcset="
+            {{ section.settings.image | image_url: width: 768 }} 768w,
+            {{ section.settings.image | image_url: width: 1024 }} 1024w,
+            {{ section.settings.image | image_url: width: 1440 }} 1440w,
+            {{ section.settings.image | image_url: width: 1920 }} 1920w,
+            {{ section.settings.image | image_url: width: 2400 }} 2400w
+          "
+          sizes="100vw"
+          width="{{ section.settings.image.width }}"
+          height="{{ section.settings.image.height }}"
+          alt="{{ section.settings.image.alt | default: 'Look image' }}"
+          loading="lazy"
+          class="look-full-image{% if section.settings.enable_parallax %} parallax-image{% endif %}"
+        >
+        {% if section.settings.overlay_opacity > 0 %}
+          <div class="look-full-image-overlay" style="opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }}"></div>
+        {% endif %}
+      </div>
+    {% else %}
+      <div class="look-full-image-placeholder height-{{ section.settings.image_height }}">
+        <div class="placeholder-content">
+          <p>横いっぱいの画像を追加してください</p>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  .look-full-image-section {
+    width: 100%;
+    margin: 0;
+  }
+  
+  .look-full-image-container {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    overflow: hidden;
+  }
+  
+  .look-full-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .look-full-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .look-full-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+  }
+  
+  .height-small {
+    height: 40vh;
+    min-height: 300px;
+  }
+  
+  .height-medium {
+    height: 60vh;
+    min-height: 400px;
+  }
+  
+  .height-large {
+    height: 80vh;
+    min-height: 500px;
+  }
+  
+  .height-full {
+    height: 100vh;
+    min-height: 600px;
+  }
+  
+  .parallax-enabled {
+    overflow: hidden;
+  }
+  
+  .parallax-image {
+    will-change: transform;
+    transform: translateZ(0);
+  }
+  
+  .look-full-image-placeholder {
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .placeholder-content {
+    text-align: center;
+    color: #999;
+  }
+  
+  .placeholder-content p {
+    font-size: 1.6rem;
+    margin: 0;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .height-small {
+      height: 30vh;
+      min-height: 250px;
+    }
+    
+    .height-medium {
+      height: 40vh;
+      min-height: 300px;
+    }
+    
+    .height-large {
+      height: 50vh;
+      min-height: 350px;
+    }
+    
+    .height-full {
+      height: 70vh;
+      min-height: 400px;
+    }
+    
+    .placeholder-content p {
+      font-size: 1.4rem;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .height-small {
+      height: 25vh;
+      min-height: 200px;
+    }
+    
+    .height-medium {
+      height: 35vh;
+      min-height: 250px;
+    }
+    
+    .height-large {
+      height: 45vh;
+      min-height: 300px;
+    }
+    
+    .height-full {
+      height: 60vh;
+      min-height: 350px;
+    }
+  }
+  
+  /* パララックス効果用のJavaScript */
+  @media (prefers-reduced-motion: no-preference) {
+    .parallax-enabled .parallax-image {
+      transition: transform 0.1s ease-out;
+    }
+  }
+</style>
+
+<script>
+  // パララックス効果
+  document.addEventListener('DOMContentLoaded', function() {
+    const parallaxImages = document.querySelectorAll('.parallax-image');
+    
+    if (parallaxImages.length > 0 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      function updateParallax() {
+        parallaxImages.forEach(function(image) {
+          const container = image.closest('.parallax-enabled');
+          const rect = container.getBoundingClientRect();
+          const speed = 0.5;
+          
+          if (rect.bottom >= 0 && rect.top <= window.innerHeight) {
+            const yPos = -(rect.top * speed);
+            image.style.transform = `translateY(${yPos}px)`;
+          }
+        });
+      }
+      
+      window.addEventListener('scroll', updateParallax, { passive: true });
+      window.addEventListener('resize', updateParallax, { passive: true });
+      updateParallax();
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Look Full Image",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "image_height",
+      "label": "Image Height",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small (40vh)"
+        },
+        {
+          "value": "medium",
+          "label": "Medium (60vh)"
+        },
+        {
+          "value": "large",
+          "label": "Large (80vh)"
+        },
+        {
+          "value": "full",
+          "label": "Full Screen (100vh)"
+        }
+      ],
+      "default": "large"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_parallax",
+      "label": "Enable Parallax Effect",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay Opacity",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Look Full Image",
+      "category": "Look"
+    }
+  ]
+}
+{% endschema %}

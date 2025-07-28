@@ -1,0 +1,177 @@
+<div class="look-text-section" style="
+  background-color: {{ section.settings.background_color }};
+  color: {{ section.settings.text_color }};
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+">
+  <div class="page-width">
+    <div class="look-text-content text-{{ section.settings.text_alignment }} text-size-{{ section.settings.text_size }}">
+      {% if section.settings.text != blank %}
+        <div class="look-text-body">
+          {{ section.settings.text | newline_to_br }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .look-text-section {
+    width: 100%;
+  }
+  
+  .look-text-content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .look-text-body {
+    font-weight: 300;
+    line-height: 1.8;
+    margin: 0;
+  }
+  
+  .text-left {
+    text-align: left;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .text-right {
+    text-align: right;
+  }
+  
+  .text-size-small .look-text-body {
+    font-size: 1.4rem;
+  }
+  
+  .text-size-medium .look-text-body {
+    font-size: 1.6rem;
+  }
+  
+  .text-size-large .look-text-body {
+    font-size: 1.8rem;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .text-size-small .look-text-body {
+      font-size: 1.3rem;
+    }
+    
+    .text-size-medium .look-text-body {
+      font-size: 1.5rem;
+    }
+    
+    .text-size-large .look-text-body {
+      font-size: 1.6rem;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .text-size-small .look-text-body {
+      font-size: 1.2rem;
+    }
+    
+    .text-size-medium .look-text-body {
+      font-size: 1.4rem;
+    }
+    
+    .text-size-large .look-text-body {
+      font-size: 1.5rem;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Look Text",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "海と向き合うとき感じる心地よさを、忙しい日々の中でnanameicaの服と共に過ごしたい。シンプルで機能的、いつでも快適。"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center", 
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "text_size",
+      "label": "Text Size",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "large"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color", 
+      "default": "#666666"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Look Text",
+      "category": "Look"
+    }
+  ]
+}
+{% endschema %}
