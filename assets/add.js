@@ -7,6 +7,13 @@ document.addEventListener('DOMContentLoaded', function() {
   
   if (!header) return;
   
+  // 管理画面設定値を取得（CSS変数から）
+  const rootStyles = getComputedStyle(document.documentElement);
+  const thresholdFromCSS = rootStyles.getPropertyValue('--header-scroll-tracker-offset');
+  const SCROLL_THRESHOLD = thresholdFromCSS ? parseInt(thresholdFromCSS) : 300;
+  
+  console.log('Scroll threshold from settings:', SCROLL_THRESHOLD);
+  
   // モバイルでの初期状態設定
   if (isMobile && hasTransparentHeader) {
     // is-solidクラスを除去
@@ -17,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
       mutations.forEach(function(mutation) {
         if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
           // モバイルでis-solidクラスが追加された場合の処理
-          if (header.classList.contains('is-solid') && window.scrollY < 300) {
+          if (header.classList.contains('is-solid') && window.scrollY < SCROLL_THRESHOLD) {
             header.classList.remove('is-solid');
           }
         }
@@ -30,12 +37,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // === 既存のスクロール制御（統合版） ===
+  // === 既存のスクロール制御（設定値対応版） ===
   const scrollTracker = document.getElementById('header-scroll-tracker');
   if (!scrollTracker) return;
   
-  // カスタムスクロール閾値を設定
-  const SCROLL_THRESHOLD = 300;
+  // 管理画面の設定値でスクロールトラッカーの位置を設定
   scrollTracker.style.top = `${SCROLL_THRESHOLD}px`;
   
   if (!hasTransparentHeader) return;
@@ -60,17 +66,22 @@ document.addEventListener('DOMContentLoaded', function() {
     // モバイルでは初期状態を透明に
     header.classList.remove('is-solid');
   } else {
-    // デスクトップでは通常の判定
+    // デスクトップでは設定値に基づいて判定
     header.classList.toggle('is-solid', currentScrollY > SCROLL_THRESHOLD);
   }
 });
 
-// 設定変更用のグローバル関数
+// 設定変更用のグローバル関数（管理画面からの動的更新対応）
 window.updateHeaderScrollThreshold = function(newThreshold) {
   const scrollTracker = document.getElementById('header-scroll-tracker');
   if (scrollTracker) {
     scrollTracker.style.top = `${newThreshold}px`;
   }
+  
+  // CSS変数も更新
+  document.documentElement.style.setProperty('--header-scroll-tracker-offset', `${newThreshold}px`);
+  
+  console.log('Header scroll threshold updated to:', newThreshold);
 };
 
 // === 最終保険：完全読み込み後のチェック ===
@@ -81,7 +92,12 @@ window.addEventListener('load', function() {
     const header = document.querySelector('.header');
     const hasTransparentHeader = document.querySelector('[allow-transparent-header]');
     
-    if (isMobile && header && hasTransparentHeader && window.scrollY < 300) {
+    // 設定値を再取得
+    const rootStyles = getComputedStyle(document.documentElement);
+    const thresholdFromCSS = rootStyles.getPropertyValue('--header-scroll-tracker-offset');
+    const SCROLL_THRESHOLD = thresholdFromCSS ? parseInt(thresholdFromCSS) : 300;
+    
+    if (isMobile && header && hasTransparentHeader && window.scrollY < SCROLL_THRESHOLD) {
       header.classList.remove('is-solid');
     }
   }, 200);

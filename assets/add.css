@@ -1,3 +1,4 @@
+/* 既存の透明ヘッダー制御コード（変更なし） */
 /* 透明ヘッダー時のロゴを非表示にする */
 :has(.shopify-section:first-child [allow-transparent-header]):not(:has(.shopify-section--header ~ .shopify-section-group-header-group)) .header:not(.is-solid, :has(.header__primary-nav [open], .header__secondary-nav [open], .header-search[open])) .header__logo {
   opacity: 0;
@@ -13,22 +14,34 @@
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-/* スクロール位置の調整 - より下まで透明ヘッダーを維持 */
+/* スクロール位置の調整 - 管理画面設定値を使用 */
 #header-scroll-tracker {
-  top: var(--header-scroll-tracker-offset, 800px) !important; /* デフォルトの10pxから300pxに変更 */
+  top: var(--header-scroll-tracker-offset, 300px) !important;
 }
 
-/* === モバイル初回読み込み時のバグ修正（追加分のみ） === */
+/* === モバイル専用：強制的に透明ヘッダー設定 === */
 @media screen and (max-width: 768px) {
-  /* モバイルでの初期読み込み時に透明ヘッダー状態を強制 */
-  :has(.shopify-section:first-child [allow-transparent-header]) .header:not(.is-solid) {
+  /* モバイルでのヘッダー初期状態を強制的に透明に */
+  .header:not(.is-solid) {
     background-color: transparent !important;
     box-shadow: none !important;
+    backdrop-filter: none !important;
   }
   
-  /* モバイルでの初期読み込み時にロゴを非表示に強制 */
-  :has(.shopify-section:first-child [allow-transparent-header]) .header:not(.is-solid) .header__logo {
+  /* モバイルでのロゴ初期状態を強制的に非表示 */
+  .header:not(.is-solid) .header__logo {
     opacity: 0 !important;
     visibility: hidden !important;
+  }
+  
+  /* is-solidクラスが付いた時のスタイル */
+  .header.is-solid {
+    background-color: rgb(var(--color-background)) !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  .header.is-solid .header__logo {
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 }
