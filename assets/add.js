@@ -47,17 +47,15 @@ window.updateHeaderScrollThreshold = function(newThreshold) {
   }
 };
 
-// === モバイル初回読み込み時のバグ修正（追加分のみ） ===
-// モバイルでの初期状態を即座に設定
+// === 初回読み込み時のis-solidクラス除去（モバイル専用修正） ===
 (function() {
-  // モバイル判定（768px以下）
-  if (window.innerWidth > 768) return;
-  
   const header = document.querySelector('.header');
   const hasTransparentHeader = document.querySelector('[allow-transparent-header]');
   
-  if (header && hasTransparentHeader) {
-    // モバイルでの初期読み込み時は必ず透明状態に
+  // 透明ヘッダーが有効でモバイルの場合のみ
+  if (header && hasTransparentHeader && window.innerWidth <= 768) {
+    // 初回読み込み時に付いているis-solidクラスを除去
     header.classList.remove('is-solid');
+    console.log('Mobile: is-solid class removed on initial load');
   }
 })();
