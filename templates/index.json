@@ -78,8 +78,8 @@
         "image_VBweqx": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/top-banner-pc_2x_f6d55157-5bcf-4fe4-9e2d-fa5491bbab3c.jpg",
-            "mobile_image": "shopify://shop_images/top-banner-sp_2x_2d3a78d8-5e83-44ba-8bc6-8ec111692074.jpg",
+            "image": "shopify://shop_images/look_pc.jpg",
+            "mobile_image": "shopify://shop_images/look_sp.jpg",
             "subheading": "",
             "title": "",
             "mobile_text_position": "place-self-end-center text-center",
