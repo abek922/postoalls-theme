@@ -17,3 +17,18 @@
 #header-scroll-tracker {
   top: var(--header-scroll-tracker-offset, 800px) !important; /* デフォルトの10pxから300pxに変更 */
 }
+
+/* === モバイル初回読み込み時のバグ修正（追加分のみ） === */
+@media screen and (max-width: 768px) {
+  /* モバイルでの初期読み込み時に透明ヘッダー状態を強制 */
+  :has(.shopify-section:first-child [allow-transparent-header]) .header:not(.is-solid) {
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+  
+  /* モバイルでの初期読み込み時にロゴを非表示に強制 */
+  :has(.shopify-section:first-child [allow-transparent-header]) .header:not(.is-solid) .header__logo {
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+}

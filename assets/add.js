@@ -1,4 +1,4 @@
-// ヘッダースクロール制御の追加設定
+// 既存のヘッダースクロール制御の追加設定（変更なし）
 document.addEventListener('DOMContentLoaded', function() {
   // カスタムスクロール閾値を設定（ピクセル単位）
   const SCROLL_THRESHOLD = 300; // この値を調整してスクロール位置を変更可能
@@ -46,3 +46,18 @@ window.updateHeaderScrollThreshold = function(newThreshold) {
     scrollTracker.style.top = `${newThreshold}px`;
   }
 };
+
+// === モバイル初回読み込み時のバグ修正（追加分のみ） ===
+// モバイルでの初期状態を即座に設定
+(function() {
+  // モバイル判定（768px以下）
+  if (window.innerWidth > 768) return;
+  
+  const header = document.querySelector('.header');
+  const hasTransparentHeader = document.querySelector('[allow-transparent-header]');
+  
+  if (header && hasTransparentHeader) {
+    // モバイルでの初期読み込み時は必ず透明状態に
+    header.classList.remove('is-solid');
+  }
+})();
