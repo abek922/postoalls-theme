@@ -1,4 +1,3 @@
-/* 既存の透明ヘッダー制御コード */
 /* 透明ヘッダー時のロゴを非表示にする */
 :has(.shopify-section:first-child [allow-transparent-header]):not(:has(.shopify-section--header ~ .shopify-section-group-header-group)) .header:not(.is-solid, :has(.header__primary-nav [open], .header__secondary-nav [open], .header-search[open])) .header__logo {
   opacity: 0;
@@ -17,76 +16,4 @@
 /* スクロール位置の調整 - より下まで透明ヘッダーを維持 */
 #header-scroll-tracker {
   top: var(--header-scroll-tracker-offset, 800px) !important; /* デフォルトの10pxから300pxに変更 */
-}
-
-/* === バグ修正のための追加コード === */
-
-/* 初期読み込み時のちらつき防止 - 透明ヘッダー状態を強制設定 */
-:has(.shopify-section:first-child [allow-transparent-header]) .header {
-  background-color: transparent !important;
-  box-shadow: none !important;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* 初期読み込み時のロゴ非表示を強制設定 */
-:has(.shopify-section:first-child [allow-transparent-header]) .header:not(.is-solid) .header__logo {
-  opacity: 0 !important;
-  visibility: hidden !important;
-  transition: opacity 0s ease, visibility 0s ease;
-}
-
-/* ヘッダーの初期状態をより確実に設定 */
-.header:not(.is-solid) {
-  background-color: transparent;
-  box-shadow: none;
-}
-
-/* is-solidクラスが付与された時の背景表示 */
-.header.is-solid {
-  background-color: rgb(var(--color-background)) !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
-}
-
-/* ロゴの表示制御をより確実に */
-.header.is-solid .header__logo {
-  opacity: 1 !important;
-  visibility: visible !important;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-/* JavaScriptが読み込まれる前の初期状態保護 */
-.header {
-  background-color: transparent;
-  box-shadow: none;
-}
-
-.header .header__logo {
-  opacity: 0;
-  visibility: hidden;
-}
-
-/* 透明ヘッダーが無効な場合は通常表示 */
-:not(:has(.shopify-section:first-child [allow-transparent-header])) .header {
-  background-color: rgb(var(--color-background)) !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
-}
-
-:not(:has(.shopify-section:first-child [allow-transparent-header])) .header .header__logo {
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-/* ナビゲーションメニューやカートなどの他の要素は常に表示 */
-.header__primary-nav,
-.header__secondary-nav {
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-/* アニメーション無効化対応 */
-@media (prefers-reduced-motion: reduce) {
-  .header,
-  .header__logo {
-    transition: none !important;
-  }
 }

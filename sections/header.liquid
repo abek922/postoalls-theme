@@ -293,33 +293,6 @@
 
 <script>
   document.documentElement.style.setProperty('--header-height', `${document.getElementById('shopify-section-{{ section.id }}').clientHeight.toFixed(2)}px`);
-  
-  // 透明ヘッダーのスクロール閾値をCSS変数として設定
-  {% if section.settings.header_scroll_threshold %}
-    document.documentElement.style.setProperty('--header-scroll-tracker-offset', '{{ section.settings.header_scroll_threshold }}px');
-  {% endif %}
-  
-  // 初期状態の設定を即座に実行
-  (function() {
-    const header = document.querySelector('.header');
-    const hasTransparentHeader = document.querySelector('[allow-transparent-header]');
-    
-    if (header && hasTransparentHeader) {
-      // 透明ヘッダーの初期状態
-      header.style.backgroundColor = 'transparent';
-      header.style.boxShadow = 'none';
-      header.classList.remove('is-solid');
-      
-      {% if section.settings.hide_logo_on_transparent %}
-        const logo = header.querySelector('.header__logo');
-        if (logo) {
-          logo.style.opacity = '0';
-          logo.style.visibility = 'hidden';
-          logo.style.transition = 'opacity 0s ease, visibility 0s ease';
-        }
-      {% endif %}
-    }
-  })();
 </script>
 
 {% schema %}
