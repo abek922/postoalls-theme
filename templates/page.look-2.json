@@ -45,7 +45,7 @@
       "type": "look-split",
       "settings": {
         "layout": "text_left",
-        "image": "shopify://shop_images/w-1.jpg",
+        "image": "shopify://shop_images/KDN3327_F.jpg",
         "title": "タイトル",
         "heading_tag": "h3",
         "text": "テキスト",
@@ -67,7 +67,7 @@
     "look_full_image_1": {
       "type": "look-full-image",
       "settings": {
-        "image": "shopify://shop_images/top-banner-pc.jpg",
+        "image": "shopify://shop_images/KDN4234_F.jpg",
         "image_height": "large",
         "enable_parallax": false,
         "overlay_opacity": 0,
@@ -79,7 +79,7 @@
       "type": "look-split",
       "settings": {
         "layout": "text_right",
-        "image": "shopify://shop_images/m-1.jpg",
+        "image": "shopify://shop_images/KDN3551_F.jpg",
         "title": "",
         "heading_tag": "h2",
         "text": "",
@@ -101,6 +101,7 @@
     "look_full_image_2": {
       "type": "look-full-image",
       "settings": {
+        "image": "shopify://shop_images/KDN3315_F2.jpg",
         "image_height": "medium",
         "enable_parallax": true,
         "overlay_opacity": 20,
@@ -112,6 +113,7 @@
       "type": "look-split",
       "settings": {
         "layout": "text_left",
+        "image": "shopify://shop_images/KDN3538_2F.jpg",
         "title": "By sea, by day",
         "heading_tag": "h2",
         "text": "A fresh take on a sports jacket popular in the UK, re-imagined in a crew style. The outer material is a 2-layer cotton twill GORE-TEX Fabrics that is highly waterproof and breathable. An inner wind guard at your waist reduces the intrusion of cold air.",
