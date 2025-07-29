@@ -291,27 +291,8 @@
   </x-header>
 </height-observer>
 
-// abek-edit
 <script>
   document.documentElement.style.setProperty('--header-height', `${document.getElementById('shopify-section-{{ section.id }}').clientHeight.toFixed(2)}px`);
-  
-  // 管理画面の設定値をCSS変数として設定
-  {% if section.settings.header_scroll_threshold %}
-    document.documentElement.style.setProperty('--header-scroll-tracker-offset', '{{ section.settings.header_scroll_threshold }}px');
-    console.log('Header scroll threshold set to: {{ section.settings.header_scroll_threshold }}px');
-  {% else %}
-    document.documentElement.style.setProperty('--header-scroll-tracker-offset', '300px');
-    console.log('Header scroll threshold set to default: 300px');
-  {% endif %}
-  
-  // ロゴ非表示設定も変数として設定
-  {% if section.settings.hide_logo_on_transparent %}
-    document.documentElement.style.setProperty('--hide-logo-on-transparent', '1');
-    console.log('Hide logo on transparent: enabled');
-  {% else %}
-    document.documentElement.style.setProperty('--hide-logo-on-transparent', '0');
-    console.log('Hide logo on transparent: disabled');
-  {% endif %}
 </script>
 
 {% schema %}
