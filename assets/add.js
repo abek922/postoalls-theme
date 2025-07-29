@@ -1,26 +1,49 @@
-// 既存のヘッダースクロール制御の追加設定（変更なし）
+// === defer対応：DOMContentLoaded時点での確実な初期設定 ===
 document.addEventListener('DOMContentLoaded', function() {
-  // カスタムスクロール閾値を設定（ピクセル単位）
-  const SCROLL_THRESHOLD = 300; // この値を調整してスクロール位置を変更可能
-  
-  // ヘッダー要素を取得
+  // モバイル判定とヘッダー要素取得
+  const isMobile = window.innerWidth <= 768;
   const header = document.querySelector('.header');
+  const hasTransparentHeader = document.querySelector('[allow-transparent-header]');
+  
+  if (!header) return;
+  
+  // モバイルでの初期状態設定
+  if (isMobile && hasTransparentHeader) {
+    // is-solidクラスを除去
+    header.classList.remove('is-solid');
+    
+    // MutationObserverでヘッダーの変更を監視
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+          // モバイルでis-solidクラスが追加された場合の処理
+          if (header.classList.contains('is-solid') && window.scrollY < 300) {
+            header.classList.remove('is-solid');
+          }
+        }
+      });
+    });
+    
+    observer.observe(header, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+  }
+  
+  // === 既存のスクロール制御（統合版） ===
   const scrollTracker = document.getElementById('header-scroll-tracker');
+  if (!scrollTracker) return;
   
-  if (!header || !scrollTracker) return;
-  
-  // スクロールトラッカーの位置を動的に更新
+  // カスタムスクロール閾値を設定
+  const SCROLL_THRESHOLD = 300;
   scrollTracker.style.top = `${SCROLL_THRESHOLD}px`;
   
-  // 透明ヘッダーが有効かチェック
-  const hasTransparentHeader = document.querySelector('[allow-transparent-header]');
   if (!hasTransparentHeader) return;
   
   // IntersectionObserverでスクロール位置を監視
-  const observer = new IntersectionObserver((entries) => {
+  const scrollObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.target === scrollTracker) {
-        // スクロールトラッカーが見えなくなったら通常ヘッダーに切り替え
         header.classList.toggle('is-solid', !entry.isIntersecting);
       }
     });
@@ -29,14 +52,20 @@ document.addEventListener('DOMContentLoaded', function() {
     rootMargin: '0px'
   });
   
-  observer.observe(scrollTracker);
+  scrollObserver.observe(scrollTracker);
   
   // 初期状態の設定
   const currentScrollY = window.scrollY;
-  header.classList.toggle('is-solid', currentScrollY > SCROLL_THRESHOLD);
+  if (isMobile && hasTransparentHeader) {
+    // モバイルでは初期状態を透明に
+    header.classList.remove('is-solid');
+  } else {
+    // デスクトップでは通常の判定
+    header.classList.toggle('is-solid', currentScrollY > SCROLL_THRESHOLD);
+  }
 });
 
-// 設定変更用のグローバル関数（テーマカスタマイザーから使用可能）
+// 設定変更用のグローバル関数
 window.updateHeaderScrollThreshold = function(newThreshold) {
   const scrollTracker = document.getElementById('header-scroll-tracker');
   if (scrollTracker) {
@@ -44,24 +73,16 @@ window.updateHeaderScrollThreshold = function(newThreshold) {
   }
 };
 
-// === モバイル専用：強制的に透明ヘッダー設定 ===
-if (window.innerWidth <= 768) {
-  // モバイルでのみ実行
-  const header = document.querySelector('.header');
-  if (header) {
-    // is-solidクラスを除去
-    header.classList.remove('is-solid');
+// === 最終保険：完全読み込み後のチェック ===
+window.addEventListener('load', function() {
+  // 少し遅延させて他のスクリプトの実行完了を待つ  
+  setTimeout(function() {
+    const isMobile = window.innerWidth <= 768;
+    const header = document.querySelector('.header');
+    const hasTransparentHeader = document.querySelector('[allow-transparent-header]');
     
-    // 透明背景を強制設定
-    header.style.setProperty('background-color', 'transparent', 'important');
-    header.style.setProperty('box-shadow', 'none', 'important');
-    header.style.setProperty('backdrop-filter', 'none', 'important');
-    
-    // ロゴを非表示
-    const logo = header.querySelector('.header__logo');
-    if (logo) {
-      logo.style.setProperty('opacity', '0', 'important');
-      logo.style.setProperty('visibility', 'hidden', 'important');
+    if (isMobile && header && hasTransparentHeader && window.scrollY < 300) {
+      header.classList.remove('is-solid');
     }
-  }
-}
+  }, 200);
+});

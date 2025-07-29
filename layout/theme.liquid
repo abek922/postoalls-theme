@@ -38,14 +38,15 @@
       <script src="{{ 'vendor/qrcode.js' | shopify_asset_url }}" defer></script>
     {%- endif -%}
 
+    <!-- add.jsをdeferで読み込み（パフォーマンス改善） -->
+    <script src="{{ 'add.js' | asset_url }}" defer></script>
+
     <script type="importmap">
-      {%- comment -%}On Safari 16.3 and lower, a polyfill is used to load importmap{%- endcomment -%}
       {
         "imports": {
           "vendor": "{{ 'vendor.min.js' | asset_url }}",
           "theme": "{{ 'theme.js' | asset_url }}",
-          "photoswipe": "{{ 'photoswipe.min.js' | asset_url }}",
-          "theme-add": "{{ 'add.js' | asset_url }}"
+          "photoswipe": "{{ 'photoswipe.min.js' | asset_url }}"
         }
       }
     </script>
