@@ -177,28 +177,6 @@
     "multi-column": {
       "type": "multi-column",
       "blocks": {
-        "image_with_text_6A4UeF": {
-          "type": "image_with_text",
-          "settings": {
-            "image": "shopify://shop_images/column-img_2025_FALL_AND_WINTER_COLLECTION.jpg",
-            "title": "2025 FALL AND WINTER",
-            "heading_tag": "h6",
-            "content": "<p>ここにコメント</p>",
-            "link_url": "shopify://pages/look-2025fw",
-            "link_text": ""
-          }
-        },
-        "column-1": {
-          "type": "image_with_text",
-          "settings": {
-            "image": "shopify://shop_images/column-img.jpg",
-            "title": "2025 FALL AND WINTER",
-            "heading_tag": "h6",
-            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_url": "shopify://pages/look-2025fw",
-            "link_text": ""
-          }
-        },
         "column-2": {
           "type": "image_with_text",
           "settings": {
@@ -234,8 +212,6 @@
         }
       },
       "block_order": [
-        "image_with_text_6A4UeF",
-        "column-1",
         "column-2",
         "image_with_text_LXCizD",
         "image_with_text_fJJCkk"
@@ -407,7 +383,7 @@
         "image_with_text_MK8ac7": {
           "type": "image_with_text",
           "settings": {
-            "image": "shopify://shop_images/column-img_2025_FALL_AND_WINTER_COLLECTION.jpg",
+            "image": "shopify://shop_images/look_sp.jpg",
             "title": "2025 FW",
             "heading_tag": "h4",
             "content": "",
@@ -418,7 +394,7 @@
         "image_with_text_3dMGjJ": {
           "type": "image_with_text",
           "settings": {
-            "image": "shopify://shop_images/column-img.jpg",
+            "image": "shopify://shop_images/look_sp.jpg",
             "title": "2025 SS",
             "heading_tag": "h4",
             "content": "",
@@ -431,6 +407,7 @@
         "image_with_text_MK8ac7",
         "image_with_text_3dMGjJ"
       ],
+      "disabled": true,
       "name": "t:sections.multi_column.presets.multi_column.name",
       "settings": {
         "color_scheme": "",
