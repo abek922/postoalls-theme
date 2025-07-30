@@ -15,6 +15,8 @@
         "video_nV6ebV": {
           "type": "video",
           "settings": {
+            "video": "shopify://files/videos/top-movie_25fw_pc.mp4",
+            "mobile_video": "shopify://files/videos/top-movie_25fw_sp.mp4",
             "allow_sound": true,
             "subheading": "",
             "title": "",
@@ -76,6 +78,8 @@
         "image_VBweqx": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/banner-look_25fw_pc.jpg",
+            "mobile_image": "shopify://shop_images/banner-look_25fw_sp.jpg",
             "subheading": "",
             "title": "",
             "mobile_text_position": "place-self-end-center text-center",
@@ -196,7 +200,7 @@
         "collection-1": {
           "type": "collection",
           "settings": {
-            "collection": "2025fw",
+            "collection": "new-arrivals",
             "products_count": 8,
             "title": "NEW ARRIVALS",
             "link_url": "",
