@@ -41,82 +41,14 @@
         "padding_bottom": 40
       }
     },
-    "look_split_1": {
+    "look_split_fmFyXh": {
       "type": "look-split",
+      "name": "Look Split",
       "settings": {
         "layout": "text_left",
-        "image": "shopify://shop_images/KDN3327_F.jpg",
-        "title": "タイトル",
-        "heading_tag": "h3",
-        "text": "テキスト",
-        "product_1": "25fw_2106r-bmc",
-        "product_2": "25fw_3105-12db",
-        "product_3": "",
-        "product_4": "",
-        "product_5": "",
-        "product_6": "",
-        "product_7": "",
-        "product_8": "",
-        "text_alignment": "left",
-        "background_color": "#ffffff",
-        "text_color": "#333333",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
-    "look_full_image_1": {
-      "type": "look-full-image",
-      "settings": {
-        "image": "shopify://shop_images/KDN4234_F.jpg",
-        "image_height": "full",
-        "enable_parallax": false,
-        "overlay_opacity": 0,
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
-    "look_split_2": {
-      "type": "look-split",
-      "settings": {
-        "layout": "text_right",
-        "image": "shopify://shop_images/KDN3551_F.jpg",
-        "title": "",
+        "title": "Layer lightly",
         "heading_tag": "h2",
-        "text": "",
-        "product_1": "25fw_2106r-bmg",
-        "product_2": "25fw_3105-12wd",
-        "product_3": "",
-        "product_4": "",
-        "product_5": "",
-        "product_6": "",
-        "product_7": "",
-        "product_8": "",
-        "text_alignment": "left",
-        "background_color": "#f9f9f9",
-        "text_color": "#333333",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
-    "look_full_image_2": {
-      "type": "look-full-image",
-      "settings": {
-        "image": "shopify://shop_images/KDN3315_F2.jpg",
-        "image_height": "full",
-        "enable_parallax": true,
-        "overlay_opacity": 20,
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
-    "look_split_3": {
-      "type": "look-split",
-      "settings": {
-        "layout": "text_left",
-        "image": "shopify://shop_images/KDN3538_2F.jpg",
-        "title": "By sea, by day",
-        "heading_tag": "h2",
-        "text": "A fresh take on a sports jacket popular in the UK, re-imagined in a crew style. The outer material is a 2-layer cotton twill GORE-TEX Fabrics that is highly waterproof and breathable. An inner wind guard at your waist reduces the intrusion of cold air.",
+        "text": "Featuring elements of a Harrington jacket, including a dog-ear collar and ribbed hem, this outdoor vest is constructed from recycled nylon taffeta, making it lightweight and comfortable to wear.",
         "product_1": "",
         "product_2": "",
         "product_3": "",
@@ -126,10 +58,56 @@
         "product_7": "",
         "product_8": "",
         "text_alignment": "left",
-        "background_color": "#ffffff",
+        "background_color": "#FFFFFF",
         "text_color": "#333333",
         "padding_top": 60,
-        "padding_bottom": 80
+        "padding_bottom": 60
+      }
+    },
+    "look_split_mtfVGM": {
+      "type": "look-split",
+      "name": "Look Split",
+      "settings": {
+        "layout": "text_left",
+        "title": "Layer lightly",
+        "heading_tag": "h2",
+        "text": "Featuring elements of a Harrington jacket, including a dog-ear collar and ribbed hem, this outdoor vest is constructed from recycled nylon taffeta, making it lightweight and comfortable to wear.",
+        "product_1": "",
+        "product_2": "",
+        "product_3": "",
+        "product_4": "",
+        "product_5": "",
+        "product_6": "",
+        "product_7": "",
+        "product_8": "",
+        "text_alignment": "left",
+        "background_color": "#FFFFFF",
+        "text_color": "#333333",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "look_split_3kyQVB": {
+      "type": "look-split",
+      "name": "Look Split",
+      "settings": {
+        "layout": "text_left",
+        "title": "Layer lightly",
+        "heading_tag": "h2",
+        "text": "Featuring elements of a Harrington jacket, including a dog-ear collar and ribbed hem, this outdoor vest is constructed from recycled nylon taffeta, making it lightweight and comfortable to wear.",
+        "product_1": "",
+        "product_2": "",
+        "product_3": "",
+        "product_4": "",
+        "product_5": "",
+        "product_6": "",
+        "product_7": "",
+        "product_8": "",
+        "text_alignment": "left",
+        "background_color": "#FFFFFF",
+        "text_color": "#333333",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     }
   },
@@ -137,10 +115,8 @@
     "main",
     "look_title",
     "look_text",
-    "look_split_1",
-    "look_full_image_1",
-    "look_split_2",
-    "look_full_image_2",
-    "look_split_3"
+    "look_split_fmFyXh",
+    "look_split_mtfVGM",
+    "look_split_3kyQVB"
   ]
 }
