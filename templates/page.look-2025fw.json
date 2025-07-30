@@ -23,7 +23,7 @@
       "settings": {
         "title": "2025 F/W LOOK",
         "heading_tag": "h1",
-        "subtitle": "サブタイトル",
+        "subtitle": "",
         "background_color": "#f5f5f5",
         "text_color": "#333333",
         "padding_top": 80,
@@ -33,7 +33,7 @@
     "look_text": {
       "type": "look-text",
       "settings": {
-        "text": "ここにテキストを追加",
+        "text": "",
         "text_alignment": "center",
         "background_color": "#ffffff",
         "text_color": "#666666",
