@@ -87,15 +87,6 @@
                     {% break %}
                   {% endif %}
                 {% endfor %}
-  ],
-  "presets": [
-    {
-      "name": "Look Combined",
-      "category": "Look"
-    }
-  ]
-}
-{% endschema %}
                 
                 {% if has_products %}
                   <div class="look-split-products">
@@ -457,221 +448,1017 @@
 {
   "name": "Look Combined",
   "settings": [
-    {% for i in (1..5) %}
-      {
-        "type": "header",
-        "content": "Section {{ i }}"
-      },
-      {
-        "type": "select",
-        "id": "layout_{{ i }}",
-        "label": "Layout {{ i }}",
-        "options": [
-          {
-            "value": "hidden",
-            "label": "Hidden"
-          },
-          {
-            "value": "text_left",
-            "label": "Text Left, Image Right"
-          },
-          {
-            "value": "text_right",
-            "label": "Text Right, Image Left"
-          },
-          {
-            "value": "full_image",
-            "label": "Full Image"
-          }
-        ],
-        "default": "hidden"
-      },
-      {
-        "type": "image_picker",
-        "id": "image_{{ i }}",
-        "label": "Image {{ i }}"
-      },
-      {% unless i == 5 %}
+    {
+      "type": "header",
+      "content": "Section 1"
+    },
+    {
+      "type": "select",
+      "id": "layout_1",
+      "label": "Layout 1",
+      "options": [
         {
-          "type": "text",
-          "id": "title_{{ i }}",
-          "label": "Title {{ i }}",
-          "info": "Only for Split layouts"
+          "value": "hidden",
+          "label": "Hidden"
         },
         {
-          "type": "select",
-          "id": "heading_tag_{{ i }}",
-          "label": "Heading Tag {{ i }}",
-          "options": [
-            {
-              "value": "h1",
-              "label": "H1"
-            },
-            {
-              "value": "h2",
-              "label": "H2"
-            },
-            {
-              "value": "h3",
-              "label": "H3"
-            },
-            {
-              "value": "h4",
-              "label": "H4"
-            },
-            {
-              "value": "h5",
-              "label": "H5"
-            },
-            {
-              "value": "h6",
-              "label": "H6"
-            }
-          ],
-          "default": "h2",
-          "info": "Only for Split layouts"
+          "value": "text_left",
+          "label": "Text Left, Image Right"
         },
         {
-          "type": "textarea",
-          "id": "text_{{ i }}",
-          "label": "Description {{ i }}",
-          "info": "Only for Split layouts"
-        },
-        {% for j in (1..8) %}
-          {
-            "type": "product",
-            "id": "product_{{ i }}_{{ j }}",
-            "label": "Product {{ i }}-{{ j }}",
-            "info": "Only for Split layouts"
-          }{% unless j == 8 %},{% endunless %}
-        {% endfor %},
-      {% else %}
-        {
-          "type": "text",
-          "id": "title_{{ i }}",
-          "label": "Title {{ i }}",
-          "info": "Only for Split layouts"
+          "value": "text_right",
+          "label": "Text Right, Image Left"
         },
         {
-          "type": "select",
-          "id": "heading_tag_{{ i }}",
-          "label": "Heading Tag {{ i }}",
-          "options": [
-            {
-              "value": "h1",
-              "label": "H1"
-            },
-            {
-              "value": "h2",
-              "label": "H2"
-            },
-            {
-              "value": "h3",
-              "label": "H3"
-            },
-            {
-              "value": "h4",
-              "label": "H4"
-            },
-            {
-              "value": "h5",
-              "label": "H5"
-            },
-            {
-              "value": "h6",
-              "label": "H6"
-            }
-          ],
-          "default": "h2",
-          "info": "Only for Split layouts"
+          "value": "full_image",
+          "label": "Full Image"
+        }
+      ],
+      "default": "hidden"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1"
+    },
+    {
+      "type": "text",
+      "id": "title_1",
+      "label": "Title 1",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag_1",
+      "label": "Heading Tag 1",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
         },
         {
-          "type": "textarea",
-          "id": "text_{{ i }}",
-          "label": "Description {{ i }}",
-          "info": "Only for Split layouts"
+          "value": "h2",
+          "label": "H2"
         },
-        {% for j in (1..8) %}
-          {
-            "type": "product",
-            "id": "product_{{ i }}_{{ j }}",
-            "label": "Product {{ i }}-{{ j }}",
-            "info": "Only for Split layouts"
-          }{% unless j == 8 %},{% endunless %}
-        {% endfor %},
-      {% endunless %}
-      {
-        "type": "select",
-        "id": "image_height_{{ i }}",
-        "label": "Image Height {{ i }}",
-        "options": [
-          {
-            "value": "small",
-            "label": "Small (40vh)"
-          },
-          {
-            "value": "medium",
-            "label": "Medium (60vh)"
-          },
-          {
-            "value": "large",
-            "label": "Large (80vh)"
-          },
-          {
-            "value": "full",
-            "label": "Full Screen (100vh)"
-          }
-        ],
-        "default": "large",
-        "info": "Only for Full Image layout"
-      },
-      {
-        "type": "checkbox",
-        "id": "enable_parallax_{{ i }}",
-        "label": "Enable Parallax {{ i }}",
-        "default": false,
-        "info": "Only for Full Image layout"
-      },
-      {
-        "type": "range",
-        "id": "overlay_opacity_{{ i }}",
-        "min": 0,
-        "max": 80,
-        "step": 5,
-        "unit": "%",
-        "label": "Overlay Opacity {{ i }}",
-        "default": 0,
-        "info": "Only for Full Image layout"
-      },
-      {
-        "type": "color",
-        "id": "background_color_{{ i }}",
-        "label": "Background Color {{ i }}",
-        "default": "#FFFFFF"
-      },
-      {
-        "type": "color",
-        "id": "text_color_{{ i }}",
-        "label": "Text Color {{ i }}",
-        "default": "#333333"
-      },
-      {
-        "type": "range",
-        "id": "padding_top_{{ i }}",
-        "min": 0,
-        "max": 150,
-        "step": 10,
-        "unit": "px",
-        "label": "Padding Top {{ i }}",
-        "default": 60
-      },
-      {
-        "type": "range",
-        "id": "padding_bottom_{{ i }}",
-        "min": 0,
-        "max": 150,
-        "step": 10,
-        "unit": "px",
-        "label": "Padding Bottom {{ i }}",
-        "default": 60
-      }{% unless i == 5 %},{% endunless %}
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ],
+      "default": "h2",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "textarea",
+      "id": "text_1",
+      "label": "Description 1",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_1_1",
+      "label": "Product 1-1",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_1_2",
+      "label": "Product 1-2",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_1_3",
+      "label": "Product 1-3",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_1_4",
+      "label": "Product 1-4",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_1_5",
+      "label": "Product 1-5",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_1_6",
+      "label": "Product 1-6",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_1_7",
+      "label": "Product 1-7",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_1_8",
+      "label": "Product 1-8",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "select",
+      "id": "image_height_1",
+      "label": "Image Height 1",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small (40vh)"
+        },
+        {
+          "value": "medium",
+          "label": "Medium (60vh)"
+        },
+        {
+          "value": "large",
+          "label": "Large (80vh)"
+        },
+        {
+          "value": "full",
+          "label": "Full Screen (100vh)"
+        }
+      ],
+      "default": "large",
+      "info": "Only for Full Image layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_parallax_1",
+      "label": "Enable Parallax 1",
+      "default": false,
+      "info": "Only for Full Image layout"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity_1",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay Opacity 1",
+      "default": 0,
+      "info": "Only for Full Image layout"
+    },
+    {
+      "type": "color",
+      "id": "background_color_1",
+      "label": "Background Color 1",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color_1",
+      "label": "Text Color 1",
+      "default": "#333333"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_1",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Top 1",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_1",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Bottom 1",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Section 2"
+    },
+    {
+      "type": "select",
+      "id": "layout_2",
+      "label": "Layout 2",
+      "options": [
+        {
+          "value": "hidden",
+          "label": "Hidden"
+        },
+        {
+          "value": "text_left",
+          "label": "Text Left, Image Right"
+        },
+        {
+          "value": "text_right",
+          "label": "Text Right, Image Left"
+        },
+        {
+          "value": "full_image",
+          "label": "Full Image"
+        }
+      ],
+      "default": "hidden"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2"
+    },
+    {
+      "type": "text",
+      "id": "title_2",
+      "label": "Title 2",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag_2",
+      "label": "Heading Tag 2",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ],
+      "default": "h2",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "textarea",
+      "id": "text_2",
+      "label": "Description 2",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_2_1",
+      "label": "Product 2-1",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_2_2",
+      "label": "Product 2-2",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_2_3",
+      "label": "Product 2-3",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_2_4",
+      "label": "Product 2-4",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_2_5",
+      "label": "Product 2-5",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_2_6",
+      "label": "Product 2-6",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_2_7",
+      "label": "Product 2-7",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_2_8",
+      "label": "Product 2-8",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "select",
+      "id": "image_height_2",
+      "label": "Image Height 2",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small (40vh)"
+        },
+        {
+          "value": "medium",
+          "label": "Medium (60vh)"
+        },
+        {
+          "value": "large",
+          "label": "Large (80vh)"
+        },
+        {
+          "value": "full",
+          "label": "Full Screen (100vh)"
+        }
+      ],
+      "default": "large",
+      "info": "Only for Full Image layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_parallax_2",
+      "label": "Enable Parallax 2",
+      "default": false,
+      "info": "Only for Full Image layout"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity_2",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay Opacity 2",
+      "default": 0,
+      "info": "Only for Full Image layout"
+    },
+    {
+      "type": "color",
+      "id": "background_color_2",
+      "label": "Background Color 2",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color_2",
+      "label": "Text Color 2",
+      "default": "#333333"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_2",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Top 2",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_2",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Bottom 2",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Section 3"
+    },
+    {
+      "type": "select",
+      "id": "layout_3",
+      "label": "Layout 3",
+      "options": [
+        {
+          "value": "hidden",
+          "label": "Hidden"
+        },
+        {
+          "value": "text_left",
+          "label": "Text Left, Image Right"
+        },
+        {
+          "value": "text_right",
+          "label": "Text Right, Image Left"
+        },
+        {
+          "value": "full_image",
+          "label": "Full Image"
+        }
+      ],
+      "default": "hidden"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Image 3"
+    },
+    {
+      "type": "text",
+      "id": "title_3",
+      "label": "Title 3",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag_3",
+      "label": "Heading Tag 3",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ],
+      "default": "h2",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "textarea",
+      "id": "text_3",
+      "label": "Description 3",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_3_1",
+      "label": "Product 3-1",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_3_2",
+      "label": "Product 3-2",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_3_3",
+      "label": "Product 3-3",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_3_4",
+      "label": "Product 3-4",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_3_5",
+      "label": "Product 3-5",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_3_6",
+      "label": "Product 3-6",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_3_7",
+      "label": "Product 3-7",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_3_8",
+      "label": "Product 3-8",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "select",
+      "id": "image_height_3",
+      "label": "Image Height 3",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small (40vh)"
+        },
+        {
+          "value": "medium",
+          "label": "Medium (60vh)"
+        },
+        {
+          "value": "large",
+          "label": "Large (80vh)"
+        },
+        {
+          "value": "full",
+          "label": "Full Screen (100vh)"
+        }
+      ],
+      "default": "large",
+      "info": "Only for Full Image layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_parallax_3",
+      "label": "Enable Parallax 3",
+      "default": false,
+      "info": "Only for Full Image layout"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity_3",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay Opacity 3",
+      "default": 0,
+      "info": "Only for Full Image layout"
+    },
+    {
+      "type": "color",
+      "id": "background_color_3",
+      "label": "Background Color 3",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color_3",
+      "label": "Text Color 3",
+      "default": "#333333"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_3",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Top 3",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_3",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Bottom 3",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Section 4"
+    },
+    {
+      "type": "select",
+      "id": "layout_4",
+      "label": "Layout 4",
+      "options": [
+        {
+          "value": "hidden",
+          "label": "Hidden"
+        },
+        {
+          "value": "text_left",
+          "label": "Text Left, Image Right"
+        },
+        {
+          "value": "text_right",
+          "label": "Text Right, Image Left"
+        },
+        {
+          "value": "full_image",
+          "label": "Full Image"
+        }
+      ],
+      "default": "hidden"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_4",
+      "label": "Image 4"
+    },
+    {
+      "type": "text",
+      "id": "title_4",
+      "label": "Title 4",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag_4",
+      "label": "Heading Tag 4",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ],
+      "default": "h2",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "textarea",
+      "id": "text_4",
+      "label": "Description 4",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_4_1",
+      "label": "Product 4-1",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_4_2",
+      "label": "Product 4-2",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_4_3",
+      "label": "Product 4-3",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_4_4",
+      "label": "Product 4-4",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_4_5",
+      "label": "Product 4-5",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_4_6",
+      "label": "Product 4-6",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_4_7",
+      "label": "Product 4-7",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_4_8",
+      "label": "Product 4-8",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "select",
+      "id": "image_height_4",
+      "label": "Image Height 4",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small (40vh)"
+        },
+        {
+          "value": "medium",
+          "label": "Medium (60vh)"
+        },
+        {
+          "value": "large",
+          "label": "Large (80vh)"
+        },
+        {
+          "value": "full",
+          "label": "Full Screen (100vh)"
+        }
+      ],
+      "default": "large",
+      "info": "Only for Full Image layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_parallax_4",
+      "label": "Enable Parallax 4",
+      "default": false,
+      "info": "Only for Full Image layout"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity_4",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay Opacity 4",
+      "default": 0,
+      "info": "Only for Full Image layout"
+    },
+    {
+      "type": "color",
+      "id": "background_color_4",
+      "label": "Background Color 4",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color_4",
+      "label": "Text Color 4",
+      "default": "#333333"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_4",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Top 4",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_4",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Bottom 4",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Section 5"
+    },
+    {
+      "type": "select",
+      "id": "layout_5",
+      "label": "Layout 5",
+      "options": [
+        {
+          "value": "hidden",
+          "label": "Hidden"
+        },
+        {
+          "value": "text_left",
+          "label": "Text Left, Image Right"
+        },
+        {
+          "value": "text_right",
+          "label": "Text Right, Image Left"
+        },
+        {
+          "value": "full_image",
+          "label": "Full Image"
+        }
+      ],
+      "default": "hidden"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_5",
+      "label": "Image 5"
+    },
+    {
+      "type": "text",
+      "id": "title_5",
+      "label": "Title 5",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag_5",
+      "label": "Heading Tag 5",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ],
+      "default": "h2",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "textarea",
+      "id": "text_5",
+      "label": "Description 5",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_5_1",
+      "label": "Product 5-1",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_5_2",
+      "label": "Product 5-2",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_5_3",
+      "label": "Product 5-3",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_5_4",
+      "label": "Product 5-4",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_5_5",
+      "label": "Product 5-5",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_5_6",
+      "label": "Product 5-6",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_5_7",
+      "label": "Product 5-7",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_5_8",
+      "label": "Product 5-8",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "select",
+      "id": "image_height_5",
+      "label": "Image Height 5",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small (40vh)"
+        },
+        {
+          "value": "medium",
+          "label": "Medium (60vh)"
+        },
+        {
+          "value": "large",
+          "label": "Large (80vh)"
+        },
+        {
+          "value": "full",
+          "label": "Full Screen (100vh)"
+        }
+      ],
+      "default": "large",
+      "info": "Only for Full Image layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_parallax_5",
+      "label": "Enable Parallax 5",
+      "default": false,
+      "info": "Only for Full Image layout"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity_5",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay Opacity 5",
+      "default": 0,
+      "info": "Only for Full Image layout"
+    },
+    {
+      "type": "color",
+      "id": "background_color_5",
+      "label": "Background Color 5",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color_5",
+      "label": "Text Color 5",
+      "default": "#333333"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_5",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Top 5",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_5",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Bottom 5",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "Look Combined",
+      "category": "Look"
+    }
+  ]
+}
+{% endschema %}
