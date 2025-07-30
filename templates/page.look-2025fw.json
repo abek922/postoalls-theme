@@ -41,7 +41,7 @@
         "padding_bottom": 40
       }
     },
-    "look_split_2": {
+    "look_split": {
       "type": "look-split",
       "name": "Look Split",
       "settings": {
