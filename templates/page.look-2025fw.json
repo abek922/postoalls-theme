@@ -41,14 +41,129 @@
         "padding_bottom": 40
       }
     },
-    "look_split": {
+    "look_split_fmFyXh": {
       "type": "look-split",
       "name": "Look Split",
       "settings": {
         "layout": "text_left",
-        "title": "",
+        "title": "Layer lightly",
         "heading_tag": "h2",
-        "text": "",
+        "text": "Featuring elements of a Harrington jacket, including a dog-ear collar and ribbed hem, this outdoor vest is constructed from recycled nylon taffeta, making it lightweight and comfortable to wear.",
+        "product_1": "",
+        "product_2": "",
+        "product_3": "",
+        "product_4": "",
+        "product_5": "",
+        "product_6": "",
+        "product_7": "",
+        "product_8": "",
+        "text_alignment": "left",
+        "background_color": "#ffffff",
+        "text_color": "#333333",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "look_split_mtfVGM": {
+      "type": "look-split",
+      "name": "Look Split",
+      "settings": {
+        "layout": "text_left",
+        "title": "Layer lightly",
+        "heading_tag": "h2",
+        "text": "Featuring elements of a Harrington jacket, including a dog-ear collar and ribbed hem, this outdoor vest is constructed from recycled nylon taffeta, making it lightweight and comfortable to wear.",
+        "product_1": "",
+        "product_2": "",
+        "product_3": "",
+        "product_4": "",
+        "product_5": "",
+        "product_6": "",
+        "product_7": "",
+        "product_8": "",
+        "text_alignment": "left",
+        "background_color": "#ffffff",
+        "text_color": "#333333",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "look_split_3kyQVB": {
+      "type": "look-split",
+      "name": "Look Split",
+      "settings": {
+        "layout": "text_left",
+        "title": "Layer lightly",
+        "heading_tag": "h2",
+        "text": "Featuring elements of a Harrington jacket, including a dog-ear collar and ribbed hem, this outdoor vest is constructed from recycled nylon taffeta, making it lightweight and comfortable to wear.",
+        "product_1": "",
+        "product_2": "",
+        "product_3": "",
+        "product_4": "",
+        "product_5": "",
+        "product_6": "",
+        "product_7": "",
+        "product_8": "",
+        "text_alignment": "left",
+        "background_color": "#ffffff",
+        "text_color": "#333333",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "look_split_fcNkKi": {
+      "type": "look-split",
+      "name": "Look Split",
+      "settings": {
+        "layout": "text_left",
+        "title": "Layer lightly",
+        "heading_tag": "h2",
+        "text": "Featuring elements of a Harrington jacket, including a dog-ear collar and ribbed hem, this outdoor vest is constructed from recycled nylon taffeta, making it lightweight and comfortable to wear.",
+        "product_1": "",
+        "product_2": "",
+        "product_3": "",
+        "product_4": "",
+        "product_5": "",
+        "product_6": "",
+        "product_7": "",
+        "product_8": "",
+        "text_alignment": "left",
+        "background_color": "#FFFFFF",
+        "text_color": "#333333",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "look_split_UUc8qH": {
+      "type": "look-split",
+      "name": "Look Split",
+      "settings": {
+        "layout": "text_left",
+        "title": "Layer lightly",
+        "heading_tag": "h2",
+        "text": "Featuring elements of a Harrington jacket, including a dog-ear collar and ribbed hem, this outdoor vest is constructed from recycled nylon taffeta, making it lightweight and comfortable to wear.",
+        "product_1": "",
+        "product_2": "",
+        "product_3": "",
+        "product_4": "",
+        "product_5": "",
+        "product_6": "",
+        "product_7": "",
+        "product_8": "",
+        "text_alignment": "left",
+        "background_color": "#FFFFFF",
+        "text_color": "#333333",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "look_split_erDJxc": {
+      "type": "look-split",
+      "name": "Look Split",
+      "settings": {
+        "layout": "text_left",
+        "title": "Layer lightly",
+        "heading_tag": "h2",
+        "text": "Featuring elements of a Harrington jacket, including a dog-ear collar and ribbed hem, this outdoor vest is constructed from recycled nylon taffeta, making it lightweight and comfortable to wear.",
         "product_1": "",
         "product_2": "",
         "product_3": "",
@@ -71,6 +186,9 @@
     "look_text",
     "look_split_fmFyXh",
     "look_split_mtfVGM",
-    "look_split_3kyQVB"
+    "look_split_3kyQVB",
+    "look_split_fcNkKi",
+    "look_split_UUc8qH",
+    "look_split_erDJxc"
   ]
 }
