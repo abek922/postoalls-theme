@@ -1,0 +1,109 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "",
+        "show_title": true,
+        "page_width": "xs"
+      }
+    },
+    "look_header": {
+      "type": "look-header",
+      "settings": {
+        "show_title": true,
+        "title": "Title",
+        "heading_tag": "h1",
+        "subtitle": "ONE OCEAN, ALL LANDS",
+        "show_text": true,
+        "text": "テキスト",
+        "text_alignment": "center",
+        "background_color": "#f5f5f5",
+        "text_color": "#333333",
+        "padding_top": 80,
+        "padding_bottom": 40
+      }
+    },
+    "look_combined_1": {
+      "type": "look-combined",
+      "settings": {
+        "layout_1": "text_left",
+        "title_1": "Title",
+        "heading_tag_1": "h3",
+        "text_1": "Text",
+        "product_1_1": "",
+        "product_1_2": "",
+        "product_1_3": "",
+        "product_1_4": "",
+        "product_1_5": "",
+        "product_1_6": "",
+        "product_1_7": "",
+        "product_1_8": "",
+        "image_height_1": "large",
+        "enable_parallax_1": false,
+        "overlay_opacity_1": 0,
+        "background_color_1": "#ffffff",
+        "text_color_1": "#333333",
+        "padding_top_1": 60,
+        "padding_bottom_1": 60,
+        
+        "layout_2": "full_image",
+        "image_height_2": "full",
+        "enable_parallax_2": false,
+        "overlay_opacity_2": 0,
+        "background_color_2": "#ffffff",
+        "text_color_2": "#333333",
+        "padding_top_2": 0,
+        "padding_bottom_2": 0,
+        
+        "layout_3": "text_right",
+        "title_3": "Title",
+        "heading_tag_3": "h2",
+        "text_3": "Text",
+        "product_3_1": "",
+        "product_3_2": "",
+        "product_3_3": "",
+        "product_3_4": "",
+        "product_3_5": "",
+        "product_3_6": "",
+        "product_3_7": "",
+        "product_3_8": "",
+        "image_height_3": "large",
+        "enable_parallax_3": false,
+        "overlay_opacity_3": 0,
+        "background_color_3": "#f9f9f9",
+        "text_color_3": "#333333",
+        "padding_top_3": 60,
+        "padding_bottom_3": 60,
+        
+        "layout_4": "full_image",
+        "image_height_4": "full",
+        "enable_parallax_4": true,
+        "overlay_opacity_4": 20,
+        "background_color_4": "#ffffff",
+        "text_color_4": "#333333",
+        "padding_top_4": 0,
+        "padding_bottom_4": 0,
+        
+        "layout_5": "hidden"
+      }
+    },
+    "look_combined_2": {
+      "type": "look-combined",
+      "settings": {
+        "layout_1": "hidden",
+        "layout_2": "hidden",
+        "layout_3": "hidden",
+        "layout_4": "hidden",
+        "layout_5": "hidden"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "look_header",
+    "look_combined_1",
+    "look_combined_2"
+  ]
+}
