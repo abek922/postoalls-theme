@@ -178,6 +178,9 @@
     },
     "blog-posts": {
       "type": "blog-posts",
+      "custom_css": [
+        ".blog-post-card__title {font-size: 1rem;}"
+      ],
       "settings": {
         "color_scheme": "",
         "separate_section_with_border": true,
