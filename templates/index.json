@@ -15,8 +15,6 @@
         "video_nV6ebV": {
           "type": "video",
           "settings": {
-            "video": "shopify://files/videos/post_25fw_movie.mp4",
-            "mobile_video": "shopify://files/videos/Post O'alls 25FW.mp4",
             "allow_sound": true,
             "subheading": "",
             "title": "",
@@ -78,8 +76,6 @@
         "image_VBweqx": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/look_pc.jpg",
-            "mobile_image": "shopify://shop_images/look_sp.jpg",
             "subheading": "",
             "title": "",
             "mobile_text_position": "place-self-end-center text-center",
