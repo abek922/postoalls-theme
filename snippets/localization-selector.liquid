@@ -75,7 +75,7 @@ Supported variables
 
     <div class="relative">
       <button type="button" class="localization-toggle heading text-xxs link-faded" aria-controls="{{ localization_popover_id }}" aria-label="{{ 'general.localization.change_language_accessibility_text' | t | escape }}" aria-expanded="false">
-        {{- localization.language.endonym_name | capitalize -}}
+        {{- localization.language.iso_code | upcase -}}
         {%- render 'icon' with 'chevron-down' -%}
       </button>
 
@@ -92,7 +92,7 @@ Supported variables
               {%- endif -%}
 
               <button type="submit" name="locale_code" class="popover__value-option" role="option" value="{{ language.iso_code }}" aria-selected="{% if is_selected %}true{% else %}false{% endif %}">
-                {{- language.endonym_name | capitalize -}}
+                {{- language.iso_code | upcase -}}
               </button>
             {%- endfor -%}
           </x-listbox>
