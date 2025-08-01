@@ -7,6 +7,50 @@ document.addEventListener('DOMContentLoaded', function() {
   
   if (!header) return;
   
+  // === 追加：マウスオーバー時のロゴ表示制御 ===
+  if (hasTransparentHeader) {
+    let isHovered = false;
+    let isScrolled = false;
+    
+    // マウスオーバー状態を管理
+    header.addEventListener('mouseenter', function() {
+      isHovered = true;
+      // 透明ヘッダー状態でマウスオーバー時にロゴ表示用のクラスを追加
+      if (!header.classList.contains('is-solid')) {
+        header.classList.add('header--hovered');
+      }
+    });
+    
+    header.addEventListener('mouseleave', function() {
+      isHovered = false;
+      // マウスアウト時にクラスを削除
+      header.classList.remove('header--hovered');
+    });
+    
+    // スクロール状態の変更を監視
+    const scrollObserver = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+          const currentlyScrolled = header.classList.contains('is-solid');
+          if (isScrolled !== currentlyScrolled) {
+            isScrolled = currentlyScrolled;
+            // スクロール状態が変わった時にホバー状態をリセット
+            if (isScrolled) {
+              header.classList.remove('header--hovered');
+            } else if (isHovered) {
+              header.classList.add('header--hovered');
+            }
+          }
+        }
+      });
+    });
+    
+    scrollObserver.observe(header, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+  }
+  
   // モバイルでの初期状態設定
   if (isMobile && hasTransparentHeader) {
     // is-solidクラスを除去

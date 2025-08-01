@@ -13,6 +13,18 @@
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
+/* === 追加：マウスオーバー時にロゴを表示 === */
+:has(.shopify-section:first-child [allow-transparent-header]):not(:has(.shopify-section--header ~ .shopify-section-group-header-group)) .header:not(.is-solid):hover .header__logo {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* マウスオーバー時のスムーズなアニメーション調整 */
+:has(.shopify-section:first-child [allow-transparent-header]):not(:has(.shopify-section--header ~ .shopify-section-group-header-group)) .header:not(.is-solid) .header__logo {
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
 /* スクロール位置の調整 - より下まで透明ヘッダーを維持 */
 #header-scroll-tracker {
   top: var(--header-scroll-tracker-offset, 800px) !important; /* デフォルトの10pxから300pxに変更 */
@@ -30,5 +42,12 @@
   :has(.shopify-section:first-child [allow-transparent-header]) .header:not(.is-solid) .header__logo {
     opacity: 0 !important;
     visibility: hidden !important;
+  }
+  
+  /* モバイルでもマウスオーバー（タッチ）時にロゴを表示 */
+  :has(.shopify-section:first-child [allow-transparent-header]) .header:not(.is-solid):hover .header__logo,
+  :has(.shopify-section:first-child [allow-transparent-header]) .header:not(.is-solid):active .header__logo {
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 }
