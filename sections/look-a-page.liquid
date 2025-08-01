@@ -510,7 +510,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 {% schema %}
 {
-  "name": "Look Page",
+  "name": "Look-a",
   "class": "shopify-section--look-page",
   "tag": "section",
   "settings": [
@@ -535,7 +535,7 @@ document.addEventListener('DOMContentLoaded', function() {
           "type": "text",
           "id": "title",
           "label": "Look Title",
-          "default": "LOOK 01"
+          "default": "Title"
         },
         {
           "type": "product",
@@ -572,12 +572,8 @@ document.addEventListener('DOMContentLoaded', function() {
   ],
   "presets": [
     {
-      "name": "Look Page",
-      "blocks": [
-        {
-          "type": "look"
-        }
-      ]
+      "name": "Look Combined",
+      "category": "Look"
     }
   ]
 }

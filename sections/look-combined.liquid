@@ -220,6 +220,22 @@
     min-height: 600px;
   }
   
+  /* 新しい fit_width スタイル */
+  .height-fit_width {
+    height: auto;
+    min-height: auto;
+  }
+  
+  .height-fit_width .look-full-image {
+    height: auto;
+    object-fit: contain;
+  }
+  
+  .height-fit_width .look-full-image-placeholder {
+    height: 400px;
+    min-height: 400px;
+  }
+  
   .parallax-enabled {
     overflow: hidden;
   }
@@ -367,6 +383,12 @@
       min-height: 400px;
     }
     
+    /* fit_width のモバイル対応 */
+    .height-fit_width {
+      height: auto;
+      min-height: auto;
+    }
+    
     .look-split-content {
       grid-template-columns: 1fr;
       gap: 32px;
@@ -403,6 +425,12 @@
     .height-full {
       height: 60vh;
       min-height: 350px;
+    }
+    
+    /* fit_width のモバイル対応 */
+    .height-fit_width {
+      height: auto;
+      min-height: auto;
     }
     
     .look-split-content {
@@ -594,6 +622,10 @@
         {
           "value": "full",
           "label": "Full Screen (100vh)"
+        },
+        {
+          "value": "fit_width",
+          "label": "Fit Width (横幅いっぱい、上下切り取りなし)"
         }
       ],
       "default": "large",
@@ -795,6 +827,10 @@
         {
           "value": "full",
           "label": "Full Screen (100vh)"
+        },
+        {
+          "value": "fit_width",
+          "label": "Fit Width (横幅いっぱい、上下切り取りなし)"
         }
       ],
       "default": "large",
@@ -996,6 +1032,10 @@
         {
           "value": "full",
           "label": "Full Screen (100vh)"
+        },
+        {
+          "value": "fit_width",
+          "label": "Fit Width (横幅いっぱい、上下切り取りなし)"
         }
       ],
       "default": "large",
@@ -1197,6 +1237,10 @@
         {
           "value": "full",
           "label": "Full Screen (100vh)"
+        },
+        {
+          "value": "fit_width",
+          "label": "Fit Width (横幅いっぱい、上下切り取りなし)"
         }
       ],
       "default": "large",
@@ -1398,6 +1442,10 @@
         {
           "value": "full",
           "label": "Full Screen (100vh)"
+        },
+        {
+          "value": "fit_width",
+          "label": "Fit Width (横幅いっぱい、上下切り取りなし)"
         }
       ],
       "default": "large",
