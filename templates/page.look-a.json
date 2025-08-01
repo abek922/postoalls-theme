@@ -10,7 +10,7 @@
 {
   "sections": {
     "main": {
-      "type": "look-a-page",
+      "type": "look-thumbnail",
       "blocks": {
         "look_1": {
           "type": "look",
