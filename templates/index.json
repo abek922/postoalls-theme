@@ -215,6 +215,7 @@
       "block_order": [
         "collection-1"
       ],
+      "disabled": true,
       "settings": {
         "color_scheme": "",
         "separate_section_with_border": false,
