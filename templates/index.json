@@ -180,7 +180,8 @@
     "blog-posts": {
       "type": "blog-posts",
       "custom_css": [
-        ".blog-post-card__title {font-size: 1rem;}"
+        ".blog-post-card__title {font-size: 0.8rem;}",
+        ".blog-post-card {gap: 0.5rem;}"
       ],
       "settings": {
         "color_scheme": "",
