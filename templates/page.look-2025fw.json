@@ -917,7 +917,7 @@
         "product_1_6": "",
         "product_1_7": "",
         "product_1_8": "",
-        "image_height_1": "fit_width",
+        "image_height_1": "full",
         "enable_parallax_1": true,
         "overlay_opacity_1": 0,
         "background_color_1": "#ffffff",
