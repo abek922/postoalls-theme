@@ -1,5 +1,5 @@
 <div class="look-combined-section">
-  {% for i in (1..5) %}
+  {% for i in (1..6) %}
     {% assign layout_setting = 'layout_' | append: i %}
     {% assign layout = section.settings[layout_setting] %}
     
@@ -1499,6 +1499,211 @@
       "step": 10,
       "unit": "px",
       "label": "Padding Bottom 5",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Section 6"
+    },
+    {
+      "type": "select",
+      "id": "layout_6",
+      "label": "Layout 6",
+      "options": [
+        {
+          "value": "hidden",
+          "label": "Hidden"
+        },
+        {
+          "value": "text_left",
+          "label": "Text Left, Image Right"
+        },
+        {
+          "value": "text_right",
+          "label": "Text Right, Image Left"
+        },
+        {
+          "value": "full_image",
+          "label": "Full Image"
+        }
+      ],
+      "default": "hidden"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_6",
+      "label": "Image 6"
+    },
+    {
+      "type": "text",
+      "id": "title_6",
+      "label": "Title 6",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag_6",
+      "label": "Heading Tag 6",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ],
+      "default": "h2",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "textarea",
+      "id": "text_6",
+      "label": "Description 6",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_6_1",
+      "label": "Product 6-1",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_6_2",
+      "label": "Product 6-2",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_6_3",
+      "label": "Product 6-3",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_6_4",
+      "label": "Product 6-4",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_6_5",
+      "label": "Product 6-5",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_6_6",
+      "label": "Product 6-6",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_6_7",
+      "label": "Product 6-7",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_6_8",
+      "label": "Product 6-8",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "select",
+      "id": "image_height_6",
+      "label": "Image Height 6",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small (40vh)"
+        },
+        {
+          "value": "medium",
+          "label": "Medium (60vh)"
+        },
+        {
+          "value": "large",
+          "label": "Large (80vh)"
+        },
+        {
+          "value": "full",
+          "label": "Full Screen (100vh)"
+        },
+        {
+          "value": "fit_width",
+          "label": "Fit Width"
+        }
+      ],
+      "default": "large",
+      "info": "Only for Full Image layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_parallax_6",
+      "label": "Enable Parallax 6",
+      "default": false,
+      "info": "Only for Full Image layout"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity_6",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay Opacity 6",
+      "default": 0,
+      "info": "Only for Full Image layout"
+    },
+    {
+      "type": "color",
+      "id": "background_color_6",
+      "label": "Background Color 6",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color_6",
+      "label": "Text Color 6",
+      "default": "#333333"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_6",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Top 6",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_6",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Bottom 6",
       "default": 20
     }
   ],
