@@ -904,7 +904,7 @@
       "type": "look-combined",
       "name": "Look Combined",
       "settings": {
-        "layout_1": "text_left",
+        "layout_1": "full_image",
         "image_1": "shopify://shop_images/KDN3857_F.jpg",
         "title_1": "",
         "heading_tag_1": "h2",
