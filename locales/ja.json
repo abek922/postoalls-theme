@@ -94,12 +94,12 @@
       "description": "説明文",
       "add_to_cart_button": "カートに追加",
       "pre_order_button": "先行予約",
-      "sold_out_button": "売り切れ",
+      "sold_out_button": "Sold out",
       "unavailable_button": "選択不可能",
       "choose_options": "オプションを選択",
       "view_details": "詳細を表示",
       "added_to_cart": "カートに追加されました！",
-      "sold_out_badge": "売り切れ",
+      "sold_out_badge": "Sold out",
       "on_sale_badge": "セール",
       "discount_badge_html": "{{ savings }}オフ",
       "sku": "SKU:",
@@ -509,6 +509,16 @@
   "shopify": {
     "links": {
       "powered_by_shopify": " "
+    },
+    "checkout": {
+      "stock": {
+        "sold_out_label": "Sold out"
+      },
+      "throttle": {
+        "merchandise": {
+          "sold_out": "Sold out"
+        }
+      }
     }
   }
 }
