@@ -13,7 +13,6 @@ Supported variables
 * show_country_name: for type "country", if set to true the country name is shown
 * show_country_flag: for type "country", if set to true the country flag is shown
 * id_prefix: an option to help dissociate the ID in case this is included several times in the same section
-* currency_only: for type "country", if set to true only shows currency without country info
 {%- endcomment -%}
 
 {%- capture localization_form_id -%}localization-form-{{ id_prefix }}-{{ section.id }}-{{ type }}{%- endcapture -%}
@@ -29,67 +28,39 @@ Supported variables
 
     <div class="relative">
       <button type="button" class="localization-toggle heading text-xxs link-faded" aria-controls="{{ localization_popover_id }}" aria-label="{{ 'general.localization.change_country_accessibility_text' | t | escape }}" aria-expanded="false">
-        {%- if currency_only -%}
-          <span>{{ localization.country.currency.iso_code }} {% if localization.country.currency.symbol %}{{ localization.country.currency.symbol }}{%- endif -%}</span>
-        {%- else -%}
-          {%- if show_country_flag -%}
-            {{- localization.country | image_url: width: 60, format: 'jpg' | image_tag: class: 'country-flag' -}}
-          {%- endif -%}
+        {%- if show_country_flag -%}
+          {{- localization.country | image_url: width: 60, format: 'jpg' | image_tag: class: 'country-flag' -}}
+        {%- endif -%}
 
-          {%- if show_country_name -%}
-            <span>{{ localization.country.name }} ({{ localization.country.currency.iso_code }} {% if localization.country.currency.symbol %}{{ localization.country.currency.symbol }}){%- endif -%}</span>
-          {%- else -%}
-            <span>{{ localization.country.currency.iso_code }} {% if localization.country.currency.symbol %}{{ localization.country.currency.symbol }}{%- endif -%}</span>
-          {%- endif -%}
+        {%- if show_country_name -%}
+          <span>{{ localization.country.name }} ({{ localization.country.currency.iso_code }} {% if localization.country.currency.symbol %}{{ localization.country.currency.symbol }}){%- endif -%}</span>
+        {%- else -%}
+          <span>{{ localization.country.currency.iso_code }} {% if localization.country.currency.symbol %}{{ localization.country.currency.symbol }}{%- endif -%}</span>
         {%- endif -%}
 
         {%- render 'icon' with 'chevron-down' -%}
       </button>
 
       <x-popover id="{{ localization_popover_id }}" initial-focus="[aria-selected='true']" class="popover popover--{{ placement | default: 'bottom-start' }} color-scheme color-scheme--dialog">
-        <p class="h4" slot="header">
-          {%- if currency_only -%}
-            {{ 'general.localization.currency' | t | default: 'Currency' }}
-          {%- else -%}
-            {{ 'general.localization.country' | t }}
-          {%- endif -%}
-        </p>
+        <p class="h4" slot="header">{{ 'general.localization.country' | t }}</p>
 
         {%- form 'localization', id: localization_form_id -%}
           <x-listbox class="popover__value-list">
-            {%- if currency_only -%}
-              {%- assign displayed_currencies = '' | split: ',' -%}
-              {%- for country in localization.available_countries -%}
-                {%- unless displayed_currencies contains country.currency.iso_code -%}
-                  {%- assign displayed_currencies = displayed_currencies | append: country.currency.iso_code | split: ',' -%}
-                  {%- assign is_selected = false -%}
+            {%- for country in localization.available_countries -%}
+              {%- assign is_selected = false -%}
 
-                  {%- if country.currency.iso_code == localization.country.currency.iso_code -%}
-                    {%- assign is_selected = true -%}
-                  {%- endif -%}
+              {%- if country.iso_code == localization.country.iso_code -%}
+                {%- assign is_selected = true -%}
+              {%- endif -%}
 
-                  <button type="submit" name="country_code" class="popover__value-option" role="option" value="{{ country.iso_code }}" aria-selected="{% if is_selected %}true{% else %}false{% endif %}">
-                    <span>{{ country.currency.iso_code }} {% if country.currency.symbol %}{{ country.currency.symbol }}{%- endif -%}</span>
-                  </button>
-                {%- endunless -%}
-              {%- endfor -%}
-            {%- else -%}
-              {%- for country in localization.available_countries -%}
-                {%- assign is_selected = false -%}
-
-                {%- if country.iso_code == localization.country.iso_code -%}
-                  {%- assign is_selected = true -%}
+              <button type="submit" name="country_code" class="popover__value-option h-stack gap-2.5" role="option" value="{{ country.iso_code }}" aria-selected="{% if is_selected %}true{% else %}false{% endif %}">
+                {%- if show_country_flag -%}
+                  {{- country | image_url: width: 60, format: 'jpg' | image_tag: loading: 'lazy', class: 'country-flag' -}}
                 {%- endif -%}
 
-                <button type="submit" name="country_code" class="popover__value-option h-stack gap-2.5" role="option" value="{{ country.iso_code }}" aria-selected="{% if is_selected %}true{% else %}false{% endif %}">
-                  {%- if show_country_flag -%}
-                    {{- country | image_url: width: 60, format: 'jpg' | image_tag: loading: 'lazy', class: 'country-flag' -}}
-                  {%- endif -%}
-
-                  <span>{{- country.name }} ({{ country.currency.iso_code }} {% if country.currency.symbol %}{{ country.currency.symbol }}{%- endif -%})</span>
-                </button>
-              {%- endfor -%}
-            {%- endif -%}
+                <span>{{- country.name }} ({{ country.currency.iso_code }} {% if country.currency.symbol %}{{ country.currency.symbol }}{%- endif -%})</span>
+              </button>
+            {%- endfor -%}
           </x-listbox>
         {%- endform -%}
       </x-popover>
