@@ -26,25 +26,29 @@ Supported variables
 
     <div class="relative">
       <button type="button" class="localization-toggle heading text-xxs link-faded" aria-controls="{{ localization_popover_id }}" aria-label="{{ 'general.localization.change_currency_accessibility_text' | t | escape }}" aria-expanded="false">
-        <span>{{ cart.currency.iso_code }}{% if cart.currency.symbol %} {{ cart.currency.symbol }}{%- endif -%}</span>
+        <span>{{ localization.country.currency.iso_code }}{% if localization.country.currency.symbol %} {{ localization.country.currency.symbol }}{%- endif -%}</span>
         {%- render 'icon' with 'chevron-down' -%}
       </button>
 
       <x-popover id="{{ localization_popover_id }}" initial-focus="[aria-selected='true']" class="popover popover--{{ placement | default: 'bottom-start' }} color-scheme color-scheme--dialog">
         <p class="h4" slot="header">{{ 'general.localization.currency' | t }}</p>
 
-        {%- form 'currency', id: localization_form_id -%}
+        {%- form 'localization', id: localization_form_id -%}
           <x-listbox class="popover__value-list">
-            {%- for market in shop.enabled_markets -%}
-              {%- assign is_selected = false -%}
+            {%- assign displayed_currencies = '' | split: ',' -%}
+            {%- for country in localization.available_countries -%}
+              {%- unless displayed_currencies contains country.currency.iso_code -%}
+                {%- assign displayed_currencies = displayed_currencies | append: country.currency.iso_code | split: ',' -%}
+                {%- assign is_selected = false -%}
 
-              {%- if market.currency.iso_code == cart.currency.iso_code -%}
-                {%- assign is_selected = true -%}
-              {%- endif -%}
+                {%- if country.currency.iso_code == localization.country.currency.iso_code -%}
+                  {%- assign is_selected = true -%}
+                {%- endif -%}
 
-              <button type="submit" name="currency_code" class="popover__value-option" role="option" value="{{ market.currency.iso_code }}" aria-selected="{% if is_selected %}true{% else %}false{% endif %}">
-                <span>{{ market.currency.iso_code }}{% if market.currency.symbol %} {{ market.currency.symbol }}{%- endif -%}</span>
-              </button>
+                <button type="submit" name="country_code" class="popover__value-option" role="option" value="{{ country.iso_code }}" aria-selected="{% if is_selected %}true{% else %}false{% endif %}">
+                  <span>{{ country.currency.iso_code }}{% if country.currency.symbol %} {{ country.currency.symbol }}{%- endif -%}</span>
+                </button>
+              {%- endunless -%}
             {%- endfor -%}
           </x-listbox>
         {%- endform -%}
