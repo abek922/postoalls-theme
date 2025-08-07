@@ -146,7 +146,7 @@
     },
     "inventory": {
       "in_stock": "在庫あり",
-      "low_stock": "残りわずかのユニットです",
+      "low_stock": "残りわずか",
       "in_stock_with_quantity_count": {
         "one": "在庫{{ count }}個",
         "other": "在庫{{ count }}個"
