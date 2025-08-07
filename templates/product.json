@@ -44,6 +44,15 @@
             "show_below_gallery": true
           }
         },
+        "inventory_ff9nbz": {
+          "type": "inventory",
+          "settings": {
+            "show_in_stock_quantity": false,
+            "low_inventory_threshold": 2,
+            "show_progress_bar": false,
+            "progress_bar_max_value": 50
+          }
+        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -87,6 +96,7 @@
         "payment_terms",
         "separator",
         "description",
+        "inventory_ff9nbz",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
