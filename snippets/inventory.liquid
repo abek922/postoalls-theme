@@ -21,12 +21,21 @@ Supported variables
     {%- liquid
       if variant.available
         if variant.inventory_management and variant.inventory_policy == 'deny' and variant.inventory_quantity <= low_threshold and low_threshold > 0
-          assign inventory_status = 'warning'
-
-          if show_in_stock_quantity
-            assign inventory_text = 'product.inventory.low_stock_with_quantity_count' | t: count: variant.inventory_quantity
-          else 
-            assign inventory_text = 'product.inventory.low_stock' | t
+          # 在庫が1の場合は特別な処理
+          if variant.inventory_quantity == 1
+            assign inventory_status = 'last-one'
+            if show_in_stock_quantity
+              assign inventory_text = 'product.inventory.last_one_with_quantity_count' | t: count: variant.inventory_quantity
+            else
+              assign inventory_text = 'product.inventory.last_one' | t
+            endif
+          else
+            assign inventory_status = 'warning'
+            if show_in_stock_quantity
+              assign inventory_text = 'product.inventory.low_stock_with_quantity_count' | t: count: variant.inventory_quantity
+            else 
+              assign inventory_text = 'product.inventory.low_stock' | t
+            endif
           endif
         else
           if variant.inventory_policy == 'continue' and variant.inventory_quantity <= 0 and variant.requires_shipping
