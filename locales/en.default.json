@@ -137,7 +137,7 @@
     },
     "inventory": {
       "in_stock": "In stock",
-      "low_stock": "few left",
+      "low_stock": "Few left",
       "in_stock_with_quantity_count": {
         "one": "{{ count }} in stock",
         "other": "{{ count }} in stock"

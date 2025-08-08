@@ -145,8 +145,8 @@
       "one": ""
     },
     "inventory": {
-      "in_stock": "在庫あり",
-      "low_stock": "残りわずか",
+      "in_stock": "In stock",
+      "low_stock": "Few left",
       "in_stock_with_quantity_count": {
         "one": "在庫{{ count }}個",
         "other": "在庫{{ count }}個"
@@ -157,6 +157,11 @@
       "low_stock_with_quantity_count": {
         "one": "残り在庫数{{count}}",
         "other": "残り在庫数{{count}}"
+      },
+      "last_one": "Last 1",
+      "last_one_with_quantity_count": {
+        "one": "Last {{ count }}",
+        "other": "Last {{ count }}"
       }
     },
     "store_availability": {
