@@ -217,7 +217,6 @@
       "block_order": [
         "collection-1"
       ],
-      "disabled": true,
       "settings": {
         "color_scheme": "",
         "separate_section_with_border": false,
@@ -233,7 +232,7 @@
     "newsletter": {
       "type": "newsletter",
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-3",
         "separate_section_with_border": true,
         "image_size": "auto",
         "subheading": "",

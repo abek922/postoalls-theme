@@ -27,6 +27,7 @@
     "currency_code_enabled": true,
     "round_color_swatches": false,
     "show_product_rating": false,
+    "discount_mode": "percentage",
     "cart_type": "page",
     "cart_icon": "shopping_bag_sharp",
     "cart_show_free_shipping_bar": false,
