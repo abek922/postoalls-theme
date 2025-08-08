@@ -101,7 +101,7 @@
       "added_to_cart": "カートに追加されました！",
       "sold_out_badge": "Sold out",
       "on_sale_badge": "セール",
-      "discount_badge_html": "{{ savings }}オフ",
+      "discount_badge_html": "{{ savings }} OFF",
       "sku": "SKU:",
       "variant": "バリエーション",
       "view_in_space": "自分のスペースで見る",
