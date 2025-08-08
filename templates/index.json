@@ -179,6 +179,7 @@
     },
     "blog-posts": {
       "type": "blog-posts",
+      "disabled": true,
       "custom_css": [
         ".blog-post-card__title {font-size: 0.8rem;}",
         ".blog-post-card {gap: 0.5rem;}"
@@ -206,7 +207,7 @@
         "collection-1": {
           "type": "collection",
           "settings": {
-            "collection": "new-arrivals",
+            "collection": "all",
             "products_count": 4,
             "title": "NEW ARRIVALS",
             "link_url": "",
