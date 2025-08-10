@@ -14,6 +14,29 @@ CSS
       --content-over-media-row-gap: 0px;
     {%- endunless -%}
   }
+
+  /* ロゴスタイル */
+  .newsletter-logo {
+    max-height: 60px;
+    width: auto;
+    margin-bottom: 1rem;
+  }
+
+  .newsletter-logo img {
+    max-height: 60px;
+    width: auto;
+    height: auto;
+  }
+
+  @media (max-width: 699px) {
+    .newsletter-logo {
+      max-height: 50px;
+    }
+    
+    .newsletter-logo img {
+      max-height: 50px;
+    }
+  }
 </style>
 
 {%- comment -%}
@@ -42,6 +65,28 @@ LIQUID
     {%- endif -%}
 
     <div class="content section-stack gap-8 text-center">
+      {%- comment -%} ロゴ画像の表示 {%- endcomment -%}
+      {%- if section.settings.logo_image != blank or section.settings.mobile_logo_image != blank -%}
+        <div class="newsletter-logo">
+          <picture>
+            {%- if section.settings.mobile_logo_image != blank -%}
+              <source
+                  media="(max-width: 699px)"
+                  srcset="{{ section.settings.mobile_logo_image | image_url: width: 100 }} 100w, {{ section.settings.mobile_logo_image | image_url: width: 150 }} 150w, {{ section.settings.mobile_logo_image | image_url: width: 200 }} 200w"
+                  width="{{ section.settings.mobile_logo_image.width }}"
+                  height="{{ section.settings.mobile_logo_image.height }}"
+              >
+            {%- endif -%}
+            
+            {%- if section.settings.logo_image != blank -%}
+              {{- section.settings.logo_image | image_url: width: section.settings.logo_image.width | image_tag: sizes: '200px', widths: '100,150,200,300,400', alt: section.settings.logo_alt_text | default: section.settings.title -}}
+            {%- elsif section.settings.mobile_logo_image != blank -%}
+              {{- section.settings.mobile_logo_image | image_url: width: section.settings.mobile_logo_image.width | image_tag: sizes: '200px', widths: '100,150,200,300,400', alt: section.settings.logo_alt_text | default: section.settings.title -}}
+            {%- endif -%}
+          </picture>
+        </div>
+      {%- endif -%}
+
       {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, content: section.settings.content -%}
 
       {%- assign newsletter_form_id = 'newsletter-form-' | append: section.id -%}
@@ -96,6 +141,32 @@ LIQUID
       "default": true
     },
     {
+      "type": "header",
+      "content": "Logo Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Logo Image (Desktop)",
+      "info": "Recommended: 200x60px or similar aspect ratio"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_logo_image",
+      "label": "Logo Image (Mobile)",
+      "info": "Optional: If not set, desktop logo will be used. Recommended: 150x50px"
+    },
+    {
+      "type": "text",
+      "id": "logo_alt_text",
+      "label": "Logo Alt Text",
+      "info": "Describe the logo for accessibility"
+    },
+    {
+      "type": "header",
+      "content": "Background Image"
+    },
+    {
       "type": "select",
       "id": "image_size",
       "label": "t:global.image.size",
@@ -135,6 +206,10 @@ LIQUID
       "id": "mobile_image",
       "label": "t:global.image.mobile_image",
       "info": "t:sections.newsletter.mobile_image_size_recommendation"
+    },
+    {
+      "type": "header",
+      "content": "Content"
     },
     {
       "type": "inline_richtext",
