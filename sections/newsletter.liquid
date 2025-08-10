@@ -25,17 +25,24 @@ CSS
   }
 
   .newsletter-logo img {
+    {%- if section.settings.logo_width != blank -%}
+      width: {{ section.settings.logo_width }}px;
+    {%- else -%}
+      max-width: 300px;
+    {%- endif -%}
     max-height: 120px;
-    max-width: 300px;
-    width: auto;
     height: auto;
     display: block;
   }
 
   @media (max-width: 699px) {
     .newsletter-logo img {
+      {%- if section.settings.logo_width != blank -%}
+        width: {{ section.settings.logo_width | times: 0.8 | round }}px;
+      {%- else -%}
+        max-width: 250px;
+      {%- endif -%}
       max-height: 100px;
-      max-width: 250px;
     }
   }
 </style>
@@ -80,9 +87,11 @@ LIQUID
             {%- endif -%}
             
             {%- if section.settings.logo_image != blank -%}
-              {{- section.settings.logo_image | image_url: width: section.settings.logo_image.width | image_tag: sizes: '300px', widths: '200,400,600,800,1000,1200', alt: section.settings.logo_alt_text | default: section.settings.title -}}
+              {%- assign logo_sizes = section.settings.logo_width | default: 300 | append: 'px' -%}
+              {{- section.settings.logo_image | image_url: width: section.settings.logo_image.width | image_tag: sizes: logo_sizes, widths: '200,400,600,800,1000,1200', alt: section.settings.logo_alt_text | default: section.settings.title -}}
             {%- elsif section.settings.mobile_logo_image != blank -%}
-              {{- section.settings.mobile_logo_image | image_url: width: section.settings.mobile_logo_image.width | image_tag: sizes: '250px', widths: '200,400,600,800,1000', alt: section.settings.logo_alt_text | default: section.settings.title -}}
+              {%- assign mobile_sizes = section.settings.logo_width | default: 300 | times: 0.8 | round | append: 'px' -%}
+              {{- section.settings.mobile_logo_image | image_url: width: section.settings.mobile_logo_image.width | image_tag: sizes: mobile_sizes, widths: '200,400,600,800,1000', alt: section.settings.logo_alt_text | default: section.settings.title -}}
             {%- endif -%}
           </picture>
         </div>
@@ -149,13 +158,24 @@ LIQUID
       "type": "image_picker",
       "id": "logo_image",
       "label": "Logo Image (Desktop)",
-      "info": "Recommended: Upload high-resolution image (400x120px or larger). Will be resized to max 300x120px for crisp display."
+      "info": "Recommended: Upload high-resolution image (400x120px or larger). Will be resized based on width setting below."
     },
     {
       "type": "image_picker",
       "id": "mobile_logo_image",
       "label": "Logo Image (Mobile)",
-      "info": "Optional: If not set, desktop logo will be used. Recommended: Upload high-resolution image (300x100px or larger)."
+      "info": "Optional: If not set, desktop logo will be used. Will be resized to 80% of desktop width on mobile."
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Logo Width (Desktop)",
+      "min": 100,
+      "max": 500,
+      "step": 10,
+      "unit": "px",
+      "default": 200,
+      "info": "Set the display width of the logo. Mobile will be 80% of this size."
     },
     {
       "type": "text",
