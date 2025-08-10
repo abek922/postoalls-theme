@@ -37,8 +37,8 @@ CSS
 
   @media (max-width: 699px) {
     .newsletter-logo img {
-      {%- if section.settings.logo_width != blank -%}
-        width: {{ section.settings.logo_width | times: 0.8 | round }}px;
+      {%- if section.settings.mobile_logo_width != blank -%}
+        width: {{ section.settings.mobile_logo_width }}px;
       {%- else -%}
         max-width: 250px;
       {%- endif -%}
@@ -78,20 +78,22 @@ LIQUID
         <div class="newsletter-logo">
           <picture>
             {%- if section.settings.mobile_logo_image != blank -%}
+              {%- assign mobile_logo_sizes = section.settings.mobile_logo_width | default: 160 | append: 'px' -%}
               <source
                   media="(max-width: 699px)"
                   srcset="{{ section.settings.mobile_logo_image | image_url: width: 200 }} 200w, {{ section.settings.mobile_logo_image | image_url: width: 400 }} 400w, {{ section.settings.mobile_logo_image | image_url: width: 600 }} 600w, {{ section.settings.mobile_logo_image | image_url: width: 800 }} 800w"
+                  sizes="{{ mobile_logo_sizes }}"
                   width="{{ section.settings.mobile_logo_image.width }}"
                   height="{{ section.settings.mobile_logo_image.height }}"
               >
             {%- endif -%}
             
             {%- if section.settings.logo_image != blank -%}
-              {%- assign logo_sizes = section.settings.logo_width | default: 300 | append: 'px' -%}
-              {{- section.settings.logo_image | image_url: width: section.settings.logo_image.width | image_tag: sizes: logo_sizes, widths: '200,400,600,800,1000,1200', alt: section.settings.logo_alt_text | default: section.settings.title -}}
+              {%- assign desktop_logo_sizes = section.settings.logo_width | default: 200 | append: 'px' -%}
+              {{- section.settings.logo_image | image_url: width: section.settings.logo_image.width | image_tag: sizes: desktop_logo_sizes, widths: '200,400,600,800,1000,1200', alt: section.settings.logo_alt_text | default: section.settings.title -}}
             {%- elsif section.settings.mobile_logo_image != blank -%}
-              {%- assign mobile_sizes = section.settings.logo_width | default: 300 | times: 0.8 | round | append: 'px' -%}
-              {{- section.settings.mobile_logo_image | image_url: width: section.settings.mobile_logo_image.width | image_tag: sizes: mobile_sizes, widths: '200,400,600,800,1000', alt: section.settings.logo_alt_text | default: section.settings.title -}}
+              {%- assign fallback_sizes = section.settings.mobile_logo_width | default: 160 | append: 'px' -%}
+              {{- section.settings.mobile_logo_image | image_url: width: section.settings.mobile_logo_image.width | image_tag: sizes: fallback_sizes, widths: '200,400,600,800,1000', alt: section.settings.logo_alt_text | default: section.settings.title -}}
             {%- endif -%}
           </picture>
         </div>
@@ -158,13 +160,7 @@ LIQUID
       "type": "image_picker",
       "id": "logo_image",
       "label": "Logo Image (Desktop)",
-      "info": "Recommended: Upload high-resolution image (400x120px or larger). Will be resized based on width setting below."
-    },
-    {
-      "type": "image_picker",
-      "id": "mobile_logo_image",
-      "label": "Logo Image (Mobile)",
-      "info": "Optional: If not set, desktop logo will be used. Will be resized to 80% of desktop width on mobile."
+      "info": "Recommended: Upload high-resolution image for crisp display on desktop devices."
     },
     {
       "type": "range",
@@ -175,7 +171,24 @@ LIQUID
       "step": 10,
       "unit": "px",
       "default": 200,
-      "info": "Set the display width of the logo. Mobile will be 80% of this size."
+      "info": "Set the display width of the logo on desktop devices."
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_logo_image",
+      "label": "Logo Image (Mobile)",
+      "info": "Optional: If not set, desktop logo will be used on mobile devices."
+    },
+    {
+      "type": "range",
+      "id": "mobile_logo_width",
+      "label": "Logo Width (Mobile)",
+      "min": 100,
+      "max": 500,
+      "step": 10,
+      "unit": "px",
+      "default": 160,
+      "info": "Set the display width of the logo on mobile devices."
     },
     {
       "type": "text",
