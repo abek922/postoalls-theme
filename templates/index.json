@@ -210,7 +210,7 @@
         "blog": "ニュース",
         "posts_count": 3,
         "show_category": true,
-        "show_date": false,
+        "show_date": true,
         "show_excerpt": true,
         "show_read_more": false,
         "subheading": "",
