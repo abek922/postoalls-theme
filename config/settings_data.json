@@ -33,6 +33,7 @@
     "cart_show_free_shipping_bar": false,
     "social_facebook": "https://www.facebook.com/POSTOVERALLS/",
     "social_instagram": "https://www.instagram.com/postoalls/",
+    "favicon": "shopify://shop_images/favicon.png",
     "content_for_index": [],
     "blocks": {
       "16708967755049394968": {
