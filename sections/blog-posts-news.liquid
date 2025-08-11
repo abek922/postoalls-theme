@@ -37,39 +37,6 @@ LIQUID - NEWS POSTS SECTION
     }
   }
 
-  #shopify-section-{{ section.id }} .news-posts-header {
-    margin-bottom: 0;
-    text-align: {{ section.settings.text_alignment }};
-  }
-
-  /* Section header styles matching existing theme */
-  #shopify-section-{{ section.id }} .news-posts-subheading {
-    font-size: var(--text-sm, 14px);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    color: rgba(var(--text-color), 0.7);
-  }
-
-  #shopify-section-{{ section.id }} .news-posts-title {
-    font-size: var(--heading-h2-size, clamp(24px, 5vw, 36px));
-    font-weight: var(--heading-weight, 600);
-    letter-spacing: var(--heading-letter-spacing, -0.02em);
-    line-height: var(--heading-line-height, 1.2);
-    margin: 0 0 16px 0;
-  }
-
-  #shopify-section-{{ section.id }} .news-posts-content {
-    font-size: var(--text-base, 16px);
-    line-height: 1.6;
-    color: rgba(var(--text-color), 0.8);
-    margin-bottom: 20px;
-  }
-
-  #shopify-section-{{ section.id }} .news-posts-content p {
-    margin: 0;
-  }
-
   #shopify-section-{{ section.id }} .news-posts-list {
     display: flex;
     flex-direction: column;
@@ -237,10 +204,6 @@ LIQUID - NEWS POSTS SECTION
     #shopify-section-{{ section.id }} .news-posts-container {
       padding: 0 30px;
     }
-    
-    #shopify-section-{{ section.id }} .news-posts-header {
-      margin-bottom: 40px;
-    }
   }
 </style>
 
@@ -249,33 +212,19 @@ LIQUID - NEWS POSTS SECTION
     <div class="news-posts-container">
       <div class="news-posts-layout">
         {%- comment -%} Header Section {%- endcomment -%}
-        {%- if section.settings.subheading != blank or section.settings.title != blank or section.settings.content != blank -%}
-          <div class="news-posts-header">
-            {%- if section.settings.subheading != blank -%}
-              <div class="news-posts-subheading">{{ section.settings.subheading }}</div>
-            {%- endif -%}
-            
-            {%- if section.settings.title != blank -%}
-              <h2 class="news-posts-title">{{ section.settings.title }}</h2>
-            {%- endif -%}
-            
-            {%- if section.settings.content != blank -%}
-              <div class="news-posts-content">
-                {{ section.settings.content }}
-              </div>
-            {%- endif -%}
+        <div class="news-posts-header">
+          {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, content: section.settings.content, text_alignment: section.settings.text_alignment -%}
 
-            {%- comment -%} Button in header for PC layout {%- endcomment -%}
-            {%- if section.settings.button_text != blank -%}
-              <div class="news-view-all hidden lg:block">
-                {%- assign button_link = section.settings.button_link | default: section.settings.blog.url -%}
-                <a href="{{ button_link }}" class="button">
-                  {{ section.settings.button_text }}
-                </a>
-              </div>
-            {%- endif -%}
-          </div>
-        {%- endif -%}
+          {%- comment -%} Button in header for PC layout {%- endcomment -%}
+          {%- if section.settings.button_text != blank -%}
+            <div class="news-view-all hidden lg:block">
+              {%- assign button_link = section.settings.button_link | default: section.settings.blog.url -%}
+              <a href="{{ button_link }}" class="button">
+                {{ section.settings.button_text }}
+              </a>
+            </div>
+          {%- endif -%}
+        </div>
 
         {%- comment -%} Posts List {%- endcomment -%}
         <div class="news-posts-main">
@@ -399,25 +348,25 @@ LIQUID - NEWS POSTS SECTION
       "label": "Show read more",
       "default": true
     },
-    {
+{
       "type": "header",
-      "content": "Section header"
+      "content": "t:global.section.header_category"
     },
     {
       "type": "inline_richtext",
       "id": "subheading",
-      "label": "Subheading"
+      "label": "t:global.text.subheading"
     },
     {
       "type": "inline_richtext",
       "id": "title",
-      "label": "Heading",
+      "label": "t:global.text.heading",
       "default": "Blog posts"
     },
     {
       "type": "richtext",
       "id": "content",
-      "label": "Content"
+      "label": "t:global.text.content"
     },
     {
       "type": "select",
