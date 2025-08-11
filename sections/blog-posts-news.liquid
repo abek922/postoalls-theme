@@ -13,15 +13,26 @@
   }
 
   .news-posts-header {
-    margin-bottom: 40px;
+    margin-bottom: 50px;
+    text-align: {{ section.settings.heading_alignment }};
   }
 
+  /* 他のセクションと統一されたタイトルスタイル */
   .news-posts-title {
-    font-size: 32px;
-    font-weight: 300;
-    letter-spacing: 0.05em;
-    margin: 0;
+    font-size: clamp(24px, 5vw, 36px);
+    font-weight: var(--font-heading-weight, 600);
+    letter-spacing: var(--letter-spacing-heading, 0.04em);
+    line-height: var(--line-height-heading, 1.3);
+    margin: 0 0 10px 0;
     color: {{ section.settings.heading_color }};
+    text-transform: {{ section.settings.heading_text_transform }};
+  }
+
+  .news-posts-subtitle {
+    font-size: 14px;
+    color: {{ section.settings.subtitle_color }};
+    letter-spacing: 0.02em;
+    margin: 0;
   }
 
   .news-posts-list {
@@ -90,7 +101,39 @@
     stroke-width: 1.5;
   }
 
-  /* モバイル対応 */
+  /* View All Link */
+  .news-view-all {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .news-view-all-link {
+    display: inline-block;
+    padding: 12px 40px;
+    border: 1px solid {{ section.settings.button_border_color }};
+    color: {{ section.settings.button_text_color }};
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+
+  .news-view-all-link:hover {
+    background-color: {{ section.settings.button_hover_bg }};
+    color: {{ section.settings.button_hover_text }};
+    border-color: {{ section.settings.button_hover_bg }};
+  }
+
+  /* Empty state */
+  .news-empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #999;
+  }
+
+  /* Mobile responsive */
   @media screen and (max-width: 768px) {
     .news-posts-section {
       padding: 40px 0;
@@ -101,7 +144,7 @@
     }
 
     .news-posts-title {
-      font-size: 24px;
+      font-size: clamp(20px, 6vw, 28px);
     }
 
     .news-posts-header {
@@ -136,36 +179,32 @@
       margin-left: 16px;
       margin-top: 20px;
     }
+
+    .news-view-all {
+      margin-top: 30px;
+    }
   }
 
-  /* View All Link */
-  .news-view-all {
-    text-align: center;
-    margin-top: 40px;
-  }
-
-  .news-view-all-link {
-    display: inline-block;
-    padding: 12px 40px;
-    border: 1px solid {{ section.settings.button_border_color }};
-    color: {{ section.settings.button_text_color }};
-    text-decoration: none;
-    font-size: 14px;
-    letter-spacing: 0.05em;
-    transition: all 0.3s ease;
-  }
-
-  .news-view-all-link:hover {
-    background-color: {{ section.settings.button_hover_bg }};
-    color: {{ section.settings.button_hover_text }};
+  /* Tablet responsive */
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    .news-posts-container {
+      padding: 0 30px;
+    }
   }
 </style>
 
 <section class="news-posts-section">
   <div class="news-posts-container">
-    <div class="news-posts-header">
-      <h2 class="news-posts-title">{{ section.settings.title | default: 'INFORMATION' }}</h2>
-    </div>
+    {%- if section.settings.title != blank or section.settings.subtitle != blank -%}
+      <div class="news-posts-header">
+        {%- if section.settings.title != blank -%}
+          <h2 class="news-posts-title">{{ section.settings.title }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subtitle != blank -%}
+          <p class="news-posts-subtitle">{{ section.settings.subtitle }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
 
     <div class="news-posts-list">
       {%- assign blog = blogs[section.settings.blog] -%}
@@ -175,10 +214,10 @@
           <a href="{{ article.url }}" class="news-post-item">
             <div class="news-post-content">
               <div class="news-post-date">
-                {{ article.published_at | date: '%Y.%m.%d' }}
+                {{ article.published_at | date: section.settings.date_format }}
               </div>
               <h3 class="news-post-title">
-                {{ article.title | strip_html | truncate: 100 }}
+                {{ article.title | strip_html | truncate: section.settings.title_truncate }}
               </h3>
             </div>
             <div class="news-post-arrow">
@@ -189,14 +228,16 @@
           </a>
         {%- endfor -%}
       {%- else -%}
-        <p style="text-align: center; color: #999;">ブログが選択されていません。セクション設定でブログを選択してください。</p>
+        <div class="news-empty-state">
+          <p>No blog selected. Please select a blog in the section settings.</p>
+        </div>
       {%- endif -%}
     </div>
 
     {%- if section.settings.show_view_all and blog != blank -%}
       <div class="news-view-all">
         <a href="{{ blog.url }}" class="news-view-all-link">
-          {{ section.settings.view_all_text | default: 'VIEW ALL' }}
+          {{ section.settings.view_all_text }}
         </a>
       </div>
     {%- endif -%}
@@ -205,109 +246,189 @@
 
 {% schema %}
 {
-  "name": "ニュース記事",
+  "name": "News Posts",
   "tag": "section",
   "class": "section-blog-news",
   "settings": [
     {
+      "type": "header",
+      "content": "Section Content"
+    },
+    {
       "type": "text",
       "id": "title",
-      "label": "セクションタイトル",
+      "label": "Heading",
       "default": "INFORMATION"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subheading",
+      "info": "Optional subtitle below the main heading"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "heading_text_transform",
+      "label": "Heading style",
+      "options": [
+        {
+          "value": "none",
+          "label": "Normal"
+        },
+        {
+          "value": "uppercase",
+          "label": "Uppercase"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize"
+        }
+      ],
+      "default": "uppercase"
+    },
+    {
+      "type": "header",
+      "content": "Blog Settings"
     },
     {
       "type": "blog",
       "id": "blog",
-      "label": "表示するブログ"
+      "label": "Blog"
     },
     {
       "type": "range",
       "id": "post_limit",
-      "label": "表示する記事数",
+      "label": "Number of posts",
       "min": 1,
       "max": 10,
       "step": 1,
       "default": 3
     },
     {
+      "type": "text",
+      "id": "date_format",
+      "label": "Date format",
+      "default": "%Y.%m.%d",
+      "info": "Use strftime format. Default: %Y.%m.%d"
+    },
+    {
+      "type": "range",
+      "id": "title_truncate",
+      "label": "Title character limit",
+      "min": 50,
+      "max": 200,
+      "step": 10,
+      "default": 100
+    },
+    {
       "type": "header",
-      "content": "表示設定"
+      "content": "View All Button"
     },
     {
       "type": "checkbox",
       "id": "show_view_all",
-      "label": "「すべて見る」リンクを表示",
+      "label": "Show 'View all' button",
       "default": true
     },
     {
       "type": "text",
       "id": "view_all_text",
-      "label": "「すべて見る」のテキスト",
+      "label": "Button text",
       "default": "VIEW ALL"
     },
     {
       "type": "header",
-      "content": "カラー設定"
+      "content": "Color Settings"
     },
     {
       "type": "color",
       "id": "background_color",
-      "label": "背景色",
+      "label": "Background color",
       "default": "#EFEFEF"
     },
     {
       "type": "color",
       "id": "heading_color",
-      "label": "見出しの色",
+      "label": "Heading color",
       "default": "#000000"
     },
     {
       "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
       "id": "date_color",
-      "label": "日付の色",
+      "label": "Date color",
       "default": "#666666"
     },
     {
       "type": "color",
       "id": "text_color",
-      "label": "テキストの色",
+      "label": "Text color",
       "default": "#000000"
     },
     {
       "type": "color",
       "id": "arrow_color",
-      "label": "矢印の色",
+      "label": "Arrow color",
       "default": "#333333"
+    },
+    {
+      "type": "header",
+      "content": "Button Colors"
     },
     {
       "type": "color",
       "id": "button_border_color",
-      "label": "ボタンのボーダー色",
+      "label": "Button border color",
       "default": "#000000"
     },
     {
       "type": "color",
       "id": "button_text_color",
-      "label": "ボタンのテキスト色",
+      "label": "Button text color",
       "default": "#000000"
     },
     {
       "type": "color",
       "id": "button_hover_bg",
-      "label": "ボタンホバー時の背景色",
+      "label": "Button hover background",
       "default": "#000000"
     },
     {
       "type": "color",
       "id": "button_hover_text",
-      "label": "ボタンホバー時のテキスト色",
+      "label": "Button hover text color",
       "default": "#ffffff"
     }
   ],
   "presets": [
     {
-      "name": "ニュース記事",
-      "category": "ブログ"
+      "name": "News Posts",
+      "category": "Blog"
     }
   ]
 }
