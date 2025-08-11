@@ -6,7 +6,12 @@
 ">
   <div class="page-width">
     <!-- Title Section -->
-    {% if section.settings.show_title and (section.settings.title_ja != blank or section.settings.title_en != blank) %}
+    {% if section.settings.show_title %}
+      {% assign has_title = false %}
+      {% if section.settings.title_ja != blank or section.settings.title_en != blank %}
+        {% assign has_title = true %}
+      {% endif %}
+      {% if has_title %}
       <div class="look-header-title-content">
         {% assign title_tag = section.settings.heading_tag | default: 'h1' %}
         <{{ title_tag }} class="look-header-main-title">
@@ -17,7 +22,11 @@
           {% endif %}
         </{{ title_tag }}>
         
+        {% assign has_subtitle = false %}
         {% if section.settings.subtitle_ja != blank or section.settings.subtitle_en != blank %}
+          {% assign has_subtitle = true %}
+        {% endif %}
+        {% if has_subtitle %}
           <p class="look-header-subtitle">
             {% if request.locale.iso_code == 'ja' %}
               {{ section.settings.subtitle_ja | default: section.settings.subtitle_en }}
@@ -27,10 +36,16 @@
           </p>
         {% endif %}
       </div>
+      {% endif %}
     {% endif %}
     
     <!-- Text Section -->
-    {% if section.settings.show_text and (section.settings.text_ja != blank or section.settings.text_en != blank) %}
+    {% if section.settings.show_text %}
+      {% assign has_text = false %}
+      {% if section.settings.text_ja != blank or section.settings.text_en != blank %}
+        {% assign has_text = true %}
+      {% endif %}
+      {% if has_text %}
       <div class="look-header-text-content text-{{ section.settings.text_alignment }}">
         <div class="look-header-text-body">
           {% if request.locale.iso_code == 'ja' %}
@@ -40,6 +55,7 @@
           {% endif %}
         </div>
       </div>
+      {% endif %}
     {% endif %}
   </div>
 </div>
@@ -202,7 +218,7 @@
       "type": "text", 
       "id": "subtitle_ja",
       "label": "Subtitle (Japanese)",
-      "default": "日本語　サブタイトル"
+      "default": "日本語のサブタイトル"
     },
     {
       "type": "text", 
