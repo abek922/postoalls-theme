@@ -135,6 +135,7 @@ LIQUID - NEWS POSTS SECTION
   /* Button styles matching theme */
   #shopify-section-{{ section.id }} .news-view-all {
     margin-top: 40px;
+    text-align: {{ section.settings.button_alignment }};
   }
 
   #shopify-section-{{ section.id }} .button {
@@ -348,7 +349,7 @@ LIQUID - NEWS POSTS SECTION
       "label": "Show read more",
       "default": true
     },
-{
+    {
       "type": "header",
       "content": "t:global.section.header_category"
     },
@@ -372,6 +373,26 @@ LIQUID - NEWS POSTS SECTION
       "type": "select",
       "id": "text_alignment",
       "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "button_alignment",
+      "label": "Button alignment",
       "options": [
         {
           "value": "left",
