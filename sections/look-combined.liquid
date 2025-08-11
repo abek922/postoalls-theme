@@ -64,113 +64,51 @@
           <div class="page-width">
             <div class="look-split-content layout-{{ layout }}">
               <div class="look-split-text">
-                {%- comment -%} Title and Description with Language Support {%- endcomment -%}
-                {% assign title_ja_setting = 'title_ja_' | append: i %}
-                {% assign title_en_setting = 'title_en_' | append: i %}
-                {% assign text_ja_setting = 'text_ja_' | append: i %}
-                {% assign text_en_setting = 'text_en_' | append: i %}
+                {% assign title_setting = 'title_' | append: i %}
                 {% assign heading_tag_setting = 'heading_tag_' | append: i %}
+                {% assign text_setting = 'text_' | append: i %}
                 
-                {%- comment -%} Japanese Content {%- endcomment -%}
-                <div class="lang-content lang-ja" data-lang="ja">
-                  {% if section.settings[title_ja_setting] != blank %}
-                    {% assign title_tag = section.settings[heading_tag_setting] | default: 'h2' %}
-                    <{{ title_tag }} class="look-split-title">{{ section.settings[title_ja_setting] }}</{{ title_tag }}>
-                  {% endif %}
-                  
-                  {% if section.settings[text_ja_setting] != blank %}
-                    <div class="look-split-description">
-                      {{ section.settings[text_ja_setting] | newline_to_br }}
-                    </div>
-                  {% endif %}
-                </div>
+                {% if section.settings[title_setting] != blank %}
+                  {% assign title_tag = section.settings[heading_tag_setting] | default: 'h2' %}
+                  <{{ title_tag }} class="look-split-title">{{ section.settings[title_setting] }}</{{ title_tag }}>
+                {% endif %}
                 
-                {%- comment -%} English Content {%- endcomment -%}
-                <div class="lang-content lang-en" data-lang="en" style="display: none;">
-                  {% if section.settings[title_en_setting] != blank %}
-                    {% assign title_tag = section.settings[heading_tag_setting] | default: 'h2' %}
-                    <{{ title_tag }} class="look-split-title">{{ section.settings[title_en_setting] }}</{{ title_tag }}>
-                  {% endif %}
-                  
-                  {% if section.settings[text_en_setting] != blank %}
-                    <div class="look-split-description">
-                      {{ section.settings[text_en_setting] | newline_to_br }}
-                    </div>
-                  {% endif %}
-                </div>
+                {% if section.settings[text_setting] != blank %}
+                  <div class="look-split-description">
+                    {{ section.settings[text_setting] | newline_to_br }}
+                  </div>
+                {% endif %}
                 
-                {%- comment -%} Product Groups {%- endcomment -%}
-                <div class="look-split-products">
-                  {%- comment -%} Product Group 1 {%- endcomment -%}
-                  {% assign group1_title_setting = 'product_group1_title_' | append: i %}
-                  {% assign has_group1_products = false %}
-                  {% for j in (1..8) %}
-                    {% assign product_key = 'product_group1_' | append: i | append: '_' | append: j %}
-                    {% if section.settings[product_key] != blank %}
-                      {% assign has_group1_products = true %}
-                      {% break %}
-                    {% endif %}
-                  {% endfor %}
-                  
-                  {% if has_group1_products %}
-                    <div class="product-group">
-                      {% if section.settings[group1_title_setting] != blank %}
-                        <h4 class="product-group-title">{{ section.settings[group1_title_setting] }}</h4>
+                {% assign has_products = false %}
+                {% for j in (1..8) %}
+                  {% assign product_key = 'product_' | append: i | append: '_' | append: j %}
+                  {% if section.settings[product_key] != blank %}
+                    {% assign has_products = true %}
+                    {% break %}
+                  {% endif %}
+                {% endfor %}
+                
+                {% if has_products %}
+                  <div class="look-split-products">
+                    {% for j in (1..8) %}
+                      {% assign product_key = 'product_' | append: i | append: '_' | append: j %}
+                      {% assign product = section.settings[product_key] %}
+                      {% if product != blank %}
+                        <p class="product-item">
+                          <a href="{{ product.url }}" class="product-link">
+                            {{ product.title }} {{ product.price | money }}
+                          </a>
+                        </p>
                       {% endif %}
-                      <div class="product-group-items">
-                        {% for j in (1..8) %}
-                          {% assign product_key = 'product_group1_' | append: i | append: '_' | append: j %}
-                          {% assign product = section.settings[product_key] %}
-                          {% if product != blank %}
-                            <p class="product-item">
-                              <a href="{{ product.url }}" class="product-link">
-                                {{ product.title }} {{ product.price | money }}
-                              </a>
-                            </p>
-                          {% endif %}
-                        {% endfor %}
-                      </div>
-                    </div>
-                  {% endif %}
-                  
-                  {%- comment -%} Product Group 2 {%- endcomment -%}
-                  {% assign group2_title_setting = 'product_group2_title_' | append: i %}
-                  {% assign has_group2_products = false %}
-                  {% for j in (1..8) %}
-                    {% assign product_key = 'product_group2_' | append: i | append: '_' | append: j %}
-                    {% if section.settings[product_key] != blank %}
-                      {% assign has_group2_products = true %}
-                      {% break %}
-                    {% endif %}
-                  {% endfor %}
-                  
-                  {% if has_group2_products %}
-                    <div class="product-group">
-                      {% if section.settings[group2_title_setting] != blank %}
-                        <h4 class="product-group-title">{{ section.settings[group2_title_setting] }}</h4>
-                      {% endif %}
-                      <div class="product-group-items">
-                        {% for j in (1..8) %}
-                          {% assign product_key = 'product_group2_' | append: i | append: '_' | append: j %}
-                          {% assign product = section.settings[product_key] %}
-                          {% if product != blank %}
-                            <p class="product-item">
-                              <a href="{{ product.url }}" class="product-link">
-                                {{ product.title }} {{ product.price | money }}
-                              </a>
-                            </p>
-                          {% endif %}
-                        {% endfor %}
-                      </div>
-                    </div>
-                  {% endif %}
-                </div>
+                    {% endfor %}
+                  </div>
+                {% endif %}
               </div>
               
               <div class="look-split-image">
                 {% assign image_setting = 'image_' | append: i %}
                 {% if section.settings[image_setting] != blank %}
-                  {% assign image_alt = section.settings[image_setting].alt | default: section.settings[title_ja_setting] %}
+                  {% assign image_alt = section.settings[image_setting].alt | default: section.settings[title_setting] %}
                   <img 
                     src="{{ section.settings[image_setting] | image_url: width: 800 }}"
                     srcset="
@@ -231,11 +169,6 @@
     }
   }
   
-  /* Language Content Switching */
-  .lang-content {
-    transition: opacity 0.3s ease;
-  }
-  
   /* Full Image Styles */
   .look-full-image-container {
     position: relative;
@@ -287,6 +220,7 @@
     min-height: 600px;
   }
   
+  /* 新しい fit_width スタイル */
   .height-fit_width {
     height: auto;
     min-height: auto;
@@ -384,32 +318,9 @@
     margin-top: 16px;
   }
   
-  /* Product Groups */
-  .product-group {
-    margin-bottom: 24px;
-  }
-  
-  .product-group:last-child {
-    margin-bottom: 0;
-  }
-  
-  .product-group-title {
-    margin: 0 0 12px 0;
-    font-size: 14px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    opacity: 0.9;
-  }
-  
-  .product-group-items {
-    margin-left: 0;
-  }
-  
   .product-item {
     margin: 6px 0;
     opacity: 0.8;
-    font-size: 14px;
   }
   
   .product-link {
@@ -472,6 +383,7 @@
       min-height: 400px;
     }
     
+    /* fit_width のモバイル対応 */
     .height-fit_width {
       height: auto;
       min-height: auto;
@@ -515,6 +427,7 @@
       min-height: 350px;
     }
     
+    /* fit_width のモバイル対応 */
     .height-fit_width {
       height: auto;
       min-height: auto;
@@ -523,16 +436,9 @@
     .look-split-content {
       gap: 24px;
     }
-    
-    .product-group-title {
-      font-size: 13px;
-    }
-    
-    .product-item {
-      font-size: 13px;
-    }
   }
   
+  /* パララックス効果用のJavaScript */
   @media (prefers-reduced-motion: no-preference) {
     .parallax-enabled .parallax-image {
       transition: transform 0.1s ease-out;
@@ -541,49 +447,7 @@
 </style>
 
 <script>
-  // Language Switching
-  document.addEventListener('DOMContentLoaded', function() {
-    // Function to switch language content
-    function switchLanguage(lang) {
-      const allLangContents = document.querySelectorAll('.lang-content');
-      
-      allLangContents.forEach(function(content) {
-        if (content.dataset.lang === lang) {
-          content.style.display = 'block';
-        } else {
-          content.style.display = 'none';
-        }
-      });
-    }
-    
-    // Get current language from Shopify locale or default to 'ja'
-    const currentLang = document.documentElement.lang || 'ja';
-    const displayLang = currentLang.startsWith('en') ? 'en' : 'ja';
-    switchLanguage(displayLang);
-    
-    // Listen for language change events (if using a language selector)
-    document.addEventListener('localization:changed', function(event) {
-      const newLang = event.detail?.language || 'ja';
-      const displayLang = newLang.startsWith('en') ? 'en' : 'ja';
-      switchLanguage(displayLang);
-    });
-    
-    // Also check for Shopify's built-in language switcher
-    const observer = new MutationObserver(function(mutations) {
-      const htmlLang = document.documentElement.lang;
-      if (htmlLang) {
-        const displayLang = htmlLang.startsWith('en') ? 'en' : 'ja';
-        switchLanguage(displayLang);
-      }
-    });
-    
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['lang']
-    });
-  });
-  
-  // Parallax Effect
+  // パララックス効果
   document.addEventListener('DOMContentLoaded', function() {
     const parallaxImages = document.querySelectorAll('.parallax-image');
     
@@ -647,150 +511,122 @@
     },
     {
       "type": "text",
-      "id": "title_ja_1",
-      "label": "Title (Japanese) 1"
-    },
-    {
-      "type": "text",
-      "id": "title_en_1",
-      "label": "Title (English) 1"
+      "id": "title_1",
+      "label": "Title 1",
+      "info": "Only for Split layouts"
     },
     {
       "type": "select",
       "id": "heading_tag_1",
       "label": "Heading Tag 1",
       "options": [
-        {"value": "h1", "label": "H1"},
-        {"value": "h2", "label": "H2"},
-        {"value": "h3", "label": "H3"},
-        {"value": "h4", "label": "H4"},
-        {"value": "h5", "label": "H5"},
-        {"value": "h6", "label": "H6"}
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
       ],
-      "default": "h2"
+      "default": "h2",
+      "info": "Only for Split layouts"
     },
     {
       "type": "textarea",
-      "id": "text_ja_1",
-      "label": "Description (Japanese) 1"
-    },
-    {
-      "type": "textarea",
-      "id": "text_en_1",
-      "label": "Description (English) 1"
-    },
-    {
-      "type": "header",
-      "content": "Product Group 1-1"
-    },
-    {
-      "type": "text",
-      "id": "product_group1_title_1",
-      "label": "Product Group 1 Title"
+      "id": "text_1",
+      "label": "Description 1",
+      "info": "Only for Split layouts"
     },
     {
       "type": "product",
-      "id": "product_group1_1_1",
-      "label": "Product 1"
+      "id": "product_1_1",
+      "label": "Product 1-1",
+      "info": "Only for Split layouts"
     },
     {
       "type": "product",
-      "id": "product_group1_1_2",
-      "label": "Product 2"
+      "id": "product_1_2",
+      "label": "Product 1-2",
+      "info": "Only for Split layouts"
     },
     {
       "type": "product",
-      "id": "product_group1_1_3",
-      "label": "Product 3"
+      "id": "product_1_3",
+      "label": "Product 1-3",
+      "info": "Only for Split layouts"
     },
     {
       "type": "product",
-      "id": "product_group1_1_4",
-      "label": "Product 4"
+      "id": "product_1_4",
+      "label": "Product 1-4",
+      "info": "Only for Split layouts"
     },
     {
       "type": "product",
-      "id": "product_group1_1_5",
-      "label": "Product 5"
+      "id": "product_1_5",
+      "label": "Product 1-5",
+      "info": "Only for Split layouts"
     },
     {
       "type": "product",
-      "id": "product_group1_1_6",
-      "label": "Product 6"
+      "id": "product_1_6",
+      "label": "Product 1-6",
+      "info": "Only for Split layouts"
     },
     {
       "type": "product",
-      "id": "product_group1_1_7",
-      "label": "Product 7"
+      "id": "product_1_7",
+      "label": "Product 1-7",
+      "info": "Only for Split layouts"
     },
     {
       "type": "product",
-      "id": "product_group1_1_8",
-      "label": "Product 8"
-    },
-    {
-      "type": "header",
-      "content": "Product Group 1-2"
-    },
-    {
-      "type": "text",
-      "id": "product_group2_title_1",
-      "label": "Product Group 2 Title"
-    },
-    {
-      "type": "product",
-      "id": "product_group2_1_1",
-      "label": "Product 1"
-    },
-    {
-      "type": "product",
-      "id": "product_group2_1_2",
-      "label": "Product 2"
-    },
-    {
-      "type": "product",
-      "id": "product_group2_1_3",
-      "label": "Product 3"
-    },
-    {
-      "type": "product",
-      "id": "product_group2_1_4",
-      "label": "Product 4"
-    },
-    {
-      "type": "product",
-      "id": "product_group2_1_5",
-      "label": "Product 5"
-    },
-    {
-      "type": "product",
-      "id": "product_group2_1_6",
-      "label": "Product 6"
-    },
-    {
-      "type": "product",
-      "id": "product_group2_1_7",
-      "label": "Product 7"
-    },
-    {
-      "type": "product",
-      "id": "product_group2_1_8",
-      "label": "Product 8"
-    },
-    {
-      "type": "header",
-      "content": "Full Image Settings 1"
+      "id": "product_1_8",
+      "label": "Product 1-8",
+      "info": "Only for Split layouts"
     },
     {
       "type": "select",
       "id": "image_height_1",
       "label": "Image Height 1",
       "options": [
-        {"value": "small", "label": "Small (40vh)"},
-        {"value": "medium", "label": "Medium (60vh)"},
-        {"value": "large", "label": "Large (80vh)"},
-        {"value": "full", "label": "Full Screen (100vh)"},
-        {"value": "fit_width", "label": "Fit Width"}
+        {
+          "value": "small",
+          "label": "Small (40vh)"
+        },
+        {
+          "value": "medium",
+          "label": "Medium (60vh)"
+        },
+        {
+          "value": "large",
+          "label": "Large (80vh)"
+        },
+        {
+          "value": "full",
+          "label": "Full Screen (100vh)"
+        },
+        {
+          "value": "fit_width",
+          "label": "Fit Width"
+        }
       ],
       "default": "large",
       "info": "Only for Full Image layout"
@@ -812,10 +648,6 @@
       "label": "Overlay Opacity 1",
       "default": 0,
       "info": "Only for Full Image layout"
-    },
-    {
-      "type": "header",
-      "content": "Style Settings 1"
     },
     {
       "type": "color",
@@ -848,7 +680,7 @@
       "unit": "px",
       "label": "Padding Bottom 1",
       "default": 20
-    }
+    },
     {
       "type": "header",
       "content": "Section 2"
@@ -858,10 +690,22 @@
       "id": "layout_2",
       "label": "Layout 2",
       "options": [
-        {"value": "hidden", "label": "Hidden"},
-        {"value": "text_left", "label": "Text Left, Image Right"},
-        {"value": "text_right", "label": "Text Right, Image Left"},
-        {"value": "full_image", "label": "Full Image"}
+        {
+          "value": "hidden",
+          "label": "Hidden"
+        },
+        {
+          "value": "text_left",
+          "label": "Text Left, Image Right"
+        },
+        {
+          "value": "text_right",
+          "label": "Text Right, Image Left"
+        },
+        {
+          "value": "full_image",
+          "label": "Full Image"
+        }
       ],
       "default": "hidden"
     },
@@ -872,150 +716,122 @@
     },
     {
       "type": "text",
-      "id": "title_ja_2",
-      "label": "Title (Japanese) 2"
-    },
-    {
-      "type": "text",
-      "id": "title_en_2",
-      "label": "Title (English) 2"
+      "id": "title_2",
+      "label": "Title 2",
+      "info": "Only for Split layouts"
     },
     {
       "type": "select",
       "id": "heading_tag_2",
       "label": "Heading Tag 2",
       "options": [
-        {"value": "h1", "label": "H1"},
-        {"value": "h2", "label": "H2"},
-        {"value": "h3", "label": "H3"},
-        {"value": "h4", "label": "H4"},
-        {"value": "h5", "label": "H5"},
-        {"value": "h6", "label": "H6"}
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
       ],
-      "default": "h2"
+      "default": "h2",
+      "info": "Only for Split layouts"
     },
     {
       "type": "textarea",
-      "id": "text_ja_2",
-      "label": "Description (Japanese) 2"
-    },
-    {
-      "type": "textarea",
-      "id": "text_en_2",
-      "label": "Description (English) 2"
-    },
-    {
-      "type": "header",
-      "content": "Product Group 2-1"
-    },
-    {
-      "type": "text",
-      "id": "product_group1_title_2",
-      "label": "Product Group 1 Title"
+      "id": "text_2",
+      "label": "Description 2",
+      "info": "Only for Split layouts"
     },
     {
       "type": "product",
-      "id": "product_group1_2_1",
-      "label": "Product 1"
+      "id": "product_2_1",
+      "label": "Product 2-1",
+      "info": "Only for Split layouts"
     },
     {
       "type": "product",
-      "id": "product_group1_2_2",
-      "label": "Product 2"
+      "id": "product_2_2",
+      "label": "Product 2-2",
+      "info": "Only for Split layouts"
     },
     {
       "type": "product",
-      "id": "product_group1_2_3",
-      "label": "Product 3"
+      "id": "product_2_3",
+      "label": "Product 2-3",
+      "info": "Only for Split layouts"
     },
     {
       "type": "product",
-      "id": "product_group1_2_4",
-      "label": "Product 4"
+      "id": "product_2_4",
+      "label": "Product 2-4",
+      "info": "Only for Split layouts"
     },
     {
       "type": "product",
-      "id": "product_group1_2_5",
-      "label": "Product 5"
+      "id": "product_2_5",
+      "label": "Product 2-5",
+      "info": "Only for Split layouts"
     },
     {
       "type": "product",
-      "id": "product_group1_2_6",
-      "label": "Product 6"
+      "id": "product_2_6",
+      "label": "Product 2-6",
+      "info": "Only for Split layouts"
     },
     {
       "type": "product",
-      "id": "product_group1_2_7",
-      "label": "Product 7"
+      "id": "product_2_7",
+      "label": "Product 2-7",
+      "info": "Only for Split layouts"
     },
     {
       "type": "product",
-      "id": "product_group1_2_8",
-      "label": "Product 8"
-    },
-    {
-      "type": "header",
-      "content": "Product Group 2-2"
-    },
-    {
-      "type": "text",
-      "id": "product_group2_title_2",
-      "label": "Product Group 2 Title"
-    },
-    {
-      "type": "product",
-      "id": "product_group2_2_1",
-      "label": "Product 1"
-    },
-    {
-      "type": "product",
-      "id": "product_group2_2_2",
-      "label": "Product 2"
-    },
-    {
-      "type": "product",
-      "id": "product_group2_2_3",
-      "label": "Product 3"
-    },
-    {
-      "type": "product",
-      "id": "product_group2_2_4",
-      "label": "Product 4"
-    },
-    {
-      "type": "product",
-      "id": "product_group2_2_5",
-      "label": "Product 5"
-    },
-    {
-      "type": "product",
-      "id": "product_group2_2_6",
-      "label": "Product 6"
-    },
-    {
-      "type": "product",
-      "id": "product_group2_2_7",
-      "label": "Product 7"
-    },
-    {
-      "type": "product",
-      "id": "product_group2_2_8",
-      "label": "Product 8"
-    },
-    {
-      "type": "header",
-      "content": "Full Image Settings 2"
+      "id": "product_2_8",
+      "label": "Product 2-8",
+      "info": "Only for Split layouts"
     },
     {
       "type": "select",
       "id": "image_height_2",
       "label": "Image Height 2",
       "options": [
-        {"value": "small", "label": "Small (40vh)"},
-        {"value": "medium", "label": "Medium (60vh)"},
-        {"value": "large", "label": "Large (80vh)"},
-        {"value": "full", "label": "Full Screen (100vh)"},
-        {"value": "fit_width", "label": "Fit Width"}
+        {
+          "value": "small",
+          "label": "Small (40vh)"
+        },
+        {
+          "value": "medium",
+          "label": "Medium (60vh)"
+        },
+        {
+          "value": "large",
+          "label": "Large (80vh)"
+        },
+        {
+          "value": "full",
+          "label": "Full Screen (100vh)"
+        },
+        {
+          "value": "fit_width",
+          "label": "Fit Width"
+        }
       ],
       "default": "large",
       "info": "Only for Full Image layout"
@@ -1037,10 +853,6 @@
       "label": "Overlay Opacity 2",
       "default": 0,
       "info": "Only for Full Image layout"
-    },
-    {
-      "type": "header",
-      "content": "Style Settings 2"
     },
     {
       "type": "color",
@@ -1083,10 +895,22 @@
       "id": "layout_3",
       "label": "Layout 3",
       "options": [
-        {"value": "hidden", "label": "Hidden"},
-        {"value": "text_left", "label": "Text Left, Image Right"},
-        {"value": "text_right", "label": "Text Right, Image Left"},
-        {"value": "full_image", "label": "Full Image"}
+        {
+          "value": "hidden",
+          "label": "Hidden"
+        },
+        {
+          "value": "text_left",
+          "label": "Text Left, Image Right"
+        },
+        {
+          "value": "text_right",
+          "label": "Text Right, Image Left"
+        },
+        {
+          "value": "full_image",
+          "label": "Full Image"
+        }
       ],
       "default": "hidden"
     },
@@ -1097,150 +921,122 @@
     },
     {
       "type": "text",
-      "id": "title_ja_3",
-      "label": "Title (Japanese) 3"
-    },
-    {
-      "type": "text",
-      "id": "title_en_3",
-      "label": "Title (English) 3"
+      "id": "title_3",
+      "label": "Title 3",
+      "info": "Only for Split layouts"
     },
     {
       "type": "select",
       "id": "heading_tag_3",
       "label": "Heading Tag 3",
       "options": [
-        {"value": "h1", "label": "H1"},
-        {"value": "h2", "label": "H2"},
-        {"value": "h3", "label": "H3"},
-        {"value": "h4", "label": "H4"},
-        {"value": "h5", "label": "H5"},
-        {"value": "h6", "label": "H6"}
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
       ],
-      "default": "h2"
+      "default": "h2",
+      "info": "Only for Split layouts"
     },
     {
       "type": "textarea",
-      "id": "text_ja_3",
-      "label": "Description (Japanese) 3"
-    },
-    {
-      "type": "textarea",
-      "id": "text_en_3",
-      "label": "Description (English) 3"
-    },
-    {
-      "type": "header",
-      "content": "Product Group 3-1"
-    },
-    {
-      "type": "text",
-      "id": "product_group1_title_3",
-      "label": "Product Group 1 Title"
+      "id": "text_3",
+      "label": "Description 3",
+      "info": "Only for Split layouts"
     },
     {
       "type": "product",
-      "id": "product_group1_3_1",
-      "label": "Product 1"
+      "id": "product_3_1",
+      "label": "Product 3-1",
+      "info": "Only for Split layouts"
     },
     {
       "type": "product",
-      "id": "product_group1_3_2",
-      "label": "Product 2"
+      "id": "product_3_2",
+      "label": "Product 3-2",
+      "info": "Only for Split layouts"
     },
     {
       "type": "product",
-      "id": "product_group1_3_3",
-      "label": "Product 3"
+      "id": "product_3_3",
+      "label": "Product 3-3",
+      "info": "Only for Split layouts"
     },
     {
       "type": "product",
-      "id": "product_group1_3_4",
-      "label": "Product 4"
+      "id": "product_3_4",
+      "label": "Product 3-4",
+      "info": "Only for Split layouts"
     },
     {
       "type": "product",
-      "id": "product_group1_3_5",
-      "label": "Product 5"
+      "id": "product_3_5",
+      "label": "Product 3-5",
+      "info": "Only for Split layouts"
     },
     {
       "type": "product",
-      "id": "product_group1_3_6",
-      "label": "Product 6"
+      "id": "product_3_6",
+      "label": "Product 3-6",
+      "info": "Only for Split layouts"
     },
     {
       "type": "product",
-      "id": "product_group1_3_7",
-      "label": "Product 7"
+      "id": "product_3_7",
+      "label": "Product 3-7",
+      "info": "Only for Split layouts"
     },
     {
       "type": "product",
-      "id": "product_group1_3_8",
-      "label": "Product 8"
-    },
-    {
-      "type": "header",
-      "content": "Product Group 3-2"
-    },
-    {
-      "type": "text",
-      "id": "product_group2_title_3",
-      "label": "Product Group 2 Title"
-    },
-    {
-      "type": "product",
-      "id": "product_group2_3_1",
-      "label": "Product 1"
-    },
-    {
-      "type": "product",
-      "id": "product_group2_3_2",
-      "label": "Product 2"
-    },
-    {
-      "type": "product",
-      "id": "product_group2_3_3",
-      "label": "Product 3"
-    },
-    {
-      "type": "product",
-      "id": "product_group2_3_4",
-      "label": "Product 4"
-    },
-    {
-      "type": "product",
-      "id": "product_group2_3_5",
-      "label": "Product 5"
-    },
-    {
-      "type": "product",
-      "id": "product_group2_3_6",
-      "label": "Product 6"
-    },
-    {
-      "type": "product",
-      "id": "product_group2_3_7",
-      "label": "Product 7"
-    },
-    {
-      "type": "product",
-      "id": "product_group2_3_8",
-      "label": "Product 8"
-    },
-    {
-      "type": "header",
-      "content": "Full Image Settings 3"
+      "id": "product_3_8",
+      "label": "Product 3-8",
+      "info": "Only for Split layouts"
     },
     {
       "type": "select",
       "id": "image_height_3",
       "label": "Image Height 3",
       "options": [
-        {"value": "small", "label": "Small (40vh)"},
-        {"value": "medium", "label": "Medium (60vh)"},
-        {"value": "large", "label": "Large (80vh)"},
-        {"value": "full", "label": "Full Screen (100vh)"},
-        {"value": "fit_width", "label": "Fit Width"}
+        {
+          "value": "small",
+          "label": "Small (40vh)"
+        },
+        {
+          "value": "medium",
+          "label": "Medium (60vh)"
+        },
+        {
+          "value": "large",
+          "label": "Large (80vh)"
+        },
+        {
+          "value": "full",
+          "label": "Full Screen (100vh)"
+        },
+        {
+          "value": "fit_width",
+          "label": "Fit Width"
+        }
       ],
       "default": "large",
       "info": "Only for Full Image layout"
@@ -1262,10 +1058,6 @@
       "label": "Overlay Opacity 3",
       "default": 0,
       "info": "Only for Full Image layout"
-    },
-    {
-      "type": "header",
-      "content": "Style Settings 3"
     },
     {
       "type": "color",
@@ -1297,6 +1089,621 @@
       "step": 10,
       "unit": "px",
       "label": "Padding Bottom 3",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Section 4"
+    },
+    {
+      "type": "select",
+      "id": "layout_4",
+      "label": "Layout 4",
+      "options": [
+        {
+          "value": "hidden",
+          "label": "Hidden"
+        },
+        {
+          "value": "text_left",
+          "label": "Text Left, Image Right"
+        },
+        {
+          "value": "text_right",
+          "label": "Text Right, Image Left"
+        },
+        {
+          "value": "full_image",
+          "label": "Full Image"
+        }
+      ],
+      "default": "hidden"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_4",
+      "label": "Image 4"
+    },
+    {
+      "type": "text",
+      "id": "title_4",
+      "label": "Title 4",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag_4",
+      "label": "Heading Tag 4",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ],
+      "default": "h2",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "textarea",
+      "id": "text_4",
+      "label": "Description 4",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_4_1",
+      "label": "Product 4-1",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_4_2",
+      "label": "Product 4-2",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_4_3",
+      "label": "Product 4-3",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_4_4",
+      "label": "Product 4-4",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_4_5",
+      "label": "Product 4-5",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_4_6",
+      "label": "Product 4-6",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_4_7",
+      "label": "Product 4-7",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_4_8",
+      "label": "Product 4-8",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "select",
+      "id": "image_height_4",
+      "label": "Image Height 4",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small (40vh)"
+        },
+        {
+          "value": "medium",
+          "label": "Medium (60vh)"
+        },
+        {
+          "value": "large",
+          "label": "Large (80vh)"
+        },
+        {
+          "value": "full",
+          "label": "Full Screen (100vh)"
+        },
+        {
+          "value": "fit_width",
+          "label": "Fit Width"
+        }
+      ],
+      "default": "large",
+      "info": "Only for Full Image layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_parallax_4",
+      "label": "Enable Parallax 4",
+      "default": false,
+      "info": "Only for Full Image layout"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity_4",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay Opacity 4",
+      "default": 0,
+      "info": "Only for Full Image layout"
+    },
+    {
+      "type": "color",
+      "id": "background_color_4",
+      "label": "Background Color 4",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color_4",
+      "label": "Text Color 4",
+      "default": "#333333"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_4",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Top 4",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_4",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Bottom 4",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Section 5"
+    },
+    {
+      "type": "select",
+      "id": "layout_5",
+      "label": "Layout 5",
+      "options": [
+        {
+          "value": "hidden",
+          "label": "Hidden"
+        },
+        {
+          "value": "text_left",
+          "label": "Text Left, Image Right"
+        },
+        {
+          "value": "text_right",
+          "label": "Text Right, Image Left"
+        },
+        {
+          "value": "full_image",
+          "label": "Full Image"
+        }
+      ],
+      "default": "hidden"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_5",
+      "label": "Image 5"
+    },
+    {
+      "type": "text",
+      "id": "title_5",
+      "label": "Title 5",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag_5",
+      "label": "Heading Tag 5",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ],
+      "default": "h2",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "textarea",
+      "id": "text_5",
+      "label": "Description 5",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_5_1",
+      "label": "Product 5-1",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_5_2",
+      "label": "Product 5-2",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_5_3",
+      "label": "Product 5-3",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_5_4",
+      "label": "Product 5-4",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_5_5",
+      "label": "Product 5-5",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_5_6",
+      "label": "Product 5-6",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_5_7",
+      "label": "Product 5-7",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_5_8",
+      "label": "Product 5-8",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "select",
+      "id": "image_height_5",
+      "label": "Image Height 5",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small (40vh)"
+        },
+        {
+          "value": "medium",
+          "label": "Medium (60vh)"
+        },
+        {
+          "value": "large",
+          "label": "Large (80vh)"
+        },
+        {
+          "value": "full",
+          "label": "Full Screen (100vh)"
+        },
+        {
+          "value": "fit_width",
+          "label": "Fit Width"
+        }
+      ],
+      "default": "large",
+      "info": "Only for Full Image layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_parallax_5",
+      "label": "Enable Parallax 5",
+      "default": false,
+      "info": "Only for Full Image layout"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity_5",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay Opacity 5",
+      "default": 0,
+      "info": "Only for Full Image layout"
+    },
+    {
+      "type": "color",
+      "id": "background_color_5",
+      "label": "Background Color 5",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color_5",
+      "label": "Text Color 5",
+      "default": "#333333"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_5",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Top 5",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_5",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Bottom 5",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Section 6"
+    },
+    {
+      "type": "select",
+      "id": "layout_6",
+      "label": "Layout 6",
+      "options": [
+        {
+          "value": "hidden",
+          "label": "Hidden"
+        },
+        {
+          "value": "text_left",
+          "label": "Text Left, Image Right"
+        },
+        {
+          "value": "text_right",
+          "label": "Text Right, Image Left"
+        },
+        {
+          "value": "full_image",
+          "label": "Full Image"
+        }
+      ],
+      "default": "hidden"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_6",
+      "label": "Image 6"
+    },
+    {
+      "type": "text",
+      "id": "title_6",
+      "label": "Title 6",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag_6",
+      "label": "Heading Tag 6",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ],
+      "default": "h2",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "textarea",
+      "id": "text_6",
+      "label": "Description 6",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_6_1",
+      "label": "Product 6-1",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_6_2",
+      "label": "Product 6-2",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_6_3",
+      "label": "Product 6-3",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_6_4",
+      "label": "Product 6-4",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_6_5",
+      "label": "Product 6-5",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_6_6",
+      "label": "Product 6-6",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_6_7",
+      "label": "Product 6-7",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "product",
+      "id": "product_6_8",
+      "label": "Product 6-8",
+      "info": "Only for Split layouts"
+    },
+    {
+      "type": "select",
+      "id": "image_height_6",
+      "label": "Image Height 6",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small (40vh)"
+        },
+        {
+          "value": "medium",
+          "label": "Medium (60vh)"
+        },
+        {
+          "value": "large",
+          "label": "Large (80vh)"
+        },
+        {
+          "value": "full",
+          "label": "Full Screen (100vh)"
+        },
+        {
+          "value": "fit_width",
+          "label": "Fit Width"
+        }
+      ],
+      "default": "large",
+      "info": "Only for Full Image layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_parallax_6",
+      "label": "Enable Parallax 6",
+      "default": false,
+      "info": "Only for Full Image layout"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity_6",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay Opacity 6",
+      "default": 0,
+      "info": "Only for Full Image layout"
+    },
+    {
+      "type": "color",
+      "id": "background_color_6",
+      "label": "Background Color 6",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color_6",
+      "label": "Text Color 6",
+      "default": "#333333"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_6",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Top 6",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_6",
+      "min": 0,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding Bottom 6",
       "default": 20
     }
   ],
