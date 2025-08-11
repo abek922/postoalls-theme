@@ -1,275 +1,428 @@
-{{ 'section-blog-posts.css' | asset_url | stylesheet_tag }}
+{%- comment -%}
+------------------------------------------------------------------------------------------------------------------------
+LIQUID - NEWS POSTS SECTION
+------------------------------------------------------------------------------------------------------------------------
+{%- endcomment -%}
+
+{%- assign color_scheme_hash = section.settings.color_scheme.settings.background_gradient | default: section.settings.color_scheme.settings.background | md5 -%}
 
 <style>
-  .news-posts-section {
+  #shopify-section-{{ section.id }} .news-posts-wrapper {
     padding: 60px 0;
-    background-color: {{ section.settings.background_color }};
   }
 
-  .news-posts-container {
+  #shopify-section-{{ section.id }} .news-posts-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
   }
 
-  .news-posts-header {
-    margin-bottom: 50px;
-    text-align: {{ section.settings.heading_alignment }};
+  #shopify-section-{{ section.id }} .news-posts-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
 
-  /* 他のセクションと統一されたタイトルスタイル */
-  .news-posts-title {
-    font-size: clamp(24px, 5vw, 36px);
-    font-weight: var(--font-heading-weight, 600);
-    letter-spacing: var(--letter-spacing-heading, 0.04em);
-    line-height: var(--line-height-heading, 1.3);
-    margin: 0 0 10px 0;
-    color: {{ section.settings.heading_color }};
-    text-transform: {{ section.settings.heading_text_transform }};
+  /* PC Layout - Left title, Right posts */
+  @media screen and (min-width: 1024px) {
+    #shopify-section-{{ section.id }} .news-posts-layout {
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    #shopify-section-{{ section.id }} .news-posts-header {
+      position: sticky;
+      top: 100px;
+    }
   }
 
-  .news-posts-subtitle {
-    font-size: 14px;
-    color: {{ section.settings.subtitle_color }};
-    letter-spacing: 0.02em;
+  #shopify-section-{{ section.id }} .news-posts-header {
+    margin-bottom: 0;
+    text-align: {{ section.settings.text_alignment }};
+  }
+
+  /* Section header styles matching existing theme */
+  #shopify-section-{{ section.id }} .news-posts-subheading {
+    font-size: var(--text-sm, 14px);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    color: rgba(var(--text-color), 0.7);
+  }
+
+  #shopify-section-{{ section.id }} .news-posts-title {
+    font-size: var(--heading-h2-size, clamp(24px, 5vw, 36px));
+    font-weight: var(--heading-weight, 600);
+    letter-spacing: var(--heading-letter-spacing, -0.02em);
+    line-height: var(--heading-line-height, 1.2);
+    margin: 0 0 16px 0;
+  }
+
+  #shopify-section-{{ section.id }} .news-posts-content {
+    font-size: var(--text-base, 16px);
+    line-height: 1.6;
+    color: rgba(var(--text-color), 0.8);
+    margin-bottom: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .news-posts-content p {
     margin: 0;
   }
 
-  .news-posts-list {
+  #shopify-section-{{ section.id }} .news-posts-list {
     display: flex;
     flex-direction: column;
     gap: 0;
   }
 
-  .news-post-item {
-    border-bottom: 1px solid #e0e0e0;
-    padding: 30px 0;
+  #shopify-section-{{ section.id }} .news-post-item {
+    border-bottom: 1px solid rgba(var(--text-color), 0.1);
+    padding: 24px 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
     text-decoration: none;
     color: inherit;
-    transition: background-color 0.3s ease;
+    transition: all 0.2s ease;
   }
 
-  .news-post-item:first-child {
+  #shopify-section-{{ section.id }} .news-post-item:first-child {
     padding-top: 0;
   }
 
-  .news-post-item:last-child {
+  #shopify-section-{{ section.id }} .news-post-item:last-child {
     border-bottom: none;
   }
 
-  .news-post-item:hover {
-    background-color: rgba(0, 0, 0, 0.02);
-    margin: 0 -20px;
-    padding-left: 20px;
-    padding-right: 20px;
+  #shopify-section-{{ section.id }} .news-post-item:hover {
+    padding-left: 12px;
   }
 
-  .news-post-content {
+  #shopify-section-{{ section.id }} .news-post-content {
     flex: 1;
   }
 
-  .news-post-date {
-    font-size: 14px;
-    color: {{ section.settings.date_color }};
-    margin-bottom: 8px;
-    font-weight: 400;
-  }
-
-  .news-post-title {
-    font-size: 16px;
-    line-height: 1.6;
-    color: {{ section.settings.text_color }};
-    margin: 0;
-    font-weight: 400;
-    letter-spacing: 0.02em;
-  }
-
-  .news-post-arrow {
-    width: 24px;
-    height: 24px;
-    margin-left: 20px;
-    flex-shrink: 0;
-  }
-
-  .news-post-arrow svg {
-    width: 100%;
-    height: 100%;
-    stroke: {{ section.settings.arrow_color }};
-    stroke-width: 1.5;
-  }
-
-  /* View All Link */
-  .news-view-all {
-    text-align: center;
-    margin-top: 50px;
-  }
-
-  .news-view-all-link {
-    display: inline-block;
-    padding: 12px 40px;
-    border: 1px solid {{ section.settings.button_border_color }};
-    color: {{ section.settings.button_text_color }};
-    text-decoration: none;
-    font-size: 14px;
-    letter-spacing: 0.08em;
+  #shopify-section-{{ section.id }} .news-post-category {
+    font-size: 12px;
     text-transform: uppercase;
-    transition: all 0.3s ease;
+    letter-spacing: 0.06em;
+    color: rgba(var(--text-color), 0.6);
+    margin-bottom: 4px;
+  }
+
+  #shopify-section-{{ section.id }} .news-post-date {
+    font-size: 14px;
+    color: rgba(var(--text-color), 0.6);
+    margin-bottom: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .news-post-title {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
     font-weight: 500;
   }
 
-  .news-view-all-link:hover {
-    background-color: {{ section.settings.button_hover_bg }};
-    color: {{ section.settings.button_hover_text }};
-    border-color: {{ section.settings.button_hover_bg }};
+  #shopify-section-{{ section.id }} .news-post-excerpt {
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(var(--text-color), 0.7);
+    margin-top: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .news-post-arrow {
+    width: 20px;
+    height: 20px;
+    margin-left: 20px;
+    flex-shrink: 0;
+    opacity: 0.5;
+    transition: all 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .news-post-item:hover .news-post-arrow {
+    opacity: 1;
+    transform: translateX(4px);
+  }
+
+  #shopify-section-{{ section.id }} .news-post-arrow svg {
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+    stroke-width: 1.5;
+  }
+
+  /* Read more link */
+  #shopify-section-{{ section.id }} .news-post-read-more {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* Button styles matching theme */
+  #shopify-section-{{ section.id }} .news-view-all {
+    margin-top: 40px;
+  }
+
+  #shopify-section-{{ section.id }} .button {
+    display: inline-block;
+    padding: 12px 32px;
+    font-size: var(--button-text-size, 14px);
+    font-weight: var(--button-text-weight, 600);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid currentColor;
+    background: transparent;
+    color: inherit;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  #shopify-section-{{ section.id }} .button:hover {
+    background: rgb(var(--text-color));
+    color: rgb(var(--background));
   }
 
   /* Empty state */
-  .news-empty-state {
+  #shopify-section-{{ section.id }} .news-empty-state {
     text-align: center;
     padding: 60px 20px;
-    color: #999;
+    color: rgba(var(--text-color), 0.5);
   }
 
   /* Mobile responsive */
   @media screen and (max-width: 768px) {
-    .news-posts-section {
+    #shopify-section-{{ section.id }} .news-posts-wrapper {
       padding: 40px 0;
     }
 
-    .news-posts-container {
+    #shopify-section-{{ section.id }} .news-posts-container {
       padding: 0 16px;
     }
 
-    .news-posts-title {
-      font-size: clamp(20px, 6vw, 28px);
-    }
-
-    .news-posts-header {
+    #shopify-section-{{ section.id }} .news-posts-header {
       margin-bottom: 30px;
     }
 
-    .news-post-item {
+    #shopify-section-{{ section.id }} .news-post-item {
       padding: 20px 0;
-      flex-direction: row;
-      align-items: flex-start;
     }
 
-    .news-post-item:hover {
-      margin: 0 -16px;
-      padding-left: 16px;
-      padding-right: 16px;
-    }
-
-    .news-post-date {
+    #shopify-section-{{ section.id }} .news-post-date {
       font-size: 13px;
-      margin-bottom: 6px;
     }
 
-    .news-post-title {
-      font-size: 14px;
-      line-height: 1.5;
+    #shopify-section-{{ section.id }} .news-post-title {
+      font-size: 15px;
     }
 
-    .news-post-arrow {
-      width: 20px;
-      height: 20px;
-      margin-left: 16px;
-      margin-top: 20px;
+    #shopify-section-{{ section.id }} .news-post-excerpt {
+      font-size: 13px;
     }
 
-    .news-view-all {
+    #shopify-section-{{ section.id }} .news-view-all {
       margin-top: 30px;
     }
   }
 
   /* Tablet responsive */
-  @media screen and (min-width: 769px) and (max-width: 1024px) {
-    .news-posts-container {
+  @media screen and (min-width: 769px) and (max-width: 1023px) {
+    #shopify-section-{{ section.id }} .news-posts-container {
       padding: 0 30px;
+    }
+    
+    #shopify-section-{{ section.id }} .news-posts-header {
+      margin-bottom: 40px;
     }
   }
 </style>
 
-<section class="news-posts-section">
-  <div class="news-posts-container">
-    {%- if section.settings.title != blank or section.settings.subtitle != blank -%}
-      <div class="news-posts-header">
-        {%- if section.settings.title != blank -%}
-          <h2 class="news-posts-title">{{ section.settings.title }}</h2>
-        {%- endif -%}
-        {%- if section.settings.subtitle != blank -%}
-          <p class="news-posts-subtitle">{{ section.settings.subtitle }}</p>
-        {%- endif -%}
-      </div>
-    {%- endif -%}
-
-    <div class="news-posts-list">
-      {%- assign blog = blogs[section.settings.blog] -%}
-      {%- if blog != blank -%}
-        {%- assign articles_count = section.settings.post_limit -%}
-        {%- for article in blog.articles limit: articles_count -%}
-          <a href="{{ article.url }}" class="news-post-item">
-            <div class="news-post-content">
-              <div class="news-post-date">
-                {{ article.published_at | date: section.settings.date_format }}
+<div class="section-spacing color-scheme color-scheme--{{ section.settings.color_scheme.id }} color-scheme--bg-{{ color_scheme_hash }} {% if section.settings.separate_section_with_border %}bordered-section{% endif %}">
+  <div class="news-posts-wrapper">
+    <div class="news-posts-container">
+      <div class="news-posts-layout">
+        {%- comment -%} Header Section {%- endcomment -%}
+        {%- if section.settings.subheading != blank or section.settings.title != blank or section.settings.content != blank -%}
+          <div class="news-posts-header">
+            {%- if section.settings.subheading != blank -%}
+              <div class="news-posts-subheading">{{ section.settings.subheading }}</div>
+            {%- endif -%}
+            
+            {%- if section.settings.title != blank -%}
+              <h2 class="news-posts-title">{{ section.settings.title }}</h2>
+            {%- endif -%}
+            
+            {%- if section.settings.content != blank -%}
+              <div class="news-posts-content">
+                {{ section.settings.content }}
               </div>
-              <h3 class="news-post-title">
-                {{ article.title | strip_html | truncate: section.settings.title_truncate }}
-              </h3>
-            </div>
-            <div class="news-post-arrow">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-              </svg>
-            </div>
-          </a>
-        {%- endfor -%}
-      {%- else -%}
-        <div class="news-empty-state">
-          <p>No blog selected. Please select a blog in the section settings.</p>
-        </div>
-      {%- endif -%}
-    </div>
+            {%- endif -%}
 
-    {%- if section.settings.show_view_all and blog != blank -%}
-      <div class="news-view-all">
-        <a href="{{ blog.url }}" class="news-view-all-link">
-          {{ section.settings.view_all_text }}
-        </a>
+            {%- comment -%} Button in header for PC layout {%- endcomment -%}
+            {%- if section.settings.button_text != blank -%}
+              <div class="news-view-all hidden lg:block">
+                {%- assign button_link = section.settings.button_link | default: section.settings.blog.url -%}
+                <a href="{{ button_link }}" class="button">
+                  {{ section.settings.button_text }}
+                </a>
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- comment -%} Posts List {%- endcomment -%}
+        <div class="news-posts-main">
+          <div class="news-posts-list">
+            {%- assign blog = blogs[section.settings.blog] -%}
+            {%- if blog != blank -%}
+              {%- for article in blog.articles limit: section.settings.posts_count -%}
+                <a href="{{ article.url }}" class="news-post-item">
+                  <div class="news-post-content">
+                    {%- if section.settings.show_category and article.tags.size > 0 -%}
+                      <div class="news-post-category">
+                        {{ article.tags | first }}
+                      </div>
+                    {%- endif -%}
+                    
+                    {%- if section.settings.show_date -%}
+                      <div class="news-post-date">
+                        {{ article.published_at | date: '%Y.%m.%d' }}
+                      </div>
+                    {%- endif -%}
+                    
+                    <h3 class="news-post-title">
+                      {{ article.title | strip_html | truncate: 100 }}
+                    </h3>
+                    
+                    {%- if section.settings.show_excerpt -%}
+                      <div class="news-post-excerpt">
+                        {{ article.excerpt | strip_html | truncate: 150 }}
+                      </div>
+                    {%- endif -%}
+                    
+                    {%- if section.settings.show_read_more -%}
+                      <span class="news-post-read-more">Read more</span>
+                    {%- endif -%}
+                  </div>
+                  <div class="news-post-arrow">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                    </svg>
+                  </div>
+                </a>
+              {%- endfor -%}
+            {%- else -%}
+              <div class="news-empty-state">
+                <p>No blog selected. Please select a blog in the section settings.</p>
+              </div>
+            {%- endif -%}
+          </div>
+
+          {%- comment -%} Button below posts for mobile {%- endcomment -%}
+          {%- if section.settings.button_text != blank -%}
+            <div class="news-view-all lg:hidden">
+              {%- assign button_link = section.settings.button_link | default: section.settings.blog.url -%}
+              <a href="{{ button_link }}" class="button">
+                {{ section.settings.button_text }}
+              </a>
+            </div>
+          {%- endif -%}
+        </div>
       </div>
-    {%- endif -%}
+    </div>
   </div>
-</section>
+</div>
 
 {% schema %}
 {
   "name": "News Posts",
+  "class": "shopify-section--news-posts",
   "tag": "section",
-  "class": "section-blog-news",
+  "disabled_on": {
+    "groups": ["header", "custom.overlay"]
+  },
   "settings": [
     {
-      "type": "header",
-      "content": "Section Content"
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
     },
     {
-      "type": "text",
+      "type": "checkbox",
+      "id": "separate_section_with_border",
+      "label": "Separate section with border",
+      "default": true
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog"
+    },
+    {
+      "type": "range",
+      "id": "posts_count",
+      "min": 2,
+      "max": 9,
+      "label": "Posts count",
+      "default": 3
+    },
+    {
+      "type": "checkbox",
+      "id": "show_category",
+      "label": "Show category",
+      "info": "Uses the first tag as category",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "label": "Show date",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_excerpt",
+      "label": "Show excerpt",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_read_more",
+      "label": "Show read more",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Section header"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "inline_richtext",
       "id": "title",
       "label": "Heading",
-      "default": "INFORMATION"
+      "default": "Blog posts"
     },
     {
-      "type": "text",
-      "id": "subtitle",
-      "label": "Subheading",
-      "info": "Optional subtitle below the main heading"
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
     },
     {
       "type": "select",
-      "id": "heading_alignment",
-      "label": "Heading alignment",
+      "id": "text_alignment",
+      "label": "Text alignment",
       "options": [
         {
           "value": "left",
@@ -287,148 +440,24 @@
       "default": "left"
     },
     {
-      "type": "select",
-      "id": "heading_text_transform",
-      "label": "Heading style",
-      "options": [
-        {
-          "value": "none",
-          "label": "Normal"
-        },
-        {
-          "value": "uppercase",
-          "label": "Uppercase"
-        },
-        {
-          "value": "capitalize",
-          "label": "Capitalize"
-        }
-      ],
-      "default": "uppercase"
-    },
-    {
-      "type": "header",
-      "content": "Blog Settings"
-    },
-    {
-      "type": "blog",
-      "id": "blog",
-      "label": "Blog"
-    },
-    {
-      "type": "range",
-      "id": "post_limit",
-      "label": "Number of posts",
-      "min": 1,
-      "max": 10,
-      "step": 1,
-      "default": 3
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link",
+      "info": "Defaults to blog URL if left empty"
     },
     {
       "type": "text",
-      "id": "date_format",
-      "label": "Date format",
-      "default": "%Y.%m.%d",
-      "info": "Use strftime format. Default: %Y.%m.%d"
-    },
-    {
-      "type": "range",
-      "id": "title_truncate",
-      "label": "Title character limit",
-      "min": 50,
-      "max": 200,
-      "step": 10,
-      "default": 100
-    },
-    {
-      "type": "header",
-      "content": "View All Button"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_view_all",
-      "label": "Show 'View all' button",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "view_all_text",
+      "id": "button_text",
       "label": "Button text",
-      "default": "VIEW ALL"
-    },
-    {
-      "type": "header",
-      "content": "Color Settings"
-    },
-    {
-      "type": "color",
-      "id": "background_color",
-      "label": "Background color",
-      "default": "#EFEFEF"
-    },
-    {
-      "type": "color",
-      "id": "heading_color",
-      "label": "Heading color",
-      "default": "#000000"
-    },
-    {
-      "type": "color",
-      "id": "subtitle_color",
-      "label": "Subtitle color",
-      "default": "#666666"
-    },
-    {
-      "type": "color",
-      "id": "date_color",
-      "label": "Date color",
-      "default": "#666666"
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "Text color",
-      "default": "#000000"
-    },
-    {
-      "type": "color",
-      "id": "arrow_color",
-      "label": "Arrow color",
-      "default": "#333333"
-    },
-    {
-      "type": "header",
-      "content": "Button Colors"
-    },
-    {
-      "type": "color",
-      "id": "button_border_color",
-      "label": "Button border color",
-      "default": "#000000"
-    },
-    {
-      "type": "color",
-      "id": "button_text_color",
-      "label": "Button text color",
-      "default": "#000000"
-    },
-    {
-      "type": "color",
-      "id": "button_hover_bg",
-      "label": "Button hover background",
-      "default": "#000000"
-    },
-    {
-      "type": "color",
-      "id": "button_hover_text",
-      "label": "Button hover text color",
-      "default": "#ffffff"
+      "default": "View all"
     }
   ],
   "presets": [
     {
       "name": "News Posts",
-      "category": "Blog"
+      "settings": {
+        "blog": "news"
+      }
     }
   ]
 }
