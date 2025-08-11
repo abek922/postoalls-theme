@@ -6,25 +6,13 @@
 ">
   <div class="page-width">
     <div class="look-title-content">
-      {% if section.settings.title_ja != blank or section.settings.title_en != blank %}
+      {% if section.settings.title != blank %}
         {% assign title_tag = section.settings.heading_tag | default: 'h1' %}
-        <{{ title_tag }} class="look-title-main">
-          {% if request.locale.iso_code == 'ja' %}
-            {{ section.settings.title_ja | default: section.settings.title_en }}
-          {% else %}
-            {{ section.settings.title_en | default: section.settings.title_ja }}
-          {% endif %}
-        </{{ title_tag }}>
+        <{{ title_tag }} class="look-title-main">{{ section.settings.title }}</{{ title_tag }}>
       {% endif %}
       
-      {% if section.settings.subtitle_ja != blank or section.settings.subtitle_en != blank %}
-        <p class="look-title-subtitle">
-          {% if request.locale.iso_code == 'ja' %}
-            {{ section.settings.subtitle_ja | default: section.settings.subtitle_en }}
-          {% else %}
-            {{ section.settings.subtitle_en | default: section.settings.subtitle_ja }}
-          {% endif %}
-        </p>
+      {% if section.settings.subtitle != blank %}
+        <p class="look-title-subtitle">{{ section.settings.subtitle }}</p>
       {% endif %}
     </div>
   </div>
@@ -95,40 +83,10 @@
   "name": "Look Title",
   "settings": [
     {
-      "type": "header",
-      "content": "Japanese Text"
-    },
-    {
       "type": "text",
-      "id": "title_ja",
-      "label": "Title (Japanese)",
-      "default": "2025年 春夏コレクション"
-    },
-    {
-      "type": "text", 
-      "id": "subtitle_ja",
-      "label": "Subtitle (Japanese)",
-      "default": "ひとつの海、すべての大陸"
-    },
-    {
-      "type": "header",
-      "content": "English Text"
-    },
-    {
-      "type": "text",
-      "id": "title_en",
-      "label": "Title (English)",
+      "id": "title",
+      "label": "Title",
       "default": "2025 SPRING & SUMMER COLLECTION"
-    },
-    {
-      "type": "text", 
-      "id": "subtitle_en",
-      "label": "Subtitle (English)",
-      "default": "ONE OCEAN, ALL LANDS"
-    },
-    {
-      "type": "header",
-      "content": "Style Settings"
     },
     {
       "type": "select",
@@ -161,6 +119,12 @@
         }
       ],
       "default": "h1"
+    },
+    {
+      "type": "text", 
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "ONE OCEAN, ALL LANDS"
     },
     {
       "type": "color",
