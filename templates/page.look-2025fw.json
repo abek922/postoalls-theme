@@ -162,7 +162,6 @@
     },
     "look_combined_2_pKdFBg": {
       "type": "look-combined-2",
-      "disabled": true,
       "name": "Look Combined 2",
       "settings": {
         "layout_1": "text_left",

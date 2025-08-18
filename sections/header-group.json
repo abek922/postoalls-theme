@@ -49,7 +49,7 @@
         "sidebar_menu": "",
         "menu_open_trigger": "hover",
         "menu_text_font": "heading",
-        "enable_search": false,
+        "enable_search": true,
         "sidebar_color_scheme": "",
         "sidebar_text_font": "body",
         "sidebar_show_dividers": true,
