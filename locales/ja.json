@@ -407,7 +407,7 @@
     "general": {
       "title": "検索",
       "terms": "\"{{terms}}\" の検索結果",
-      "search_placeholder": "何をお探しですか？",
+      "search_placeholder": "",
       "products": "商品",
       "suggestions": "候補",
       "collections": "コレクション",
