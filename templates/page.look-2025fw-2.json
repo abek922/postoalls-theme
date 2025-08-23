@@ -39,6 +39,7 @@
     },
     "look_combined_Ghqgcd": {
       "type": "look-combined",
+      "disabled": true,
       "name": "Look Combined",
       "settings": {
         "layout_1": "text_left",
@@ -164,6 +165,7 @@
     },
     "look_combined_zEFgTE": {
       "type": "look-combined",
+      "disabled": true,
       "name": "Look Combined",
       "settings": {
         "layout_1": "text_left",
@@ -289,6 +291,7 @@
     },
     "look_combined_qVCgqR": {
       "type": "look-combined",
+      "disabled": true,
       "name": "Look Combined",
       "settings": {
         "layout_1": "text_left",
@@ -414,6 +417,7 @@
     },
     "look_combined_AkCc3F": {
       "type": "look-combined",
+      "disabled": true,
       "name": "Look Combined",
       "settings": {
         "layout_1": "text_left",
@@ -542,6 +546,7 @@
       "name": "Look Combined Single",
       "settings": {
         "layout": "text_left",
+        "image": "shopify://shop_images/m-1_652d79c6-951d-47a4-8ded-db90bc4daa0d.jpg",
         "title": "",
         "heading_tag": "h2",
         "text": "",
@@ -577,6 +582,7 @@
       "name": "Look Combined Single",
       "settings": {
         "layout": "text_left",
+        "image": "shopify://shop_images/w-1_c8907af3-ab49-441c-8131-4ab12847eb72.jpg",
         "title": "",
         "heading_tag": "h2",
         "text": "",
@@ -612,6 +618,7 @@
       "name": "Look Combined Single",
       "settings": {
         "layout": "text_left",
+        "image": "shopify://shop_images/m-2_8e8d29c0-e73f-4d3f-984c-6cb68a35de7a.jpg",
         "title": "",
         "heading_tag": "h2",
         "text": "",
@@ -647,6 +654,7 @@
       "name": "Look Combined Single",
       "settings": {
         "layout": "text_left",
+        "image": "shopify://shop_images/w-2_0a5e5012-1a09-4ba4-a329-e824ce3baa70.jpg",
         "title": "",
         "heading_tag": "h2",
         "text": "",
@@ -682,6 +690,7 @@
       "name": "Look Combined Single",
       "settings": {
         "layout": "text_left",
+        "image": "shopify://shop_images/m-3_c51dc5c8-fb17-4407-8ab3-e6d5955b34b2.jpg",
         "title": "",
         "heading_tag": "h2",
         "text": "",
@@ -717,6 +726,7 @@
       "name": "Look Combined Single",
       "settings": {
         "layout": "text_left",
+        "image": "shopify://shop_images/w-3_17fc9eb6-36f8-46a8-85d6-5c3423492e2c.jpg",
         "title": "",
         "heading_tag": "h2",
         "text": "",
