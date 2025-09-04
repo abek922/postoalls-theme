@@ -157,7 +157,6 @@
       "block_order": [
         "image_DPfKdr"
       ],
-      "disabled": true,
       "custom_css": [
         ".place-self-end-center {transform: translateY(-4rem);}",
         ".h6 {display: inline-block; border-bottom: 1px solid #fff; padding-bottom: 4px; transform: translateY(1rem);}"
