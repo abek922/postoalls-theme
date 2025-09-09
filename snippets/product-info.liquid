@@ -240,7 +240,7 @@ Supported variables
 
           {%- when 'variant_picker' -%}
             {%- if product != blank -%}
-              {%- if disable_interactions -%}
+              {%- if disable_interactions == true -%}
                 {%- comment -%}無効化されたバリエーションピッカーを表示{%- endcomment -%}
                 <div class="variant-picker variant-picker--disabled">
                   {%- render 'variant-picker',
