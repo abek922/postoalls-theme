@@ -215,68 +215,15 @@ Supported variables
 
           {%- when 'variant_picker' -%}
             {%- if product != blank -%}
-              {%- comment -%}タグチェック - 制限タグがある場合はバリエーションピッカーを表示のみに{%- endcomment -%}
-              {%- liquid
-                assign disable_variant_picker = false
-                
-                for tag in product.tags
-                  assign tag_downcase = tag | downcase
-                  if tag_downcase == 'coming soon' or tag_downcase == 'display only' or tag_downcase == 'archive'
-                    assign disable_variant_picker = true
-                    break
-                  endif
-                endfor
-              -%}
-
-              {%- if disable_variant_picker -%}
-                {%- comment -%}無効化されたバリエーションピッカーを表示{%- endcomment -%}
-                <div class="variant-picker variant-picker--disabled">
-                  {%- render 'variant-picker',
-                      product: product,
-                      form_id: product_form_id,
-                      context: context,
-                      hide_sold_out_variants: block.settings.hide_sold_out_variants,
-                      selector_style: block.settings.selector_style,
-                      swatch_selector_style: block.settings.swatch_selector_style,
-                      variant_image_options: block.settings.variant_image_options,
-                      size_chart_page: block.settings.size_chart_page -%}
-                </div>
-                <style>
-                  .variant-picker--disabled {
-                    pointer-events: none;
-                    opacity: 0.6;
-                    cursor: default;
-                  }
-                  .variant-picker--disabled .option-value {
-                    pointer-events: none !important;
-                    cursor: not-allowed !important;
-                  }
-                  .variant-picker--disabled select {
-                    pointer-events: none !important;
-                    background-color: #f5f5f5 !important;
-                    cursor: not-allowed !important;
-                  }
-                  .variant-picker--disabled input[type="radio"] {
-                    pointer-events: none !important;
-                    cursor: not-allowed !important;
-                  }
-                  .variant-picker--disabled button {
-                    pointer-events: none !important;
-                    cursor: not-allowed !important;
-                  }
-                </style>
-              {%- else -%}
-                {%- comment -%}通常のバリエーションピッカーを表示{%- endcomment -%}
-                {%- render 'variant-picker',
-                    product: product,
-                    form_id: product_form_id,
-                    context: context,
-                    hide_sold_out_variants: block.settings.hide_sold_out_variants,
-                    selector_style: block.settings.selector_style,
-                    swatch_selector_style: block.settings.swatch_selector_style,
-                    variant_image_options: block.settings.variant_image_options,
-                    size_chart_page: block.settings.size_chart_page -%}
-              {%- endif -%}
+              {%- render 'variant-picker',
+                  product: product,
+                  form_id: product_form_id,
+                  context: context,
+                  hide_sold_out_variants: block.settings.hide_sold_out_variants,
+                  selector_style: block.settings.selector_style,
+                  swatch_selector_style: block.settings.swatch_selector_style,
+                  variant_image_options: block.settings.variant_image_options,
+                  size_chart_page: block.settings.size_chart_page -%}
             {%- endif -%}
 
           {%- when 'product_variations' -%}
