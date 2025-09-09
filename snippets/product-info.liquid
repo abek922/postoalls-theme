@@ -17,29 +17,25 @@ Supported variables
 * context: the context of the product info. Can be "main_product", "featured_product" or "quick_buy"
 {%- endcomment -%}
 
-{%- comment -%}タグチェックロジック - ページトップで1回だけ実行{%- endcomment -%}
-{%- unless product_tag_check_done -%}
-  {%- liquid
-    assign show_buy_buttons = true
-    assign show_coming_soon = false
-    assign disable_interactions = false
-    
-    for tag in product.tags
-      assign tag_downcase = tag | downcase
-      if tag_downcase == 'display only' or tag_downcase == 'archive'
-        assign show_buy_buttons = false
-        assign disable_interactions = true
-        break
-      elsif tag_downcase == 'coming soon'
-        assign show_coming_soon = true
-        assign disable_interactions = true
-        break
-      endif
-    endfor
-    
-    assign product_tag_check_done = true
-  -%}
-{%- endunless -%}
+{%- comment -%}タグチェックロジック - シンプル版{%- endcomment -%}
+{%- liquid
+  assign is_restricted_product = false
+  assign show_coming_soon_button = false
+  assign hide_buy_buttons = false
+  
+  for tag in product.tags
+    assign tag_downcase = tag | downcase
+    if tag_downcase == 'coming soon'
+      assign is_restricted_product = true
+      assign show_coming_soon_button = true
+      break
+    elsif tag_downcase == 'display only' or tag_downcase == 'archive'
+      assign is_restricted_product = true
+      assign hide_buy_buttons = true
+      break
+    endif
+  endfor
+-%}
 
 
 <safe-sticky class="product-info {% if center_basic_info %}product-info--center{% endif %}">
@@ -240,8 +236,7 @@ Supported variables
 
           {%- when 'variant_picker' -%}
             {%- if product != blank -%}
-              {%- if disable_interactions == true -%}
-                {%- comment -%}無効化されたバリエーションピッカーを表示{%- endcomment -%}
+              {%- if is_restricted_product -%}
                 <div class="variant-picker variant-picker--disabled">
                   {%- render 'variant-picker',
                       product: product,
@@ -258,16 +253,8 @@ Supported variables
                     pointer-events: none;
                     opacity: 0.6;
                   }
-                  .variant-picker--disabled .option-value {
-                    cursor: not-allowed !important;
-                  }
-                  .variant-picker--disabled select {
-                    pointer-events: none;
-                    background-color: #f5f5f5;
-                  }
                 </style>
               {%- else -%}
-                {%- comment -%}通常のバリエーションピッカーを表示{%- endcomment -%}
                 {%- render 'variant-picker',
                     product: product,
                     form_id: product_form_id,
@@ -420,35 +407,37 @@ Supported variables
             {%- endif -%}
 
           {%- when 'quantity_selector' -%}
-            {%- if product.available and disable_interactions == false -%}
-              <div class="v-stack gap-1 justify-items-start">
-                {%- liquid
-                  assign variant = product.selected_or_first_available_variant
-                  assign quantity_rules = ''
+            {%- unless is_restricted_product -%}
+              {%- if product.available -%}
+                <div class="v-stack gap-1 justify-items-start">
+                  {%- liquid
+                    assign variant = product.selected_or_first_available_variant
+                    assign quantity_rules = ''
 
-                  render 'quantity-selector', variant: variant, form: product_form_id
+                    render 'quantity-selector', variant: variant, form: product_form_id
 
-                  if variant.quantity_rule.min > 1
-                    assign rule = 'product.quantity.minimum_of' | t: min: variant.quantity_rule.min
-                    assign quantity_rules = quantity_rules | append: ' / ' | append: rule
-                  endif
+                    if variant.quantity_rule.min > 1
+                      assign rule = 'product.quantity.minimum_of' | t: min: variant.quantity_rule.min
+                      assign quantity_rules = quantity_rules | append: ' / ' | append: rule
+                    endif
 
-                  if variant.quantity_rule.max != nil
-                    assign rule = 'product.quantity.maximum_of' | t: max: variant.quantity_rule.max
-                    assign quantity_rules = quantity_rules | append: ' / ' | append: rule
-                  endif
+                    if variant.quantity_rule.max != nil
+                      assign rule = 'product.quantity.maximum_of' | t: max: variant.quantity_rule.max
+                      assign quantity_rules = quantity_rules | append: ' / ' | append: rule
+                    endif
 
-                  if variant.quantity_rule.increment > 1
-                    assign rule = 'product.quantity.increment_of' | t: step: variant.quantity_rule.increment
-                    assign quantity_rules = quantity_rules | append: ' / ' | append: rule
-                  endif
-                -%}
+                    if variant.quantity_rule.increment > 1
+                      assign rule = 'product.quantity.increment_of' | t: step: variant.quantity_rule.increment
+                      assign quantity_rules = quantity_rules | append: ' / ' | append: rule
+                    endif
+                  -%}
 
-                {%- if quantity_rules != blank -%}
-                  <p class="text-subdued text-sm">{{ quantity_rules | remove_first: ' / ' | capitalize }}</p>
-                {%- endif -%}
-              </div>
-            {%- endif -%}
+                  {%- if quantity_rules != blank -%}
+                    <p class="text-subdued text-sm">{{ quantity_rules | remove_first: ' / ' | capitalize }}</p>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+            {%- endunless -%}
 
           {%- when 'volume_pricing' -%}
             {%- render 'volume-pricing-table', variant: variant -%}
@@ -463,9 +452,9 @@ Supported variables
             -%}
 
           {%- when 'buy_buttons' -%}
-            {%- if show_buy_buttons == false -%}
+            {%- if hide_buy_buttons -%}
               {%- comment -%}購入ボタンを完全に非表示{%- endcomment -%}
-            {%- elsif show_coming_soon -%}
+            {%- elsif show_coming_soon_button -%}
               {%- comment -%}Coming Soon ボタンを表示{%- endcomment -%}
               <div class="buy-buttons v-stack gap-4">
                 <button type="button" class="button w-full coming-soon-button" disabled>
