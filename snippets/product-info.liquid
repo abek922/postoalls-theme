@@ -352,54 +352,17 @@ Supported variables
                 low_threshold: block.settings.low_inventory_threshold
             -%}
 
-{%- when 'buy_buttons' -%}
-            {%- comment -%}タグに基づく購入ボタンの表示制御{%- endcomment -%}
-            {%- liquid
-              assign show_buy_buttons = true
-              assign show_coming_soon = false
-              
-              for tag in product.tags
-                assign tag_downcase = tag | downcase
-                if tag_downcase == 'display only' or tag_downcase == 'archive'
-                  assign show_buy_buttons = false
-                  break
-                elsif tag_downcase == 'coming soon'
-                  assign show_coming_soon = true
-                  break
-                endif
-              endfor
+          {%- when 'buy_buttons' -%}
+            {%- render 'buy-buttons',
+                product: product,
+                form_id: product_form_id,
+                show_payment_button: block.settings.show_payment_button,
+                show_gift_card_recipient: block.settings.show_gift_card_recipient,
+                atc_button_background: block.settings.atc_button_background,
+                atc_button_text_color: block.settings.atc_button_text_color,
+                payment_button_background: block.settings.payment_button_background,
+                payment_button_text_color: block.settings.payment_button_text_color
             -%}
-
-            {%- if show_buy_buttons == false -%}
-              {%- comment -%}購入ボタンを完全に非表示{%- endcomment -%}
-            {%- elsif show_coming_soon -%}
-              {%- comment -%}Coming Soon ボタンを表示{%- endcomment -%}
-              <div class="buy-buttons v-stack gap-4">
-                <button type="button" class="button w-full coming-soon-button" disabled>
-                  Coming Soon
-                </button>
-              </div>
-              <style>
-                .coming-soon-button {
-                  background-color: #e0e0e0 !important;
-                  color: #666 !important;
-                  cursor: not-allowed !important;
-                  opacity: 0.7;
-                }
-              </style>
-            {%- else -%}
-              {%- comment -%}通常の購入ボタン{%- endcomment -%}
-              {%- render 'buy-buttons',
-                  product: product,
-                  form_id: product_form_id,
-                  show_payment_button: block.settings.show_payment_button,
-                  show_gift_card_recipient: block.settings.show_gift_card_recipient,
-                  atc_button_background: block.settings.atc_button_background,
-                  atc_button_text_color: block.settings.atc_button_text_color,
-                  payment_button_background: block.settings.payment_button_background,
-                  payment_button_text_color: block.settings.payment_button_text_color
-              -%}
-            {%- endif -%}
 
           {%- when 'pickup_availability' -%}
             {%- if product != blank -%}
