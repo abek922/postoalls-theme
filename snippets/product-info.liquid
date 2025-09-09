@@ -359,15 +359,33 @@ Supported variables
             {%- render 'volume-pricing-table', variant: variant -%}
 
           {%- when 'inventory' -%}
-            {%- render 'inventory',
-                variant: product.selected_or_first_available_variant,
-                show_in_stock_quantity: block.settings.show_in_stock_quantity,
-                show_progress_bar: block.settings.show_progress_bar,
-                progress_bar_max_value: block.settings.progress_bar_max_value,
-                low_threshold: block.settings.low_inventory_threshold
+            {%- comment -%}タグチェック - 制限タグがある場合は在庫情報を非表示{%- endcomment -%}
+            {%- liquid
+              assign hide_inventory = false
+              
+              for tag in product.tags
+                assign tag_downcase = tag | downcase | strip
+                if tag_downcase == 'coming soon' or tag_downcase == 'display only' or tag_downcase == 'archive'
+                  assign hide_inventory = true
+                  break
+                endif
+              endfor
             -%}
 
-{%- when 'buy_buttons' -%}
+            {%- unless hide_inventory -%}
+              {%- render 'inventory',
+                  variant: product.selected_or_first_available_variant,
+                  show_in_stock_quantity: block.settings.show_in_stock_quantity,
+                  show_progress_bar: block.settings.show_progress_bar,
+                  progress_bar_max_value: block.settings.progress_bar_max_value,
+                  low_threshold: block.settings.low_inventory_threshold
+              -%}
+            {%- else -%}
+              {%- comment -%}制限タグがある商品: 在庫情報を非表示{%- endcomment -%}
+              <!-- inventory hidden for restricted products -->
+            {%- endunless -%}
+
+          {%- when 'buy_buttons' -%}
             {%- comment -%}タグに基づく購入ボタンの表示制御{%- endcomment -%}
             {%- liquid
               assign show_buy_buttons = true
