@@ -19,6 +19,21 @@
       break
     endif
   endfor
+
+  # タグに基づく購入ボタンの表示制御
+  assign show_buy_buttons = true
+  assign show_coming_soon = false
+  
+  for tag in product.tags
+    assign tag_downcase = tag | downcase
+    if tag_downcase == 'display only' or tag_downcase == 'archive'
+      assign show_buy_buttons = false
+      break
+    elsif tag_downcase == 'coming soon'
+      assign show_coming_soon = true
+      break
+    endif
+  endfor
 -%}
 
 <style>
@@ -34,6 +49,14 @@
         --product-grid: "product-gallery product-info" / minmax(0, {{ 100.0 | minus: section.settings.product_info_size | divided_by: 100.0 }}fr) minmax(0, {{ section.settings.product_info_size | divided_by: 100.0 }}fr);
       {%- endif -%}
     }
+  }
+
+  /* Coming Soon ボタンのスタイル */
+  .coming-soon-button {
+    background-color: #e0e0e0 !important;
+    color: #666 !important;
+    cursor: not-allowed !important;
+    opacity: 0.7;
   }
 </style>
 
@@ -61,7 +84,9 @@
           product_form_id: product_form_id,
           center_basic_info: section.settings.center_basic_info, 
           has_content_below_gallery: has_content_below_gallery, 
-          context: 'main_product' 
+          context: 'main_product',
+          show_buy_buttons: show_buy_buttons,
+          show_coming_soon: show_coming_soon
         -%}
 
         {%- comment -%}On Prestige, some content may be on the left part below the product gallery{%- endcomment -%}
@@ -106,7 +131,8 @@
   </div>
 </div>
 
-{%- if section.settings.show_sticky_add_to_cart and product.available -%}
+{%- comment -%}スティッキーバーの購入ボタン制御{%- endcomment -%}
+{%- if section.settings.show_sticky_add_to_cart and product.available and show_buy_buttons -%}
   <product-rerender id="{{ product_form_id }}-sticky-bar" observe-form="{{ product_form_id }}">
     <product-sticky-bar form="{{ product_form_id }}" class="product-sticky-bar">
       <div class="product-sticky-bar__info sm-max:hidden">
@@ -127,31 +153,59 @@
       </div>
 
       <buy-buttons class="buy-buttons" template="{{ product.template_suffix | escape }}" form="{{ product_form_id }}">
-        {%- liquid
-          assign button_disabled = false
-          assign button_style = 'solid'
+        {%- if show_coming_soon -%}
+          {%- render 'button', content: 'Coming Soon', style: 'solid', disabled: true, class: 'coming-soon-button' -%}
+        {%- else -%}
+          {%- liquid
+            assign button_disabled = false
+            assign button_style = 'solid'
 
-          if product.selected_or_first_available_variant == nil
-            assign button_disabled = true
-            assign button_style = 'outline'
-            assign button_content = 'product.general.unavailable_button' | t
-          elsif product.selected_or_first_available_variant.available == false
-            assign button_disabled = true
-            assign button_style = 'outline'
-            assign button_content = 'product.general.sold_out_button' | t
-          else
-            if product.template_suffix contains 'pre-order'
-              assign button_content = 'product.general.pre_order_button' | t
+            if product.selected_or_first_available_variant == nil
+              assign button_disabled = true
+              assign button_style = 'outline'
+              assign button_content = 'product.general.unavailable_button' | t
+            elsif product.selected_or_first_available_variant.available == false
+              assign button_disabled = true
+              assign button_style = 'outline'
+              assign button_content = 'product.general.sold_out_button' | t
             else
-              assign button_content = 'product.general.add_to_cart_button' | t
+              if product.template_suffix contains 'pre-order'
+                assign button_content = 'product.general.pre_order_button' | t
+              else
+                assign button_content = 'product.general.add_to_cart_button' | t
+              endif
             endif
-          endif
-        -%}
+          -%}
 
-        {%- render 'button', content: button_content, style: button_style, type: 'submit', form: product_form_id, disabled: button_disabled -%}
+          {%- render 'button', content: button_content, style: button_style, type: 'submit', form: product_form_id, disabled: button_disabled -%}
+        {%- endif -%}
       </buy-buttons>
     </product-sticky-bar>
   </product-rerender>
+{%- elsif section.settings.show_sticky_add_to_cart and show_coming_soon -%}
+  {%- comment -%}Coming Soon用のスティッキーバー{%- endcomment -%}
+  <div class="product-sticky-bar">
+    <div class="product-sticky-bar__info sm-max:hidden">
+      <div class="h-stack gap-6">
+        {%- if product.media.size > 0 -%}
+          {%- assign default_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media -%}
+          {{- default_media | image_url: width: default_media.width | image_tag: loading: 'lazy', sizes: '60px', widths: '60,120,180' -}}
+        {%- endif -%}
+
+        <div class="v-stack">
+          <span class="h6">{{ product.title }}</span>
+
+          {%- if product.selected_or_first_available_variant != nil -%}
+            {%- render 'price-list', variant: product.selected_or_first_available_variant, hide_unit_price: true, context: 'card' -%}
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+
+    <div class="buy-buttons">
+      {%- render 'button', content: 'Coming Soon', style: 'solid', disabled: true, class: 'coming-soon-button' -%}
+    </div>
+  </div>
 {%- endif -%}
 
 {%- comment -%}
@@ -160,7 +214,9 @@ when rendering the quick buy drawers/popovers, we want to be able to re-use the 
 is however only possible by rendering the whole product page, and extracting the relevant part. Here, we therefore render the
 quick buy information in a template, that will be extracted in JS, which ensures it is not visible in the main product page
 {%- endcomment -%}
-{%- render 'product-quick-buy', product: product -%}
+{%- if show_buy_buttons -%}
+  {%- render 'product-quick-buy', product: product -%}
+{%- endif -%}
 
 <script>
   // We save the product ID in local storage to be eventually used for recently viewed section
@@ -1516,292 +1572,4 @@ quick buy information in a template, that will be extracted in JS, which ensures
             },
             {
               "value": "picto-file",
-              "label": "t:global.icons.file",
-              "group": "t:global.icons.other_category"
-            },
-            {
-              "value": "picto-jewelry",
-              "label": "t:global.icons.jewelry",
-              "group": "t:global.icons.other_category"
-            },
-            {
-              "value": "picto-mask",
-              "label": "t:global.icons.mask",
-              "group": "t:global.icons.other_category"
-            },
-            {
-              "value": "picto-music",
-              "label": "t:global.icons.music",
-              "group": "t:global.icons.other_category"
-            },
-            {
-              "value": "picto-not-allowed",
-              "label": "t:global.icons.not_allowed",
-              "group": "t:global.icons.other_category"
-            },
-            {
-              "value": "picto-target",
-              "label": "t:global.icons.target",
-              "group": "t:global.icons.other_category"
-            },
-            {
-              "value": "picto-timer",
-              "label": "t:global.icons.timer",
-              "group": "t:global.icons.other_category"
-            },
-            {
-              "value": "picto-success",
-              "label": "t:global.icons.success",
-              "group": "t:global.icons.other_category"
-            }
-          ],
-          "default": "none"
-        },
-        {
-          "type": "image_picker",
-          "id": "custom_icon",
-          "label": "t:global.icons.custom_icon",
-          "info": "t:global.icons.custom_icon_info"
-        },
-        {
-          "type": "inline_richtext",
-          "id": "title",
-          "label": "t:global.text.title",
-          "default": "Title"
-        },
-        {
-          "type": "richtext",
-          "id": "content",
-          "label": "t:global.text.content",
-          "default": "<p>Share some content to your customers about your products.</p>"
-        },
-        {
-          "type": "liquid",
-          "id": "liquid",
-          "label": "t:global.code.liquid",
-          "info": "t:sections.main_product.blocks.collapsible_text.liquid_info"
-        },
-        {
-          "type": "page",
-          "id": "page",
-          "label": "t:sections.main_product.blocks.collapsible_text.page",
-          "info": "t:sections.main_product.blocks.collapsible_text.page_info"
-        }
-      ]
-    },
-    {
-      "type": "liquid",
-      "name": "t:sections.main_product.blocks.liquid.name",
-      "settings": [
-        {
-          "type": "liquid",
-          "id": "liquid",
-          "label": "t:global.code.liquid",
-          "info": "t:global.code.liquid_info"
-        }
-      ]
-    },
-    {
-      "type": "modal",
-      "name": "t:sections.main_product.blocks.modal.name",
-      "settings": [
-        {
-          "type": "paragraph",
-          "content": "t:sections.main_product.blocks.modal.instructions"
-        },
-        {
-          "type": "header",
-          "content": "Button"
-        },
-        {
-          "type": "inline_richtext",
-          "id": "button_title",
-          "label": "t:global.text.button_text",
-          "default": "Button title"
-        },
-        {
-          "type": "select",
-          "id": "button_style",
-          "label": "t:global.text.style",
-          "options": [
-            {
-              "value": "outline",
-              "label": "t:global.text.link_style_options.outline"
-            },
-            {
-              "value": "solid",
-              "label": "t:global.text.link_style_options.solid"
-            },
-            {
-              "value": "link",
-              "label": "t:global.text.link_style_options.link"
-            }
-          ],
-          "default": "solid"
-        },
-        {
-          "type": "checkbox",
-          "id": "stretch_button",
-          "label": "t:sections.main_product.blocks.button.stretch"
-        },
-        {
-          "type": "color",
-          "id": "button_background",
-          "label": "t:global.colors.background"
-        },
-        {
-          "type": "color",
-          "id": "button_text_color",
-          "label": "t:global.colors.text"
-        },
-        {
-          "type": "header",
-          "content": "t:sections.main_product.blocks.modal.modal_category"
-        },
-        {
-          "type": "inline_richtext",
-          "id": "modal_title",
-          "label": "t:sections.main_product.blocks.modal.modal_title",
-          "default": "Modal title"
-        },
-        {
-          "type": "richtext",
-          "id": "modal_content",
-          "label": "t:sections.main_product.blocks.modal.modal_content",
-          "default": "<p>Write some content that will appear in a modal</p>"
-        }
-      ]
-    },
-    {
-      "type": "image",
-      "name": "t:sections.main_product.blocks.image.name",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "t:global.image.image"
-        },
-        {
-          "type": "select",
-          "id": "alignment",
-          "label": "t:global.image.alignment",
-          "options": [
-            {
-              "value": "start",
-              "label": "t:global.position.left"
-            },
-            {
-              "value": "center",
-              "label": "t:global.position.center"
-            },
-            {
-              "value": "end",
-              "label": "t:global.position.right"
-            }
-          ],
-          "default": "start"
-        },
-        {
-          "type": "radio",
-          "id": "width_mode",
-          "label": "t:global.image.width",
-          "options": [
-            {
-              "value": "full_width",
-              "label": "t:global.image.width_options.full_width"
-            },
-            {
-              "value": "custom",
-              "label": "t:global.image.width_options.custom"
-            }
-          ],
-          "default": "custom"
-        },
-        {
-          "type": "range",
-          "id": "max_width",
-          "min": 100,
-          "max": 600,
-          "step": 10,
-          "unit": "px",
-          "label": "t:global.image.maximum_width",
-          "default": 300
-        },
-        {
-          "type": "range",
-          "id": "mobile_max_width",
-          "min": 100,
-          "max": 600,
-          "step": 10,
-          "unit": "px",
-          "label": "t:global.image.mobile_maximum_width",
-          "default": 200
-        }
-      ]
-    },
-    {
-      "type": "button",
-      "name": "t:sections.main_product.blocks.button.name",
-      "settings": [
-        {
-          "type": "paragraph",
-          "content": "t:sections.main_product.blocks.button.instructions"
-        },
-        {
-          "type": "url",
-          "id": "link",
-          "label": "t:sections.main_product.blocks.button.link"
-        },
-        {
-          "type": "text",
-          "id": "text",
-          "label": "t:sections.main_product.blocks.button.text",
-          "default": "Button"
-        },
-        {
-          "type": "checkbox",
-          "id": "stretch",
-          "label": "t:sections.main_product.blocks.button.stretch"
-        },
-        {
-          "type": "color",
-          "id": "background",
-          "label": "t:global.colors.background"
-        },
-        {
-          "type": "color",
-          "id": "text_color",
-          "label": "t:global.colors.text"
-        }
-      ]
-    },
-    {
-      "type": "share_buttons",
-      "name": "t:sections.main_product.blocks.share_buttons.name",
-      "settings": [
-        {
-          "type": "paragraph",
-          "content": "t:sections.main_product.blocks.share_buttons.instructions"
-        }
-      ]
-    },
-    {
-      "type": "more_information",
-      "name": "t:sections.main_product.blocks.more_information.name",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "paragraph",
-          "content": "t:sections.main_product.blocks.more_information.instructions"
-        },
-        {
-          "type": "inline_richtext",
-          "id": "text",
-          "label": "t:sections.main_product.blocks.more_information.text",
-          "default": "More information"
-        }
-      ]
-    }
-  ]
-}
-{% endschema %}
+              "label
