@@ -179,24 +179,38 @@ Supported variables
           -%}
 
           <div class="variant-picker__option-values {{ list_classes }}">
-            {% liquid
-              assign name = form_id | append: '-option' | append: option.position
+            {%- for option_value in option.values -%}
+              {%- if display_only -%}
+                {%- comment -%}Display-only mode: show all options as unselected and non-interactive{%- endcomment -%}
+                {%- case resolved_option_selector_style -%}
+                  {%- when 'variant_image' -%}
+                    <div class="option-value option-value--thumbnail option-value--unselected">
+                      {%- if option_value.image -%}
+                        {{ option_value.image | image_url: width: 60 | image_tag: loading: 'lazy', sizes: '60px', widths: '60,120' }}
+                      {%- endif -%}
+                      <span class="sr-only">{{ option_value }}</span>
+                    </div>
+                  {%- when 'swatch' -%}
+                    <div class="option-value option-value--swatch option-value--unselected" {% if option_value.swatch.color %}style="background-color: {{ option_value.swatch.color }}"{% endif %}>
+                      <span class="sr-only">{{ option_value }}</span>
+                    </div>
+                  {%- when 'block' -%}
+                    <div class="option-value option-value--block option-value--unselected">
+                      <span>{{ option_value }}</span>
+                    </div>
+                  {%- when 'block_swatch' -%}
+                    <div class="option-value option-value--block option-value--unselected">
+                      {%- if option_value.swatch.color -%}
+                        <span class="option-value__swatch" style="background-color: {{ option_value.swatch.color }}"></span>
+                      {%- endif -%}
+                      <span>{{ option_value }}</span>
+                    </div>
+                {%- endcase -%}
+              {%- else -%}
+                {%- comment -%}Normal interactive mode{%- endcomment -%}
+                {%- liquid
+                  assign name = form_id | append: '-option' | append: option.position
 
-              for option_value in option.values
-                if display_only
-                  # Display-only mode: show all options as unselected and non-interactive
-                  case resolved_option_selector_style
-                    when 'variant_image'
-                      render 'option-value', type: 'thumbnail', option_value: option_value, display_only: true, id_prefix: forloop.index
-                    when 'swatch'
-                      render 'option-value', type: 'swatch', option_value: option_value, display_only: true, id_prefix: forloop.index
-                    when 'block'
-                      render 'option-value', type: 'block', option_value: option_value, display_only: true, id_prefix: forloop.index
-                    when 'block_swatch'
-                      render 'option-value', type: 'block', option_value: option_value, show_swatch: true, display_only: true, id_prefix: forloop.index
-                  endcase
-                else
-                  # Normal interactive mode
                   case resolved_option_selector_style
                     when 'variant_image'
                       render 'option-value', type: 'thumbnail', form: form_id, option_value: option_value, param_name: name, option_position: option.position, hide_if_disabled: hide_sold_out_variants, reload_page_for_combined_products: is_main_product, id_prefix: forloop.index
@@ -207,9 +221,9 @@ Supported variables
                     when 'block_swatch'
                       render 'option-value', type: 'block', form: form_id, option_value: option_value, param_name: name, option_position: option.position, show_swatch: true, hide_if_disabled: hide_sold_out_variants, reload_page_for_combined_products: is_main_product, id_prefix: forloop.index
                   endcase
-                endif
-              endfor
-            %}
+                -%}
+              {%- endif -%}
+            {%- endfor -%}
           </div>
         {%- endif -%}
       </fieldset>
