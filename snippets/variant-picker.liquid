@@ -249,20 +249,48 @@ Supported variables
         cursor: not-allowed !important;
         pointer-events: none !important;
       }
-      .option-value--unselected {
-        background-color: #f8f8f8 !important;
-        border: 1px solid #e0e0e0 !important;
-        color: #999 !important;
-        cursor: not-allowed !important;
+      /* 選択状態を強制的に解除 */
+      .variant-picker--display-only input[type="radio"]:checked {
+        appearance: none !important;
+        background: none !important;
+      }
+      .variant-picker--display-only .option-value {
         opacity: 0.7 !important;
+        pointer-events: none !important;
+        cursor: not-allowed !important;
       }
-      .option-value--unselected.option-value--swatch {
-        opacity: 0.4 !important;
-        border: 2px solid #ddd !important;
+      .variant-picker--display-only .option-value--selected,
+      .variant-picker--display-only .option-value[aria-current="true"] {
+        background-color: #f8f8f8 !important;
+        border-color: #e0e0e0 !important;
+        color: #999 !important;
       }
-      .option-value--unselected .option-value__swatch {
-        opacity: 0.4 !important;
+      /* スクリプトによるバリアント選択を無効化 */
+      .variant-picker--display-only * {
+        pointer-events: none !important;
       }
     </style>
+    <script>
+      // 制限商品のバリエーション選択を無効化
+      document.addEventListener('DOMContentLoaded', function() {
+        const restrictedPicker = document.querySelector('.variant-picker--display-only');
+        if (restrictedPicker) {
+          // すべての選択状態をリセット
+          const inputs = restrictedPicker.querySelectorAll('input[type="radio"]');
+          inputs.forEach(input => {
+            input.checked = false;
+            input.disabled = true;
+          });
+          
+          // 選択状態のクラスを削除
+          const options = restrictedPicker.querySelectorAll('.option-value');
+          options.forEach(option => {
+            option.classList.remove('option-value--selected');
+            option.removeAttribute('aria-current');
+            option.setAttribute('aria-disabled', 'true');
+          });
+        }
+      });
+    </script>
   {%- endif -%}
 {%- endunless -%}
