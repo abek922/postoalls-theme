@@ -229,59 +229,40 @@ Supported variables
               -%}
 
               {%- if disable_variant_picker -%}
-                {%- comment -%}カスタム表示専用バリエーションピッカー{%- endcomment -%}
-                <div class="variant-picker variant-picker--display-only">
-                  {%- for option in product.options_with_values -%}
-                    <div class="variant-picker__option v-stack gap-2">
-                      <div class="h-stack gap-1">
-                        <p class="text-subdued">{{ option.name }}:</p>
-                        <span class="text-subdued">-</span>
-                      </div>
-                      <div class="variant-picker__option-values h-stack gap-2.5 wrap">
-                        {%- for value in option.values -%}
-                          {%- case block.settings.selector_style -%}
-                            {%- when 'block' -%}
-                              <div class="option-value option-value--block option-value--unselected">
-                                <span>{{ value }}</span>
-                              </div>
-                            {%- when 'dropdown' -%}
-                              {%- if forloop.first -%}
-                                <select class="select" disabled>
-                                  <option value="">{{ option.name }}を選択</option>
-                                  {%- for dropdown_value in option.values -%}
-                                    <option value="{{ dropdown_value | escape }}">{{ dropdown_value }}</option>
-                                  {%- endfor -%}
-                                </select>
-                                {%- break -%}
-                              {%- endif -%}
-                            {%- else -%}
-                              <div class="option-value option-value--swatch option-value--unselected" style="background-color: {{ value | handle | prepend: 'color-' }}">
-                                <span class="sr-only">{{ value }}</span>
-                              </div>
-                          {%- endcase -%}
-                        {%- endfor -%}
-                      </div>
-                    </div>
-                  {%- endfor -%}
+                {%- comment -%}無効化されたバリエーションピッカーを表示{%- endcomment -%}
+                <div class="variant-picker variant-picker--disabled">
+                  {%- render 'variant-picker',
+                      product: product,
+                      form_id: product_form_id,
+                      context: context,
+                      hide_sold_out_variants: block.settings.hide_sold_out_variants,
+                      selector_style: block.settings.selector_style,
+                      swatch_selector_style: block.settings.swatch_selector_style,
+                      variant_image_options: block.settings.variant_image_options,
+                      size_chart_page: block.settings.size_chart_page -%}
                 </div>
                 <style>
-                  .variant-picker--display-only {
-                    opacity: 0.6;
+                  .variant-picker--disabled {
                     pointer-events: none;
+                    opacity: 0.6;
+                    cursor: default;
                   }
-                  .option-value--unselected {
-                    background-color: #f8f8f8 !important;
-                    border: 1px solid #e0e0e0 !important;
-                    color: #999 !important;
+                  .variant-picker--disabled .option-value {
+                    pointer-events: none !important;
                     cursor: not-allowed !important;
                   }
-                  .variant-picker--display-only .select {
+                  .variant-picker--disabled select {
+                    pointer-events: none !important;
                     background-color: #f5f5f5 !important;
-                    color: #999 !important;
                     cursor: not-allowed !important;
                   }
-                  .variant-picker--display-only .text-subdued {
-                    color: #bbb !important;
+                  .variant-picker--disabled input[type="radio"] {
+                    pointer-events: none !important;
+                    cursor: not-allowed !important;
+                  }
+                  .variant-picker--disabled button {
+                    pointer-events: none !important;
+                    cursor: not-allowed !important;
                   }
                 </style>
               {%- else -%}
