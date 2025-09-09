@@ -297,7 +297,7 @@ Supported variables
                 visually similar to a variant picker, although it does not share the functionality
               {%- endcomment -%}
 
-              {%- if disable_interactions -%}
+              {%- if disable_interactions == true -%}
                 {%- comment -%}無効化された商品バリエーションを表示{%- endcomment -%}
                 <div class="variant-picker variant-picker--disabled v-stack gap-4">
                   <div class="variant-picker__option v-stack gap-2">
