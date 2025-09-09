@@ -181,30 +181,20 @@ Supported variables
           <div class="variant-picker__option-values {{ list_classes }}">
             {%- for option_value in option.values -%}
               {%- if display_only -%}
-                {%- comment -%}Display-only mode: show all options as unselected and non-interactive{%- endcomment -%}
+                {%- comment -%}Display-only mode: show all options as unselected but keep HTML structure{%- endcomment -%}
+                {%- liquid
+                  assign name = form_id | append: '-option' | append: option.position
+                  assign param_name = name
+                -%}
                 {%- case resolved_option_selector_style -%}
                   {%- when 'variant_image' -%}
-                    <div class="option-value option-value--thumbnail option-value--unselected">
-                      {%- if option_value.image -%}
-                        {{ option_value.image | image_url: width: 60 | image_tag: loading: 'lazy', sizes: '60px', widths: '60,120' }}
-                      {%- endif -%}
-                      <span class="sr-only">{{ option_value }}</span>
-                    </div>
+                    {%- render 'option-value', type: 'thumbnail', form: form_id, option_value: option_value, param_name: param_name, option_position: option.position, hide_if_disabled: hide_sold_out_variants, reload_page_for_combined_products: is_main_product, id_prefix: forloop.index, force_unselected: true -%}
                   {%- when 'swatch' -%}
-                    <div class="option-value option-value--swatch option-value--unselected" {% if option_value.swatch.color %}style="background-color: {{ option_value.swatch.color }}"{% endif %}>
-                      <span class="sr-only">{{ option_value }}</span>
-                    </div>
+                    {%- render 'option-value', type: 'swatch', form: form_id, option_value: option_value, param_name: param_name, option_position: option.position, hide_if_disabled: hide_sold_out_variants, reload_page_for_combined_products: is_main_product, id_prefix: forloop.index, force_unselected: true -%}
                   {%- when 'block' -%}
-                    <div class="option-value option-value--block option-value--unselected">
-                      <span>{{ option_value }}</span>
-                    </div>
+                    {%- render 'option-value', type: 'block', form: form_id, option_value: option_value, param_name: param_name, option_position: option.position, hide_if_disabled: hide_sold_out_variants, reload_page_for_combined_products: is_main_product, id_prefix: forloop.index, force_unselected: true -%}
                   {%- when 'block_swatch' -%}
-                    <div class="option-value option-value--block option-value--unselected">
-                      {%- if option_value.swatch.color -%}
-                        <span class="option-value__swatch" style="background-color: {{ option_value.swatch.color }}"></span>
-                      {%- endif -%}
-                      <span>{{ option_value }}</span>
-                    </div>
+                    {%- render 'option-value', type: 'block', form: form_id, option_value: option_value, param_name: param_name, option_position: option.position, show_swatch: true, hide_if_disabled: hide_sold_out_variants, reload_page_for_combined_products: is_main_product, id_prefix: forloop.index, force_unselected: true -%}
                 {%- endcase -%}
               {%- else -%}
                 {%- comment -%}Normal interactive mode{%- endcomment -%}
