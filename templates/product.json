@@ -58,7 +58,7 @@
           "settings": {
             "hide_sold_out_variants": false,
             "selector_style": "block",
-            "swatch_selector_style": "swatch",
+            "swatch_selector_style": "block_swatch",
             "variant_image_options": "",
             "size_chart_page": ""
           }
