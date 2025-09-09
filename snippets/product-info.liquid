@@ -309,36 +309,51 @@ Supported variables
               </div>
             {%- endif -%}
 
-          {%- when 'quantity_selector' -%}
-            {%- if product.available -%}
-              <div class="v-stack gap-1 justify-items-start">
-                {%- liquid
-                  assign variant = product.selected_or_first_available_variant
-                  assign quantity_rules = ''
+          {%- when 'quantity_selector' -%}  
+            {%- comment -%}タグチェック - 制限タグがある場合は数量セレクタを非表示{%- endcomment -%}
+            {%- liquid
+              assign hide_quantity_selector = false
+              
+              for tag in product.tags
+                assign tag_downcase = tag | downcase
+                if tag_downcase == 'coming soon' or tag_downcase == 'display only' or tag_downcase == 'archive'
+                  assign hide_quantity_selector = true
+                  break
+                endif
+              endfor
+            -%}
 
-                  render 'quantity-selector', variant: variant, form: product_form_id
+            {%- unless hide_quantity_selector -%}
+              {%- if product.available -%}
+                <div class="v-stack gap-1 justify-items-start">
+                  {%- liquid
+                    assign variant = product.selected_or_first_available_variant
+                    assign quantity_rules = ''
 
-                  if variant.quantity_rule.min > 1
-                    assign rule = 'product.quantity.minimum_of' | t: min: variant.quantity_rule.min
-                    assign quantity_rules = quantity_rules | append: ' / ' | append: rule
-                  endif
+                    render 'quantity-selector', variant: variant, form: product_form_id
 
-                  if variant.quantity_rule.max != nil
-                    assign rule = 'product.quantity.maximum_of' | t: max: variant.quantity_rule.max
-                    assign quantity_rules = quantity_rules | append: ' / ' | append: rule
-                  endif
+                    if variant.quantity_rule.min > 1
+                      assign rule = 'product.quantity.minimum_of' | t: min: variant.quantity_rule.min
+                      assign quantity_rules = quantity_rules | append: ' / ' | append: rule
+                    endif
 
-                  if variant.quantity_rule.increment > 1
-                    assign rule = 'product.quantity.increment_of' | t: step: variant.quantity_rule.increment
-                    assign quantity_rules = quantity_rules | append: ' / ' | append: rule
-                  endif
-                -%}
+                    if variant.quantity_rule.max != nil
+                      assign rule = 'product.quantity.maximum_of' | t: max: variant.quantity_rule.max
+                      assign quantity_rules = quantity_rules | append: ' / ' | append: rule
+                    endif
 
-                {%- if quantity_rules != blank -%}
-                  <p class="text-subdued text-sm">{{ quantity_rules | remove_first: ' / ' | capitalize }}</p>
-                {%- endif -%}
-              </div>
-            {%- endif -%}
+                    if variant.quantity_rule.increment > 1
+                      assign rule = 'product.quantity.increment_of' | t: step: variant.quantity_rule.increment
+                      assign quantity_rules = quantity_rules | append: ' / ' | append: rule
+                    endif
+                  -%}
+
+                  {%- if quantity_rules != blank -%}
+                    <p class="text-subdued text-sm">{{ quantity_rules | remove_first: ' / ' | capitalize }}</p>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+            {%- endunless -%}
 
           {%- when 'volume_pricing' -%}
             {%- render 'volume-pricing-table', variant: variant -%}
@@ -352,17 +367,54 @@ Supported variables
                 low_threshold: block.settings.low_inventory_threshold
             -%}
 
-          {%- when 'buy_buttons' -%}
-            {%- render 'buy-buttons',
-                product: product,
-                form_id: product_form_id,
-                show_payment_button: block.settings.show_payment_button,
-                show_gift_card_recipient: block.settings.show_gift_card_recipient,
-                atc_button_background: block.settings.atc_button_background,
-                atc_button_text_color: block.settings.atc_button_text_color,
-                payment_button_background: block.settings.payment_button_background,
-                payment_button_text_color: block.settings.payment_button_text_color
+{%- when 'buy_buttons' -%}
+            {%- comment -%}タグに基づく購入ボタンの表示制御{%- endcomment -%}
+            {%- liquid
+              assign show_buy_buttons = true
+              assign show_coming_soon = false
+              
+              for tag in product.tags
+                assign tag_downcase = tag | downcase
+                if tag_downcase == 'display only' or tag_downcase == 'archive'
+                  assign show_buy_buttons = false
+                  break
+                elsif tag_downcase == 'coming soon'
+                  assign show_coming_soon = true
+                  break
+                endif
+              endfor
             -%}
+
+            {%- if show_buy_buttons == false -%}
+              {%- comment -%}購入ボタンを完全に非表示{%- endcomment -%}
+            {%- elsif show_coming_soon -%}
+              {%- comment -%}Coming Soon ボタンを表示{%- endcomment -%}
+              <div class="buy-buttons v-stack gap-4">
+                <button type="button" class="button w-full coming-soon-button" disabled>
+                  Coming Soon
+                </button>
+              </div>
+              <style>
+                .coming-soon-button {
+                  background-color: #e0e0e0 !important;
+                  color: #666 !important;
+                  cursor: not-allowed !important;
+                  opacity: 0.7;
+                }
+              </style>
+            {%- else -%}
+              {%- comment -%}通常の購入ボタン{%- endcomment -%}
+              {%- render 'buy-buttons',
+                  product: product,
+                  form_id: product_form_id,
+                  show_payment_button: block.settings.show_payment_button,
+                  show_gift_card_recipient: block.settings.show_gift_card_recipient,
+                  atc_button_background: block.settings.atc_button_background,
+                  atc_button_text_color: block.settings.atc_button_text_color,
+                  payment_button_background: block.settings.payment_button_background,
+                  payment_button_text_color: block.settings.payment_button_text_color
+              -%}
+            {%- endif -%}
 
           {%- when 'pickup_availability' -%}
             {%- if product != blank -%}
