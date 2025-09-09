@@ -17,6 +17,31 @@ Supported variables
 * context: the context of the product info. Can be "main_product", "featured_product" or "quick_buy"
 {%- endcomment -%}
 
+{%- comment -%}タグチェックロジック - ページトップで1回だけ実行{%- endcomment -%}
+{%- unless product_tag_check_done -%}
+  {%- liquid
+    assign show_buy_buttons = true
+    assign show_coming_soon = false
+    assign disable_interactions = false
+    
+    for tag in product.tags
+      assign tag_downcase = tag | downcase
+      if tag_downcase == 'display only' or tag_downcase == 'archive'
+        assign show_buy_buttons = false
+        assign disable_interactions = true
+        break
+      elsif tag_downcase == 'coming soon'
+        assign show_coming_soon = true
+        assign disable_interactions = true
+        break
+      endif
+    endfor
+    
+    assign product_tag_check_done = true
+  -%}
+{%- endunless -%}
+
+
 <safe-sticky class="product-info {% if center_basic_info %}product-info--center{% endif %}">
   <div class="product-info__block-list">
     {%- liquid
@@ -215,15 +240,43 @@ Supported variables
 
           {%- when 'variant_picker' -%}
             {%- if product != blank -%}
-              {%- render 'variant-picker',
-                  product: product,
-                  form_id: product_form_id,
-                  context: context,
-                  hide_sold_out_variants: block.settings.hide_sold_out_variants,
-                  selector_style: block.settings.selector_style,
-                  swatch_selector_style: block.settings.swatch_selector_style,
-                  variant_image_options: block.settings.variant_image_options,
-                  size_chart_page: block.settings.size_chart_page -%}
+              {%- if disable_interactions -%}
+                {%- comment -%}無効化されたバリエーションピッカーを表示{%- endcomment -%}
+                <div class="variant-picker variant-picker--disabled">
+                  {%- render 'variant-picker',
+                      product: product,
+                      form_id: product_form_id,
+                      context: context,
+                      hide_sold_out_variants: block.settings.hide_sold_out_variants,
+                      selector_style: block.settings.selector_style,
+                      swatch_selector_style: block.settings.swatch_selector_style,
+                      variant_image_options: block.settings.variant_image_options,
+                      size_chart_page: block.settings.size_chart_page -%}
+                </div>
+                <style>
+                  .variant-picker--disabled {
+                    pointer-events: none;
+                    opacity: 0.6;
+                  }
+                  .variant-picker--disabled .option-value {
+                    cursor: not-allowed !important;
+                  }
+                  .variant-picker--disabled select {
+                    pointer-events: none;
+                    background-color: #f5f5f5;
+                  }
+                </style>
+              {%- else -%}
+                {%- render 'variant-picker',
+                    product: product,
+                    form_id: product_form_id,
+                    context: context,
+                    hide_sold_out_variants: block.settings.hide_sold_out_variants,
+                    selector_style: block.settings.selector_style,
+                    swatch_selector_style: block.settings.swatch_selector_style,
+                    variant_image_options: block.settings.variant_image_options,
+                    size_chart_page: block.settings.size_chart_page -%}
+              {%- endif -%}
             {%- endif -%}
 
           {%- when 'product_variations' -%}
@@ -310,7 +363,7 @@ Supported variables
             {%- endif -%}
 
           {%- when 'quantity_selector' -%}
-            {%- if product.available -%}
+            {%- if product.available and disable_interactions == false -%}
               <div class="v-stack gap-1 justify-items-start">
                 {%- liquid
                   assign variant = product.selected_or_first_available_variant
@@ -353,23 +406,6 @@ Supported variables
             -%}
 
           {%- when 'buy_buttons' -%}
-            {%- comment -%}タグに基づく購入ボタンの表示制御{%- endcomment -%}
-            {%- liquid
-              assign show_buy_buttons = true
-              assign show_coming_soon = false
-              
-              for tag in product.tags
-                assign tag_downcase = tag | downcase
-                if tag_downcase == 'display only' or tag_downcase == 'archive'
-                  assign show_buy_buttons = false
-                  break
-                elsif tag_downcase == 'coming soon'
-                  assign show_coming_soon = true
-                  break
-                endif
-              endfor
-            -%}
-
             {%- if show_buy_buttons == false -%}
               {%- comment -%}購入ボタンを完全に非表示{%- endcomment -%}
             {%- elsif show_coming_soon -%}
