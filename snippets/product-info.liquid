@@ -309,36 +309,51 @@ Supported variables
               </div>
             {%- endif -%}
 
-          {%- when 'quantity_selector' -%}
-            {%- if product.available -%}
-              <div class="v-stack gap-1 justify-items-start">
-                {%- liquid
-                  assign variant = product.selected_or_first_available_variant
-                  assign quantity_rules = ''
+          {%- when 'quantity_selector' -%}  
+            {%- comment -%}タグチェック - 制限タグがある場合は数量セレクタを非表示{%- endcomment -%}
+            {%- liquid
+              assign hide_quantity_selector = false
+              
+              for tag in product.tags
+                assign tag_downcase = tag | downcase
+                if tag_downcase == 'coming soon' or tag_downcase == 'display only' or tag_downcase == 'archive'
+                  assign hide_quantity_selector = true
+                  break
+                endif
+              endfor
+            -%}
 
-                  render 'quantity-selector', variant: variant, form: product_form_id
+            {%- unless hide_quantity_selector -%}
+              {%- if product.available -%}
+                <div class="v-stack gap-1 justify-items-start">
+                  {%- liquid
+                    assign variant = product.selected_or_first_available_variant
+                    assign quantity_rules = ''
 
-                  if variant.quantity_rule.min > 1
-                    assign rule = 'product.quantity.minimum_of' | t: min: variant.quantity_rule.min
-                    assign quantity_rules = quantity_rules | append: ' / ' | append: rule
-                  endif
+                    render 'quantity-selector', variant: variant, form: product_form_id
 
-                  if variant.quantity_rule.max != nil
-                    assign rule = 'product.quantity.maximum_of' | t: max: variant.quantity_rule.max
-                    assign quantity_rules = quantity_rules | append: ' / ' | append: rule
-                  endif
+                    if variant.quantity_rule.min > 1
+                      assign rule = 'product.quantity.minimum_of' | t: min: variant.quantity_rule.min
+                      assign quantity_rules = quantity_rules | append: ' / ' | append: rule
+                    endif
 
-                  if variant.quantity_rule.increment > 1
-                    assign rule = 'product.quantity.increment_of' | t: step: variant.quantity_rule.increment
-                    assign quantity_rules = quantity_rules | append: ' / ' | append: rule
-                  endif
-                -%}
+                    if variant.quantity_rule.max != nil
+                      assign rule = 'product.quantity.maximum_of' | t: max: variant.quantity_rule.max
+                      assign quantity_rules = quantity_rules | append: ' / ' | append: rule
+                    endif
 
-                {%- if quantity_rules != blank -%}
-                  <p class="text-subdued text-sm">{{ quantity_rules | remove_first: ' / ' | capitalize }}</p>
-                {%- endif -%}
-              </div>
-            {%- endif -%}
+                    if variant.quantity_rule.increment > 1
+                      assign rule = 'product.quantity.increment_of' | t: step: variant.quantity_rule.increment
+                      assign quantity_rules = quantity_rules | append: ' / ' | append: rule
+                    endif
+                  -%}
+
+                  {%- if quantity_rules != blank -%}
+                    <p class="text-subdued text-sm">{{ quantity_rules | remove_first: ' / ' | capitalize }}</p>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+            {%- endunless -%}
 
           {%- when 'volume_pricing' -%}
             {%- render 'volume-pricing-table', variant: variant -%}
