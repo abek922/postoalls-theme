@@ -267,6 +267,7 @@ Supported variables
                   }
                 </style>
               {%- else -%}
+                {%- comment -%}通常のバリエーションピッカーを表示{%- endcomment -%}
                 {%- render 'variant-picker',
                     product: product,
                     form_id: product_form_id,
@@ -296,48 +297,104 @@ Supported variables
                 visually similar to a variant picker, although it does not share the functionality
               {%- endcomment -%}
 
-              <div class="variant-picker v-stack gap-4">
-                <div class="variant-picker__option v-stack gap-2">
-                  {%- assign metafield_parts = block.settings.option_value_metafield | split: '.' -%}
-                  {%- assign metafield_namespace = metafield_parts | first -%}
-                  {%- assign metafield_key = metafield_parts | last -%}
+              {%- if disable_interactions -%}
+                {%- comment -%}無効化された商品バリエーションを表示{%- endcomment -%}
+                <div class="variant-picker variant-picker--disabled v-stack gap-4">
+                  <div class="variant-picker__option v-stack gap-2">
+                    {%- assign metafield_parts = block.settings.option_value_metafield | split: '.' -%}
+                    {%- assign metafield_namespace = metafield_parts | first -%}
+                    {%- assign metafield_key = metafield_parts | last -%}
 
-                  {%- if block.settings.option_name != blank -%}
-                    <div class="h-stack gap-1">
-                      <p class="text-subdued">{{ block.settings.option_name | escape }}:</p>
-                      <span>{{ product.metafields[metafield_namespace][metafield_key].value | escape }}</span>
+                    {%- if block.settings.option_name != blank -%}
+                      <div class="h-stack gap-1">
+                        <p class="text-subdued">{{ block.settings.option_name | escape }}:</p>
+                        <span>{{ product.metafields[metafield_namespace][metafield_key].value | escape }}</span>
+                      </div>
+                    {%- endif -%}
+
+                    <div class="variant-picker__option-values h-stack gap-2.5 wrap">
+                      {%- liquid
+                        for product_variation in block.settings.products
+                          assign label = product_variation.metafields[metafield_namespace][metafield_key].value
+
+                          if product_variation == product
+                            assign selected = true
+                          else
+                            assign selected = false
+                          endif
+
+                          case block.settings.selector_style
+                            when 'swatch'
+                              render 'option-value', type: 'swatch', url: '#', label: label, selected: selected
+
+                            when 'variant_image'
+                              render 'option-value', type: 'thumbnail', url: '#', label: label, image: product_variation.featured_media, selected: selected
+
+                            when 'block'
+                              render 'option-value', type: 'block', url: '#', label: label, selected: selected
+
+                            when 'block_swatch'
+                              render 'option-value', type: 'block', url: '#', label: label, selected: selected, show_swatch: true
+                          endcase
+                        endfor
+                      -%}
                     </div>
-                  {%- endif -%}
-
-                  <div class="variant-picker__option-values h-stack gap-2.5 wrap">
-                    {%- liquid
-                      for product_variation in block.settings.products
-                        assign label = product_variation.metafields[metafield_namespace][metafield_key].value
-
-                        if product_variation == product
-                          assign selected = true
-                        else
-                          assign selected = false
-                        endif
-
-                        case block.settings.selector_style
-                          when 'swatch'
-                            render 'option-value', type: 'swatch', url: product_variation.url, label: label, selected: selected
-
-                          when 'variant_image'
-                            render 'option-value', type: 'thumbnail', url: product_variation.url, label: label, image: product_variation.featured_media, selected: selected
-
-                          when 'block'
-                            render 'option-value', type: 'block', url: product_variation.url, label: label, selected: selected
-
-                          when 'block_swatch'
-                            render 'option-value', type: 'block', url: product_variation.url, label: label, selected: selected, show_swatch: true
-                        endcase
-                      endfor
-                    -%}
                   </div>
                 </div>
-              </div>
+                <style>
+                  .variant-picker--disabled {
+                    pointer-events: none;
+                    opacity: 0.6;
+                  }
+                  .variant-picker--disabled .option-value {
+                    cursor: not-allowed !important;
+                  }
+                </style>
+              {%- else -%}
+                {%- comment -%}通常の商品バリエーションを表示{%- endcomment -%}
+                <div class="variant-picker v-stack gap-4">
+                  <div class="variant-picker__option v-stack gap-2">
+                    {%- assign metafield_parts = block.settings.option_value_metafield | split: '.' -%}
+                    {%- assign metafield_namespace = metafield_parts | first -%}
+                    {%- assign metafield_key = metafield_parts | last -%}
+
+                    {%- if block.settings.option_name != blank -%}
+                      <div class="h-stack gap-1">
+                        <p class="text-subdued">{{ block.settings.option_name | escape }}:</p>
+                        <span>{{ product.metafields[metafield_namespace][metafield_key].value | escape }}</span>
+                      </div>
+                    {%- endif -%}
+
+                    <div class="variant-picker__option-values h-stack gap-2.5 wrap">
+                      {%- liquid
+                        for product_variation in block.settings.products
+                          assign label = product_variation.metafields[metafield_namespace][metafield_key].value
+
+                          if product_variation == product
+                            assign selected = true
+                          else
+                            assign selected = false
+                          endif
+
+                          case block.settings.selector_style
+                            when 'swatch'
+                              render 'option-value', type: 'swatch', url: product_variation.url, label: label, selected: selected
+
+                            when 'variant_image'
+                              render 'option-value', type: 'thumbnail', url: product_variation.url, label: label, image: product_variation.featured_media, selected: selected
+
+                            when 'block'
+                              render 'option-value', type: 'block', url: product_variation.url, label: label, selected: selected
+
+                            when 'block_swatch'
+                              render 'option-value', type: 'block', url: product_variation.url, label: label, selected: selected, show_swatch: true
+                          endcase
+                        endfor
+                      -%}
+                    </div>
+                  </div>
+                </div>
+              {%- endif -%}
             {%- endif -%}
 
           {%- when 'line_item_property' -%}
