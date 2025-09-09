@@ -17,7 +17,6 @@ Supported variables
 * swatch_selector_style: the selector style to use for the dedicated swatch selectors
 * variant_image_options: a list of option names for which to use the variant image selector mode
 * size_chart_page: the page to use for the size chart
-* display_only: if set to true, shows options but disables all interactions (for restricted products)
 {%- endcomment -%}
 
 {%- liquid
@@ -28,30 +27,16 @@ Supported variables
   if context == 'main_product'
     assign is_main_product = true
   endif
-
-  # Check for restricted tags if display_only is not explicitly set
-  unless display_only != blank
-    assign display_only = false
-    for tag in product.tags
-      assign tag_downcase = tag | downcase
-      if tag_downcase == 'coming soon' or tag_downcase == 'display only' or tag_downcase == 'archive'
-        assign display_only = true
-        break
-      endif
-    endfor
-  endunless
 -%}
 
 {%- unless product.has_only_default_variant -%}
-  <variant-picker class="variant-picker v-stack gap-4 {% if display_only %}variant-picker--display-only{% endif %}" section-id="{{ section.id }}" form-id="{{ form_id }}" context="{{ context }}" handle="{{ product.handle }}" {% if context == 'main_product' and display_only == false %}update-url{% endif %}>
+  <variant-picker class="variant-picker v-stack gap-4" section-id="{{ section.id }}" form-id="{{ form_id }}" context="{{ context }}" handle="{{ product.handle }}" {% if context == 'main_product' %}update-url{% endif %}>
     {%- comment -%}
     The variant data is outputted as a JSON, which allows the theme to emit an event with the data when the variant changes. This must not be removed.
     {%- endcomment -%}
-    {%- unless display_only -%}
-      <script data-variant type="application/json">
-        {{- product.selected_or_first_available_variant | json -}}
-      </script>
-    {%- endunless -%}
+    <script data-variant type="application/json">
+      {{- product.selected_or_first_available_variant | json -}}
+    </script>
 
     {%- for option in product.options_with_values -%}
       {% liquid
@@ -77,19 +62,17 @@ Supported variables
         endif
       %}
 
-      <fieldset class="variant-picker__option v-stack gap-2" {% if display_only %}disabled{% endif %}>
+      <fieldset class="variant-picker__option v-stack gap-2">
         <div class="variant-picker__option-info h-stack justify-between gap-2">
           <div class="h-stack gap-1">
             <legend>{{ option.name }}:</legend>
 
-            {%- if display_only -%}
-              <span class="text-subdued">-</span>
-            {%- elsif resolved_option_selector_style == 'swatch' or resolved_option_selector_style == 'variant_image' -%}
+            {%- if resolved_option_selector_style == 'swatch' or resolved_option_selector_style == 'variant_image' -%}
               <span>{{ option.selected_value }}</span>
             {%- endif -%}
           </div>
 
-          {%- if size_chart_page != blank and size_label_list contains option_downcase and display_only == false -%}
+          {%- if size_chart_page != blank and size_label_list contains option_downcase -%}
             {%- capture id -%}size-chart-{{ option.position }}-{{ form_id }}{%- endcapture -%}
 
             <button type="button" class="link" aria-controls="{{ id | escape }}" aria-expanded="false">
@@ -112,60 +95,53 @@ Supported variables
           <div class="relative">
             {%- capture popover_id -%}popover-variant-dropdown-{{ section.id }}-{{ product.id }}-{{ option.position }}{%- endcapture -%}
 
-            {%- if display_only -%}
-              <div class="select select--disabled">
-                <span>{{ option.name }}を選択</span>
-                {%- render 'icon' with 'dropdown-chevron' -%}
-              </div>
-            {%- else -%}
-              <button type="button" class="select" aria-controls="{{ popover_id }}" aria-expanded="false">
-                <span id="{{ popover_id }}-selected-value">{{- option.selected_value -}}</span>
-                {%- render 'icon' with 'dropdown-chevron' -%}
-              </button>
+            <button type="button" class="select" aria-controls="{{ popover_id }}" aria-expanded="false">
+              <span id="{{ popover_id }}-selected-value">{{- option.selected_value -}}</span>
+              {%- render 'icon' with 'dropdown-chevron' -%}
+            </button>
 
-              <x-popover id="{{ popover_id }}" class="popover popover--bottom-start color-scheme color-scheme--dialog" close-on-listbox-change>
-                <p class="h5" slot="header">{{ option.name }}</p>
+            <x-popover id="{{ popover_id }}" class="popover popover--bottom-start color-scheme color-scheme--dialog" close-on-listbox-change>
+              <p class="h5" slot="header">{{ option.name }}</p>
 
-                <div class="popover__value-list">
-                  {%- assign param_name = form_id | append: '-option' | append: option.position -%}
+              <div class="popover__value-list">
+                {%- assign param_name = form_id | append: '-option' | append: option.position -%}
 
-                  {%- for option_value in option.values -%}
-                    {%- capture option_markup -%}
-                      <span>{{- option_value -}}</span>
+                {%- for option_value in option.values -%}
+                  {%- capture option_markup -%}
+                    <span>{{- option_value -}}</span>
 
-                      {%- if option_value.available == false -%}
-                        <span>
-                          {%- if option_value.variant == nil -%}
-                            {{- 'product.general.unavailable_button' | t -}}
-                          {%- else -%}
-                            {{- 'product.general.sold_out_badge' | t -}}
-                          {%- endif -%}
-                        </span>
-                      {%- endif -%}
-                    {%- endcapture -%}
-
-                    {%- if hide_sold_out_variants == false or option_value.available or option_value.selected -%}
-                      {%- if is_main_product and option_value.product_url != blank -%}
-                        <div class="popover__value-option">
-                          {%- if option_value.selected -%}
-                            <input class="sr-only" type="radio" id="{{ param_name }}-{{ option_value.id }}" form="{{ form_id }}" name="{{ param_name }}" data-option-position="{{ option.position }}" value="{{ option_value.id }}" checked>
-                          {%- endif -%}
-
-                          <a href="{{ option_value.variant.url | default: option_value.product_url }}" class="h-stack justify-between gap-2">
-                            {{- option_markup -}}
-                          </a>
-                        </div>
-                      {%- else -%}
-                        <label class="popover__value-option h-stack justify-between gap-2" for="{{ param_name }}-{{ option_value.id }}">
-                          <input class="sr-only" form="{{ form_id }}" type="radio" id="{{ param_name }}-{{ option_value.id }}" name="{{ param_name }}" {% if option_value.product_url != blank %}data-product-url="{{ option_value.product_url | escape }}"{% endif %} data-option-position="{{ option.position }}" value="{{ option_value.id }}" {% if option_value.selected %}checked{% endif %}>
-                          {{- option_markup -}}
-                        </label>
-                      {%- endif -%}
+                    {%- if option_value.available == false -%}
+                      <span>
+                        {%- if option_value.variant == nil -%}
+                          {{- 'product.general.unavailable_button' | t -}}
+                        {%- else -%}
+                          {{- 'product.general.sold_out_badge' | t -}}
+                        {%- endif -%}
+                      </span>
                     {%- endif -%}
-                  {%- endfor -%}
-                </div>
-              </x-popover>
-            {%- endif -%}
+                  {%- endcapture -%}
+
+                  {%- if hide_sold_out_variants == false or option_value.available or option_value.selected -%}
+                    {%- if is_main_product and option_value.product_url != blank -%}
+                      <div class="popover__value-option">
+                        {%- if option_value.selected -%}
+                          <input class="sr-only" type="radio" id="{{ param_name }}-{{ option_value.id }}" form="{{ form_id }}" name="{{ param_name }}" data-option-position="{{ option.position }}" value="{{ option_value.id }}" checked>
+                        {%- endif -%}
+
+                        <a href="{{ option_value.variant.url | default: option_value.product_url }}" class="h-stack justify-between gap-2">
+                          {{- option_markup -}}
+                        </a>
+                      </div>
+                    {%- else -%}
+                      <label class="popover__value-option h-stack justify-between gap-2" for="{{ param_name }}-{{ option_value.id }}">
+                        <input class="sr-only" form="{{ form_id }}" type="radio" id="{{ param_name }}-{{ option_value.id }}" name="{{ param_name }}" {% if option_value.product_url != blank %}data-product-url="{{ option_value.product_url | escape }}"{% endif %} data-option-position="{{ option.position }}" value="{{ option_value.id }}" {% if option_value.selected %}checked{% endif %}>
+                        {{- option_markup -}}
+                      </label>
+                    {%- endif -%}
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+            </x-popover>
           </div>
         {%- else -%}
           {%- liquid
@@ -179,47 +155,28 @@ Supported variables
           -%}
 
           <div class="variant-picker__option-values {{ list_classes }}">
-            {%- for option_value in option.values -%}
-              {%- if display_only -%}
-                {%- comment -%}Display-only mode: show all options as unselected but keep HTML structure{%- endcomment -%}
-                {%- liquid
-                  assign name = form_id | append: '-option' | append: option.position
-                  assign param_name = name
-                -%}
-                {%- case resolved_option_selector_style -%}
-                  {%- when 'variant_image' -%}
-                    {%- render 'option-value', type: 'thumbnail', form: form_id, option_value: option_value, param_name: param_name, option_position: option.position, hide_if_disabled: hide_sold_out_variants, reload_page_for_combined_products: is_main_product, id_prefix: forloop.index, force_unselected: true -%}
-                  {%- when 'swatch' -%}
-                    {%- render 'option-value', type: 'swatch', form: form_id, option_value: option_value, param_name: param_name, option_position: option.position, hide_if_disabled: hide_sold_out_variants, reload_page_for_combined_products: is_main_product, id_prefix: forloop.index, force_unselected: true -%}
-                  {%- when 'block' -%}
-                    {%- render 'option-value', type: 'block', form: form_id, option_value: option_value, param_name: param_name, option_position: option.position, hide_if_disabled: hide_sold_out_variants, reload_page_for_combined_products: is_main_product, id_prefix: forloop.index, force_unselected: true -%}
-                  {%- when 'block_swatch' -%}
-                    {%- render 'option-value', type: 'block', form: form_id, option_value: option_value, param_name: param_name, option_position: option.position, show_swatch: true, hide_if_disabled: hide_sold_out_variants, reload_page_for_combined_products: is_main_product, id_prefix: forloop.index, force_unselected: true -%}
-                {%- endcase -%}
-              {%- else -%}
-                {%- comment -%}Normal interactive mode{%- endcomment -%}
-                {%- liquid
-                  assign name = form_id | append: '-option' | append: option.position
+            {% liquid
+              assign name = form_id | append: '-option' | append: option.position
 
-                  case resolved_option_selector_style
-                    when 'variant_image'
-                      render 'option-value', type: 'thumbnail', form: form_id, option_value: option_value, param_name: name, option_position: option.position, hide_if_disabled: hide_sold_out_variants, reload_page_for_combined_products: is_main_product, id_prefix: forloop.index
-                    when 'swatch'
-                      render 'option-value', type: 'swatch', form: form_id, option_value: option_value, param_name: name, option_position: option.position, hide_if_disabled: hide_sold_out_variants, reload_page_for_combined_products: is_main_product, id_prefix: forloop.index
-                    when 'block'
-                      render 'option-value', type: 'block', form: form_id, option_value: option_value, param_name: name, option_position: option.position, hide_if_disabled: hide_sold_out_variants, reload_page_for_combined_products: is_main_product, id_prefix: forloop.index
-                    when 'block_swatch'
-                      render 'option-value', type: 'block', form: form_id, option_value: option_value, param_name: name, option_position: option.position, show_swatch: true, hide_if_disabled: hide_sold_out_variants, reload_page_for_combined_products: is_main_product, id_prefix: forloop.index
-                  endcase
-                -%}
-              {%- endif -%}
-            {%- endfor -%}
+              for option_value in option.values
+                case resolved_option_selector_style
+                  when 'variant_image'
+                    render 'option-value', type: 'thumbnail', form: form_id, option_value: option_value, param_name: name, option_position: option.position, hide_if_disabled: hide_sold_out_variants, reload_page_for_combined_products: is_main_product, id_prefix: forloop.index
+                  when 'swatch'
+                    render 'option-value', type: 'swatch', form: form_id, option_value: option_value, param_name: name, option_position: option.position, hide_if_disabled: hide_sold_out_variants, reload_page_for_combined_products: is_main_product, id_prefix: forloop.index
+                  when 'block'
+                    render 'option-value', type: 'block', form: form_id, option_value: option_value, param_name: name, option_position: option.position, hide_if_disabled: hide_sold_out_variants, reload_page_for_combined_products: is_main_product, id_prefix: forloop.index
+                  when 'block_swatch'
+                    render 'option-value', type: 'block', form: form_id, option_value: option_value, param_name: name, option_position: option.position, show_swatch: true, hide_if_disabled: hide_sold_out_variants, reload_page_for_combined_products: is_main_product, id_prefix: forloop.index
+                endcase
+              endfor
+            %}
           </div>
         {%- endif -%}
       </fieldset>
     {%- endfor -%}
 
-    {%- unless request.design_mode or display_only -%}
+    {%- unless request.design_mode -%}
       <noscript>
         {%- assign input_label = 'product.general.variant' | t -%}
 
@@ -233,64 +190,4 @@ Supported variables
       </noscript>
     {%- endunless -%}
   </variant-picker>
-
-  {%- if display_only -%}
-    <style>
-      .variant-picker--display-only {
-        pointer-events: none;
-        opacity: 0.6;
-      }
-      .variant-picker--display-only .text-subdued {
-        color: #999 !important;
-      }
-      .select--disabled {
-        background-color: #f5f5f5 !important;
-        color: #999 !important;
-        cursor: not-allowed !important;
-        pointer-events: none !important;
-      }
-      /* 選択状態を強制的に解除 */
-      .variant-picker--display-only input[type="radio"]:checked {
-        appearance: none !important;
-        background: none !important;
-      }
-      .variant-picker--display-only .option-value {
-        opacity: 0.7 !important;
-        pointer-events: none !important;
-        cursor: not-allowed !important;
-      }
-      .variant-picker--display-only .option-value--selected,
-      .variant-picker--display-only .option-value[aria-current="true"] {
-        background-color: #f8f8f8 !important;
-        border-color: #e0e0e0 !important;
-        color: #999 !important;
-      }
-      /* スクリプトによるバリアント選択を無効化 */
-      .variant-picker--display-only * {
-        pointer-events: none !important;
-      }
-    </style>
-    <script>
-      // 制限商品のバリエーション選択を無効化
-      document.addEventListener('DOMContentLoaded', function() {
-        const restrictedPicker = document.querySelector('.variant-picker--display-only');
-        if (restrictedPicker) {
-          // すべての選択状態をリセット
-          const inputs = restrictedPicker.querySelectorAll('input[type="radio"]');
-          inputs.forEach(input => {
-            input.checked = false;
-            input.disabled = true;
-          });
-          
-          // 選択状態のクラスを削除
-          const options = restrictedPicker.querySelectorAll('.option-value');
-          options.forEach(option => {
-            option.classList.remove('option-value--selected');
-            option.removeAttribute('aria-current');
-            option.setAttribute('aria-disabled', 'true');
-          });
-        }
-      });
-    </script>
-  {%- endif -%}
 {%- endunless -%}
