@@ -84,6 +84,11 @@
         "type": "shopify://apps/pickeasy/blocks/zipcode-checker/7e06b047-cfd1-4df7-add1-81e9a842022c",
         "disabled": true,
         "settings": {}
+      },
+      "11973264549492426220": {
+        "type": "shopify://apps/currency-converter/blocks/app-embed-block/a56d6bd1-e9df-4a4a-b98e-e9bb5c43a042",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
