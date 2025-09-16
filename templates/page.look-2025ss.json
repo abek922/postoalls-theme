@@ -22,11 +22,8 @@
       "type": "look-header",
       "settings": {
         "show_title": true,
-        "title": "Title",
         "heading_tag": "h1",
-        "subtitle": "ONE OCEAN, ALL LANDS",
         "show_text": true,
-        "text": "テキスト",
         "text_alignment": "center",
         "background_color": "#f5f5f5",
         "text_color": "#333333",
@@ -56,7 +53,6 @@
         "text_color_1": "#333333",
         "padding_top_1": 60,
         "padding_bottom_1": 60,
-        
         "layout_2": "full_image",
         "image_height_2": "full",
         "enable_parallax_2": false,
@@ -65,7 +61,6 @@
         "text_color_2": "#333333",
         "padding_top_2": 0,
         "padding_bottom_2": 0,
-        
         "layout_3": "text_right",
         "title_3": "Title",
         "heading_tag_3": "h2",
@@ -85,7 +80,6 @@
         "text_color_3": "#333333",
         "padding_top_3": 60,
         "padding_bottom_3": 60,
-        
         "layout_4": "full_image",
         "image_height_4": "full",
         "enable_parallax_4": true,
@@ -94,7 +88,6 @@
         "text_color_4": "#333333",
         "padding_top_4": 0,
         "padding_bottom_4": 0,
-        
         "layout_5": "hidden"
       }
     },
