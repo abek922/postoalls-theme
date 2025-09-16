@@ -14,9 +14,8 @@
       "blocks": {
         "video_nV6ebV": {
           "type": "video",
+          "disabled": true,
           "settings": {
-            "video": "shopify://files/videos/top-movie_25fw_pc.mp4",
-            "mobile_video": "shopify://files/videos/top-movie_25fw_sp.mp4",
             "allow_sound": true,
             "subheading": "",
             "title": "",
@@ -78,20 +77,18 @@
         "image_VBweqx": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/banner-look_25fw_pc.jpg",
-            "mobile_image": "shopify://shop_images/banner-look_25fw_sp.jpg",
             "subheading": "",
             "title": "",
             "mobile_text_position": "place-self-end-center text-center",
             "desktop_text_position": "sm:place-self-end-center sm:text-center",
             "content_max_width": 780,
-            "button_1_text": "2025 F/W LOOKBOOK",
-            "button_1_link": "shopify://pages/look-2025fw",
-            "button_1_style": "link",
+            "button_1_text": "",
+            "button_1_link": "shopify://pages/look-2025fw-2",
+            "button_1_style": "solid",
             "button_1_background": "#ffffff",
             "button_1_text_color": "#000000",
-            "button_2_text": "",
-            "button_2_link": "",
+            "button_2_text": "2025 F/W COLLECTION",
+            "button_2_link": "shopify://pages/look-2025fw-2",
             "button_2_style": "link",
             "button_2_background": "#ffffff",
             "button_2_text_color": "#000000",
@@ -107,59 +104,7 @@
         "image_VBweqx"
       ],
       "custom_css": [
-        ".place-self-end-center {transform: translateY(-4rem);}",
-        ".h6 {display: inline-block; border-bottom: 1px solid #fff; padding-bottom: 4px; transform: translateY(1rem);}"
-      ],
-      "name": "t:sections.slideshow.presets.slideshow.name",
-      "settings": {
-        "allow_transparent_header": false,
-        "show_next_section_button": false,
-        "media_size": "auto",
-        "show_initial_transition": false,
-        "autoplay": true,
-        "autoplay_pause_on_video": true,
-        "cycle_speed": 5,
-        "background": "#1c1c1c",
-        "controls_color": "#ffffff"
-      }
-    },
-    "slideshow_zpNhbA": {
-      "type": "slideshow",
-      "blocks": {
-        "image_DPfKdr": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/top-banner-look-2-pc.png",
-            "mobile_image": "shopify://shop_images/top-banner-look-2-sp.png",
-            "subheading": "",
-            "title": "",
-            "mobile_text_position": "place-self-end-center text-center",
-            "desktop_text_position": "sm:place-self-end-center sm:text-center",
-            "content_max_width": 780,
-            "button_1_text": "2025 F/W Another LOOKBOOK",
-            "button_1_link": "shopify://pages/look-2025fw-2",
-            "button_1_style": "link",
-            "button_1_background": "#ffffff",
-            "button_1_text_color": "#000000",
-            "button_2_text": "",
-            "button_2_link": "",
-            "button_2_style": "outline",
-            "button_2_background": "#ffffff",
-            "button_2_text_color": "#000000",
-            "background": "",
-            "background_opacity": 50,
-            "text_color": "#ffffff",
-            "border_color": "",
-            "gradient_overlay": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_DPfKdr"
-      ],
-      "custom_css": [
-        ".place-self-end-center {transform: translateY(-4rem);}",
-        ".h6 {display: inline-block; border-bottom: 1px solid #fff; padding-bottom: 4px; transform: translateY(1rem);}"
+        ".place-self-end-center {transform: translateY(-4rem);}"
       ],
       "name": "t:sections.slideshow.presets.slideshow.name",
       "settings": {
@@ -213,7 +158,6 @@
         "image_with_text_LXCizD",
         "image_with_text_fJJCkk"
       ],
-      "disabled": true,
       "settings": {
         "color_scheme": "",
         "separate_section_with_border": true,
@@ -230,17 +174,12 @@
     },
     "blog-posts": {
       "type": "blog-posts",
-      "disabled": true,
-      "custom_css": [
-        ".blog-post-card__title {font-size: 0.8rem;}",
-        ".blog-post-card {gap: 0.5rem;}"
-      ],
       "settings": {
         "color_scheme": "",
         "separate_section_with_border": true,
         "blog": "ニュース",
         "posts_count": 3,
-        "stack_on_mobile": true,
+        "stack_on_mobile": false,
         "show_category": false,
         "show_date": false,
         "show_excerpt": false,
@@ -252,35 +191,14 @@
         "button_text": "View all"
       }
     },
-    "blog_posts_news_keAKtC": {
-      "type": "blog-posts-news",
-      "name": "News Posts",
-      "settings": {
-        "color_scheme": "",
-        "separate_section_with_border": true,
-        "blog": "ニュース",
-        "posts_count": 3,
-        "show_category": true,
-        "show_date": true,
-        "show_excerpt": true,
-        "show_read_more": false,
-        "subheading": "",
-        "title": "NEWS",
-        "content": "",
-        "text_alignment": "center",
-        "button_alignment": "left",
-        "button_link": "",
-        "button_text": ""
-      }
-    },
     "featured-collections": {
       "type": "featured-collections",
       "blocks": {
         "collection-1": {
           "type": "collection",
           "settings": {
-            "collection": "all",
-            "products_count": 4,
+            "collection": "2025fw",
+            "products_count": 8,
             "title": "NEW ARRIVALS",
             "link_url": "",
             "link_text": "ONLINE STORE"
@@ -292,9 +210,9 @@
       ],
       "settings": {
         "color_scheme": "",
-        "separate_section_with_border": false,
+        "separate_section_with_border": true,
         "hide_product_information": false,
-        "stack_products": true,
+        "stack_products": false,
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 4,
         "horizontal_spacing_factor": 1,
@@ -305,16 +223,14 @@
     "newsletter": {
       "type": "newsletter",
       "settings": {
-        "color_scheme": "scheme-3",
+        "color_scheme": "",
         "separate_section_with_border": true,
-        "logo_image": "shopify://shop_images/members.png",
-        "logo_width": 500,
-        "mobile_logo_image": "shopify://shop_images/Members_sp.png",
-        "mobile_logo_width": 240,
+        "logo_width": 200,
+        "mobile_logo_width": 160,
         "logo_alt_text": "",
         "image_size": "auto",
         "subheading": "",
-        "title": "",
+        "title": "<strong>Post O'Alls Members</strong>",
         "content": "",
         "button_text": "Subscribe",
         "overlay_color": "#000000",
@@ -326,10 +242,8 @@
     "slideshow",
     "custom_liquid_7LqEDK",
     "slideshow_qCX6Up",
-    "slideshow_zpNhbA",
     "multi-column",
     "blog-posts",
-    "blog_posts_news_keAKtC",
     "featured-collections",
     "newsletter"
   ]

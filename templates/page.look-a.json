@@ -15,7 +15,6 @@
         "look_1": {
           "type": "look",
           "settings": {
-            "image": "",
             "title": "title",
             "product_1": "",
             "product_2": "",
@@ -28,7 +27,6 @@
         "look_2": {
           "type": "look",
           "settings": {
-            "image": "",
             "title": "title",
             "product_1": "",
             "product_2": "",
@@ -46,9 +44,101 @@
       "settings": {
         "color_scheme": "scheme-1"
       }
+    },
+    "look_thumbnail_HMA8Mq": {
+      "type": "look-thumbnail",
+      "blocks": {
+        "look_KkeARp": {
+          "type": "look",
+          "settings": {
+            "image": "shopify://shop_images/KDN3952_F.jpg",
+            "title": "Title",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "look_EeXXaA": {
+          "type": "look",
+          "settings": {
+            "image": "shopify://shop_images/KDN3368_F.jpg",
+            "title": "Title",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "look_rf3p7N": {
+          "type": "look",
+          "settings": {
+            "title": "Title",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "look_qnMnWp": {
+          "type": "look",
+          "settings": {
+            "title": "Title",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "look_peE3zC": {
+          "type": "look",
+          "settings": {
+            "title": "Title",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "look_m9dzrp": {
+          "type": "look",
+          "settings": {
+            "title": "Title",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        }
+      },
+      "block_order": [
+        "look_KkeARp",
+        "look_EeXXaA",
+        "look_rf3p7N",
+        "look_qnMnWp",
+        "look_peE3zC",
+        "look_m9dzrp"
+      ],
+      "name": "Look Thumbnail",
+      "settings": {
+        "color_scheme": ""
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "look_thumbnail_HMA8Mq"
   ]
 }
