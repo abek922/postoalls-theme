@@ -12,12 +12,12 @@ Supported variables
 * product: the product to render the badges
 * variant: the specific variant to show the badge from
 * vertical: if set to true, the badges are outputted vertically
-* types: the types of badge to output. Can be "custom", "sold_out", "discount", or "coming_soon" (or a combination separated by comma). If nothing is set, all badges are outputted.
+* types: the types of badge to output. Can be "custom", "sold_out", "discount", "coming_soon", or "archive" (or a combination separated by comma). If nothing is set, all badges are outputted.
 * context: can be "product" or "card"
 {%- endcomment -%}
 
 {%- liquid
-  assign badge_types = types | default: 'custom, coming_soon, sold_out, discount' | split: ','
+  assign badge_types = types | default: 'custom, coming_soon, archive, sold_out, discount' | split: ','
   assign variant = variant | default: product.selected_or_first_available_variant
   
   # Coming soon タグの確認
@@ -29,6 +29,16 @@ Supported variables
       break
     endif
   endfor
+  
+  # Archive タグの確認
+  assign has_archive_tag = false
+  for tag in product.tags
+    assign lowercase_tag = tag | downcase
+    if lowercase_tag contains 'archive'
+      assign has_archive_tag = true
+      break
+    endif
+  endfor
 -%}
 
 {%- capture badges -%}
@@ -37,8 +47,13 @@ Supported variables
     <span class="badge badge--coming-soon">
       {{- 'product.general.coming_soon_badge' | t -}}
     </span>
+  {%- elsif has_archive_tag -%}
+    {%- comment -%} Archive タグがある場合は Not available バッジのみ表示 {%- endcomment -%}
+    <span class="badge badge--archive">
+      {{- 'product.general.not_available_badge' | t -}}
+    </span>
   {%- else -%}
-    {%- comment -%} Coming soon タグがない場合は通常のバッジを表示 {%- endcomment -%}
+    {%- comment -%} 特殊タグがない場合は通常のバッジを表示 {%- endcomment -%}
     {%- for badge_type in badge_types -%}
       {%- assign stripped_badge_type = badge_type | strip -%}
 
@@ -51,6 +66,9 @@ Supported variables
           {%- endfor -%}
 
         {%- when 'coming_soon' -%}
+          {%- comment -%} このケースは上で処理済みなのでスキップ {%- endcomment -%}
+
+        {%- when 'archive' -%}
           {%- comment -%} このケースは上で処理済みなのでスキップ {%- endcomment -%}
 
         {%- when 'sold_out' -%}
