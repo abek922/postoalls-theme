@@ -69,3 +69,9 @@
   height: 100%;
   border: 0;
 }
+
+
+.badge--coming-soon {
+  background-color: #202F55; /* 青色 */
+  color: white;
+}
