@@ -72,6 +72,10 @@
 
 
 .badge--coming-soon {
-  background-color: #202F55; /* 青色 */
+  background-color: #202F55;
+  color: white;
+}
+.badge--archive {
+  background-color: #6b7280;
   color: white;
 }
