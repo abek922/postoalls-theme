@@ -83,3 +83,67 @@
   background-color: #D5E5E1;
   color: white;
 }
+
+
+
+
+
+/*------------------------------------------------------------
+  news / blog
+------------------------------------------------------------*/
+.blog-title__image {
+  height: 5.5rem;
+  width: auto;
+  margin: 0 auto 5vh;
+  }
+
+.add-po-new-grid {
+  display:flex;
+  width: calc(100% / 3);
+  word-break:break-word;
+}
+.add-po-grid-item {
+  padding:10px;
+}
+
+.wp-post .image-wrap {
+  width: 100%;
+  height: 32vh;
+}
+
+@media screen and (max-width: 768px) {
+  .blog-title__image {
+    height: 4rem;
+  }
+  .add-po-new-grid{
+    overflow: auto;
+    flex-wrap: nowrap;
+    width: 100%;
+  }
+  .add-po-grid-item{
+    flex:0 0 80%;
+    align-items:stretch;
+    display:flex;
+    margin-top: 3rem;
+    margin-bottom:1rem;
+    margin: 1rem;
+    padding:0;
+  }
+  .grid-article__image img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  .wp-post .image-wrap {
+    width: 28rem;
+    height: 20rem;
+  }
+}
+  
+
+  /* classデフォが邪魔だからadd-po-をつける */
+  
+
+.article__title {
+  font-size: calc(var(--typeBaseSize) + 0px) !important;
+}
