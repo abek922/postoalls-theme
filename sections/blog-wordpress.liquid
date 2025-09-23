@@ -1,132 +1,304 @@
-<!-- jQueryの読み込み（すでに読み込んでいる場合は不要） -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{%- if section.settings.title != blank or section.settings.subheading != blank -%}
+  <style>
+    #shopify-section-{{ section.id }} {
+      --product-list-items-per-row: {{ section.settings.posts_per_row_mobile | times: 1 }};
+      --product-list-horizontal-spacing-factor: {{ section.settings.horizontal_spacing_factor }};
+      --product-list-vertical-spacing-factor: {{ section.settings.vertical_spacing_factor }};
+    }
 
-<!-- WordPressの最新6件の投稿を非同期で取得して表示するスクリプト -->
-<script>
-$(document).ready(function() {
-    // WordPressサイトのURLを設定
-    var categoryId = 1;
-    var wpApiUrl = "https://blog.postoveralls.com/wp-json/wp/v2/posts?_embed&categories=" + categoryId + "&per_page=3";
+    @media screen and (min-width: 700px) {
+      #shopify-section-{{ section.id }} {
+        --product-list-items-per-row: {{ section.settings.posts_per_row_desktop }};
+      }
+    }
 
+    .blog-post-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--color-background);
+      transition: transform 0.2s ease;
+    }
 
-    $.get(wpApiUrl, function(data) {
+    .blog-post-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .blog-post-card__image {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .blog-post-card__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .blog-post-card:hover .blog-post-card__image img {
+      transform: scale(1.05);
+    }
+
+    .blog-post-card__content {
+      padding: 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .blog-post-card__title {
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.4;
+      margin: 0;
+      flex: 1;
+    }
+
+    .blog-post-card__date {
+      font-size: 0.875rem;
+      color: var(--color-foreground-75);
+      margin-top: auto;
+    }
+
+    .blog-posts-grid {
+      display: grid;
+      grid-template-columns: repeat(var(--product-list-items-per-row), 1fr);
+      gap: calc(var(--product-list-vertical-spacing-factor) * 1rem) calc(var(--product-list-horizontal-spacing-factor) * 1rem);
+    }
+  </style>
+
+  {%- assign color_scheme_hash = section.settings.color_scheme.settings.background_gradient | default: section.settings.color_scheme.settings.background | md5 -%}
+
+  <div class="section-spacing color-scheme color-scheme--{{ section.settings.color_scheme.id }} color-scheme--bg-{{ color_scheme_hash }} {% if section.settings.separate_section_with_border %}bordered-section{% endif %}">
+    <div class="container">
+      <div class="section-stack">
+        <div class="v-stack justify-self-center gap-4 text-center sm:gap-5">
+          {%- if section.settings.subheading != blank -%}
+            <p class="h6 text-center">{{- section.settings.subheading -}}</p>
+          {%- endif -%}
+
+          {%- if section.settings.title != blank -%}
+            <h2 class="h2">{{ section.settings.title }}</h2>
+          {%- endif -%}
+        </div>
+
+        <!-- WordPressの投稿を表示する領域 -->
+        <div class="blog-posts-grid" id="wp-posts-grid">
+          <!-- 投稿がここに動的に挿入されます -->
+        </div>
+
+        {%- if section.settings.link_text != blank -%}
+          <div class="justify-self-center">
+            {%- assign button_link = section.settings.link | default: '#' -%}
+            {%- render 'button', href: button_link, content: section.settings.link_text -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+
+  <!-- WordPress API から投稿を取得するスクリプト -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+  $(document).ready(function() {
+    var categoryId = {{ section.settings.category_id | default: 1 }};
+    var postsCount = {{ section.settings.posts_count | default: 6 }};
+    var wpApiUrl = "{{ section.settings.wp_site_url }}/wp-json/wp/v2/posts?_embed&categories=" + categoryId + "&per_page=" + postsCount;
+
+    // エラーハンドリングを追加
+    $.get(wpApiUrl)
+      .done(function(data) {
         var postsHtml = '';
 
         $.each(data, function(index, post) {
-            var imageUrl = post._embedded['wp:featuredmedia'] ? post._embedded['wp:featuredmedia'][0].source_url : post.first_img;
-            postsHtml += '<div class="add-po-grid-item grid-article" data-style="large"><div class="grid-article__image"><a href="' + post.link + '" class="wp-post" target="_blank">';
-            postsHtml += '<div class="image-wrap"><img src="' + imageUrl + '" alt="' + post.title.rendered + '" class="lazyload"></div></a></div>';
-            postsHtml += '<div class="grid-article__meta"><p class="article__title">' + post.title.rendered + '</p>';
-            postsHtml += '<div class="article__sub-meta"><span class="article__sub-meta-date">' + new Date(post.date).toLocaleDateString() + '</span></div></div>';
-            postsHtml += '</div>';
+          var imageUrl = '';
+          
+          // アイキャッチ画像の取得
+          if (post._embedded && post._embedded['wp:featuredmedia'] && post._embedded['wp:featuredmedia'][0]) {
+            imageUrl = post._embedded['wp:featuredmedia'][0].source_url;
+          } else if (post.first_img) {
+            imageUrl = post.first_img;
+          } else {
+            // デフォルト画像またはプレースホルダー
+            imageUrl = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk5vIEltYWdlPC90ZXh0Pjwvc3ZnPg==';
+          }
+
+          // 日付のフォーマット
+          var postDate = new Date(post.date);
+          var formattedDate = postDate.toLocaleDateString('ja-JP', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          });
+
+          postsHtml += '<article class="blog-post-card">';
+          postsHtml += '  <div class="blog-post-card__image">';
+          postsHtml += '    <a href="' + post.link + '" target="_blank">';
+          postsHtml += '      <img src="' + imageUrl + '" alt="' + post.title.rendered + '" loading="lazy">';
+          postsHtml += '    </a>';
+          postsHtml += '  </div>';
+          postsHtml += '  <div class="blog-post-card__content">';
+          postsHtml += '    <h3 class="blog-post-card__title">';
+          postsHtml += '      <a href="' + post.link + '" target="_blank">' + post.title.rendered + '</a>';
+          postsHtml += '    </h3>';
+          postsHtml += '    <time class="blog-post-card__date">' + formattedDate + '</time>';
+          postsHtml += '  </div>';
+          postsHtml += '</article>';
         });
 
-        $("#wp-posts").html(postsHtml);
-    });
-});
-</script>
-
-<!-- 区切り線 -->
-{%- if section.settings.divider -%}<div class="section--divider">{%- endif -%}
-
-<div class="page-width">
-  
-   <!--abek title-->
-  {%- if section.settings.title != blank -%}
-    <header class="section-header section-header--with-link">
-      <h2 class="section-header__title">
-        {{ section.settings.title | escape }}
-      </h2>
-    </header>
-  {%- endif -%}
-
-   <!--abek title image-->
-  {%- if section.settings.image != blank -%}
-    {%- assign img_url = section.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-    <img style="width:auto;" class="blog-title__image blog-title__image--{{ block.id }} lazyload{% if has_mobile_image %} small--hide{% endif %}"
-      src="{{ section.settings.image | img_url: '300x' }}"
-      data-src="{{ img_url }}"
-      data-aspectratio="{{ section.settings.image.aspect_ratio }}"
-      data-sizes="auto"
-      alt="{{ section.settings.image.alt | escape }}">
-    {%- if has_mobile_image -%}
-      {%- assign img_url_mobile = section.settings.image_mobile | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-      <img style="width:auto;" class="blog-title__image blog-title__image--{{ block.id }} lazyload medium-up--hide"
-        src="{{ section.settings.image_mobile | img_url: '300x' }}"
-        data-src="{{ img_url_mobile }}"
-        data-aspectratio="{{ section.settings.image_mobile.aspect_ratio }}"
-        data-sizes="auto"
-        alt="{{ section.settings.image_mobile.alt | escape }}">
-    {%- endif -%}
-    <noscript>
-      <img style="width:auto;" class="blog-title__image blog-title__image--{{ block.id }}"
-        src="{{ section.settings.image | img_url: '1400x' }}"
-        alt="{{ section.settings.image.alt | escape }}">
-    </noscript>
-  {%- else -%}
-    {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
-  {%- endif -%}
-
-  <div class="add-po-blog-layout">
-
-    <div class="add-po-blog-layout__main">
-
-        <!-- WordPressの投稿を表示する領域 -->
-        <div class="add-po-new-grid" id="wp-posts"></div>
-
-    </div>
-
-  </div>
-
-  {%- if section.settings.link_text != blank -%}
-    <div class="add-btn-wrap" style="margin-top:2rem; text-align: center;">
-      <a href="{{ section.settings.link }}" class="btn" style=" background-color: #9fcfba;">
-        {{ section.settings.link_text }}
-      </a>
-    </div>
-  {%- endif -%}
-
-</div>
-
-{%- if section.settings.divider -%}</div>{%- endif -%}
+        $("#wp-posts-grid").html(postsHtml);
+      })
+      .fail(function(xhr, status, error) {
+        console.error('WordPress API Error:', error);
+        $("#wp-posts-grid").html('<div class="text-center"><p>ブログ投稿の読み込みに失敗しました。</p></div>');
+      });
+  });
+  </script>
+{%- endif -%}
 
 {% schema %}
-  {
-    "name": "Blog New posts",
-    "class": "index-section",
-    "settings": [
-      {
-        "type": "image_picker",
-        "id": "image",
-        "label": "Image"
-      },
-      {
-        "type": "image_picker",
-        "id": "image_mobile",
-        "label": "Mobile image"
-      },
-      {
-        "type": "url",
-        "id": "link",
-        "label": "Button link"
-      },
-      {
-        "type": "text",
-        "id": "link_text",
-        "label": "Button text"
-      },
-      {
-        "type": "checkbox",
-        "id": "divider",
-        "label": "Show section divider",
-        "default": false
+{
+  "name": "WordPress Blog Posts",
+  "class": "shopify-section--wordpress-blog",
+  "tag": "section",
+  "disabled_on": {
+    "templates": ["password"],
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "separate_section_with_border",
+      "label": "Separate section with border",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "WordPress Settings"
+    },
+    {
+      "type": "url",
+      "id": "wp_site_url",
+      "label": "WordPress Site URL",
+      "default": "https://blog.postoveralls.com",
+      "info": "WordPressサイトのURL（例: https://yourblog.com）"
+    },
+    {
+      "type": "number",
+      "id": "category_id",
+      "label": "Category ID",
+      "default": 1,
+      "info": "取得したいカテゴリのID"
+    },
+    {
+      "type": "range",
+      "id": "posts_count",
+      "min": 2,
+      "max": 12,
+      "label": "Number of posts to show",
+      "default": 6
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "posts_per_row_mobile",
+      "label": "Posts per row (mobile)",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "range",
+      "id": "posts_per_row_desktop",
+      "min": 2,
+      "max": 4,
+      "label": "Posts per row (desktop)",
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "min": 0.2,
+      "max": 2,
+      "step": 0.1,
+      "id": "horizontal_spacing_factor",
+      "label": "Horizontal spacing factor",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "min": 0.2,
+      "max": 2,
+      "step": 0.1,
+      "id": "vertical_spacing_factor",
+      "label": "Vertical spacing factor",
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Latest from our blog"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Heading",
+      "default": "Blog Posts"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Button link",
+      "info": "Link to blog archive page"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Button text",
+      "default": "View all posts"
+    }
+  ],
+  "presets": [
+    {
+      "name": "WordPress Blog Posts",
+      "settings": {
+        "title": "Latest Blog Posts",
+        "subheading": "Stay updated",
+        "posts_count": 6,
+        "posts_per_row_desktop": 3,
+        "posts_per_row_mobile": 1
       }
-    ],
-    "presets": [
-      {
-        "name": "Blog wp",
-        "category": "Blog"
-      }
-    ]
-  }
+    }
+  ]
+}
 {% endschema %}
