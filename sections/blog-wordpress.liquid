@@ -41,7 +41,7 @@
 
     .blog-post-card__title {
       font-size: 0.875rem;
-      font-weight: 500;
+      font-weight: normal;
       line-height: 1.3;
       margin: 0;
       color: inherit;
@@ -126,13 +126,12 @@
             imageUrl = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk5vIEltYWdlPC90ZXh0Pjwvc3ZnPg==';
           }
 
-          // 日付のフォーマット
+          // 日付のフォーマット（YYYY-MM-DD形式）
           var postDate = new Date(post.date);
-          var formattedDate = postDate.toLocaleDateString('ja-JP', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-          });
+          var year = postDate.getFullYear();
+          var month = String(postDate.getMonth() + 1).padStart(2, '0');
+          var day = String(postDate.getDate()).padStart(2, '0');
+          var formattedDate = year + '-' + month + '-' + day;
 
           postsHtml += '<article class="blog-post-card">';
           postsHtml += '  <div class="blog-post-card__image">';
