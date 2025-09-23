@@ -275,7 +275,6 @@
     },
     "blog_wordpress_czYcm8": {
       "type": "blog-wordpress",
-      "disabled": true,
       "name": "WordPress Blog Posts",
       "settings": {
         "color_scheme": "",
