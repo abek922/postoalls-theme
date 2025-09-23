@@ -273,6 +273,26 @@
         "button_text": ""
       }
     },
+    "blog_wordpress_czYcm8": {
+      "type": "blog-wordpress",
+      "disabled": true,
+      "name": "WordPress Blog Posts",
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "wp_site_url": "https://blog.postoveralls.com",
+        "category_id": 1,
+        "posts_count": 4,
+        "posts_per_row_mobile": "2",
+        "posts_per_row_desktop": 4,
+        "horizontal_spacing_factor": 1,
+        "vertical_spacing_factor": 1,
+        "subheading": "",
+        "title": "BLOG",
+        "link": "https://blog.postoveralls.com",
+        "link_text": "View all"
+      }
+    },
     "featured-collections": {
       "type": "featured-collections",
       "blocks": {
@@ -330,6 +350,7 @@
     "multi-column",
     "blog-posts",
     "blog_posts_news_keAKtC",
+    "blog_wordpress_czYcm8",
     "featured-collections",
     "newsletter"
   ]
