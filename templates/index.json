@@ -307,7 +307,7 @@
       "name": "WordPress Blog Posts",
       "settings": {
         "color_scheme": "",
-        "separate_section_with_border": true,
+        "separate_section_with_border": false,
         "wp_site_url": "https://blog.postoveralls.com",
         "category_id": 1,
         "posts_count": 4,
