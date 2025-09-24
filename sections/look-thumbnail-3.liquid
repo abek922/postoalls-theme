@@ -266,6 +266,36 @@
   </div>
 </div>
 
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Swiper初期化（必要に応じて）
+  const swipers = document.querySelectorAll('.swiper');
+  swipers.forEach(swiperEl => {
+    new Swiper(swiperEl, {
+      slidesPerView: 'auto',
+      spaceBetween: 16,
+      freeMode: true,
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 24,
+        }
+      }
+    });
+  });
+});
+</script>
+
 {% schema %}
 {
   "name": "Style Page",
@@ -273,10 +303,6 @@
   "tag": "section",
   "max_blocks": 48,
   "settings": [
-    {
-      "type": "paragraph",
-      "content": "作成中 20FWのサムネ"
-    },
     {
       "type": "color_scheme",
       "id": "color_scheme",
@@ -353,7 +379,7 @@
   ],
   "presets": [
     {
-      "name": "Look Gallery 20Fw",
+      "name": "Look Gallery 24Fw",
       "category": "POST O'ALLS Look",
       "settings": {
         "title": "Style Guide"
