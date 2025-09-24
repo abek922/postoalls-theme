@@ -18,6 +18,69 @@
         "page_width": "xs"
       }
     },
+    "look_thumbnail_2_kp6XY7": {
+      "type": "look-thumbnail-2",
+      "blocks": {
+        "image_YhBKYa": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/m-4_2b95f2b8-7418-41b0-a6b5-f09d8b37cfad.jpg",
+            "link": "",
+            "custom_html": "<p>Sample look</p>"
+          }
+        },
+        "image_dywcKH": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/w-5_672688e1-d408-48e2-b43c-d7c8b10a04d4.jpg",
+            "link": "",
+            "custom_html": "<p>Look caption</p>"
+          }
+        },
+        "image_6DNcUY": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/m-4_2b95f2b8-7418-41b0-a6b5-f09d8b37cfad.jpg",
+            "link": "",
+            "custom_html": "<p>Look caption</p>"
+          }
+        },
+        "image_kytxaA": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/w-5_672688e1-d408-48e2-b43c-d7c8b10a04d4.jpg",
+            "link": "",
+            "custom_html": "<p>Look caption</p>"
+          }
+        },
+        "scroll_CNX73X": {
+          "type": "scroll",
+          "settings": {
+            "image_1": "shopify://shop_images/m-4_2b95f2b8-7418-41b0-a6b5-f09d8b37cfad.jpg",
+            "image_2": "shopify://shop_images/w-5_672688e1-d408-48e2-b43c-d7c8b10a04d4.jpg",
+            "image_3": "shopify://shop_images/m-4_2b95f2b8-7418-41b0-a6b5-f09d8b37cfad.jpg",
+            "image_4": "shopify://shop_images/w-5_672688e1-d408-48e2-b43c-d7c8b10a04d4.jpg",
+            "link": "",
+            "custom_html": "<p>Scroll look caption</p>"
+          }
+        }
+      },
+      "block_order": [
+        "image_YhBKYa",
+        "image_dywcKH",
+        "image_6DNcUY",
+        "image_kytxaA",
+        "scroll_CNX73X"
+      ],
+      "name": "Look Gallery",
+      "settings": {
+        "color_scheme": "",
+        "section_title": "Latest Looks",
+        "section_text_1": "Discover our seasonal collection",
+        "section_text_2": "",
+        "top_image_alt": ""
+      }
+    },
     "look_header": {
       "type": "look-header",
       "settings": {
@@ -439,6 +502,7 @@
   },
   "order": [
     "main",
+    "look_thumbnail_2_kp6XY7",
     "look_header",
     "look_combined_1",
     "look_combined_2_X87p4W",
