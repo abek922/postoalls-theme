@@ -1,664 +1,312 @@
 <style>
-  .look-page {
-    position: relative;
-    max-width: 100%;
-    margin: 0 auto;
+  .look-section {
+    padding: 2rem 0;
   }
 
-  .look-page__header {
-    padding: 3rem 0 2rem;
+  .look-section .section-header {
     text-align: center;
+    margin-bottom: 2rem;
   }
 
-  .look-page__header h1 {
+  .look-section .section-header__title {
     font-size: 2rem;
     font-weight: 300;
     letter-spacing: 0.1em;
-    margin: 0;
     text-transform: uppercase;
+    margin: 0;
   }
 
-  .look-page__navigation {
-    padding: 2rem 0;
+  .look-section .section-description {
+    text-align: center;
     margin-bottom: 3rem;
-    border-bottom: 1px solid rgba(var(--color-foreground), 0.1);
   }
 
-  .look-page__thumbnails {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    max-width: 100%;
-    overflow-x: auto;
-    padding: 0 2rem;
+  .look-section .section-description p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
   }
 
-  .look-page__thumbnail {
-    flex-shrink: 0;
-    width: 60px;
-    height: 60px;
-    border-radius: 0;
-    overflow: hidden;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    border: 1px solid transparent;
-    opacity: 0.6;
+  .look-section .top-image {
+    margin-bottom: 3rem;
+    text-align: center;
   }
 
-  .look-page__thumbnail.is-active {
-    border-color: rgb(var(--color-foreground));
-    opacity: 1;
-  }
-
-  .look-page__thumbnail:hover {
-    opacity: 1;
-  }
-
-  .look-page__thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .look-page__content {
-    position: relative;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-
-  .look-page__look {
-    display: none;
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    margin-bottom: 4rem;
-  }
-
-  .look-page__look.is-active {
-    display: grid;
-  }
-
-  .look-page__image-container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #f8f8f8;
-    border-radius: 0;
-    overflow: hidden;
-    cursor: pointer;
-  }
-
-  .look-page__image {
+  .look-section .top-image img {
     max-width: 100%;
     height: auto;
+  }
+
+  .look-list-2024fw.pc {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .look-list-2024fw.sp {
+    display: none;
+  }
+
+  .look-item {
+    position: relative;
+  }
+
+  .look-item a {
     display: block;
+    text-decoration: none;
+  }
+
+  .look-item img {
+    width: 100%;
+    height: auto;
     transition: transform 0.3s ease;
   }
 
-  .look-page__image-container:hover .look-page__image {
+  .look-item:hover img {
     transform: scale(1.02);
   }
 
-  .look-page__zoom-icon {
+  .look-item .caption {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .scroll {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+
+  .scroll-images {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 1rem;
+  }
+
+  .scroll-images::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .scroll-images::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 2px;
+  }
+
+  .scroll-images::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 2px;
+  }
+
+  .scroll-images::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  .scroll-images img {
+    flex-shrink: 0;
+    width: 250px;
+    height: auto;
+  }
+
+  .scroll-arrow {
     position: absolute;
-    top: 1rem;
+    top: 50%;
     right: 1rem;
+    transform: translateY(-50%);
     background: rgba(255, 255, 255, 0.9);
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
+    padding: 0.5rem;
     transition: opacity 0.3s ease;
+  }
+
+  .scroll-arrow.hidden {
+    opacity: 0;
     pointer-events: none;
   }
 
-  .look-page__image-container:hover .look-page__zoom-icon {
-    opacity: 1;
+  .scroll-arrow img {
+    width: 20px;
+    height: 20px;
   }
 
-  .look-page__nav-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.8);
-    border: none;
-    border-radius: 0;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    z-index: 2;
-    box-shadow: none;
-  }
-
-  .look-page__nav-button:hover {
-    background: rgba(255, 255, 255, 0.95);
-    transform: translateY(-50%);
-  }
-
-  .look-page__nav-button--prev {
-    left: 1rem;
-  }
-
-  .look-page__nav-button--next {
-    right: 1rem;
-  }
-
-  .look-page__nav-button svg {
-    width: 12px;
-    height: 12px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    color: #333;
-  }
-
-  .look-page__sidebar {
-    display: grid;
-    gap: 2rem;
-  }
-
-  .look-page__look-title {
-    text-align: center;
-    font-size: 1.25rem;
-    font-weight: 300;
-    letter-spacing: 0.1em;
-    margin: 0;
-    text-transform: uppercase;
-    color: rgb(var(--color-foreground));
-  }
-
-  .look-page__products {
-    --products-per-row: {{ section.settings.products_per_row | default: 4 }};
-    display: grid;
-    grid-template-columns: repeat(var(--products-per-row), 1fr);
-    gap: 1.5rem;
-  }
-
-  .look-page__product-card {
-    background: white;
-    border: 1px solid rgba(var(--color-foreground), 0.08);
-    border-radius: 0;
-    overflow: hidden;
-    transition: all 0.25s ease;
-    text-decoration: none;
-    color: inherit;
-    display: block;
-  }
-
-  .look-page__product-card:hover {
-    border-color: rgba(var(--color-foreground), 0.2);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .look-page__product-image {
-    width: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
-    background: #f8f8f8;
-  }
-
-  .look-page__product-image.placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgba(var(--color-foreground), 0.3);
-  }
-
-  .look-page__product-info {
-    padding: 1rem;
-  }
-
-  .look-page__product-title {
-    font-size: 0.8rem;
-    font-weight: normal;
-    margin: 0 0 0.5rem 0;
-    line-height: 1.3;
-    color: rgb(var(--color-foreground));
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .look-page__product-price {
-    font-size: 0.8rem;
-    color: rgba(var(--color-foreground), 0.7);
-    margin: 0;
-  }
-
-  .look-page__product-price .price {
-    font-weight: 500;
-  }
-
-  .look-page__product-price .price--compare {
-    text-decoration: line-through;
-    margin-right: 0.5rem;
-    opacity: 0.6;
-  }
-
-  /* ライトボックス */
-  .lightbox {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-  }
-
-  .lightbox.is-open {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .lightbox__content {
-    max-width: 90%;
-    max-height: 90%;
-    position: relative;
-  }
-
-  .lightbox__image {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-  }
-
-  .lightbox__close {
-    position: absolute;
-    top: -50px;
-    right: 0;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 2rem;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .lightbox__close:hover {
-    opacity: 0.7;
+  .scroll .caption {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
   }
 
   /* モバイル対応 */
-  @media screen and (max-width: 767px) {
-    .look-page__header {
-      padding: 2rem 0 1.5rem;
+  @media screen and (max-width: 768px) {
+    .look-section {
+      padding: 1rem 0;
     }
 
-    .look-page__header h1 {
+    .look-section .section-header__title {
       font-size: 1.5rem;
     }
 
-    .look-page__content {
-      padding: 0 1rem;
+    .look-list-2024fw.pc {
+      display: none;
     }
 
-    .look-page__thumbnails {
-      padding: 0 1rem;
-      gap: 0.75rem;
+    .look-list-2024fw.sp {
+      display: block;
     }
 
-    .look-page__thumbnail {
-      width: 50px;
-      height: 50px;
-    }
-
-    .look-page__look {
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-
-    .look-page__nav-button {
-      width: 32px;
-      height: 32px;
-    }
-
-    .look-page__nav-button--prev {
-      left: 0.5rem;
-    }
-
-    .look-page__nav-button--next {
-      right: 0.5rem;
-    }
-
-    .look-page__products {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-    }
-
-    .look-page__navigation {
-      padding: 1.5rem 0;
-      margin-bottom: 2rem;
-    }
-
-    .lightbox__close {
-      top: 10px;
-      right: 10px;
-    }
-  }
-
-  /* タブレット対応 */
-  @media screen and (min-width: 768px) {
-    .look-page__look {
-      grid-template-columns: 2fr 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-
-    .look-page__products {
+    .look-list-2024fw.pc {
       grid-template-columns: 1fr;
-      gap: 1rem;
+      gap: 1.5rem;
     }
 
-    .look-page__thumbnails {
-      gap: 1.25rem;
-    }
-
-    .look-page__thumbnail {
-      width: 70px;
-      height: 70px;
+    .scroll-images img {
+      width: 200px;
     }
   }
 
-  /* デスクトップ対応 */
-  @media screen and (min-width: 1024px) {
-    .look-page__products {
-      grid-template-columns: repeat(min(var(--products-per-row), 2), 1fr);
-    }
-
-    .look-page__thumbnail {
-      width: 80px;
-      height: 80px;
-    }
-  }
-
-  @media screen and (min-width: 1200px) {
-    .look-page__look {
-      gap: 5rem;
-    }
+  /* プレースホルダー */
+  .icon--placeholder {
+    width: 100%;
+    height: 300px;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ccc;
   }
 </style>
 
-<div class="look-page color-scheme color-scheme--{{ section.settings.color_scheme.id }}">
-  <div class="look-page__header container">
-    <h1>{{ section.settings.page_title | default: page.title }}</h1>
-    {%- if section.settings.page_description != blank -%}
-      <p class="look-page__description">{{ section.settings.page_description }}</p>
-    {%- endif -%}
-  </div>
-
-  {%- assign valid_blocks_count = 0 -%}
-  {%- for block in section.blocks -%}
-    {%- if block.settings.image != blank -%}
-      {%- assign valid_blocks_count = valid_blocks_count | plus: 1 -%}
-    {%- endif -%}
-  {%- endfor -%}
-
-  {%- if valid_blocks_count > 1 -%}
-    <div class="look-page__navigation">
-      <div class="look-page__thumbnails">
-        {%- assign thumbnail_index = 0 -%}
-        {%- for block in section.blocks -%}
-          {%- if block.settings.image != blank -%}
-            <div class="look-page__thumbnail {% if thumbnail_index == 0 %}is-active{% endif %}" 
-                 data-look-index="{{ thumbnail_index }}" 
-                 data-block-id="{{ block.id }}">
-              {{ block.settings.image | image_url: width: 200 | image_tag: alt: block.settings.title, loading: 'lazy' }}
-            </div>
-            {%- assign thumbnail_index = thumbnail_index | plus: 1 -%}
-          {%- endif -%}
-        {%- endfor -%}
+<div class="look-section color-scheme color-scheme--{{ section.settings.color_scheme.id }}">
+  <div class="page-width">
+    {%- if section.settings.section_title != blank -%}
+      <div class="section-header section-header--small">
+        <h2 class="section-header__title">
+          {{ section.settings.section_title | escape }}
+        </h2>
       </div>
+    {%- endif -%}
+
+    {%- if section.settings.section_text_1 != blank or section.settings.section_text_2 != blank -%}
+      <div class="section-description">
+        {%- if section.settings.section_text_1 != blank -%}
+          <p>{{ section.settings.section_text_1 | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.section_text_2 != blank -%}
+          <p>{{ section.settings.section_text_2 | escape }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.top_image != blank -%}
+      <div class="top-image">
+        {{ section.settings.top_image | image_url: width: 1200 | image_tag: alt: section.settings.top_image_alt, loading: 'lazy' }}
+      </div>
+    {%- endif -%}
+
+    <div class="look-list-2024fw pc">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'image' -%}
+          <div class="look-item" {{ block.shopify_attributes }}>
+            {%- if block.settings.image != blank -%}
+              <a href="{{ block.settings.link | default: '#' }}">
+                {{ block.settings.image | image_url: width: 600 | image_tag: class: 'gallery__image', alt: block.settings.image.alt, loading: 'lazy' }}
+              </a>
+              {%- if block.settings.custom_html != blank -%}
+                <div class="caption">
+                  {{ block.settings.custom_html }}
+                </div>
+              {%- endif -%}
+            {%- else -%}
+              <div class="icon--placeholder">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                  <rect x="12" y="18" width="36" height="24" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                  <circle cx="22" cy="26" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                  <path d="m45 35-5-5-8 8-4-4-3 3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                </svg>
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
     </div>
-  {%- endif -%}
 
-  <div class="look-page__content" id="look-page-content">
-    {%- assign look_index = 0 -%}
-    {%- for block in section.blocks -%}
-      {%- if block.settings.image != blank -%}
-        <div class="look-page__look {% if look_index == 0 %}is-active{% endif %}" 
-             data-look-index="{{ look_index }}" 
-             data-block-id="{{ block.id }}"
-             {{ block.shopify_attributes }}>
-          
-          <div class="look-page__image-container" data-lightbox-trigger data-image-src="{{ block.settings.image | image_url: width: 2000 }}">
-            {%- if valid_blocks_count > 1 -%}
-              <button class="look-page__nav-button look-page__nav-button--prev" 
-                      data-action="prev-look" 
-                      type="button"
-                      aria-label="Previous look">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <polyline points="14,7 9,12 14,17"></polyline>
+    <div class="look-list-2024fw sp">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'scroll' -%}
+          <div class="scroll" {{ block.shopify_attributes }}>
+            <a href="{{ block.settings.link | default: '#' }}" class="scroll-link">
+              <div class="scroll-images">
+                {%- for i in (1..4) -%}
+                  {%- assign image_key = 'image_' | append: i -%}
+                  {%- if block.settings[image_key] != blank -%}
+                    {{ block.settings[image_key] | image_url: width: 500 | image_tag: class: 'gallery__image', alt: block.settings[image_key].alt, loading: 'lazy' }}
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+              
+              <div class="scroll-arrow">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9,18 15,12 9,6"></polyline>
                 </svg>
-              </button>
-              <button class="look-page__nav-button look-page__nav-button--next" 
-                      data-action="next-look" 
-                      type="button"
-                      aria-label="Next look">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <polyline points="10,7 15,12 10,17"></polyline>
-                </svg>
-              </button>
-            {%- endif -%}
+              </div>
+            </a>
             
-            <div class="look-page__zoom-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="11" cy="11" r="8"></circle>
-                <path d="21 21l-4.35-4.35"></path>
-                <line x1="11" y1="8" x2="11" y2="14"></line>
-                <line x1="8" y1="11" x2="14" y2="11"></line>
-              </svg>
-            </div>
-            
-            {{ block.settings.image | image_url: width: 1200 | image_tag: class: 'look-page__image', alt: block.settings.title, loading: 'lazy' }}
-          </div>
-
-          <div class="look-page__sidebar">
-            {%- if block.settings.title != blank -%}
-              <h2 class="look-page__look-title">{{ block.settings.title }}</h2>
+            {%- if block.settings.custom_html != blank -%}
+              <div class="caption">
+                {{ block.settings.custom_html }}
+              </div>
             {%- endif -%}
-
-            <div class="look-page__products">
-              {%- for i in (1..6) -%}
-                {%- assign product_key = 'product_' | append: i -%}
-                {%- assign product = block.settings[product_key] -%}
-                
-                {%- if product and product != empty -%}
-                  <a href="{{ product.url }}" class="look-page__product-card">
-                    {%- if product.featured_image -%}
-                      {{ product.featured_image | image_url: width: 400 | image_tag: class: 'look-page__product-image', alt: product.title, loading: 'lazy' }}
-                    {%- else -%}
-                      <div class="look-page__product-image placeholder">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                          <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
-                          <circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="2"/>
-                          <path d="M21 15L16 10L5 21" stroke="currentColor" stroke-width="2"/>
-                        </svg>
-                      </div>
-                    {%- endif -%}
-                    
-                    <div class="look-page__product-info">
-                      <h3 class="look-page__product-title">{{ product.title }}</h3>
-                      <div class="look-page__product-price">
-                        {%- if product.compare_at_price > product.price -%}
-                          <span class="price price--compare">{{ product.compare_at_price | money }}</span>
-                        {%- endif -%}
-                        <span class="price">{{ product.price | money }}</span>
-                      </div>
-                    </div>
-                  </a>
-                {%- endif -%}
-              {%- endfor -%}
-            </div>
           </div>
-        </div>
-        {%- assign look_index = look_index | plus: 1 -%}
-      {%- endif -%}
-    {%- endfor -%}
-  </div>
-</div>
-
-<!-- ライトボックス -->
-<div class="lightbox" id="lightbox">
-  <div class="lightbox__content">
-    <button class="lightbox__close" type="button" aria-label="Close">&times;</button>
-    <img class="lightbox__image" src="" alt="Enlarged view">
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
   </div>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  const lookPageContent = document.getElementById('look-page-content');
-  if (!lookPageContent) return;
+  const scrollContainers = document.querySelectorAll('.scroll');
 
-  let currentIndex = 0;
-  const looks = Array.from(lookPageContent.querySelectorAll('.look-page__look'));
-  const thumbnails = Array.from(document.querySelectorAll('.look-page__thumbnail'));
-  
-  // 有効なlooksが存在しない場合は処理を終了
-  if (looks.length === 0) return;
-
-  // ライトボックス要素
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImage = lightbox.querySelector('.lightbox__image');
-  const lightboxClose = lightbox.querySelector('.lightbox__close');
-
-  function showLook(index) {
-    if (index < 0 || index >= looks.length) return;
+  scrollContainers.forEach(container => {
+    const arrow = container.querySelector('.scroll-arrow');
+    const scrollImages = container.querySelector('.scroll-images');
     
-    currentIndex = index;
+    if (!scrollImages || !arrow) return;
 
-    // LOOKの表示切り替え
-    looks.forEach((look, i) => {
-      if (i === index) {
-        look.classList.add('is-active');
-        look.style.display = 'grid';
+    // 初期チェック：矢印が必要かどうかを確認
+    const checkScroll = () => {
+      if (scrollImages.scrollWidth <= scrollImages.clientWidth) {
+        arrow.classList.add('hidden');
+      } else if (scrollImages.scrollLeft + scrollImages.clientWidth >= scrollImages.scrollWidth) {
+        arrow.classList.add('hidden');
       } else {
-        look.classList.remove('is-active');
-        look.style.display = 'none';
+        arrow.classList.remove('hidden');
       }
-    });
+    };
 
-    // サムネイルのアクティブ状態切り替え
-    thumbnails.forEach((thumbnail, i) => {
-      if (i === index) {
-        thumbnail.classList.add('is-active');
-      } else {
-        thumbnail.classList.remove('is-active');
-      }
-    });
+    // ページロード時にスクロール位置をチェック
+    checkScroll();
 
-    // アクティブなサムネイルを表示範囲内にスクロール
-    if (thumbnails[index]) {
-      thumbnails[index].scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-        inline: 'center'
-      });
-    }
-  }
+    // スクロールイベントをリッスン
+    scrollImages.addEventListener('scroll', checkScroll);
 
-  function showPreviousLook() {
-    const newIndex = currentIndex > 0 ? currentIndex - 1 : looks.length - 1;
-    showLook(newIndex);
-  }
-
-  function showNextLook() {
-    const newIndex = currentIndex < looks.length - 1 ? currentIndex + 1 : 0;
-    showLook(newIndex);
-  }
-
-  function openLightbox(imageSrc) {
-    lightboxImage.src = imageSrc;
-    lightbox.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeLightbox() {
-    lightbox.classList.remove('is-open');
-    document.body.style.overflow = '';
-  }
-
-  // サムネイルクリックイベント
-  thumbnails.forEach((thumbnail, index) => {
-    thumbnail.addEventListener('click', function(e) {
-      e.preventDefault();
-      showLook(index);
-    });
+    // ウィンドウリサイズ時にもチェック
+    window.addEventListener('resize', checkScroll);
   });
-
-  // ナビゲーションボタンイベント - イベント委譲を使用
-  document.addEventListener('click', function(e) {
-    if (e.target.closest('[data-action="prev-look"]')) {
-      e.preventDefault();
-      showPreviousLook();
-    } else if (e.target.closest('[data-action="next-look"]')) {
-      e.preventDefault();
-      showNextLook();
-    } else if (e.target.closest('[data-lightbox-trigger]')) {
-      e.preventDefault();
-      const trigger = e.target.closest('[data-lightbox-trigger]');
-      const imageSrc = trigger.dataset.imageSrc;
-      if (imageSrc) {
-        openLightbox(imageSrc);
-      }
-    }
-  });
-
-  // ライトボックス閉じる
-  lightboxClose.addEventListener('click', closeLightbox);
-  lightbox.addEventListener('click', function(e) {
-    if (e.target === lightbox) {
-      closeLightbox();
-    }
-  });
-
-  // キーボードナビゲーション
-  document.addEventListener('keydown', function(e) {
-    if (lightbox.classList.contains('is-open')) {
-      if (e.key === 'Escape') {
-        closeLightbox();
-      }
-    } else {
-      if (e.key === 'ArrowLeft') {
-        e.preventDefault();
-        showPreviousLook();
-      } else if (e.key === 'ArrowRight') {
-        e.preventDefault();
-        showNextLook();
-      }
-    }
-  });
-
-  // 初期化
-  showLook(0);
 });
 </script>
 
 {% schema %}
 {
-  "name": "Look Page Enhanced",
-  "class": "shopify-section--look-page",
+  "name": "Look24FW Thumbnail",
+  "class": "shopify-section--look",
   "tag": "section",
   "settings": [
+    {
+      "type": "paragraph",
+      "content": "作成中 24FWのサムネ"
+    },
     {
       "type": "color_scheme",
       "id": "color_scheme",
@@ -667,90 +315,108 @@ document.addEventListener('DOMContentLoaded', function() {
     },
     {
       "type": "text",
-      "id": "page_title",
-      "label": "Page title",
-      "info": "Override the default page title"
+      "id": "section_title",
+      "label": "Heading",
+      "default": "Look"
     },
     {
-      "type": "textarea",
-      "id": "page_description",
-      "label": "Page description",
-      "info": "Optional description text below the title"
+      "type": "text",
+      "id": "section_text_1",
+      "label": "Description text 1",
+      "default": "Showcase your seasonal looks"
     },
     {
-      "type": "range",
-      "id": "products_per_row",
-      "min": 3,
-      "max": 6,
-      "step": 1,
-      "label": "Products per row (desktop)",
-      "default": 4,
-      "info": "Number of products to display in each row on desktop"
+      "type": "text",
+      "id": "section_text_2",
+      "label": "Description text 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "top_image",
+      "label": "Top image"
+    },
+    {
+      "type": "text",
+      "id": "top_image_alt",
+      "label": "Top image alt text",
+      "info": "Describe the image for accessibility"
     }
   ],
+  "max_blocks": 60,
   "blocks": [
     {
-      "type": "look",
-      "name": "Look",
+      "type": "image",
+      "name": "Image",
       "settings": [
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Look Image"
+          "label": "Image"
         },
         {
-          "type": "text",
-          "id": "title",
-          "label": "Look Title",
-          "default": "Look Title"
+          "type": "url",
+          "id": "link",
+          "label": "Image link"
         },
         {
-          "type": "product",
-          "id": "product_1",
-          "label": "Product 1"
+          "type": "html",
+          "id": "custom_html",
+          "label": "Caption",
+          "default": "<p>Look caption</p>"
+        }
+      ]
+    },
+    {
+      "type": "scroll",
+      "name": "Scroll Images",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "Image 1"
         },
         {
-          "type": "product",
-          "id": "product_2",
-          "label": "Product 2"
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Image 2"
         },
         {
-          "type": "product",
-          "id": "product_3",
-          "label": "Product 3"
+          "type": "image_picker",
+          "id": "image_3",
+          "label": "Image 3"
         },
         {
-          "type": "product",
-          "id": "product_4",
-          "label": "Product 4"
+          "type": "image_picker",
+          "id": "image_4",
+          "label": "Image 4"
         },
         {
-          "type": "product",
-          "id": "product_5",
-          "label": "Product 5"
+          "type": "url",
+          "id": "link",
+          "label": "Link URL"
         },
         {
-          "type": "product",
-          "id": "product_6",
-          "label": "Product 6"
+          "type": "html",
+          "id": "custom_html",
+          "label": "Caption",
+          "default": "<p>Scroll look caption</p>"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Look Page Enhanced",
+      "name": "Look Gallery 24Fw",
       "category": "POST O'ALLS Look",
       "settings": {
-        "page_title": "Look Collection",
-        "page_description": "Discover our curated looks and shop the featured items",
-        "products_per_row": 4
+        "section_title": "Latest Looks",
+        "section_text_1": "Discover our seasonal collection"
       },
       "blocks": [
         {
-          "type": "look",
+          "type": "image",
           "settings": {
-            "title": "Sample Look"
+            "custom_html": "<p>Sample look</p>"
           }
         }
       ]
