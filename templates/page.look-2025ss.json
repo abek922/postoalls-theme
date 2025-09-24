@@ -18,6 +18,116 @@
         "page_width": "xs"
       }
     },
+    "look_thumbnail_3_qyTNm7": {
+      "type": "look-thumbnail-3",
+      "blocks": {
+        "image_wA9Nqa": {
+          "type": "image",
+          "settings": {
+            "divider": false,
+            "look_title": "Sample Look",
+            "image_1": "shopify://shop_images/w-5_672688e1-d408-48e2-b43c-d7c8b10a04d4.jpg",
+            "featured_product_1": "",
+            "featured_product_2": "",
+            "featured_product_3": "",
+            "featured_product_4": "",
+            "featured_product_5": "",
+            "featured_product_6": ""
+          }
+        },
+        "image_FpW7cy": {
+          "type": "image",
+          "settings": {
+            "divider": false,
+            "look_title": "Look #1",
+            "image_1": "shopify://shop_images/m-4_2b95f2b8-7418-41b0-a6b5-f09d8b37cfad.jpg",
+            "featured_product_1": "",
+            "featured_product_2": "",
+            "featured_product_3": "",
+            "featured_product_4": "",
+            "featured_product_5": "",
+            "featured_product_6": ""
+          }
+        },
+        "image_Fabdab": {
+          "type": "image",
+          "settings": {
+            "divider": false,
+            "look_title": "Look #1",
+            "image_1": "shopify://shop_images/w-5_672688e1-d408-48e2-b43c-d7c8b10a04d4.jpg",
+            "featured_product_1": "",
+            "featured_product_2": "",
+            "featured_product_3": "",
+            "featured_product_4": "",
+            "featured_product_5": "",
+            "featured_product_6": ""
+          }
+        },
+        "image_JtbVDc": {
+          "type": "image",
+          "settings": {
+            "divider": false,
+            "look_title": "Look #1",
+            "featured_product_1": "",
+            "featured_product_2": "",
+            "featured_product_3": "",
+            "featured_product_4": "",
+            "featured_product_5": "",
+            "featured_product_6": ""
+          }
+        },
+        "image_cWGgVN": {
+          "type": "image",
+          "settings": {
+            "divider": false,
+            "look_title": "Look #1",
+            "featured_product_1": "",
+            "featured_product_2": "",
+            "featured_product_3": "",
+            "featured_product_4": "",
+            "featured_product_5": "",
+            "featured_product_6": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_wA9Nqa",
+        "image_FpW7cy",
+        "image_Fabdab",
+        "image_JtbVDc",
+        "image_cWGgVN"
+      ],
+      "name": "Look Gallery 20Fw",
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": false,
+        "title": "Style Guide"
+      }
+    },
+    "look_thumbnail_2_9NwaLL": {
+      "type": "look-thumbnail-2",
+      "blocks": {
+        "image_938PUA": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "custom_html": "<p>Sample look</p>"
+          }
+        }
+      },
+      "block_order": [
+        "image_938PUA"
+      ],
+      "disabled": true,
+      "name": "Look Gallery 24Fw",
+      "settings": {
+        "color_scheme": "",
+        "section_title": "Latest Looks",
+        "section_text_1": "Discover our seasonal collection",
+        "section_text_2": "",
+        "top_image_alt": ""
+      }
+    },
     "look_thumbnail_2_kp6XY7": {
       "type": "look-thumbnail-2",
       "blocks": {
@@ -506,6 +616,8 @@
   },
   "order": [
     "main",
+    "look_thumbnail_3_qyTNm7",
+    "look_thumbnail_2_9NwaLL",
     "look_thumbnail_2_kp6XY7",
     "look_header",
     "look_combined_1",
