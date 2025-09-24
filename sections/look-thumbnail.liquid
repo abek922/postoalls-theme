@@ -103,8 +103,8 @@
     background: rgba(255, 255, 255, 0.8);
     border: none;
     border-radius: 0;
-    width: 28px;
-    height: 28px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -128,8 +128,8 @@
   }
 
   .look-page__nav-button svg {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     fill: none;
     stroke: currentColor;
     stroke-width: 2;
@@ -250,8 +250,8 @@
     }
 
     .look-page__nav-button {
-      width: 28px;
-      height: 28px;
+      width: 32px;
+      height: 32px;
     }
 
     .look-page__nav-button--prev {
@@ -320,98 +320,97 @@
     <h1>{{ page.title }}</h1>
   </div>
 
-  {%- assign valid_looks = '' | split: '' -%}
-  {%- for block in section.blocks -%}
+  {%- assign valid_looks = section.blocks | where: 'settings.image' -%}
+  {%- assign valid_looks_filtered = '' | split: '' -%}
+  {%- for block in valid_looks -%}
     {%- if block.settings.image != blank -%}
-      {%- assign valid_looks = valid_looks | append: block -%}
+      {%- assign valid_looks_filtered = valid_looks_filtered | append: block -%}
     {%- endif -%}
   {%- endfor -%}
 
-  {%- if valid_looks.size > 1 -%}
+  {%- if valid_looks_filtered.size > 1 -%}
     <div class="look-page__navigation">
       <div class="look-page__thumbnails">
-        {%- assign index = 0 -%}
-        {%- for block in section.blocks -%}
-          {%- if block.settings.image != blank -%}
-            <div class="look-page__thumbnail {% if index == 0 %}is-active{% endif %}" 
-                 data-look-index="{{ index }}" 
-                 data-block-id="{{ block.id }}">
-              {{ block.settings.image | image_url: width: 200 | image_tag: alt: block.settings.title, loading: 'lazy' }}
-            </div>
-            {%- assign index = index | plus: 1 -%}
-          {%- endif -%}
+        {%- for block in valid_looks_filtered -%}
+          <div class="look-page__thumbnail {% if forloop.first %}is-active{% endif %}" 
+               data-look-index="{{ forloop.index0 }}" 
+               data-block-id="{{ block.id }}">
+            {{ block.settings.image | image_url: width: 200 | image_tag: alt: block.settings.title, loading: 'lazy' }}
+          </div>
         {%- endfor -%}
       </div>
     </div>
   {%- endif -%}
 
   <div class="look-page__content" id="look-page-content">
-    {%- assign index = 0 -%}
-    {%- for block in section.blocks -%}
-      {%- if block.settings.image != blank -%}
-        <div class="look-page__look {% if index == 0 %}is-active{% endif %}" 
-             data-look-index="{{ index }}" 
-             data-block-id="{{ block.id }}"
-             {{ block.shopify_attributes }}>
+    {%- for block in valid_looks_filtered -%}
+      <div class="look-page__look {% if forloop.first %}is-active{% endif %}" 
+           data-look-index="{{ forloop.index0 }}" 
+           data-block-id="{{ block.id }}"
+           {{ block.shopify_attributes }}>
+        
+        <div class="look-page__image-container">
+          {%- if valid_looks_filtered.size > 1 -%}
+            <button class="look-page__nav-button look-page__nav-button--prev" 
+                    data-action="prev-look" 
+                    type="button"
+                    aria-label="Previous look">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <polyline points="14,7 9,12 14,17"></polyline>
+              </svg>
+            </button>
+            <button class="look-page__nav-button look-page__nav-button--next" 
+                    data-action="next-look" 
+                    type="button"
+                    aria-label="Next look">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <polyline points="10,7 15,12 10,17"></polyline>
+              </svg>
+            </button>
+          {%- endif -%}
           
-          <div class="look-page__image-container">
-            {%- if valid_looks.size > 1 -%}
-              <button class="look-page__nav-button look-page__nav-button--prev" data-action="prev-look" type="button">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <polyline points="14,7 9,12 14,17"></polyline>
-                </svg>
-              </button>
-              <button class="look-page__nav-button look-page__nav-button--next" data-action="next-look" type="button">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <polyline points="10,7 15,12 10,17"></polyline>
-                </svg>
-              </button>
-            {%- endif -%}
-            
-            {{ block.settings.image | image_url: width: 1200 | image_tag: class: 'look-page__image', alt: block.settings.title, loading: 'lazy' }}
-          </div>
+          {{ block.settings.image | image_url: width: 1200 | image_tag: class: 'look-page__image', alt: block.settings.title, loading: 'lazy' }}
+        </div>
 
-          <div class="look-page__sidebar">
-            {%- if block.settings.title != blank -%}
-              <h2 class="look-page__look-title">{{ block.settings.title }}</h2>
-            {%- endif -%}
+        <div class="look-page__sidebar">
+          {%- if block.settings.title != blank -%}
+            <h2 class="look-page__look-title">{{ block.settings.title }}</h2>
+          {%- endif -%}
 
-            <div class="look-page__products">
-              {%- for i in (1..6) -%}
-                {%- assign product_key = 'product_' | append: i -%}
-                {%- assign product = all_products[block.settings[product_key]] -%}
-                
-                {%- if product and product != empty -%}
-                  <a href="{{ product.url }}" class="look-page__product-card">
-                    {%- if product.featured_image -%}
-                      {{ product.featured_image | image_url: width: 400 | image_tag: class: 'look-page__product-image', alt: product.title, loading: 'lazy' }}
-                    {%- else -%}
-                      <div class="look-page__product-image placeholder">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                          <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
-                          <circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="2"/>
-                          <path d="M21 15L16 10L5 21" stroke="currentColor" stroke-width="2"/>
-                        </svg>
-                      </div>
-                    {%- endif -%}
-                    
-                    <div class="look-page__product-info">
-                      <h3 class="look-page__product-title">{{ product.title }}</h3>
-                      <div class="look-page__product-price">
-                        {%- if product.compare_at_price > product.price -%}
-                          <span class="price price--compare">{{ product.compare_at_price | money }}</span>
-                        {%- endif -%}
-                        <span class="price">{{ product.price | money }}</span>
-                      </div>
+          <div class="look-page__products">
+            {%- for i in (1..6) -%}
+              {%- assign product_key = 'product_' | append: i -%}
+              {%- assign product = all_products[block.settings[product_key]] -%}
+              
+              {%- if product and product != empty -%}
+                <a href="{{ product.url }}" class="look-page__product-card">
+                  {%- if product.featured_image -%}
+                    {{ product.featured_image | image_url: width: 400 | image_tag: class: 'look-page__product-image', alt: product.title, loading: 'lazy' }}
+                  {%- else -%}
+                    <div class="look-page__product-image placeholder">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="2"/>
+                        <path d="M21 15L16 10L5 21" stroke="currentColor" stroke-width="2"/>
+                      </svg>
                     </div>
-                  </a>
-                {%- endif -%}
-              {%- endfor -%}
-            </div>
+                  {%- endif -%}
+                  
+                  <div class="look-page__product-info">
+                    <h3 class="look-page__product-title">{{ product.title }}</h3>
+                    <div class="look-page__product-price">
+                      {%- if product.compare_at_price > product.price -%}
+                        <span class="price price--compare">{{ product.compare_at_price | money }}</span>
+                      {%- endif -%}
+                      <span class="price">{{ product.price | money }}</span>
+                    </div>
+                  </div>
+                </a>
+              {%- endif -%}
+            {%- endfor -%}
           </div>
         </div>
-        {%- assign index = index | plus: 1 -%}
-      {%- endif -%}
+      </div>
     {%- endfor -%}
   </div>
 </div>
@@ -424,12 +423,18 @@ document.addEventListener('DOMContentLoaded', function() {
   let currentIndex = 0;
   const looks = Array.from(lookPageContent.querySelectorAll('.look-page__look'));
   const thumbnails = Array.from(document.querySelectorAll('.look-page__thumbnail'));
-  const prevButtons = Array.from(document.querySelectorAll('[data-action="prev-look"]'));
-  const nextButtons = Array.from(document.querySelectorAll('[data-action="next-look"]'));
+  
+  // 有効なlooksが存在しない場合は処理を終了
+  if (looks.length === 0) return;
+
+  console.log('Looks found:', looks.length);
+  console.log('Thumbnails found:', thumbnails.length);
 
   function showLook(index) {
     if (index < 0 || index >= looks.length) return;
 
+    console.log('Showing look:', index);
+    
     currentIndex = index;
 
     // LOOKの表示切り替え
@@ -469,36 +474,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function showNextLook() {
     const newIndex = currentIndex < looks.length - 1 ? currentIndex + 1 : 0;
-    showLook(newIndex);
   }
 
   // サムネイルクリックイベント
   thumbnails.forEach((thumbnail, index) => {
-    thumbnail.addEventListener('click', function() {
+    thumbnail.addEventListener('click', function(e) {
+      e.preventDefault();
+      console.log('Thumbnail clicked:', index);
       showLook(index);
     });
   });
 
-  // ナビゲーションボタンイベント
-  prevButtons.forEach(button => {
-    button.addEventListener('click', function(e) {
+  // ナビゲーションボタンイベント - イベント委譲を使用
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('[data-action="prev-look"]')) {
       e.preventDefault();
+      console.log('Previous button clicked');
       showPreviousLook();
-    });
-  });
-
-  nextButtons.forEach(button => {
-    button.addEventListener('click', function(e) {
+    } else if (e.target.closest('[data-action="next-look"]')) {
       e.preventDefault();
+      console.log('Next button clicked');
       showNextLook();
-    });
+    }
   });
 
   // キーボードナビゲーション
   document.addEventListener('keydown', function(e) {
     if (e.key === 'ArrowLeft') {
+      e.preventDefault();
       showPreviousLook();
     } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
       showNextLook();
     }
   });
@@ -535,7 +541,7 @@ document.addEventListener('DOMContentLoaded', function() {
           "type": "text",
           "id": "title",
           "label": "Look Title",
-          "default": "Title"
+          "default": "Look Title"
         },
         {
           "type": "product",
@@ -573,7 +579,15 @@ document.addEventListener('DOMContentLoaded', function() {
   "presets": [
     {
       "name": "Look Thumbnail",
-      "category": "POST O'ALLS Look"
+      "category": "POST O'ALLS Look",
+      "blocks": [
+        {
+          "type": "look",
+          "settings": {
+            "title": "Sample Look"
+          }
+        }
+      ]
     }
   ]
 }
