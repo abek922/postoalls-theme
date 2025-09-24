@@ -83,6 +83,7 @@
     },
     "look_header": {
       "type": "look-header",
+      "disabled": true,
       "settings": {
         "show_title": true,
         "title_ja": "2025年 春夏コレクション",
@@ -102,6 +103,7 @@
     },
     "look_combined_1": {
       "type": "look-combined",
+      "disabled": true,
       "settings": {
         "layout_1": "text_left",
         "title_1": "Title",
@@ -221,6 +223,7 @@
     },
     "look_combined_2_X87p4W": {
       "type": "look-combined-2",
+      "disabled": true,
       "name": "Look Combined 2",
       "settings": {
         "layout_1": "hidden",
@@ -401,6 +404,7 @@
     },
     "look_combined_single_Yden9i": {
       "type": "look-combined-single",
+      "disabled": true,
       "name": "Look Combined Single",
       "settings": {
         "layout": "text_left",
