@@ -126,9 +126,10 @@
     pointer-events: none;
   }
 
-  .scroll-arrow img {
+  .scroll-arrow svg {
     width: 20px;
     height: 20px;
+    display: block;
   }
 
   .scroll .caption {
@@ -137,7 +138,16 @@
     line-height: 1.4;
   }
 
-  /* モバイル対応 */
+  .icon--placeholder {
+    width: 100%;
+    height: 300px;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ccc;
+  }
+
   @media screen and (max-width: 768px) {
     .look-section {
       padding: 1rem 0;
@@ -155,194 +165,194 @@
       display: block;
     }
 
-    .look-list-2024fw.pc {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-
     .scroll-images img {
       width: 200px;
     }
   }
-
-  /* プレースホルダー */
-  .icon--placeholder {
-    width: 100%;
-    height: 300px;
-    background: #f5f5f5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ccc;
-  }
 </style>
 
-<div class="look-section color-scheme color-scheme--{{ section.settings.color_scheme.id }}">
-  <div class="page-width">
-    {%- if section.settings.section_title != blank -%}
-      <div class="section-header section-header--small">
-        <h2 class="section-header__title">
-          {{ section.settings.section_title | escape }}
-        </h2>
-      </div>
-    {%- endif -%}
-
-    {%- if section.settings.section_text_1 != blank or section.settings.section_text_2 != blank -%}
-      <div class="section-description">
-        {%- if section.settings.section_text_1 != blank -%}
-          <p>{{ section.settings.section_text_1 | escape }}</p>
-        {%- endif -%}
-        {%- if section.settings.section_text_2 != blank -%}
-          <p>{{ section.settings.section_text_2 | escape }}</p>
-        {%- endif -%}
-      </div>
-    {%- endif -%}
-
-    {%- if section.settings.top_image != blank -%}
-      <div class="top-image">
-        {{ section.settings.top_image | image_url: width: 1200 | image_tag: alt: section.settings.top_image_alt, loading: 'lazy' }}
-      </div>
-    {%- endif -%}
-
-    <div class="look-list-2024fw pc">
-      {%- for block in section.blocks -%}
-        {%- if block.type == 'image' -%}
-          <div class="look-item" {{ block.shopify_attributes }}>
-            {%- if block.settings.image != blank -%}
-              <a href="{{ block.settings.link | default: '#' }}">
-                {{ block.settings.image | image_url: width: 600 | image_tag: class: 'gallery__image', alt: block.settings.image.alt, loading: 'lazy' }}
-              </a>
-              {%- if block.settings.custom_html != blank -%}
-                <div class="caption">
-                  {{ block.settings.custom_html }}
-                </div>
-              {%- endif -%}
-            {%- else -%}
-              <div class="icon--placeholder">
-                <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-                  <rect x="12" y="18" width="36" height="24" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                  <circle cx="22" cy="26" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                  <path d="m45 35-5-5-8 8-4-4-3 3" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                </svg>
-              </div>
-            {%- endif -%}
-          </div>
-        {%- endif -%}
-      {%- endfor -%}
-    </div>
-
-    <div class="look-list-2024fw sp">
-      {%- for block in section.blocks -%}
-        {%- if block.type == 'scroll' -%}
-          <div class="scroll" {{ block.shopify_attributes }}>
-            <a href="{{ block.settings.link | default: '#' }}" class="scroll-link">
-              <div class="scroll-images">
-                {%- for i in (1..4) -%}
-                  {%- assign image_key = 'image_' | append: i -%}
-                  {%- if block.settings[image_key] != blank -%}
-                    {{ block.settings[image_key] | image_url: width: 500 | image_tag: class: 'gallery__image', alt: block.settings[image_key].alt, loading: 'lazy' }}
-                  {%- endif -%}
-                {%- endfor -%}
-              </div>
-              
-              <div class="scroll-arrow">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="9,18 15,12 9,6"></polyline>
-                </svg>
-              </div>
-            </a>
-            
-            {%- if block.settings.custom_html != blank -%}
-              <div class="caption">
-                {{ block.settings.custom_html }}
-              </div>
-            {%- endif -%}
-          </div>
-        {%- endif -%}
-      {%- endfor -%}
-    </div>
+<div class="page-width">
+  {% unless section.settings.section_title == blank %}
+  <div class="section-header section-header--small">
+    <h2 class="section-header__title">
+      {{ section.settings.section_title | escape }}
+    </h2>
   </div>
-</div>
+  {% endunless %}
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const scrollContainers = document.querySelectorAll('.scroll');
+  {%- comment -%}
+    シーズン概要
+  {%- endcomment -%}
+  {% unless section.settings.section_text_1 == blank %}
+  <div class="">
+    <p>{{ section.settings.section_text_1 | escape }}</p>
+    <p>{{ section.settings.section_text_2 | escape }}</p>
+  </div>
+  {% endunless %}
 
-  scrollContainers.forEach(container => {
-    const arrow = container.querySelector('.scroll-arrow');
-    const scrollImages = container.querySelector('.scroll-images');
+  {% if section.settings.top_image != blank %}
+  <div class="top-image">
+    <img src="{{ section.settings.top_image | img_url: 'master' }}" 
+         alt="{{ section.settings.top_image_alt | escape }}"
+         width="{{ section.settings.top_image.width }}"
+         height="{{ section.settings.top_image.height }}">
+  </div>
+  {% endif %}
+
+  <div class="look-list-2024fw pc">
+    {% for block in section.blocks limit: section.blocks.size %}
+      {% if block.type == 'image' %}
+        {% if block.settings.image != blank %}
+        <div class="look-item" {{ block.shopify_attributes }}>
+          <a href="{{ block.settings.link | escape }}" data-size="1200x1500">
+            <img class="gallery__image"
+                 src="{{ block.settings.image | img_url: 'master' }}"
+                 width="{{ block.settings.image.width }}"
+                 height="{{ block.settings.image.height }}"
+                 alt="{{ block.settings.image.alt | escape }}"
+                 loading="lazy">
+          </a>
+          <div class="caption">
+            {{ block.settings.custom_html }}
+          </div>
+        </div>
+        {% else %}
+        <div class="look-item" {{ block.shopify_attributes }}>
+          {{ 'image' | placeholder_svg_tag: 'icon icon--placeholder' }}
+        </div>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="look-list-2024fw sp">
+    {% for block in section.blocks limit: section.blocks.size %}
+      {% if block.type == 'scroll' %}
+        <div class="scroll" {{ block.shopify_attributes }}>
+          <a href="{{ block.settings.link | escape }}" class="scroll-link">
+            <div class="scroll-images">
+              {% if block.settings.image_1 != blank %}
+              <img class="gallery__image"
+                src="{{ block.settings.image_1 | img_url: 'master' }}"
+                width="{{ block.settings.image_1.width }}"
+                height="{{ block.settings.image_1.height }}"
+                alt="{{ block.settings.image_1.alt | escape }}"
+                loading="lazy">
+              {% endif %}
+              {% if block.settings.image_2 != blank %}
+              <img class="gallery__image"
+                src="{{ block.settings.image_2 | img_url: 'master' }}"
+                width="{{ block.settings.image_2.width }}"
+                height="{{ block.settings.image_2.height }}"
+                alt="{{ block.settings.image_2.alt | escape }}"
+                loading="lazy">
+              {% endif %}
+              {% if block.settings.image_3 != blank %}
+              <img class="gallery__image"
+                src="{{ block.settings.image_3 | img_url: 'master' }}"
+                width="{{ block.settings.image_3.width }}"
+                height="{{ block.settings.image_3.height }}"
+                alt="{{ block.settings.image_3.alt | escape }}"
+                loading="lazy">
+              {% endif %}
+              {% if block.settings.image_4 != blank %}
+              <img class="gallery__image"
+                src="{{ block.settings.image_4 | img_url: 'master' }}"
+                width="{{ block.settings.image_4.width }}"
+                height="{{ block.settings.image_4.height }}"
+                alt="{{ block.settings.image_4.alt | escape }}"
+                loading="lazy">
+              {% endif %}
+            </div>
+            
+            <div class="scroll-arrow">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9,18 15,12 9,6"></polyline>
+              </svg>
+            </div>
+            
+          </a>
+          <div class="caption">
+            {{ block.settings.custom_html }}
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const scrollContainers = document.querySelectorAll('.scroll');
     
-    if (!scrollImages || !arrow) return;
-
-    // 初期チェック：矢印が必要かどうかを確認
-    const checkScroll = () => {
-      if (scrollImages.scrollWidth <= scrollImages.clientWidth) {
-        arrow.classList.add('hidden');
-      } else if (scrollImages.scrollLeft + scrollImages.clientWidth >= scrollImages.scrollWidth) {
-        arrow.classList.add('hidden');
-      } else {
-        arrow.classList.remove('hidden');
-      }
-    };
-
-    // ページロード時にスクロール位置をチェック
-    checkScroll();
-
-    // スクロールイベントをリッスン
-    scrollImages.addEventListener('scroll', checkScroll);
-
-    // ウィンドウリサイズ時にもチェック
-    window.addEventListener('resize', checkScroll);
-  });
-});
-</script>
+      scrollContainers.forEach(container => {
+        const images = container.querySelectorAll('.scroll-images img');
+        const arrow = container.querySelector('.scroll-arrow');
+        const scrollImages = container.querySelector('.scroll-images');
+        
+        if (!scrollImages || !arrow) return;
+    
+        // 初期チェック:矢印が必要かどうかを確認
+        if (scrollImages.scrollWidth <= scrollImages.clientWidth) {
+          arrow.classList.add('hidden');
+        }
+    
+        // スクロール位置を確認して矢印を表示/非表示にする関数
+        const checkScroll = () => {
+          if (scrollImages.scrollLeft + scrollImages.clientWidth >= scrollImages.scrollWidth) {
+            arrow.classList.add('hidden');
+          } else {
+            arrow.classList.remove('hidden');
+          }
+        };
+    
+        // ページロード時にスクロール位置をチェック
+        checkScroll();
+    
+        // スクロールイベントをリッスンしてスクロール位置をチェック
+        scrollImages.addEventListener('scroll', checkScroll);
+    
+        // ウィンドウリサイズ時にもスクロール位置をチェック
+        window.addEventListener('resize', checkScroll);
+      });
+    });    
+  </script>
+</div>
 
 {% schema %}
 {
-  "name": "Look24FW Thumbnail",
-  "class": "shopify-section--look",
-  "tag": "section",
+  "name": "Look",
+  "class": "index-section",
   "settings": [
-    {
-      "type": "paragraph",
-      "content": "作成中 24FWのサムネ"
-    },
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "Color scheme",
-      "default": "scheme-1"
-    },
     {
       "type": "text",
       "id": "section_title",
       "label": "Heading",
-      "default": "Look"
+      "default": "Heading"
     },
     {
       "type": "text",
       "id": "section_text_1",
-      "label": "Description text 1",
-      "default": "Showcase your seasonal looks"
+      "label": "Text",
+      "default": "Text"
     },
     {
       "type": "text",
       "id": "section_text_2",
-      "label": "Description text 2"
+      "label": "Text 2",
+      "default": "Text"
     },
     {
       "type": "image_picker",
       "id": "top_image",
-      "label": "Top image"
+      "label": "Top Image"
     },
     {
       "type": "text",
       "id": "top_image_alt",
-      "label": "Top image alt text",
-      "info": "Describe the image for accessibility"
+      "label": "Top Image Alt Text"
     }
   ],
-  "max_blocks": 60,
+  "max_blocks": 50,
   "blocks": [
     {
       "type": "image",
@@ -362,13 +372,13 @@ document.addEventListener('DOMContentLoaded', function() {
           "type": "html",
           "id": "custom_html",
           "label": "Caption",
-          "default": "<p>Look caption</p>"
+          "default": "<p></p>"
         }
       ]
     },
     {
       "type": "scroll",
-      "name": "Scroll Images",
+      "name": "Scroll",
       "settings": [
         {
           "type": "image_picker",
@@ -399,25 +409,17 @@ document.addEventListener('DOMContentLoaded', function() {
           "type": "html",
           "id": "custom_html",
           "label": "Caption",
-          "default": "<p>Scroll look caption</p>"
+          "default": "<p></p>"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Look Gallery 24Fw",
-      "category": "POST O'ALLS Look",
-      "settings": {
-        "section_title": "Latest Looks",
-        "section_text_1": "Discover our seasonal collection"
-      },
+      "name": "Look Gallery 24FW-2",
       "blocks": [
         {
-          "type": "image",
-          "settings": {
-            "custom_html": "<p>Sample look</p>"
-          }
+          "type": "image"
         }
       ]
     }
