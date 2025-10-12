@@ -29,11 +29,6 @@
   width: 100%;
   height: auto;
   display: block;
-  transition: transform 0.3s ease;
-}
-
-.photoswipe_gallery figure a:hover img {
-  transform: scale(1.02);
 }
 
 .photoswipe_gallery figcaption {
@@ -90,8 +85,9 @@
   <div class="photoswipe_gallery photoswipe_gallery_b">
     {% for block in section.blocks limit: section.blocks.size %}
       {% if block.settings.image != blank %}
+      {% assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
       <figure {{ block.shopify_attributes }}>
-        <a href="{{ block.settings.link | default: block.settings.image | img_url: '2048x' }}" target="_blank">
+        <a href="{{ block.settings.image | img_url: '1024x' }}" data-size="1200x1500">
           <img class="gallery__image"
                src="{{ block.settings.image | img_url: 'master' }}"
                width="{{ block.settings.image.width }}"
@@ -108,6 +104,46 @@
       {% endif %}
     {% endfor %}
   </div>
+</div>
+
+<script src="{{ 'photoswipe.min.js' | asset_url }}"></script>
+<script src="{{ 'photoswipe-ui-default.min.js' | asset_url }}"></script>
+<script src="{{ 'style_photoswipe.js' | asset_url }}"></script>
+<script src="{{ 'add.js' | asset_url }}"></script>
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="pswp__bg"></div>
+<div class="pswp__scroll-wrap">
+	<div class="pswp__container">
+	<div class="pswp__item"></div>
+	<div class="pswp__item"></div>
+	<div class="pswp__item"></div>
+	</div>
+	<div class="pswp__ui pswp__ui--hidden">
+	<div class="pswp__top-bar">
+		<div class="pswp__counter"></div>
+		<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+		<button class="pswp__button pswp__button--share" title="Share"></button>
+		<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+		<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+		<div class="pswp__preloader">
+		<div class="pswp__preloader__icn">
+			<div class="pswp__preloader__cut">
+			<div class="pswp__preloader__donut"></div>
+			</div>
+		</div>
+		</div>
+	</div>
+	<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+		<div class="pswp__share-tooltip"></div>
+	</div>
+	<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+	<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+	<div class="pswp__caption">
+		<div class="pswp__caption__center"></div>
+	</div>
+	</div>
+</div>
 </div>
 
 {% schema %}
