@@ -194,11 +194,60 @@
         "section_text_1": "Text",
         "section_text_2": "Text"
       }
+    },
+    "look_thumbnail_3_4BME83": {
+      "type": "look-thumbnail-3",
+      "blocks": {
+        "image_4neBym": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/w-8_0b8c78ef-b36e-4345-a7a4-9d716818317f.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_kmrLJF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/w-7_e29c9ae7-2361-4c17-9b46-e9abd073f953.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_Jey6w9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/w-2_e32e45e3-de31-43dc-9e3e-ac1d06347ad8.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_49tUDj": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        }
+      },
+      "block_order": [
+        "image_4neBym",
+        "image_kmrLJF",
+        "image_Jey6w9",
+        "image_49tUDj"
+      ],
+      "name": "Look Gallery-3",
+      "settings": {
+        "section_title": "Heading",
+        "section_text_1": "Text",
+        "section_text_2": "Text"
+      }
     }
   },
   "order": [
     "main",
     "look_thumbnail_2_eLmzeR",
-    "look_thumbnail_3_PczXBT"
+    "look_thumbnail_3_PczXBT",
+    "look_thumbnail_3_4BME83"
   ]
 }
