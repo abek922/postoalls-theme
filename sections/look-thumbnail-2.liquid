@@ -1,174 +1,107 @@
 <style>
-  .look-section {
-    padding: 2rem 0;
-  }
+/* LOOK 2024FW */
+#shopify-section-page-look-2024-fw {
+  padding-top: 1rem;
+}
+.top-image {
+  padding: 10px 0;
+}
+.look-list-2024fw {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 5rem 0 2rem;
+}
+.look-list-2024fw .look-item {
+  width: calc((100% / 4) - 0px);
+  margin: 0px;
+  text-align: center;
+}
+.look-list-2024fw .look-item a img {
+  width: 100%;
+  margin: 0%;
+}
+.caption {
+  margin-top: 1rem;
+  text-align: left;
+  font-size: 10px;
+}
+.scroll {
+  padding: 0 0 10px;
+  position: relative;
+}
+.scroll-images {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  margin: 0 calc(50% - 50vw);
+}
+.scroll-images.collection {
+  margin: 0;
+}
+.scroll-images img {
+  flex: 0 0 auto;
+  width: 30%;
+}
+.scroll-arrow {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.8);
+  padding: 5px;
+  margin: 0 calc(50% - 50vw);
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.scroll-arrow img {
+  width: 50px;
+  height: auto;
+}
+.scroll-arrow.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
 
-  .look-section .section-header {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
+.icon--placeholder {
+  width: 100%;
+  height: 300px;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ccc;
+}
 
-  .look-section .section-header__title {
-    font-size: 2rem;
-    font-weight: 300;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin: 0;
-  }
-
-  .look-section .section-description {
-    text-align: center;
-    margin-bottom: 3rem;
-  }
-
-  .look-section .section-description p {
-    margin-bottom: 1rem;
-    line-height: 1.6;
-  }
-
-  .look-section .top-image {
-    margin-bottom: 3rem;
-    text-align: center;
-  }
-
-  .look-section .top-image img {
-    max-width: 100%;
-    height: auto;
-  }
-
-  .look-list-2024fw.pc {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
-  }
-
+@media screen and (min-width: 769px) {
   .look-list-2024fw.sp {
     display: none;
   }
-
-  .look-item {
-    position: relative;
-  }
-
-  .look-item a {
-    display: block;
-    text-decoration: none;
-  }
-
-  .look-item img {
-    width: 100%;
-    height: auto;
-    transition: transform 0.3s ease;
-  }
-
-  .look-item:hover img {
-    transform: scale(1.02);
-  }
-
-  .look-item .caption {
-    margin-top: 1rem;
-    font-size: 0.9rem;
-    line-height: 1.4;
-  }
-
-  .scroll {
-    position: relative;
-    margin-bottom: 2rem;
-  }
-
   .scroll-images {
-    display: flex;
-    gap: 1rem;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 1rem;
-  }
-
-  .scroll-images::-webkit-scrollbar {
-    height: 4px;
-  }
-
-  .scroll-images::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 2px;
-  }
-
-  .scroll-images::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 2px;
-  }
-
-  .scroll-images::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
-
-  .scroll-images img {
-    flex-shrink: 0;
-    width: 250px;
-    height: auto;
-  }
-
-  .scroll-arrow {
-    position: absolute;
-    top: 50%;
-    right: 1rem;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 50%;
-    padding: 0.5rem;
-    transition: opacity 0.3s ease;
-  }
-
-  .scroll-arrow.hidden {
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  .scroll-arrow svg {
-    width: 20px;
-    height: 20px;
-    display: block;
-  }
-
-  .scroll .caption {
-    margin-top: 1rem;
-    font-size: 0.9rem;
-    line-height: 1.4;
-  }
-
-  .icon--placeholder {
-    width: 100%;
-    height: 300px;
-    background: #f5f5f5;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    color: #ccc;
   }
-
-  @media screen and (max-width: 768px) {
-    .look-section {
-      padding: 1rem 0;
-    }
-
-    .look-section .section-header__title {
-      font-size: 1.5rem;
-    }
-
-    .look-list-2024fw.pc {
-      display: none;
-    }
-
-    .look-list-2024fw.sp {
-      display: block;
-    }
-
-    .scroll-images img {
-      width: 200px;
-    }
+}
+@media screen and (max-width: 768px) {
+  .look-list-2024fw.pc {
+    display: none;
   }
+  .top-image {
+    width: 100vw;
+    margin: 0 calc(50% - 50vw);
+    padding: 10px 0 20px;
+  }
+  .look-list-2024fw .look-item {
+    width: calc((100% / 2) - 20px);
+    margin: 10px;
+    text-align: center;
+  }
+  .scroll-images img {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  .scroll-images.collection img {
+    width: 85%;
+  }
+}
 </style>
 
 <div class="page-width">
@@ -195,7 +128,8 @@
     <img src="{{ section.settings.top_image | img_url: 'master' }}" 
          alt="{{ section.settings.top_image_alt | escape }}"
          width="{{ section.settings.top_image.width }}"
-         height="{{ section.settings.top_image.height }}">
+         height="{{ section.settings.top_image.height }}"
+         loading="lazy">
   </div>
   {% endif %}
 
@@ -266,7 +200,7 @@
             </div>
             
             <div class="scroll-arrow">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="9,18 15,12 9,6"></polyline>
               </svg>
             </div>
@@ -285,7 +219,6 @@
       const scrollContainers = document.querySelectorAll('.scroll');
     
       scrollContainers.forEach(container => {
-        const images = container.querySelectorAll('.scroll-images img');
         const arrow = container.querySelector('.scroll-arrow');
         const scrollImages = container.querySelector('.scroll-images');
         
@@ -416,7 +349,7 @@
   ],
   "presets": [
     {
-      "name": "Look Gallery 24FW-2",
+      "name": "Look Gallery 24FW",
       "blocks": [
         {
           "type": "image"
