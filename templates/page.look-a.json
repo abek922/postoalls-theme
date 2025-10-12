@@ -99,10 +99,106 @@
         "section_text_2": "Text",
         "top_image_alt": ""
       }
+    },
+    "look_thumbnail_3_PczXBT": {
+      "type": "look-thumbnail-3",
+      "blocks": {
+        "image_tnwp9j": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/w-8_0b8c78ef-b36e-4345-a7a4-9d716818317f.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_xqTNU6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/w-2_e32e45e3-de31-43dc-9e3e-ac1d06347ad8.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_kAaQea": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_QTbAhp": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_phN7eG": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_Ykxyxe": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_qmzUKL": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_tzh43i": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_R7VJUa": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_wi4fGf": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        }
+      },
+      "block_order": [
+        "image_tnwp9j",
+        "image_xqTNU6",
+        "image_kAaQea",
+        "image_QTbAhp",
+        "image_phN7eG",
+        "image_Ykxyxe",
+        "image_qmzUKL",
+        "image_tzh43i",
+        "image_R7VJUa",
+        "image_wi4fGf"
+      ],
+      "name": "Look Gallery",
+      "settings": {
+        "section_title": "Heading",
+        "section_text_1": "Text",
+        "section_text_2": "Text"
+      }
     }
   },
   "order": [
     "main",
-    "look_thumbnail_2_eLmzeR"
+    "look_thumbnail_2_eLmzeR",
+    "look_thumbnail_3_PczXBT"
   ]
 }
