@@ -15,7 +15,6 @@
         "look_1": {
           "type": "look",
           "settings": {
-            "image": "",
             "title": "title",
             "product_1": "",
             "product_2": "",
@@ -28,7 +27,6 @@
         "look_2": {
           "type": "look",
           "settings": {
-            "image": "",
             "title": "title",
             "product_1": "",
             "product_2": "",
@@ -46,9 +44,65 @@
       "settings": {
         "color_scheme": "scheme-1"
       }
+    },
+    "look_thumbnail_2_eLmzeR": {
+      "type": "look-thumbnail-2",
+      "blocks": {
+        "scroll_tet3XU": {
+          "type": "scroll",
+          "settings": {
+            "image_1": "shopify://shop_images/w-7_e29c9ae7-2361-4c17-9b46-e9abd073f953.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_tx4MG3": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_JrTktF": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_tF3Bdn": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_8cPEBf": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        }
+      },
+      "block_order": [
+        "scroll_tet3XU",
+        "image_tx4MG3",
+        "image_JrTktF",
+        "image_tF3Bdn",
+        "image_8cPEBf"
+      ],
+      "name": "Look Gallery 24FW-2",
+      "settings": {
+        "section_title": "Heading",
+        "section_text_1": "Text",
+        "section_text_2": "Text",
+        "top_image_alt": ""
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "look_thumbnail_2_eLmzeR"
   ]
 }
