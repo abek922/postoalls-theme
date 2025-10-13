@@ -5,26 +5,26 @@
 .top-image {
   padding: 10px 0;
 }
-.look-list-2024fw {
+.look-list-3 {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   margin: 5rem 0 2rem;
 }
-.look-list-2024fw .look-item {
+.look-list-3 .look-item {
   width: calc((100% / 4) - 0px);
   margin: 0px;
   text-align: center;
 }
-.look-list-2024fw .look-item a {
+.look-list-3 .look-item a {
   cursor: pointer;
 }
-.look-list-2024fw .look-item a img {
+.look-list-3 .look-item a img {
   width: 100%;
   margin: 0%;
   transition: opacity 0.2s ease;
 }
-.look-list-2024fw .look-item a:hover img {
+.look-list-3 .look-item a:hover img {
   opacity: 0.8;
 }
 .caption {
@@ -150,10 +150,10 @@
     margin: 0 calc(50% - 50vw);
     padding: 10px 0 20px;
   }
-  .look-list-2024fw {
+  .look-list-3 {
     margin: 2rem 0;
   }
-  .look-list-2024fw .look-item {
+  .look-list-3 .look-item {
     width: calc((100% / 2) - 10px);
     margin: 5px;
   }
@@ -210,7 +210,7 @@
   </div>
   {% endif %}
 
-  <div class="look-list-2024fw">
+  <div class="look-list-3">
     {% for block in section.blocks limit: section.blocks.size %}
       {% if block.type == 'image' %}
         {% if block.settings.image != blank %}
@@ -439,7 +439,8 @@ document.addEventListener('DOMContentLoaded', function() {
   ],
   "presets": [
     {
-      "name": "Look Gallery-3",
+      "name": "Look List 3",
+      "category": "POST O'ALLS Look",
       "blocks": [
         {
           "type": "image"

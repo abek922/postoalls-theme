@@ -5,18 +5,18 @@
 .top-image {
   padding: 10px 0;
 }
-.look-list-2024fw {
+.look-list-2 {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   margin: 5rem 0 2rem;
 }
-.look-list-2024fw .look-item {
+.look-list-2 .look-item {
   width: calc((100% / 4) - 0px);
   margin: 0px;
   text-align: center;
 }
-.look-list-2024fw .look-item a img {
+.look-list-2 .look-item a img {
   width: 100%;
   margin: 0%;
 }
@@ -72,7 +72,7 @@
 }
 
 @media screen and (min-width: 769px) {
-  .look-list-2024fw.sp {
+  .look-list-2.sp {
     display: none;
   }
   .scroll-images {
@@ -80,7 +80,7 @@
   }
 }
 @media screen and (max-width: 768px) {
-  .look-list-2024fw.pc {
+  .look-list-2.pc {
     display: none;
   }
   .top-image {
@@ -88,7 +88,7 @@
     margin: 0 calc(50% - 50vw);
     padding: 10px 0 20px;
   }
-  .look-list-2024fw .look-item {
+  .look-list-2 .look-item {
     width: calc((100% / 2) - 20px);
     margin: 10px;
     text-align: center;
@@ -132,7 +132,7 @@
   </div>
   {% endif %}
 
-  <div class="look-list-2024fw pc">
+  <div class="look-list-2 pc">
     {% for block in section.blocks limit: section.blocks.size %}
       {% if block.type == 'image' %}
         {% if block.settings.image != blank %}
@@ -158,7 +158,7 @@
     {% endfor %}
   </div>
 
-  <div class="look-list-2024fw sp">
+  <div class="look-list-2 sp">
     {% for block in section.blocks limit: section.blocks.size %}
       {% if block.type == 'scroll' %}
         <div class="scroll" {{ block.shopify_attributes }}>
@@ -348,7 +348,8 @@
   ],
   "presets": [
     {
-      "name": "Look Gallery 24FW",
+      "name": "Look List 2",
+      "category": "POST O'ALLS Look",
       "blocks": [
         {
           "type": "image"
