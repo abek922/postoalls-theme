@@ -83,3 +83,159 @@
   background-color: #D5E5E1;
   color: white;
 }
+
+
+
+
+
+
+
+
+/* photoswipe */
+.photoswipe_gallery {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.photoswipe_gallery_b {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.photoswipe_gallery_c {
+  display: flex;
+  flex-wrap: wrap;
+}
+.photoswipe_gallery figure {
+  width: calc(100% / 6);
+  margin: 0;
+  text-align: center;
+}
+.photoswipe_gallery_b figure {
+  width: calc((100% / 4) - 4px);
+  margin: 2px;
+  text-align: center;
+}
+.photoswipe_gallery_c figure {
+  width: auto;
+  margin: 2px !important;
+  padding: 0 !important;
+}
+.photoswipe_gallery figure img {
+  width: 94%;
+  margin: 3%;
+}
+.photoswipe_gallery_b figure img {
+  width: 100%;
+  margin: 0%;
+}
+
+.photoswipe_gallery_c figure img {
+  width: 100%;
+  height: 300px;
+  margin: 0;
+}
+.photoswipe_gallery figure svg {
+  width: 94%;
+  margin: 3%;
+}
+.photoswipe_gallery_b figure svg {
+  width: 94%;
+  margin: 3%;
+}
+.photoswipe_gallery_c figure svg {
+  height: 300px;
+  margin: 0;
+}
+.pswp__bg {
+  background-color: #454545 !important;
+}
+.pswp__top-bar {
+  background-color: #454545 !important;
+}
+.pswp__button--arrow--left:before, .pswp__button--arrow--right:before {
+  background-color: #454545 !important;
+}
+.photoswipe_gallery figcaption {
+ display: none;  
+}
+.photoswipe_gallery_b figcaption {
+  display: none;  
+ }
+.photoswipe_gallery_c figcaption {
+  display: none;  
+ }
+.pswp__caption {
+  font: 10px/15px "Avenir";
+}
+.pswp__caption__center a {
+  color: #fff !important;
+}
+
+@media screen and (max-width: 768px) {
+  .photoswipe_gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    width: 100%;
+  }
+  .photoswipe_gallery_b {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    width: 100%;
+  }
+  .photoswipe_gallery_c {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+  }
+  .photoswipe_gallery figure {
+    width: 50%;
+    text-align: center;
+  }
+  .photoswipe_gallery_b figure {
+    width: 48%;
+    text-align: center;
+  }
+  .photoswipe_gallery_c figure {
+    text-align: center;
+    margin: 8px !important;
+    width: auto;
+  }
+  .photoswipe_gallery_c figure img {
+    height: 226px;
+    width: auto;
+    margin: 0;
+  }
+  .pswp__bg {
+    background-color: #454545 !important;
+  }
+  .pswp__top-bar {
+    background-color: #454545 !important;
+  }
+  .pswp__button--arrow--left:before, .pswp__button--arrow--right:before {
+    background-color: #454545 !important;
+  }
+  .photoswipe_gallery figcaption {
+    display: none;  
+  }
+  .photoswipe_gallery_b figcaption {
+    display: none;  
+  }
+  .photoswipe_gallery_c figcaption {
+    display: none;  
+  }
+  .pswp__caption {
+    font: 10px/15px "Avenir";
+  }
+  .pswp__container,.pswp__zoom-wrap {
+    -ms-touch-action: none;
+    touch-action: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -20px;
+    bottom: 0
+  }
+}
