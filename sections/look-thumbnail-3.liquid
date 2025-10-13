@@ -83,7 +83,7 @@
   {% endunless %}
 
 
-  <div class="photoswipe_gallery photoswipe_gallery_b">
+  <div class="photoswipe_gallery photoswipe_gallery_b my-gallery">
     {% for block in section.blocks limit: section.blocks.size %}
       {% if block.settings.image != blank %}
       {% assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
