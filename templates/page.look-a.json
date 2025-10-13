@@ -91,19 +91,35 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/w-8_0b8c78ef-b36e-4345-a7a4-9d716818317f.jpg",
-            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_6wxD9U": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/w-2_e32e45e3-de31-43dc-9e3e-ac1d06347ad8.jpg",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_gwxdJX": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/w-7_e29c9ae7-2361-4c17-9b46-e9abd073f953.jpg",
             "custom_html": "<p></p>"
           }
         }
       },
       "block_order": [
-        "image_DDgKbp"
+        "image_DDgKbp",
+        "image_6wxD9U",
+        "image_gwxdJX"
       ],
       "name": "Look Gallery-3",
       "settings": {
         "section_title": "Heading",
         "section_text_1": "Text",
-        "section_text_2": "Text"
+        "section_text_2": "Text",
+        "top_image_alt": ""
       }
     }
   },
