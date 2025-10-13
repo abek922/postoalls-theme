@@ -334,8 +334,7 @@
         {%- for block in section.blocks -%}
           {%- if block.settings.image != blank -%}
             <div class="look-page__thumbnail {% if thumbnail_index == 0 %}is-active{% endif %}" 
-                 data-look-index="{{ thumbnail_index }}" 
-                 data-block-id="{{ block.id }}">
+                 data-look-index="{{ thumbnail_index }}">
               {{ block.settings.image | image_url: width: 200 | image_tag: alt: block.settings.title, loading: 'lazy' }}
             </div>
             {%- assign thumbnail_index = thumbnail_index | plus: 1 -%}
@@ -345,19 +344,17 @@
     </div>
   {%- endif -%}
 
-  <div class="look-page__content" id="look-page-content">
+  <div class="look-page__content">
     {%- assign look_index = 0 -%}
     {%- for block in section.blocks -%}
       {%- if block.settings.image != blank -%}
         <div class="look-page__look {% if look_index == 0 %}is-active{% endif %}" 
-             data-look-index="{{ look_index }}" 
-             data-block-id="{{ block.id }}"
+             data-look-index="{{ look_index }}"
              {{ block.shopify_attributes }}>
           
           <div class="look-page__image-container">
             {%- if valid_blocks_count > 1 -%}
               <button class="look-page__nav-button look-page__nav-button--prev" 
-                      data-action="prev-look" 
                       type="button"
                       aria-label="Previous look">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -365,7 +362,6 @@
                 </svg>
               </button>
               <button class="look-page__nav-button look-page__nav-button--next" 
-                      data-action="next-look" 
                       type="button"
                       aria-label="Next look">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -423,103 +419,108 @@
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const lookPageContent = document.getElementById('look-page-content');
-  if (!lookPageContent) return;
+(function() {
+  function initLookPage() {
+    const lookPageContent = document.querySelector('.look-page__content');
+    if (!lookPageContent) return;
 
-  let currentIndex = 0;
-  const looks = Array.from(lookPageContent.querySelectorAll('.look-page__look'));
-  const thumbnails = Array.from(document.querySelectorAll('.look-page__thumbnail'));
-  
-  // 有効なlooksが存在しない場合は処理を終了
-  if (looks.length === 0) return;
-
-  console.log('Looks found:', looks.length);
-  console.log('Thumbnails found:', thumbnails.length);
-
-  function showLook(index) {
-    if (index < 0 || index >= looks.length) return;
-
-    console.log('Showing look:', index);
+    let currentIndex = 0;
+    const looks = Array.from(document.querySelectorAll('.look-page__look'));
+    const thumbnails = Array.from(document.querySelectorAll('.look-page__thumbnail'));
+    const prevButtons = Array.from(document.querySelectorAll('.look-page__nav-button--prev'));
+    const nextButtons = Array.from(document.querySelectorAll('.look-page__nav-button--next'));
     
-    currentIndex = index;
+    if (looks.length === 0) return;
 
-    // LOOKの表示切り替え
-    looks.forEach((look, i) => {
-      if (i === index) {
-        look.classList.add('is-active');
-        look.style.display = 'grid';
-      } else {
-        look.classList.remove('is-active');
-        look.style.display = 'none';
-      }
-    });
+    function showLook(index) {
+      if (index < 0 || index >= looks.length) return;
+      
+      currentIndex = index;
 
-    // サムネイルのアクティブ状態切り替え
-    thumbnails.forEach((thumbnail, i) => {
-      if (i === index) {
-        thumbnail.classList.add('is-active');
-      } else {
-        thumbnail.classList.remove('is-active');
-      }
-    });
-
-    // アクティブなサムネイルを表示範囲内にスクロール
-    if (thumbnails[index]) {
-      thumbnails[index].scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-        inline: 'center'
+      looks.forEach((look, i) => {
+        if (i === index) {
+          look.classList.add('is-active');
+        } else {
+          look.classList.remove('is-active');
+        }
       });
+
+      thumbnails.forEach((thumbnail, i) => {
+        if (i === index) {
+          thumbnail.classList.add('is-active');
+        } else {
+          thumbnail.classList.remove('is-active');
+        }
+      });
+
+      if (thumbnails[index]) {
+        thumbnails[index].scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'center'
+        });
+      }
     }
-  }
 
-  function showPreviousLook() {
-    const newIndex = currentIndex > 0 ? currentIndex - 1 : looks.length - 1;
-    showLook(newIndex);
-  }
+    function showPreviousLook() {
+      const newIndex = currentIndex > 0 ? currentIndex - 1 : looks.length - 1;
+      showLook(newIndex);
+    }
 
-  function showNextLook() {
-    const newIndex = currentIndex < looks.length - 1 ? currentIndex + 1 : 0;
-    showLook(newIndex);
-  }
+    function showNextLook() {
+      const newIndex = currentIndex < looks.length - 1 ? currentIndex + 1 : 0;
+      showLook(newIndex);
+    }
 
-  // サムネイルクリックイベント
-  thumbnails.forEach((thumbnail, index) => {
-    thumbnail.addEventListener('click', function(e) {
-      e.preventDefault();
-      console.log('Thumbnail clicked:', index);
-      showLook(index);
+    thumbnails.forEach((thumbnail) => {
+      thumbnail.addEventListener('click', function(e) {
+        e.preventDefault();
+        const index = parseInt(this.getAttribute('data-look-index'), 10);
+        if (!isNaN(index)) {
+          showLook(index);
+        }
+      });
     });
-  });
 
-  // ナビゲーションボタンイベント - イベント委譲を使用
-  document.addEventListener('click', function(e) {
-    if (e.target.closest('[data-action="prev-look"]')) {
-      e.preventDefault();
-      console.log('Previous button clicked');
-      showPreviousLook();
-    } else if (e.target.closest('[data-action="next-look"]')) {
-      e.preventDefault();
-      console.log('Next button clicked');
-      showNextLook();
-    }
-  });
+    prevButtons.forEach((button) => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        showPreviousLook();
+      });
+    });
 
-  // キーボードナビゲーション
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'ArrowLeft') {
-      e.preventDefault();
-      showPreviousLook();
-    } else if (e.key === 'ArrowRight') {
-      e.preventDefault();
-      showNextLook();
-    }
-  });
+    nextButtons.forEach((button) => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        showNextLook();
+      });
+    });
 
-  // 初期化
-  showLook(0);
-});
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        showPreviousLook();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        showNextLook();
+      }
+    });
+
+    showLook(0);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLookPage);
+  } else {
+    initLookPage();
+  }
+
+  if (typeof Shopify !== 'undefined' && Shopify.designMode) {
+    document.addEventListener('shopify:section:load', initLookPage);
+  }
+})();
 </script>
 
 {% schema %}
