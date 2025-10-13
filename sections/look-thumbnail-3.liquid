@@ -88,12 +88,15 @@
       {% assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
       <figure {{ block.shopify_attributes }}>
         <a href="{{ block.settings.image | img_url: '1024x' }}" data-size="1200x1500">
-          <img class="gallery__image"
-               src="{{ block.settings.image | img_url: 'master' }}"
+          <img class="gallery__image lazyload"
+               src="{{ block.settings.image | img_url: '480x600' }}"
+               data-src="{{ img_url }}"
+               data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+               data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+               data-sizes="auto"
                width="{{ block.settings.image.width }}"
                height="{{ block.settings.image.height }}"
-               alt="{{ block.settings.image.alt | escape }}"
-               loading="lazy">
+               alt="{{ block.settings.image.alt | escape }}">
         </a>
         <figcaption>{{ block.settings.custom_html }}</figcaption>
       </figure>
@@ -106,10 +109,10 @@
   </div>
 </div>
 
-<script src="{{ 'photoswipe.min.js' | asset_url }}"></script>
-<script src="{{ 'photoswipe-ui-default.min.js' | asset_url }}"></script>
-<script src="{{ 'style_photoswipe.js' | asset_url }}"></script>
-<script src="{{ 'add.js' | asset_url }}"></script>
+<script src="{{ 'photoswipe.min.js' | asset_url }}" defer></script>
+<script src="{{ 'photoswipe-ui-default.min.js' | asset_url }}" defer></script>
+<script src="{{ 'style_photoswipe.js' | asset_url }}" defer></script>
+<script src="{{ 'add.js' | asset_url }}" defer></script>
 
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 <div class="pswp__bg"></div>
