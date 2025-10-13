@@ -59,6 +59,7 @@
         "image_tx4MG3": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/w-8_0b8c78ef-b36e-4345-a7a4-9d716818317f.jpg",
             "link": "",
             "custom_html": "<p></p>"
           }
@@ -66,6 +67,7 @@
         "image_JrTktF": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/w-7_e29c9ae7-2361-4c17-9b46-e9abd073f953.jpg",
             "link": "",
             "custom_html": "<p></p>"
           }
