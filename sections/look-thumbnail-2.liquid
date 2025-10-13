@@ -1,41 +1,64 @@
 <style>
-.enlarge-text {
-  margin-bottom: 2rem;
-  line-height: 1.6;
+#shopify-section-page-look-2024-fw {
+  padding-top: 1rem;
 }
-
-.enlarge-text p {
-  margin-bottom: 1rem;
+.top-image {
+  padding: 10px 0;
 }
-
-.photoswipe_gallery {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
+.look-list-2024fw {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
   margin: 5rem 0 2rem;
 }
-
-.photoswipe_gallery figure {
-  margin: 0;
+.look-list-2024fw .look-item {
+  width: calc((100% / 4) - 0px);
+  margin: 0px;
   text-align: center;
 }
-
-.photoswipe_gallery figure a {
-  display: block;
-  text-decoration: none;
-}
-
-.photoswipe_gallery figure img {
+.look-list-2024fw .look-item a img {
   width: 100%;
-  height: auto;
-  display: block;
+  margin: 0%;
 }
-
-.photoswipe_gallery figcaption {
+.caption {
   margin-top: 1rem;
   text-align: left;
   font-size: 10px;
-  padding: 0 5px;
+}
+.scroll {
+  padding: 0 0 10px;
+  position: relative;
+}
+.scroll-images {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  margin: 0 calc(50% - 50vw);
+}
+.scroll-images.collection {
+  margin: 0;
+}
+.scroll-images img {
+  flex: 0 0 auto;
+  width: 30%;
+}
+.scroll-arrow {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.8);
+  padding: 5px;
+  margin: 0 calc(50% - 50vw);
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.scroll-arrow img {
+  width: 50px;
+  height: auto;
+}
+.scroll-arrow.hidden {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .icon--placeholder {
@@ -48,21 +71,39 @@
   color: #ccc;
 }
 
-@media screen and (max-width: 768px) {
-  .photoswipe_gallery {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    margin: 2rem 0;
+@media screen and (min-width: 769px) {
+  .look-list-2024fw.sp {
+    display: none;
   }
-  
-  .photoswipe_gallery figure {
-    margin: 0;
+  .scroll-images {
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 768px) {
+  .look-list-2024fw.pc {
+    display: none;
+  }
+  .top-image {
+    width: 100vw;
+    margin: 0 calc(50% - 50vw);
+    padding: 10px 0 20px;
+  }
+  .look-list-2024fw .look-item {
+    width: calc((100% / 2) - 20px);
+    margin: 10px;
+    text-align: center;
+  }
+  .scroll-images img {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  .scroll-images.collection img {
+    width: 85%;
   }
 }
 </style>
 
 <div class="page-width">
-
   {% unless section.settings.section_title == blank %}
   <div class="section-header section-header--small">
     <h2 class="section-header__title">
@@ -75,75 +116,138 @@
     シーズン概要
   {%- endcomment -%}
   {% unless section.settings.section_text_1 == blank %}
-  <div class="enlarge-text">
+  <div class="">
     <p>{{ section.settings.section_text_1 | escape }}</p>
     <p>{{ section.settings.section_text_2 | escape }}</p>
   </div>
   {% endunless %}
 
+  {% if section.settings.top_image != blank %}
+  <div class="top-image">
+    <img src="{{ section.settings.top_image | img_url: 'master' }}" 
+         alt="{{ section.settings.top_image_alt | escape }}"
+         width="{{ section.settings.top_image.width }}"
+         height="{{ section.settings.top_image.height }}"
+         loading="lazy">
+  </div>
+  {% endif %}
 
-  <div class="photoswipe_gallery photoswipe_gallery_b">
+  <div class="look-list-2024fw pc">
     {% for block in section.blocks limit: section.blocks.size %}
-      {% if block.settings.image != blank %}
-      {% assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
-      <figure {{ block.shopify_attributes }}>
-        <a href="{{ block.settings.image | img_url: '1024x' }}" data-size="1200x1500">
-          <img class="gallery__image"
-               src="{{ block.settings.image | img_url: 'master' }}"
-               width="{{ block.settings.image.width }}"
-               height="{{ block.settings.image.height }}"
-               alt="{{ block.settings.image.alt | escape }}"
-               loading="lazy">
-        </a>
-        <figcaption>{{ block.settings.custom_html }}</figcaption>
-      </figure>
-      {% else %}
-        <div class="grid__item" {{ block.shopify_attributes }}>
+      {% if block.type == 'image' %}
+        {% if block.settings.image != blank %}
+        <div class="look-item" {{ block.shopify_attributes }}>
+          <a href="{{ block.settings.link | escape }}" data-size="1200x1500">
+            <img class="gallery__image"
+                 src="{{ block.settings.image | img_url: 'master' }}"
+                 width="{{ block.settings.image.width }}"
+                 height="{{ block.settings.image.height }}"
+                 alt="{{ block.settings.image.alt | escape }}"
+                 loading="lazy">
+          </a>
+          <div class="caption">
+            {{ block.settings.custom_html }}
+          </div>
+        </div>
+        {% else %}
+        <div class="look-item" {{ block.shopify_attributes }}>
           {{ 'image' | placeholder_svg_tag: 'icon icon--placeholder' }}
+        </div>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="look-list-2024fw sp">
+    {% for block in section.blocks limit: section.blocks.size %}
+      {% if block.type == 'scroll' %}
+        <div class="scroll" {{ block.shopify_attributes }}>
+          <a href="{{ block.settings.link | escape }}" class="scroll-link">
+            <div class="scroll-images">
+              {% if block.settings.image_1 != blank %}
+              <img class="gallery__image"
+                src="{{ block.settings.image_1 | img_url: 'master' }}"
+                width="{{ block.settings.image_1.width }}"
+                height="{{ block.settings.image_1.height }}"
+                alt="{{ block.settings.image_1.alt | escape }}"
+                loading="lazy">
+              {% endif %}
+              {% if block.settings.image_2 != blank %}
+              <img class="gallery__image"
+                src="{{ block.settings.image_2 | img_url: 'master' }}"
+                width="{{ block.settings.image_2.width }}"
+                height="{{ block.settings.image_2.height }}"
+                alt="{{ block.settings.image_2.alt | escape }}"
+                loading="lazy">
+              {% endif %}
+              {% if block.settings.image_3 != blank %}
+              <img class="gallery__image"
+                src="{{ block.settings.image_3 | img_url: 'master' }}"
+                width="{{ block.settings.image_3.width }}"
+                height="{{ block.settings.image_3.height }}"
+                alt="{{ block.settings.image_3.alt | escape }}"
+                loading="lazy">
+              {% endif %}
+              {% if block.settings.image_4 != blank %}
+              <img class="gallery__image"
+                src="{{ block.settings.image_4 | img_url: 'master' }}"
+                width="{{ block.settings.image_4.width }}"
+                height="{{ block.settings.image_4.height }}"
+                alt="{{ block.settings.image_4.alt | escape }}"
+                loading="lazy">
+              {% endif %}
+            </div>
+            
+            <div class="scroll-arrow">
+              <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9,18 15,12 9,6"></polyline>
+              </svg>
+            </div>
+            
+          </a>
+          <div class="caption">
+            {{ block.settings.custom_html }}
+          </div>
         </div>
       {% endif %}
     {% endfor %}
   </div>
-</div>
-
-<script src="{{ 'photoswipe.min.js' | asset_url }}"></script>
-<script src="{{ 'photoswipe-ui-default.min.js' | asset_url }}"></script>
-<script src="{{ 'style_photoswipe.js' | asset_url }}"></script>
-<script src="{{ 'add.js' | asset_url }}"></script>
-
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-<div class="pswp__bg"></div>
-<div class="pswp__scroll-wrap">
-	<div class="pswp__container">
-	<div class="pswp__item"></div>
-	<div class="pswp__item"></div>
-	<div class="pswp__item"></div>
-	</div>
-	<div class="pswp__ui pswp__ui--hidden">
-	<div class="pswp__top-bar">
-		<div class="pswp__counter"></div>
-		<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-		<button class="pswp__button pswp__button--share" title="Share"></button>
-		<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-		<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-		<div class="pswp__preloader">
-		<div class="pswp__preloader__icn">
-			<div class="pswp__preloader__cut">
-			<div class="pswp__preloader__donut"></div>
-			</div>
-		</div>
-		</div>
-	</div>
-	<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-		<div class="pswp__share-tooltip"></div>
-	</div>
-	<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
-	<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
-	<div class="pswp__caption">
-		<div class="pswp__caption__center"></div>
-	</div>
-	</div>
-</div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const scrollContainers = document.querySelectorAll('.scroll');
+    
+      scrollContainers.forEach(container => {
+        const arrow = container.querySelector('.scroll-arrow');
+        const scrollImages = container.querySelector('.scroll-images');
+        
+        if (!scrollImages || !arrow) return;
+    
+        // 初期チェック:矢印が必要かどうかを確認
+        if (scrollImages.scrollWidth <= scrollImages.clientWidth) {
+          arrow.classList.add('hidden');
+        }
+    
+        // スクロール位置を確認して矢印を表示/非表示にする関数
+        const checkScroll = () => {
+          if (scrollImages.scrollLeft + scrollImages.clientWidth >= scrollImages.scrollWidth) {
+            arrow.classList.add('hidden');
+          } else {
+            arrow.classList.remove('hidden');
+          }
+        };
+    
+        // ページロード時にスクロール位置をチェック
+        checkScroll();
+    
+        // スクロールイベントをリッスンしてスクロール位置をチェック
+        scrollImages.addEventListener('scroll', checkScroll);
+    
+        // ウィンドウリサイズ時にもスクロール位置をチェック
+        window.addEventListener('resize', checkScroll);
+      });
+    });    
+  </script>
 </div>
 
 {% schema %}
@@ -168,6 +272,16 @@
       "id": "section_text_2",
       "label": "Text 2",
       "default": "Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "top_image",
+      "label": "Top Image"
+    },
+    {
+      "type": "text",
+      "id": "top_image_alt",
+      "label": "Top Image Alt Text"
     }
   ],
   "max_blocks": 50,
@@ -193,12 +307,48 @@
           "default": "<p></p>"
         }
       ]
+    },
+    {
+      "type": "scroll",
+      "name": "Scroll",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "Image 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Image 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3",
+          "label": "Image 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_4",
+          "label": "Image 4"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link URL"
+        },
+        {
+          "type": "html",
+          "id": "custom_html",
+          "label": "Caption",
+          "default": "<p></p>"
+        }
+      ]
     }
   ],
   "presets": [
     {
-      "name": "Look Gallery",
-      "category": "Image",
+      "name": "Look Gallery 24FW",
       "blocks": [
         {
           "type": "image"
