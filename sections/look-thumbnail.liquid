@@ -429,8 +429,16 @@
     const thumbnails = Array.from(document.querySelectorAll('.look-page__thumbnail'));
     const prevButtons = Array.from(document.querySelectorAll('.look-page__nav-button--prev'));
     const nextButtons = Array.from(document.querySelectorAll('.look-page__nav-button--next'));
+    const imageContainers = Array.from(document.querySelectorAll('.look-page__image-container'));
     
     if (looks.length === 0) return;
+
+    // スワイプ検出用の変数
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let touchStartY = 0;
+    let touchEndY = 0;
+    const minSwipeDistance = 50;
 
     function showLook(index) {
       if (index < 0 || index >= looks.length) return;
@@ -472,6 +480,23 @@
       showLook(newIndex);
     }
 
+    function handleSwipe() {
+      const diffX = touchEndX - touchStartX;
+      const diffY = touchEndY - touchStartY;
+      
+      // 横方向のスワイプが縦方向より大きい場合のみ処理
+      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > minSwipeDistance) {
+        if (diffX > 0) {
+          // 右スワイプ - 前へ
+          showPreviousLook();
+        } else {
+          // 左スワイプ - 次へ
+          showNextLook();
+        }
+      }
+    }
+
+    // サムネイルクリック
     thumbnails.forEach((thumbnail) => {
       thumbnail.addEventListener('click', function(e) {
         e.preventDefault();
@@ -482,6 +507,7 @@
       });
     });
 
+    // ナビゲーションボタン
     prevButtons.forEach((button) => {
       button.addEventListener('click', function(e) {
         e.preventDefault();
@@ -498,6 +524,21 @@
       });
     });
 
+    // タッチイベント（各画像コンテナに設定）
+    imageContainers.forEach((container) => {
+      container.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+      }, { passive: true });
+
+      container.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;
+        handleSwipe();
+      }, { passive: true });
+    });
+
+    // キーボードナビゲーション
     document.addEventListener('keydown', function(e) {
       if (e.key === 'ArrowLeft') {
         e.preventDefault();
