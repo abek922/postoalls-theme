@@ -108,10 +108,10 @@
   </div>
 </div>
 
-<script src="{{ 'photoswipe.min.js' | asset_url }}" defer></script>
-<script src="{{ 'photoswipe-ui-default.min.js' | asset_url }}" defer></script>
-<script src="{{ 'style_photoswipe.js' | asset_url }}" defer></script>
-<script src="{{ 'add.js' | asset_url }}" defer></script>
+<script src="{{ 'photoswipe.min.js' | asset_url }}"></script>
+<script src="{{ 'photoswipe-ui-default.min.js' | asset_url }}"></script>
+<script src="{{ 'style_photoswipe.js' | asset_url }}"></script>
+<script src="{{ 'add.js' | asset_url }}"></script>
 
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 <div class="pswp__bg"></div>
@@ -182,11 +182,6 @@
           "type": "image_picker",
           "id": "image",
           "label": "Image"
-        },
-        {
-          "type": "url",
-          "id": "link",
-          "label": "Image link"
         },
 		{
 		  "type": "html",
