@@ -77,6 +77,7 @@
   {% unless section.settings.section_text_1 == blank %}
   <div class="enlarge-text">
     <p>{{ section.settings.section_text_1 | escape }}</p>
+
     <p>{{ section.settings.section_text_2 | escape }}</p>
   </div>
   {% endunless %}
@@ -87,21 +88,19 @@
       {% if block.settings.image != blank %}
       {% assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
       <figure {{ block.shopify_attributes }}>
-        <a href="{{ block.settings.image | img_url: '1024x' }}" data-size="1200x1500">
-          <img class="gallery__image lazyload"
-               src="{{ block.settings.image | img_url: '480x600' }}"
-               data-src="{{ img_url }}"
-               data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
-               data-aspectratio="{{ block.settings.image.aspect_ratio }}"
-               data-sizes="auto"
-               width="{{ block.settings.image.width }}"
-               height="{{ block.settings.image.height }}"
-               alt="{{ block.settings.image.alt | escape }}">
-        </a>
-        <figcaption>{{ block.settings.custom_html }}</figcaption>
+      <a href="{{ block.settings.image | img_url: '1024x' }}" data-size="1200x1500">
+      <img class="gallery__image lazyload"
+      src="{{ block.settings.image | img_url: '480x600' }}"
+      data-src="{{ img_url }}"
+      data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048]"
+      data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+      data-sizes="auto"
+      alt="{{ block.settings.image.alt | escape }}">
+      </a>
+      <figcaption>{{ block.settings.custom_html }}</figcaption>
       </figure>
       {% else %}
-        <div class="grid__item" {{ block.shopify_attributes }}>
+        <div class="grid__item {{ featured_image_width }}" {{ block.shopify_attributes }}>
           {{ 'image' | placeholder_svg_tag: 'icon icon--placeholder' }}
         </div>
       {% endif %}
@@ -154,24 +153,24 @@
   "name": "Look",
   "class": "index-section",
   "settings": [
-    {
-      "type": "text",
-      "id": "section_title",
-      "label": "Heading",
-      "default": "Heading"
-    },
-    {
-      "type": "text",
-      "id": "section_text_1",
-      "label": "Text",
-      "default": "Text"
-    },
-    {
-      "type": "text",
-      "id": "section_text_2",
-      "label": "Text 2",
-      "default": "Text"
-    }
+  {
+    "type": "text",
+    "id": "section_title",
+    "label": "Heading",
+    "default": "Heading"
+  },
+  {
+    "type": "text",
+    "id": "section_text_1",
+    "label": "Text",
+    "default": "Text"
+  },
+  {
+    "type": "text",
+    "id": "section_text_2",
+    "label": "Text 2",
+    "default": "Text"
+  }
   ],
   "max_blocks": 50,
   "blocks": [
@@ -189,12 +188,12 @@
           "id": "link",
           "label": "Image link"
         },
-        {
-          "type": "html",
-          "id": "custom_html",
-          "label": "Caption",
-          "default": "<p></p>"
-        }
+		{
+		  "type": "html",
+		  "id": "custom_html",
+		  "label": "Caption",
+		  "default": "<p></p>"
+		}
       ]
     }
   ],
