@@ -32,42 +32,6 @@
   text-align: left;
   font-size: 10px;
 }
-.scroll {
-  padding: 0 0 10px;
-  position: relative;
-}
-.scroll-images {
-  display: flex;
-  overflow-x: auto;
-  gap: 10px;
-  margin: 0 calc(50% - 50vw);
-}
-.scroll-images.collection {
-  margin: 0;
-}
-.scroll-images img {
-  flex: 0 0 auto;
-  width: 30%;
-}
-.scroll-arrow {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.8);
-  padding: 5px;
-  margin: 0 calc(50% - 50vw);
-  transition: opacity 0.5s ease, visibility 0.5s ease;
-}
-.scroll-arrow svg {
-  width: 50px;
-  height: 50px;
-  display: block;
-}
-.scroll-arrow.hidden {
-  opacity: 0;
-  visibility: hidden;
-}
 
 .icon--placeholder {
   width: 100%;
@@ -89,13 +53,13 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.9);
-  animation: fadeIn 0.3s ease;
 }
 
 .image-modal.active {
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: fadeIn 0.2s ease;
 }
 
 .image-modal__content {
@@ -110,6 +74,7 @@
   height: auto;
   max-height: 90vh;
   object-fit: contain;
+  display: block;
 }
 
 .image-modal__close {
@@ -169,40 +134,28 @@
   height: 24px;
 }
 
+/* ローディング中のスタイル */
+.image-modal__image.loading {
+  opacity: 0.5;
+}
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
-@media screen and (min-width: 769px) {
-  .look-list-2024fw.sp {
-    display: none;
-  }
-  .scroll-images {
-    justify-content: center;
-  }
-}
-
 @media screen and (max-width: 768px) {
-  .look-list-2024fw.pc {
-    display: none;
-  }
   .top-image {
     width: 100vw;
     margin: 0 calc(50% - 50vw);
     padding: 10px 0 20px;
   }
+  .look-list-2024fw {
+    margin: 2rem 0;
+  }
   .look-list-2024fw .look-item {
-    width: calc((100% / 2) - 20px);
-    margin: 10px;
-    text-align: center;
-  }
-  .scroll-images img {
-    flex: 0 0 auto;
-    width: 100%;
-  }
-  .scroll-images.collection img {
-    width: 85%;
+    width: calc((100% / 2) - 10px);
+    margin: 5px;
   }
   
   .image-modal__close {
@@ -257,7 +210,7 @@
   </div>
   {% endif %}
 
-  <div class="look-list-2024fw pc">
+  <div class="look-list-2024fw">
     {% for block in section.blocks limit: section.blocks.size %}
       {% if block.type == 'image' %}
         {% if block.settings.image != blank %}
@@ -283,61 +236,6 @@
       {% endif %}
     {% endfor %}
   </div>
-
-  <div class="look-list-2024fw sp">
-    {% for block in section.blocks limit: section.blocks.size %}
-      {% if block.type == 'scroll' %}
-        <div class="scroll" {{ block.shopify_attributes }}>
-          <a href="{{ block.settings.link | escape }}" class="scroll-link">
-            <div class="scroll-images">
-              {% if block.settings.image_1 != blank %}
-              <img class="gallery__image"
-                src="{{ block.settings.image_1 | img_url: 'master' }}"
-                width="{{ block.settings.image_1.width }}"
-                height="{{ block.settings.image_1.height }}"
-                alt="{{ block.settings.image_1.alt | escape }}"
-                loading="lazy">
-              {% endif %}
-              {% if block.settings.image_2 != blank %}
-              <img class="gallery__image"
-                src="{{ block.settings.image_2 | img_url: 'master' }}"
-                width="{{ block.settings.image_2.width }}"
-                height="{{ block.settings.image_2.height }}"
-                alt="{{ block.settings.image_2.alt | escape }}"
-                loading="lazy">
-              {% endif %}
-              {% if block.settings.image_3 != blank %}
-              <img class="gallery__image"
-                src="{{ block.settings.image_3 | img_url: 'master' }}"
-                width="{{ block.settings.image_3.width }}"
-                height="{{ block.settings.image_3.height }}"
-                alt="{{ block.settings.image_3.alt | escape }}"
-                loading="lazy">
-              {% endif %}
-              {% if block.settings.image_4 != blank %}
-              <img class="gallery__image"
-                src="{{ block.settings.image_4 | img_url: 'master' }}"
-                width="{{ block.settings.image_4.width }}"
-                height="{{ block.settings.image_4.height }}"
-                alt="{{ block.settings.image_4.alt | escape }}"
-                loading="lazy">
-              {% endif %}
-            </div>
-            
-            <div class="scroll-arrow">
-              <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="9,18 15,12 9,6"></polyline>
-              </svg>
-            </div>
-            
-          </a>
-          <div class="caption">
-            {{ block.settings.custom_html }}
-          </div>
-        </div>
-      {% endif %}
-    {% endfor %}
-  </div>
 </div>
 
 <!-- モーダル -->
@@ -360,33 +258,6 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // スクロール矢印の制御
-  const scrollContainers = document.querySelectorAll('.scroll');
-
-  scrollContainers.forEach(container => {
-    const arrow = container.querySelector('.scroll-arrow');
-    const scrollImages = container.querySelector('.scroll-images');
-    
-    if (!scrollImages || !arrow) return;
-
-    if (scrollImages.scrollWidth <= scrollImages.clientWidth) {
-      arrow.classList.add('hidden');
-    }
-
-    const checkScroll = () => {
-      if (scrollImages.scrollLeft + scrollImages.clientWidth >= scrollImages.scrollWidth) {
-        arrow.classList.add('hidden');
-      } else {
-        arrow.classList.remove('hidden');
-      }
-    };
-
-    checkScroll();
-    scrollImages.addEventListener('scroll', checkScroll);
-    window.addEventListener('resize', checkScroll);
-  });
-
-  // モーダル機能
   const modal = document.getElementById('imageModal');
   const modalImage = document.getElementById('modalImage');
   const closeBtn = modal.querySelector('.image-modal__close');
@@ -396,17 +267,36 @@ document.addEventListener('DOMContentLoaded', function() {
   
   let currentIndex = 0;
   let images = [];
+  let imageCache = {};
 
   // 画像データを収集
   imageTriggers.forEach((trigger, index) => {
     const img = trigger.querySelector('img');
     if (img) {
+      const largeSrc = img.getAttribute('data-large') || img.src;
       images.push({
-        src: img.getAttribute('data-large') || img.src,
+        src: largeSrc,
         alt: img.alt
       });
+      
+      // 画像をプリロード（最初の3枚のみ）
+      if (index < 3) {
+        const preloadImg = new Image();
+        preloadImg.src = largeSrc;
+        imageCache[largeSrc] = preloadImg;
+      }
     }
   });
+
+  // 画像をプリロードする関数
+  function preloadImage(src) {
+    if (!imageCache[src]) {
+      const img = new Image();
+      img.src = src;
+      imageCache[src] = img;
+    }
+    return imageCache[src];
+  }
 
   // 画像を表示
   function showImage(index) {
@@ -414,8 +304,31 @@ document.addEventListener('DOMContentLoaded', function() {
     if (index >= images.length) index = 0;
     
     currentIndex = index;
-    modalImage.src = images[index].src;
-    modalImage.alt = images[index].alt;
+    const imageData = images[index];
+    
+    // キャッシュされた画像があればすぐ表示
+    if (imageCache[imageData.src] && imageCache[imageData.src].complete) {
+      modalImage.src = imageData.src;
+      modalImage.alt = imageData.alt;
+      modalImage.classList.remove('loading');
+    } else {
+      // ローディング状態
+      modalImage.classList.add('loading');
+      modalImage.src = imageData.src;
+      modalImage.alt = imageData.alt;
+      
+      modalImage.onload = function() {
+        modalImage.classList.remove('loading');
+      };
+    }
+    
+    // 次の画像をプリロード
+    if (index + 1 < images.length) {
+      preloadImage(images[index + 1].src);
+    }
+    if (index - 1 >= 0) {
+      preloadImage(images[index - 1].src);
+    }
   }
 
   // モーダルを開く
@@ -514,43 +427,6 @@ document.addEventListener('DOMContentLoaded', function() {
           "type": "image_picker",
           "id": "image",
           "label": "Image"
-        },
-        {
-          "type": "html",
-          "id": "custom_html",
-          "label": "Caption",
-          "default": "<p></p>"
-        }
-      ]
-    },
-    {
-      "type": "scroll",
-      "name": "Scroll",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image_1",
-          "label": "Image 1"
-        },
-        {
-          "type": "image_picker",
-          "id": "image_2",
-          "label": "Image 2"
-        },
-        {
-          "type": "image_picker",
-          "id": "image_3",
-          "label": "Image 3"
-        },
-        {
-          "type": "image_picker",
-          "id": "image_4",
-          "label": "Image 4"
-        },
-        {
-          "type": "url",
-          "id": "link",
-          "label": "Link URL"
         },
         {
           "type": "html",
