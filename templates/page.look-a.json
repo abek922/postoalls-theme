@@ -17,8 +17,8 @@
           "settings": {
             "image": "shopify://shop_images/w-8_0b8c78ef-b36e-4345-a7a4-9d716818317f.jpg",
             "title": "Sample Look",
-            "product_1": "",
-            "product_2": "",
+            "product_1": "1101-8di",
+            "product_2": "24ss_11018dw",
             "product_3": "",
             "product_4": "",
             "product_5": "",
@@ -122,6 +122,7 @@
             "image_2": "shopify://shop_images/w-7_e29c9ae7-2361-4c17-9b46-e9abd073f953.jpg",
             "image_3": "shopify://shop_images/w-2_e32e45e3-de31-43dc-9e3e-ac1d06347ad8.jpg",
             "link": "",
+            "show_arrow": true,
             "custom_html": "<p></p>"
           }
         }
@@ -148,8 +149,7 @@
         "section_margin_left": 0,
         "section_margin_right": 0,
         "image_gap": 10,
-        "pc_columns": 4,
-        "sp_columns": "2"
+        "pc_columns": 4
       }
     },
     "look_list_3_W8ayND": {
@@ -246,8 +246,7 @@
         "section_margin_left": 0,
         "section_margin_right": 0,
         "image_gap": 0,
-        "pc_columns": 4,
-        "sp_columns": "2"
+        "pc_columns": 4
       }
     }
   },
