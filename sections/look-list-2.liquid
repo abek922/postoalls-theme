@@ -110,13 +110,6 @@
     display: none;
   }
   
-  {% assign sp_cols = section.settings.sp_columns | plus: 0 %}
-  .look-section-{{ section.id }} .look-list-2.sp .look-item {
-    width: calc((100% / {{ sp_cols }}) - ({{ section.settings.image_gap }}px * ({{ sp_cols }} - 1) / {{ sp_cols }}));
-    margin: 0px;
-    text-align: center;
-  }
-  
   .look-section-{{ section.id }} .top-image {
     width: 100vw;
     margin: 0 calc(50% - 50vw);
@@ -202,36 +195,7 @@
 
       <div class="look-list-2 sp">
         {% for block in section.blocks limit: section.blocks.size %}
-          {% if block.type == 'image' %}
-            {% if block.settings.image != blank %}
-            <div class="look-item" {{ block.shopify_attributes }}>
-              {% if block.settings.link != blank %}
-              <a href="{{ block.settings.link | escape }}" data-size="1200x1500">
-                <img class="gallery__image"
-                     src="{{ block.settings.image | img_url: 'master' }}"
-                     width="{{ block.settings.image.width }}"
-                     height="{{ block.settings.image.height }}"
-                     alt="{{ block.settings.image.alt | escape }}"
-                     loading="lazy">
-              </a>
-              {% else %}
-              <img class="gallery__image"
-                   src="{{ block.settings.image | img_url: 'master' }}"
-                   width="{{ block.settings.image.width }}"
-                   height="{{ block.settings.image.height }}"
-                   alt="{{ block.settings.image.alt | escape }}"
-                   loading="lazy">
-              {% endif %}
-              <div class="caption">
-                {{ block.settings.custom_html }}
-              </div>
-            </div>
-            {% else %}
-            <div class="look-item" {{ block.shopify_attributes }}>
-              {{ 'image' | placeholder_svg_tag: 'icon icon--placeholder' }}
-            </div>
-            {% endif %}
-          {% elsif block.type == 'scroll' %}
+          {% if block.type == 'scroll' %}
             <div class="scroll" {{ block.shopify_attributes }}>
               {% if block.settings.link != blank %}
               <a href="{{ block.settings.link | escape }}" class="scroll-link">
@@ -423,22 +387,6 @@
       "max": 6,
       "step": 1,
       "default": 4
-    },
-    {
-      "type": "select",
-      "id": "sp_columns",
-      "label": "SP Columns (Mobile)",
-      "options": [
-        {
-          "value": "1",
-          "label": "1 Column"
-        },
-        {
-          "value": "2",
-          "label": "2 Columns"
-        }
-      ],
-      "default": "2"
     }
   ],
   "max_blocks": 50,
