@@ -123,7 +123,7 @@
             "image_3": "shopify://shop_images/w-2_e32e45e3-de31-43dc-9e3e-ac1d06347ad8.jpg",
             "link": "",
             "show_arrow": true,
-            "custom_html": "<p></p>"
+            "custom_html": "<p>あああ</p>"
           }
         }
       },
@@ -148,7 +148,7 @@
         "section_margin_bottom": 0,
         "section_margin_left": 0,
         "section_margin_right": 0,
-        "image_gap": 10,
+        "image_gap": 20,
         "pc_columns": 4
       }
     },
@@ -215,45 +215,16 @@
         "section_margin_top": 0,
         "section_margin_bottom": 0,
         "section_margin_left": 0,
-        "section_margin_right": 40,
-        "image_gap": 30,
-        "pc_columns": 5,
-        "sp_columns": "2"
-      }
-    },
-    "look_list_2_iYBaJG": {
-      "type": "look-list-2",
-      "blocks": {
-        "image_g68eGH": {
-          "type": "image",
-          "settings": {
-            "link": "",
-            "custom_html": "<p></p>"
-          }
-        }
-      },
-      "block_order": [
-        "image_g68eGH"
-      ],
-      "name": "Look List 2",
-      "settings": {
-        "section_title": "Heading",
-        "section_text_1": "Text",
-        "section_text_2": "Text",
-        "top_image_alt": "",
-        "section_margin_top": 0,
-        "section_margin_bottom": 0,
-        "section_margin_left": 0,
         "section_margin_right": 0,
-        "image_gap": 0,
-        "pc_columns": 4
+        "image_gap": 10,
+        "pc_columns": 4,
+        "sp_columns": "2"
       }
     }
   },
   "order": [
     "look_list_1_tRFyPC",
     "look_list_2_DC7Xy6",
-    "look_list_3_W8ayND",
-    "look_list_2_iYBaJG"
+    "look_list_3_W8ayND"
   ]
 }
