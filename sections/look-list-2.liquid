@@ -20,6 +20,10 @@
   width: 100%;
   margin: 0%;
 }
+.look-list-2 .look-item img {
+  width: 100%;
+  margin: 0%;
+}
 .caption {
   margin-top: 1rem;
   text-align: left;
@@ -137,6 +141,7 @@
       {% if block.type == 'image' %}
         {% if block.settings.image != blank %}
         <div class="look-item" {{ block.shopify_attributes }}>
+          {% if block.settings.link != blank %}
           <a href="{{ block.settings.link | escape }}" data-size="1200x1500">
             <img class="gallery__image"
                  src="{{ block.settings.image | img_url: 'master' }}"
@@ -145,6 +150,14 @@
                  alt="{{ block.settings.image.alt | escape }}"
                  loading="lazy">
           </a>
+          {% else %}
+          <img class="gallery__image"
+               src="{{ block.settings.image | img_url: 'master' }}"
+               width="{{ block.settings.image.width }}"
+               height="{{ block.settings.image.height }}"
+               alt="{{ block.settings.image.alt | escape }}"
+               loading="lazy">
+          {% endif %}
           <div class="caption">
             {{ block.settings.custom_html }}
           </div>
@@ -162,7 +175,9 @@
     {% for block in section.blocks limit: section.blocks.size %}
       {% if block.type == 'scroll' %}
         <div class="scroll" {{ block.shopify_attributes }}>
+          {% if block.settings.link != blank %}
           <a href="{{ block.settings.link | escape }}" class="scroll-link">
+          {% endif %}
             <div class="scroll-images">
               {% if block.settings.image_1 != blank %}
               <img class="gallery__image"
@@ -198,13 +213,16 @@
               {% endif %}
             </div>
             
+            {% if block.settings.link != blank %}
             <div class="scroll-arrow">
               <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="9,18 15,12 9,6"></polyline>
               </svg>
             </div>
-            
+            {% endif %}
+          {% if block.settings.link != blank %}
           </a>
+          {% endif %}
           <div class="caption">
             {{ block.settings.custom_html }}
           </div>
