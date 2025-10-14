@@ -1,20 +1,20 @@
 {% style %}
-#shopify-section-page-look-2024-fw {
+.look-section-{{ section.id }} {
   padding-top: 1rem;
 }
 
-.look-wrapper {
+.look-wrapper-{{ section.id }} {
   margin-top: {{ section.settings.section_margin_top }}px;
   margin-bottom: {{ section.settings.section_margin_bottom }}px;
   margin-left: {{ section.settings.section_margin_left }}px;
   margin-right: {{ section.settings.section_margin_right }}px;
 }
 
-.top-image {
+.look-section-{{ section.id }} .top-image {
   padding: 10px 0;
 }
 
-.look-list-2 {
+.look-section-{{ section.id }} .look-list-2 {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -22,50 +22,50 @@
   gap: {{ section.settings.image_gap }}px;
 }
 
-.look-list-2 .look-item {
+.look-section-{{ section.id }} .look-list-2 .look-item {
   width: calc((100% / {{ section.settings.pc_columns }}) - ({{ section.settings.image_gap }}px * ({{ section.settings.pc_columns }} - 1) / {{ section.settings.pc_columns }}));
   margin: 0px;
   text-align: center;
 }
 
-.look-list-2 .look-item a img {
+.look-section-{{ section.id }} .look-list-2 .look-item a img {
   width: 100%;
   margin: 0%;
 }
 
-.look-list-2 .look-item img {
+.look-section-{{ section.id }} .look-list-2 .look-item img {
   width: 100%;
   margin: 0%;
 }
 
-.caption {
+.look-section-{{ section.id }} .caption {
   margin-top: 1rem;
   text-align: left;
   font-size: 10px;
 }
 
-.scroll {
+.look-section-{{ section.id }} .scroll {
   padding: 0 0 10px;
   position: relative;
 }
 
-.scroll-images {
+.look-section-{{ section.id }} .scroll-images {
   display: flex;
   overflow-x: auto;
   gap: 10px;
   margin: 0 calc(50% - 50vw);
 }
 
-.scroll-images.collection {
+.look-section-{{ section.id }} .scroll-images.collection {
   margin: 0;
 }
 
-.scroll-images img {
+.look-section-{{ section.id }} .scroll-images img {
   flex: 0 0 auto;
   width: 30%;
 }
 
-.scroll-arrow {
+.look-section-{{ section.id }} .scroll-arrow {
   position: absolute;
   top: 50%;
   right: 0;
@@ -76,17 +76,17 @@
   transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
-.scroll-arrow img {
+.look-section-{{ section.id }} .scroll-arrow img {
   width: 50px;
   height: auto;
 }
 
-.scroll-arrow.hidden {
+.look-section-{{ section.id }} .scroll-arrow.hidden {
   opacity: 0;
   visibility: hidden;
 }
 
-.icon--placeholder {
+.look-section-{{ section.id }} .icon--placeholder {
   width: 100%;
   height: 300px;
   background: #f5f5f5;
@@ -97,202 +97,234 @@
 }
 
 @media screen and (min-width: 769px) {
-  .look-list-2.sp {
+  .look-section-{{ section.id }} .look-list-2.sp {
     display: none;
   }
-  .scroll-images {
+  .look-section-{{ section.id }} .scroll-images {
     justify-content: center;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .look-list-2.pc {
+  .look-section-{{ section.id }} .look-list-2.pc {
     display: none;
   }
   
-  .look-list-2.sp .look-item {
-    width: calc((100% / {{ section.settings.sp_columns }}) - ({{ section.settings.image_gap }}px * ({{ section.settings.sp_columns }} - 1) / {{ section.settings.sp_columns }}));
+  {% assign sp_cols = section.settings.sp_columns | plus: 0 %}
+  .look-section-{{ section.id }} .look-list-2.sp .look-item {
+    width: calc((100% / {{ sp_cols }}) - ({{ section.settings.image_gap }}px * ({{ sp_cols }} - 1) / {{ sp_cols }}));
     margin: 0px;
     text-align: center;
   }
   
-  .top-image {
+  .look-section-{{ section.id }} .top-image {
     width: 100vw;
     margin: 0 calc(50% - 50vw);
     padding: 10px 0 20px;
   }
   
-  .scroll-images img {
+  .look-section-{{ section.id }} .scroll-images img {
     flex: 0 0 auto;
     width: 100%;
   }
   
-  .scroll-images.collection img {
+  .look-section-{{ section.id }} .scroll-images.collection img {
     width: 85%;
   }
 }
 {% endstyle %}
 
-<div class="look-wrapper">
-  <div class="page-width">
-    {% unless section.settings.section_title == blank %}
-    <div class="section-header section-header--small">
-      <h2 class="section-header__title">
-        {{ section.settings.section_title | escape }}
-      </h2>
-    </div>
-    {% endunless %}
+<div class="look-section-{{ section.id }}">
+  <div class="look-wrapper-{{ section.id }}">
+    <div class="page-width">
+      {% unless section.settings.section_title == blank %}
+      <div class="section-header section-header--small">
+        <h2 class="section-header__title">
+          {{ section.settings.section_title | escape }}
+        </h2>
+      </div>
+      {% endunless %}
 
-    {%- comment -%}
-      シーズン概要
-    {%- endcomment -%}
-    {% unless section.settings.section_text_1 == blank %}
-    <div class="">
-      <p>{{ section.settings.section_text_1 | escape }}</p>
-      <p>{{ section.settings.section_text_2 | escape }}</p>
-    </div>
-    {% endunless %}
+      {%- comment -%}
+        シーズン概要
+      {%- endcomment -%}
+      {% unless section.settings.section_text_1 == blank %}
+      <div class="">
+        <p>{{ section.settings.section_text_1 | escape }}</p>
+        <p>{{ section.settings.section_text_2 | escape }}</p>
+      </div>
+      {% endunless %}
 
-    {% if section.settings.top_image != blank %}
-    <div class="top-image">
-      <img src="{{ section.settings.top_image | img_url: 'master' }}" 
-           alt="{{ section.settings.top_image_alt | escape }}"
-           width="{{ section.settings.top_image.width }}"
-           height="{{ section.settings.top_image.height }}"
-           loading="lazy">
-    </div>
-    {% endif %}
+      {% if section.settings.top_image != blank %}
+      <div class="top-image">
+        <img src="{{ section.settings.top_image | img_url: 'master' }}" 
+             alt="{{ section.settings.top_image_alt | escape }}"
+             width="{{ section.settings.top_image.width }}"
+             height="{{ section.settings.top_image.height }}"
+             loading="lazy">
+      </div>
+      {% endif %}
 
-    <div class="look-list-2 pc">
-      {% for block in section.blocks limit: section.blocks.size %}
-        {% if block.type == 'image' %}
-          {% if block.settings.image != blank %}
-          <div class="look-item" {{ block.shopify_attributes }}>
-            {% if block.settings.link != blank %}
-            <a href="{{ block.settings.link | escape }}" data-size="1200x1500">
+      <div class="look-list-2 pc">
+        {% for block in section.blocks limit: section.blocks.size %}
+          {% if block.type == 'image' %}
+            {% if block.settings.image != blank %}
+            <div class="look-item" {{ block.shopify_attributes }}>
+              {% if block.settings.link != blank %}
+              <a href="{{ block.settings.link | escape }}" data-size="1200x1500">
+                <img class="gallery__image"
+                     src="{{ block.settings.image | img_url: 'master' }}"
+                     width="{{ block.settings.image.width }}"
+                     height="{{ block.settings.image.height }}"
+                     alt="{{ block.settings.image.alt | escape }}"
+                     loading="lazy">
+              </a>
+              {% else %}
               <img class="gallery__image"
                    src="{{ block.settings.image | img_url: 'master' }}"
                    width="{{ block.settings.image.width }}"
                    height="{{ block.settings.image.height }}"
                    alt="{{ block.settings.image.alt | escape }}"
                    loading="lazy">
-            </a>
-            {% else %}
-            <img class="gallery__image"
-                 src="{{ block.settings.image | img_url: 'master' }}"
-                 width="{{ block.settings.image.width }}"
-                 height="{{ block.settings.image.height }}"
-                 alt="{{ block.settings.image.alt | escape }}"
-                 loading="lazy">
-            {% endif %}
-            <div class="caption">
-              {{ block.settings.custom_html }}
-            </div>
-          </div>
-          {% else %}
-          <div class="look-item" {{ block.shopify_attributes }}>
-            {{ 'image' | placeholder_svg_tag: 'icon icon--placeholder' }}
-          </div>
-          {% endif %}
-        {% endif %}
-      {% endfor %}
-    </div>
-
-    <div class="look-list-2 sp">
-      {% for block in section.blocks limit: section.blocks.size %}
-        {% if block.type == 'scroll' %}
-          <div class="scroll" {{ block.shopify_attributes }}>
-            {% if block.settings.link != blank %}
-            <a href="{{ block.settings.link | escape }}" class="scroll-link">
-            {% endif %}
-              <div class="scroll-images">
-                {% if block.settings.image_1 != blank %}
-                <img class="gallery__image"
-                  src="{{ block.settings.image_1 | img_url: 'master' }}"
-                  width="{{ block.settings.image_1.width }}"
-                  height="{{ block.settings.image_1.height }}"
-                  alt="{{ block.settings.image_1.alt | escape }}"
-                  loading="lazy">
-                {% endif %}
-                {% if block.settings.image_2 != blank %}
-                <img class="gallery__image"
-                  src="{{ block.settings.image_2 | img_url: 'master' }}"
-                  width="{{ block.settings.image_2.width }}"
-                  height="{{ block.settings.image_2.height }}"
-                  alt="{{ block.settings.image_2.alt | escape }}"
-                  loading="lazy">
-                {% endif %}
-                {% if block.settings.image_3 != blank %}
-                <img class="gallery__image"
-                  src="{{ block.settings.image_3 | img_url: 'master' }}"
-                  width="{{ block.settings.image_3.width }}"
-                  height="{{ block.settings.image_3.height }}"
-                  alt="{{ block.settings.image_3.alt | escape }}"
-                  loading="lazy">
-                {% endif %}
-                {% if block.settings.image_4 != blank %}
-                <img class="gallery__image"
-                  src="{{ block.settings.image_4 | img_url: 'master' }}"
-                  width="{{ block.settings.image_4.width }}"
-                  height="{{ block.settings.image_4.height }}"
-                  alt="{{ block.settings.image_4.alt | escape }}"
-                  loading="lazy">
-                {% endif %}
-              </div>
-              
-              {% if block.settings.link != blank %}
-              <div class="scroll-arrow">
-                <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="9,18 15,12 9,6"></polyline>
-                </svg>
-              </div>
               {% endif %}
-            {% if block.settings.link != blank %}
-            </a>
-            {% endif %}
-            <div class="caption">
-              {{ block.settings.custom_html }}
+              <div class="caption">
+                {{ block.settings.custom_html }}
+              </div>
             </div>
-          </div>
-        {% endif %}
-      {% endfor %}
-    </div>
-    
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const scrollContainers = document.querySelectorAll('.scroll');
+            {% else %}
+            <div class="look-item" {{ block.shopify_attributes }}>
+              {{ 'image' | placeholder_svg_tag: 'icon icon--placeholder' }}
+            </div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="look-list-2 sp">
+        {% for block in section.blocks limit: section.blocks.size %}
+          {% if block.type == 'image' %}
+            {% if block.settings.image != blank %}
+            <div class="look-item" {{ block.shopify_attributes }}>
+              {% if block.settings.link != blank %}
+              <a href="{{ block.settings.link | escape }}" data-size="1200x1500">
+                <img class="gallery__image"
+                     src="{{ block.settings.image | img_url: 'master' }}"
+                     width="{{ block.settings.image.width }}"
+                     height="{{ block.settings.image.height }}"
+                     alt="{{ block.settings.image.alt | escape }}"
+                     loading="lazy">
+              </a>
+              {% else %}
+              <img class="gallery__image"
+                   src="{{ block.settings.image | img_url: 'master' }}"
+                   width="{{ block.settings.image.width }}"
+                   height="{{ block.settings.image.height }}"
+                   alt="{{ block.settings.image.alt | escape }}"
+                   loading="lazy">
+              {% endif %}
+              <div class="caption">
+                {{ block.settings.custom_html }}
+              </div>
+            </div>
+            {% else %}
+            <div class="look-item" {{ block.shopify_attributes }}>
+              {{ 'image' | placeholder_svg_tag: 'icon icon--placeholder' }}
+            </div>
+            {% endif %}
+          {% elsif block.type == 'scroll' %}
+            <div class="scroll" {{ block.shopify_attributes }}>
+              {% if block.settings.link != blank %}
+              <a href="{{ block.settings.link | escape }}" class="scroll-link">
+              {% endif %}
+                <div class="scroll-images">
+                  {% if block.settings.image_1 != blank %}
+                  <img class="gallery__image"
+                    src="{{ block.settings.image_1 | img_url: 'master' }}"
+                    width="{{ block.settings.image_1.width }}"
+                    height="{{ block.settings.image_1.height }}"
+                    alt="{{ block.settings.image_1.alt | escape }}"
+                    loading="lazy">
+                  {% endif %}
+                  {% if block.settings.image_2 != blank %}
+                  <img class="gallery__image"
+                    src="{{ block.settings.image_2 | img_url: 'master' }}"
+                    width="{{ block.settings.image_2.width }}"
+                    height="{{ block.settings.image_2.height }}"
+                    alt="{{ block.settings.image_2.alt | escape }}"
+                    loading="lazy">
+                  {% endif %}
+                  {% if block.settings.image_3 != blank %}
+                  <img class="gallery__image"
+                    src="{{ block.settings.image_3 | img_url: 'master' }}"
+                    width="{{ block.settings.image_3.width }}"
+                    height="{{ block.settings.image_3.height }}"
+                    alt="{{ block.settings.image_3.alt | escape }}"
+                    loading="lazy">
+                  {% endif %}
+                  {% if block.settings.image_4 != blank %}
+                  <img class="gallery__image"
+                    src="{{ block.settings.image_4 | img_url: 'master' }}"
+                    width="{{ block.settings.image_4.width }}"
+                    height="{{ block.settings.image_4.height }}"
+                    alt="{{ block.settings.image_4.alt | escape }}"
+                    loading="lazy">
+                  {% endif %}
+                </div>
+                
+                {% if block.settings.link != blank %}
+                <div class="scroll-arrow">
+                  <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9,18 15,12 9,6"></polyline>
+                  </svg>
+                </div>
+                {% endif %}
+              {% if block.settings.link != blank %}
+              </a>
+              {% endif %}
+              <div class="caption">
+                {{ block.settings.custom_html }}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
       
-        scrollContainers.forEach(container => {
-          const arrow = container.querySelector('.scroll-arrow');
-          const scrollImages = container.querySelector('.scroll-images');
-          
-          if (!scrollImages || !arrow) return;
-      
-          // 初期チェック:矢印が必要かどうかを確認
-          if (scrollImages.scrollWidth <= scrollImages.clientWidth) {
-            arrow.classList.add('hidden');
-          }
-      
-          // スクロール位置を確認して矢印を表示/非表示にする関数
-          const checkScroll = () => {
-            if (scrollImages.scrollLeft + scrollImages.clientWidth >= scrollImages.scrollWidth) {
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const scrollContainers = document.querySelectorAll('.look-section-{{ section.id }} .scroll');
+        
+          scrollContainers.forEach(container => {
+            const arrow = container.querySelector('.scroll-arrow');
+            const scrollImages = container.querySelector('.scroll-images');
+            
+            if (!scrollImages || !arrow) return;
+        
+            // 初期チェック:矢印が必要かどうかを確認
+            if (scrollImages.scrollWidth <= scrollImages.clientWidth) {
               arrow.classList.add('hidden');
-            } else {
-              arrow.classList.remove('hidden');
             }
-          };
-      
-          // ページロード時にスクロール位置をチェック
-          checkScroll();
-      
-          // スクロールイベントをリッスンしてスクロール位置をチェック
-          scrollImages.addEventListener('scroll', checkScroll);
-      
-          // ウィンドウリサイズ時にもスクロール位置をチェック
-          window.addEventListener('resize', checkScroll);
-        });
-      });    
-    </script>
+        
+            // スクロール位置を確認して矢印を表示/非表示にする関数
+            const checkScroll = () => {
+              if (scrollImages.scrollLeft + scrollImages.clientWidth >= scrollImages.scrollWidth) {
+                arrow.classList.add('hidden');
+              } else {
+                arrow.classList.remove('hidden');
+              }
+            };
+        
+            // ページロード時にスクロール位置をチェック
+            checkScroll();
+        
+            // スクロールイベントをリッスンしてスクロール位置をチェック
+            scrollImages.addEventListener('scroll', checkScroll);
+        
+            // ウィンドウリサイズ時にもスクロール位置をチェック
+            window.addEventListener('resize', checkScroll);
+          });
+        });    
+      </script>
+    </div>
   </div>
 </div>
 
