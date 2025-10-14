@@ -238,7 +238,7 @@
       "settings": {
         "color_scheme": "",
         "separate_section_with_border": true,
-        "blog": "ニュース",
+        "blog": "news",
         "posts_count": 3,
         "stack_on_mobile": true,
         "show_category": false,
@@ -258,7 +258,7 @@
       "settings": {
         "color_scheme": "",
         "separate_section_with_border": true,
-        "blog": "ニュース",
+        "blog": "news",
         "posts_count": 3,
         "show_category": true,
         "show_date": true,
