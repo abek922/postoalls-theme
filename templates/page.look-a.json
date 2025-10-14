@@ -143,11 +143,11 @@
         "section_text_1": "Text",
         "section_text_2": "Text",
         "top_image_alt": "",
-        "section_margin_top": 100,
-        "section_margin_bottom": 85,
-        "section_margin_left": 100,
-        "section_margin_right": 65,
-        "image_gap": 20,
+        "section_margin_top": 0,
+        "section_margin_bottom": 0,
+        "section_margin_left": 0,
+        "section_margin_right": 0,
+        "image_gap": 10,
         "pc_columns": 4,
         "sp_columns": "2"
       }
