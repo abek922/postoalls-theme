@@ -202,24 +202,6 @@
 <div class="look-section-{{ section.id }}">
   <div class="look-wrapper-{{ section.id }}">
     <div class="page-width">
-      {% unless section.settings.section_title == blank %}
-      <div class="section-header section-header--small">
-        <h2 class="section-header__title">
-          {{ section.settings.section_title | escape }}
-        </h2>
-      </div>
-      {% endunless %}
-
-      {%- comment -%}
-        シーズン概要
-      {%- endcomment -%}
-      {% unless section.settings.section_text_1 == blank %}
-      <div class="">
-        <p>{{ section.settings.section_text_1 | escape }}</p>
-        <p>{{ section.settings.section_text_2 | escape }}</p>
-      </div>
-      {% endunless %}
-
       {% if section.settings.top_image != blank %}
       <div class="top-image">
         <img src="{{ section.settings.top_image | img_url: 'master' }}" 
