@@ -55,17 +55,7 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/w-8_0b8c78ef-b36e-4345-a7a4-9d716818317f.jpg",
-            "link": "",
-            "custom_html": "<p></p>"
-          }
-        },
-        "scroll_7DNUkz": {
-          "type": "scroll",
-          "settings": {
-            "image_1": "shopify://shop_images/w-8_0b8c78ef-b36e-4345-a7a4-9d716818317f.jpg",
-            "image_2": "shopify://shop_images/w-7_e29c9ae7-2361-4c17-9b46-e9abd073f953.jpg",
-            "image_3": "shopify://shop_images/w-2_e32e45e3-de31-43dc-9e3e-ac1d06347ad8.jpg",
-            "link": "",
+            "link": "https://postoveralls.com/blogs/%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9/2025fw-new-collaboration-with-descendant",
             "custom_html": "<p></p>"
           }
         },
@@ -92,14 +82,24 @@
             "link": "",
             "custom_html": "<p></p>"
           }
+        },
+        "scroll_7DNUkz": {
+          "type": "scroll",
+          "settings": {
+            "image_1": "shopify://shop_images/w-8_0b8c78ef-b36e-4345-a7a4-9d716818317f.jpg",
+            "image_2": "shopify://shop_images/w-7_e29c9ae7-2361-4c17-9b46-e9abd073f953.jpg",
+            "image_3": "shopify://shop_images/w-2_e32e45e3-de31-43dc-9e3e-ac1d06347ad8.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
         }
       },
       "block_order": [
         "image_9NcXxQ",
-        "scroll_7DNUkz",
         "image_WAEdwL",
         "image_wCNX9T",
-        "image_HAatmf"
+        "image_HAatmf",
+        "scroll_7DNUkz"
       ],
       "name": "Look List 2",
       "settings": {
