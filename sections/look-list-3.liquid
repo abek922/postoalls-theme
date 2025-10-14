@@ -1,39 +1,54 @@
-<style>
-#shopify-section-page-look-2024-fw {
+{% style %}
+.look-section-{{ section.id }} {
   padding-top: 1rem;
 }
-.top-image {
+
+.look-wrapper-{{ section.id }} {
+  margin-top: {{ section.settings.section_margin_top }}px;
+  margin-bottom: {{ section.settings.section_margin_bottom }}px;
+  margin-left: {{ section.settings.section_margin_left }}px;
+  margin-right: {{ section.settings.section_margin_right }}px;
+}
+
+.look-section-{{ section.id }} .top-image {
   padding: 10px 0;
 }
-.look-list-3 {
+
+.look-section-{{ section.id }} .look-list-3 {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   margin: 5rem 0 2rem;
+  gap: {{ section.settings.image_gap }}px;
 }
-.look-list-3 .look-item {
-  width: calc((100% / 4) - 0px);
+
+.look-section-{{ section.id }} .look-list-3 .look-item {
+  width: calc((100% / {{ section.settings.pc_columns }}) - ({{ section.settings.image_gap }}px * ({{ section.settings.pc_columns }} - 1) / {{ section.settings.pc_columns }}));
   margin: 0px;
   text-align: center;
 }
-.look-list-3 .look-item a {
+
+.look-section-{{ section.id }} .look-list-3 .look-item a {
   cursor: pointer;
 }
-.look-list-3 .look-item a img {
+
+.look-section-{{ section.id }} .look-list-3 .look-item a img {
   width: 100%;
   margin: 0%;
   transition: opacity 0.2s ease;
 }
-.look-list-3 .look-item a:hover img {
+
+.look-section-{{ section.id }} .look-list-3 .look-item a:hover img {
   opacity: 0.8;
 }
-.caption {
+
+.look-section-{{ section.id }} .caption {
   margin-top: 1rem;
   text-align: left;
   font-size: 10px;
 }
 
-.icon--placeholder {
+.look-section-{{ section.id }} .icon--placeholder {
   width: 100%;
   height: 300px;
   background: #f5f5f5;
@@ -44,7 +59,7 @@
 }
 
 /* モーダルスタイル */
-.image-modal {
+.image-modal-{{ section.id }} {
   display: none;
   position: fixed;
   z-index: 9999;
@@ -55,21 +70,21 @@
   background-color: rgba(0, 0, 0, 0.9);
 }
 
-.image-modal.active {
+.image-modal-{{ section.id }}.active {
   display: flex;
   align-items: center;
   justify-content: center;
   animation: fadeIn 0.2s ease;
 }
 
-.image-modal__content {
+.image-modal-{{ section.id }} .image-modal__content {
   position: relative;
   max-width: 90%;
   max-height: 90vh;
   margin: auto;
 }
 
-.image-modal__image {
+.image-modal-{{ section.id }} .image-modal__image {
   width: 100%;
   height: auto;
   max-height: 90vh;
@@ -77,7 +92,7 @@
   display: block;
 }
 
-.image-modal__close {
+.image-modal-{{ section.id }} .image-modal__close {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -97,11 +112,11 @@
   z-index: 10000;
 }
 
-.image-modal__close:hover {
+.image-modal-{{ section.id }} .image-modal__close:hover {
   background: rgba(0, 0, 0, 0.8);
 }
 
-.image-modal__nav {
+.image-modal-{{ section.id }} .image-modal__nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -117,25 +132,25 @@
   z-index: 10000;
 }
 
-.image-modal__nav:hover {
+.image-modal-{{ section.id }} .image-modal__nav:hover {
   background: rgba(255, 255, 255, 0.95);
 }
 
-.image-modal__nav--prev {
+.image-modal-{{ section.id }} .image-modal__nav--prev {
   left: 20px;
 }
 
-.image-modal__nav--next {
+.image-modal-{{ section.id }} .image-modal__nav--next {
   right: 20px;
 }
 
-.image-modal__nav svg {
+.image-modal-{{ section.id }} .image-modal__nav svg {
   width: 24px;
   height: 24px;
 }
 
 /* ローディング中のスタイル */
-.image-modal__image.loading {
+.image-modal-{{ section.id }} .image-modal__image.loading {
   opacity: 0.5;
 }
 
@@ -145,20 +160,23 @@
 }
 
 @media screen and (max-width: 768px) {
-  .top-image {
+  .look-section-{{ section.id }} .top-image {
     width: 100vw;
     margin: 0 calc(50% - 50vw);
     padding: 10px 0 20px;
   }
-  .look-list-3 {
+  
+  .look-section-{{ section.id }} .look-list-3 {
     margin: 2rem 0;
   }
-  .look-list-3 .look-item {
-    width: calc((100% / 2) - 10px);
-    margin: 5px;
+  
+  {% assign sp_cols = section.settings.sp_columns | plus: 0 %}
+  .look-section-{{ section.id }} .look-list-3 .look-item {
+    width: calc((100% / {{ sp_cols }}) - ({{ section.settings.image_gap }}px * ({{ sp_cols }} - 1) / {{ sp_cols }}));
+    margin: 0px;
   }
   
-  .image-modal__close {
+  .image-modal-{{ section.id }} .image-modal__close {
     top: 10px;
     right: 10px;
     width: 40px;
@@ -166,80 +184,84 @@
     font-size: 30px;
   }
   
-  .image-modal__nav {
+  .image-modal-{{ section.id }} .image-modal__nav {
     width: 40px;
     height: 40px;
   }
   
-  .image-modal__nav--prev {
+  .image-modal-{{ section.id }} .image-modal__nav--prev {
     left: 10px;
   }
   
-  .image-modal__nav--next {
+  .image-modal-{{ section.id }} .image-modal__nav--next {
     right: 10px;
   }
 }
-</style>
+{% endstyle %}
 
-<div class="page-width">
-  {% unless section.settings.section_title == blank %}
-  <div class="section-header section-header--small">
-    <h2 class="section-header__title">
-      {{ section.settings.section_title | escape }}
-    </h2>
-  </div>
-  {% endunless %}
+<div class="look-section-{{ section.id }}">
+  <div class="look-wrapper-{{ section.id }}">
+    <div class="page-width">
+      {% unless section.settings.section_title == blank %}
+      <div class="section-header section-header--small">
+        <h2 class="section-header__title">
+          {{ section.settings.section_title | escape }}
+        </h2>
+      </div>
+      {% endunless %}
 
-  {%- comment -%}
-    シーズン概要
-  {%- endcomment -%}
-  {% unless section.settings.section_text_1 == blank %}
-  <div class="">
-    <p>{{ section.settings.section_text_1 | escape }}</p>
-    <p>{{ section.settings.section_text_2 | escape }}</p>
-  </div>
-  {% endunless %}
+      {%- comment -%}
+        シーズン概要
+      {%- endcomment -%}
+      {% unless section.settings.section_text_1 == blank %}
+      <div class="">
+        <p>{{ section.settings.section_text_1 | escape }}</p>
+        <p>{{ section.settings.section_text_2 | escape }}</p>
+      </div>
+      {% endunless %}
 
-  {% if section.settings.top_image != blank %}
-  <div class="top-image">
-    <img src="{{ section.settings.top_image | img_url: 'master' }}" 
-         alt="{{ section.settings.top_image_alt | escape }}"
-         width="{{ section.settings.top_image.width }}"
-         height="{{ section.settings.top_image.height }}"
-         loading="lazy">
-  </div>
-  {% endif %}
-
-  <div class="look-list-3">
-    {% for block in section.blocks limit: section.blocks.size %}
-      {% if block.type == 'image' %}
-        {% if block.settings.image != blank %}
-        <div class="look-item" {{ block.shopify_attributes }}>
-          <a href="#" class="look-image-trigger" data-index="{{ forloop.index0 }}">
-            <img class="gallery__image"
-                 src="{{ block.settings.image | img_url: 'master' }}"
-                 data-large="{{ block.settings.image | img_url: '2048x' }}"
-                 width="{{ block.settings.image.width }}"
-                 height="{{ block.settings.image.height }}"
-                 alt="{{ block.settings.image.alt | escape }}"
-                 loading="lazy">
-          </a>
-          <div class="caption">
-            {{ block.settings.custom_html }}
-          </div>
-        </div>
-        {% else %}
-        <div class="look-item" {{ block.shopify_attributes }}>
-          {{ 'image' | placeholder_svg_tag: 'icon icon--placeholder' }}
-        </div>
-        {% endif %}
+      {% if section.settings.top_image != blank %}
+      <div class="top-image">
+        <img src="{{ section.settings.top_image | img_url: 'master' }}" 
+             alt="{{ section.settings.top_image_alt | escape }}"
+             width="{{ section.settings.top_image.width }}"
+             height="{{ section.settings.top_image.height }}"
+             loading="lazy">
+      </div>
       {% endif %}
-    {% endfor %}
+
+      <div class="look-list-3">
+        {% for block in section.blocks limit: section.blocks.size %}
+          {% if block.type == 'image' %}
+            {% if block.settings.image != blank %}
+            <div class="look-item" {{ block.shopify_attributes }}>
+              <a href="#" class="look-image-trigger-{{ section.id }}" data-index="{{ forloop.index0 }}">
+                <img class="gallery__image"
+                     src="{{ block.settings.image | img_url: 'master' }}"
+                     data-large="{{ block.settings.image | img_url: '2048x' }}"
+                     width="{{ block.settings.image.width }}"
+                     height="{{ block.settings.image.height }}"
+                     alt="{{ block.settings.image.alt | escape }}"
+                     loading="lazy">
+              </a>
+              <div class="caption">
+                {{ block.settings.custom_html }}
+              </div>
+            </div>
+            {% else %}
+            <div class="look-item" {{ block.shopify_attributes }}>
+              {{ 'image' | placeholder_svg_tag: 'icon icon--placeholder' }}
+            </div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
   </div>
 </div>
 
 <!-- モーダル -->
-<div id="imageModal" class="image-modal">
+<div id="imageModal-{{ section.id }}" class="image-modal-{{ section.id }}">
   <button class="image-modal__close" aria-label="閉じる">&times;</button>
   <button class="image-modal__nav image-modal__nav--prev" aria-label="前の画像">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -252,18 +274,19 @@
     </svg>
   </button>
   <div class="image-modal__content">
-    <img id="modalImage" class="image-modal__image" src="" alt="">
+    <img class="image-modal__image" src="" alt="">
   </div>
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const modal = document.getElementById('imageModal');
-  const modalImage = document.getElementById('modalImage');
+(function() {
+  const sectionId = '{{ section.id }}';
+  const modal = document.getElementById('imageModal-' + sectionId);
+  const modalImage = modal.querySelector('.image-modal__image');
   const closeBtn = modal.querySelector('.image-modal__close');
   const prevBtn = modal.querySelector('.image-modal__nav--prev');
   const nextBtn = modal.querySelector('.image-modal__nav--next');
-  const imageTriggers = document.querySelectorAll('.look-image-trigger');
+  const imageTriggers = document.querySelectorAll('.look-image-trigger-' + sectionId);
   
   let currentIndex = 0;
   let images = [];
@@ -380,7 +403,7 @@ document.addEventListener('DOMContentLoaded', function() {
       showImage(currentIndex + 1);
     }
   });
-});
+})();
 </script>
 
 {% schema %}
@@ -415,6 +438,85 @@ document.addEventListener('DOMContentLoaded', function() {
       "type": "text",
       "id": "top_image_alt",
       "label": "Top Image Alt Text"
+    },
+    {
+      "type": "header",
+      "content": "Layout Settings"
+    },
+    {
+      "type": "range",
+      "id": "section_margin_top",
+      "label": "Top Margin",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "section_margin_bottom",
+      "label": "Bottom Margin",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "section_margin_left",
+      "label": "Left Margin",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "section_margin_right",
+      "label": "Right Margin",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "image_gap",
+      "label": "Gap Between Images",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "pc_columns",
+      "label": "PC Columns (Desktop)",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "select",
+      "id": "sp_columns",
+      "label": "SP Columns (Mobile)",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 Column"
+        },
+        {
+          "value": "2",
+          "label": "2 Columns"
+        }
+      ],
+      "default": "2"
     }
   ],
   "max_blocks": 50,
