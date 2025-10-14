@@ -211,7 +211,14 @@
         "section_title": "Heading",
         "section_text_1": "Text",
         "section_text_2": "Text",
-        "top_image_alt": ""
+        "top_image_alt": "",
+        "section_margin_top": 0,
+        "section_margin_bottom": 0,
+        "section_margin_left": 0,
+        "section_margin_right": 40,
+        "image_gap": 30,
+        "pc_columns": 5,
+        "sp_columns": "2"
       }
     },
     "look_list_2_iYBaJG": {
