@@ -123,7 +123,7 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/1512_CW_1_3ae37546-5d10-42ec-af90-509aca8ad263.jpg",
-            "custom_html": "<p></p>"
+            "custom_html": "<p>あああ</p>\n<p>あああ</p>\n<a href=\"https://postoveralls.com/blogs/news/2025fw-new-collaboration-with-descendant\">リンク</a>"
           }
         },
         "image_4VPzzB": {
