@@ -74,11 +74,16 @@
   padding: 5px;
   margin: 0 calc(50% - 50vw);
   transition: opacity 0.5s ease, visibility 0.5s ease;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.look-section-{{ section.id }} .scroll-arrow img {
-  width: 50px;
-  height: auto;
+.look-section-{{ section.id }} .scroll-arrow svg {
+  width: 25px;
+  height: 25px;
 }
 
 .look-section-{{ section.id }} .scroll-arrow.hidden {
@@ -123,6 +128,16 @@
   
   .look-section-{{ section.id }} .scroll-images.collection img {
     width: 85%;
+  }
+  
+  .look-section-{{ section.id }} .scroll-arrow {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .look-section-{{ section.id }} .scroll-arrow svg {
+    width: 20px;
+    height: 20px;
   }
 }
 {% endstyle %}
@@ -238,11 +253,13 @@
               </a>
               {% endif %}
               
+              {% if block.settings.show_arrow %}
               <div class="scroll-arrow">
-                <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <polyline points="9,18 15,12 9,6"></polyline>
                 </svg>
               </div>
+              {% endif %}
               
               <div class="caption">
                 {{ block.settings.custom_html }}
@@ -440,6 +457,12 @@
           "type": "url",
           "id": "link",
           "label": "Link URL"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_arrow",
+          "label": "Show Arrow",
+          "default": true
         },
         {
           "type": "html",
