@@ -83,6 +83,38 @@
             "custom_html": "<p></p>"
           }
         },
+        "image_PF4GJr": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/w-10_22961a58-b92b-4197-a994-8b21f90d344e.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_CitjRi": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/1512_CW_2_17b907f5-58c5-4cfb-a7de-55abbf52ef91.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_MRq7GC": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/1512_CW_1_3ae37546-5d10-42ec-af90-509aca8ad263.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_7xWLTY": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/coming_soon_post-o_-alls-lock-up_1_720.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
         "scroll_7DNUkz": {
           "type": "scroll",
           "settings": {
@@ -99,6 +131,10 @@
         "image_WAEdwL",
         "image_wCNX9T",
         "image_HAatmf",
+        "image_PF4GJr",
+        "image_CitjRi",
+        "image_MRq7GC",
+        "image_7xWLTY",
         "scroll_7DNUkz"
       ],
       "name": "Look List 2",
@@ -107,12 +143,12 @@
         "section_text_1": "Text",
         "section_text_2": "Text",
         "top_image_alt": "",
-        "section_margin_top": 45,
-        "section_margin_bottom": 0,
-        "section_margin_left": 0,
-        "section_margin_right": 0,
-        "image_gap": 0,
-        "pc_columns": 3,
+        "section_margin_top": 100,
+        "section_margin_bottom": 85,
+        "section_margin_left": 100,
+        "section_margin_right": 65,
+        "image_gap": 20,
+        "pc_columns": 4,
         "sp_columns": "2"
       }
     },
