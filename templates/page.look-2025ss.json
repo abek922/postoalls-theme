@@ -35,12 +35,14 @@
         "image_7bHVY4": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/20240604_76054.jpg",
             "custom_html": "<p></p>"
           }
         },
         "image_QPheVC": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/20240604_76085.jpg",
             "custom_html": "<p></p>"
           }
         },
