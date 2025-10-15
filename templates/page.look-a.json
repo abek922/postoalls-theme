@@ -32,9 +32,36 @@
     "look_list_1_GUTQtQ": {
       "type": "look-list-1",
       "blocks": {
+        "look_xJQGmR": {
+          "type": "look",
+          "settings": {
+            "image": "shopify://shop_images/w-8_0b8c78ef-b36e-4345-a7a4-9d716818317f.jpg",
+            "title": "Look Title",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
         "look_4Lpimj": {
           "type": "look",
           "settings": {
+            "image": "shopify://shop_images/coming_soon_post-o_-alls-lock-up_1_720.jpg",
+            "title": "Look Title",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "look_fY3tEW": {
+          "type": "look",
+          "settings": {
+            "image": "shopify://shop_images/Frame_68_876928f6-df2b-462a-9b2e-55f729e7d253.jpg",
             "title": "Look Title",
             "product_1": "",
             "product_2": "",
@@ -46,7 +73,9 @@
         }
       },
       "block_order": [
-        "look_4Lpimj"
+        "look_xJQGmR",
+        "look_4Lpimj",
+        "look_fY3tEW"
       ],
       "name": "Look List 1",
       "settings": {
