@@ -49,12 +49,14 @@
         "image_wrbVUq": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/20240604_76145.jpg",
             "custom_html": "<p></p>"
           }
         },
         "image_mtAAmB": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/20240604_76159.jpg",
             "custom_html": "<p></p>"
           }
         },
