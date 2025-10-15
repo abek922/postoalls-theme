@@ -29,39 +29,12 @@
         "padding_bottom": 40
       }
     },
-    "look_list_1_GUTQtQ": {
+    "look_list_1_FzGwRf": {
       "type": "look-list-1",
       "blocks": {
-        "look_xJQGmR": {
+        "look_xbWyEn": {
           "type": "look",
           "settings": {
-            "image": "shopify://shop_images/w-8_0b8c78ef-b36e-4345-a7a4-9d716818317f.jpg",
-            "title": "Look Title",
-            "product_1": "",
-            "product_2": "",
-            "product_3": "",
-            "product_4": "",
-            "product_5": "",
-            "product_6": ""
-          }
-        },
-        "look_4Lpimj": {
-          "type": "look",
-          "settings": {
-            "image": "shopify://shop_images/coming_soon_post-o_-alls-lock-up_1_720.jpg",
-            "title": "Look Title",
-            "product_1": "",
-            "product_2": "",
-            "product_3": "",
-            "product_4": "",
-            "product_5": "",
-            "product_6": ""
-          }
-        },
-        "look_fY3tEW": {
-          "type": "look",
-          "settings": {
-            "image": "shopify://shop_images/Frame_68_876928f6-df2b-462a-9b2e-55f729e7d253.jpg",
             "title": "Look Title",
             "product_1": "",
             "product_2": "",
@@ -73,53 +46,17 @@
         }
       },
       "block_order": [
-        "look_xJQGmR",
-        "look_4Lpimj",
-        "look_fY3tEW"
+        "look_xbWyEn"
       ],
       "name": "Look List 1",
       "settings": {
         "color_scheme": ""
       }
     },
-    "look_list_2_WKiJMi": {
+    "look_list_2_hpxLpt": {
       "type": "look-list-2",
       "blocks": {
-        "scroll_QVF6rf": {
-          "type": "scroll",
-          "settings": {
-            "image_1": "shopify://shop_images/1512_CW_2_17b907f5-58c5-4cfb-a7de-55abbf52ef91.jpg",
-            "image_2": "shopify://shop_images/1512_CW_1_3ae37546-5d10-42ec-af90-509aca8ad263.jpg",
-            "link": "",
-            "show_arrow": true,
-            "custom_html": "<p></p>"
-          }
-        },
-        "image_QDfAX6": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/w-8_0b8c78ef-b36e-4345-a7a4-9d716818317f.jpg",
-            "link": "",
-            "custom_html": "<p></p>"
-          }
-        },
-        "image_XMJPjN": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/w-7_e29c9ae7-2361-4c17-9b46-e9abd073f953.jpg",
-            "link": "",
-            "custom_html": "<p></p>"
-          }
-        },
-        "image_4RhXwg": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/w-10_22961a58-b92b-4197-a994-8b21f90d344e.jpg",
-            "link": "",
-            "custom_html": "<p></p>"
-          }
-        },
-        "image_gqCNBx": {
+        "image_HEjeDa": {
           "type": "image",
           "settings": {
             "link": "",
@@ -128,11 +65,7 @@
         }
       },
       "block_order": [
-        "scroll_QVF6rf",
-        "image_QDfAX6",
-        "image_XMJPjN",
-        "image_4RhXwg",
-        "image_gqCNBx"
+        "image_HEjeDa"
       ],
       "name": "Look List 2",
       "settings": {
@@ -145,37 +78,10 @@
         "pc_columns": 4
       }
     },
-    "look_list_3_MzniHP": {
+    "look_list_3_QheLam": {
       "type": "look-list-3",
       "blocks": {
-        "image_LUTaDp": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/w-8_0b8c78ef-b36e-4345-a7a4-9d716818317f.jpg",
-            "custom_html": "<p></p>"
-          }
-        },
-        "image_tgw6aw": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/1512_CW_1_3ae37546-5d10-42ec-af90-509aca8ad263.jpg",
-            "custom_html": "<p></p>"
-          }
-        },
-        "image_iy3pBU": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/1512_CW_2_17b907f5-58c5-4cfb-a7de-55abbf52ef91.jpg",
-            "custom_html": "<p></p>"
-          }
-        },
-        "image_3LCDk3": {
-          "type": "image",
-          "settings": {
-            "custom_html": "<p></p>"
-          }
-        },
-        "image_WDVmnH": {
+        "image_JNJcyL": {
           "type": "image",
           "settings": {
             "custom_html": "<p></p>"
@@ -183,11 +89,7 @@
         }
       },
       "block_order": [
-        "image_LUTaDp",
-        "image_tgw6aw",
-        "image_iy3pBU",
-        "image_3LCDk3",
-        "image_WDVmnH"
+        "image_JNJcyL"
       ],
       "name": "Look List 3",
       "settings": {
@@ -204,8 +106,8 @@
   },
   "order": [
     "look_header_HtBb9Q",
-    "look_list_1_GUTQtQ",
-    "look_list_2_WKiJMi",
-    "look_list_3_MzniHP"
+    "look_list_1_FzGwRf",
+    "look_list_2_hpxLpt",
+    "look_list_3_QheLam"
   ]
 }
