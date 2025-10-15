@@ -141,12 +141,36 @@
         "image_bqLDFc": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/w-8_0b8c78ef-b36e-4345-a7a4-9d716818317f.jpg",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_EmdMU9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/w-7_e29c9ae7-2361-4c17-9b46-e9abd073f953.jpg",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_PxQcHa": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/w-10_22961a58-b92b-4197-a994-8b21f90d344e.jpg",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_WDVmnH": {
+          "type": "image",
+          "settings": {
             "custom_html": "<p></p>"
           }
         }
       },
       "block_order": [
-        "image_bqLDFc"
+        "image_bqLDFc",
+        "image_EmdMU9",
+        "image_PxQcHa",
+        "image_WDVmnH"
       ],
       "name": "Look List 3",
       "settings": {
