@@ -204,7 +204,7 @@
     <div class="page-width">
       {% if section.settings.top_image != blank %}
       <div class="top-image">
-        <img src="{{ section.settings.top_image | img_url: 'master' }}" 
+        <img src="{{ section.settings.top_image | image_url: width: 2000 }}" 
              alt="{{ section.settings.top_image_alt | escape }}"
              width="{{ section.settings.top_image.width }}"
              height="{{ section.settings.top_image.height }}"
@@ -219,8 +219,8 @@
             <div class="look-item" {{ block.shopify_attributes }}>
               <a href="#" class="look-image-trigger-{{ section.id }}" data-index="{{ forloop.index0 }}">
                 <img class="gallery__image"
-                     src="{{ block.settings.image | img_url: 'master' }}"
-                     data-large="{{ block.settings.image | img_url: '2048x' }}"
+                     src="{{ block.settings.image | image_url: width: 1200 }}"
+                     data-large="{{ block.settings.image | image_url: width: 2048 }}"
                      width="{{ block.settings.image.width }}"
                      height="{{ block.settings.image.height }}"
                      alt="{{ block.settings.image.alt | escape }}"
@@ -256,7 +256,28 @@
     </svg>
   </button>
   <div class="image-modal__content">
-    <img class="image-modal__image" src="" alt="">
+    {%- assign first_image = blank -%}
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'image' and block.settings.image != blank -%}
+        {%- assign first_image = block.settings.image -%}
+        {%- break -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- if first_image != blank -%}
+      <img class="image-modal__image" 
+           src="{{ first_image | image_url: width: 2048 }}" 
+           alt="{{ first_image.alt | escape }}" 
+           width="{{ first_image.width }}" 
+           height="{{ first_image.height }}" 
+           loading="lazy">
+    {%- else -%}
+      <img class="image-modal__image" 
+           src="{{ 'placeholder.svg' | asset_url }}" 
+           alt="" 
+           width="1200" 
+           height="1500" 
+           loading="lazy">
+    {%- endif -%}
   </div>
 </div>
 
@@ -273,6 +294,13 @@
   let currentIndex = 0;
   let images = [];
   let imageCache = {};
+
+  // スワイプ検出用の変数
+  let touchStartX = 0;
+  let touchEndX = 0;
+  let touchStartY = 0;
+  let touchEndY = 0;
+  const minSwipeDistance = 50;
 
   // 画像データを収集
   imageTriggers.forEach((trigger, index) => {
@@ -336,6 +364,22 @@
     }
   }
 
+  function handleSwipe() {
+    const diffX = touchEndX - touchStartX;
+    const diffY = touchEndY - touchStartY;
+    
+    // 横方向のスワイプが縦方向より大きい場合のみ処理
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > minSwipeDistance) {
+      if (diffX > 0) {
+        // 右スワイプ - 前へ
+        showImage(currentIndex - 1);
+      } else {
+        // 左スワイプ - 次へ
+        showImage(currentIndex + 1);
+      }
+    }
+  }
+
   // モーダルを開く
   imageTriggers.forEach((trigger, index) => {
     trigger.addEventListener('click', function(e) {
@@ -373,6 +417,20 @@
     showImage(currentIndex + 1);
   });
 
+  // タッチイベント（スワイプ）
+  const modalContent = modal.querySelector('.image-modal__content');
+  
+  modalContent.addEventListener('touchstart', function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+  }, { passive: true });
+
+  modalContent.addEventListener('touchend', function(e) {
+    touchEndX = e.changedTouches[0].screenX;
+    touchEndY = e.changedTouches[0].screenY;
+    handleSwipe();
+  }, { passive: true });
+
   // キーボード操作
   document.addEventListener('keydown', function(e) {
     if (!modal.classList.contains('active')) return;
@@ -393,24 +451,6 @@
   "name": "Look",
   "class": "index-section",
   "settings": [
-    {
-      "type": "text",
-      "id": "section_title",
-      "label": "Heading",
-      "default": "Heading"
-    },
-    {
-      "type": "text",
-      "id": "section_text_1",
-      "label": "Text",
-      "default": "Text"
-    },
-    {
-      "type": "text",
-      "id": "section_text_2",
-      "label": "Text 2",
-      "default": "Text"
-    },
     {
       "type": "image_picker",
       "id": "top_image",
