@@ -14,68 +14,19 @@
       "name": "Look Header",
       "settings": {
         "show_title": true,
-        "title_ja": "タイトル",
-        "title_en": "Title",
+        "title_ja": "2025 S/S COLLECTION",
+        "title_en": "2025 S/S COLLECTION",
         "heading_tag": "h1",
-        "subtitle_ja": "サブタイトル",
-        "subtitle_en": "Subtitle",
+        "subtitle_ja": "",
+        "subtitle_en": "",
         "show_text": true,
-        "text_ja": "テキスト",
-        "text_en": "Text",
+        "text_ja": "2025年SSシーズンのポストオーバーオールズは、ブランドの３０+α年の歴史が証明する間違いのないデザインやアップデートされた新型など、新旧様々なデザインが興味深いミックス感を作り上げています。そして、それはそのままブランドの1993年からの進化の過程を表わしており、同時に未来も示唆しています。",
+        "text_en": "We have an interesting mix of old and new styles for 2025SS season…unmistakable time-proven classic designs and their updated brethren make good company.  You can see the evolution of Post O`Alls between 1993 and today…and maybe the future…",
         "text_alignment": "center",
         "background_color": "#f5f5f5",
         "text_color": "#333333",
         "padding_top": 80,
         "padding_bottom": 40
-      }
-    },
-    "look_list_1_FzGwRf": {
-      "type": "look-list-1",
-      "blocks": {
-        "look_xbWyEn": {
-          "type": "look",
-          "settings": {
-            "title": "Look Title",
-            "product_1": "",
-            "product_2": "",
-            "product_3": "",
-            "product_4": "",
-            "product_5": "",
-            "product_6": ""
-          }
-        }
-      },
-      "block_order": [
-        "look_xbWyEn"
-      ],
-      "name": "Look List 1",
-      "settings": {
-        "color_scheme": ""
-      }
-    },
-    "look_list_2_hpxLpt": {
-      "type": "look-list-2",
-      "blocks": {
-        "image_HEjeDa": {
-          "type": "image",
-          "settings": {
-            "link": "",
-            "custom_html": "<p></p>"
-          }
-        }
-      },
-      "block_order": [
-        "image_HEjeDa"
-      ],
-      "name": "Look List 2",
-      "settings": {
-        "top_image_alt": "",
-        "section_margin_top": 0,
-        "section_margin_bottom": 0,
-        "section_margin_left": 0,
-        "section_margin_right": 0,
-        "image_gap": 0,
-        "pc_columns": 4
       }
     },
     "look_list_3_QheLam": {
@@ -106,8 +57,6 @@
   },
   "order": [
     "look_header_HtBb9Q",
-    "look_list_1_FzGwRf",
-    "look_list_2_hpxLpt",
     "look_list_3_QheLam"
   ]
 }
