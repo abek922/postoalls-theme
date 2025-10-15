@@ -334,7 +334,7 @@
               {{ block.settings.image | image_url: width: 200 | image_tag: alt: block.settings.title, loading: 'lazy' }}
             {%- else -%}
               <div class="look-page__thumbnail-placeholder">
-                {{ 'image' | placeholder_svg_tag }}
+                {{ 'image' | placeholder_svg_tag: 'icon icon--placeholder' }}
               </div>
             {%- endif -%}
           </div>
@@ -569,7 +569,7 @@
 
 {% schema %}
 {
-  "name": "Look-a",
+  "name": "Look",
   "class": "shopify-section--look-page",
   "tag": "section",
   "settings": [
