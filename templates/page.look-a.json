@@ -23,7 +23,7 @@
         "text_ja": "テキスト",
         "text_en": "Text",
         "text_alignment": "center",
-        "background_color": "#F5F5F5",
+        "background_color": "#f5f5f5",
         "text_color": "#333333",
         "padding_top": 80,
         "padding_bottom": 40
@@ -33,6 +33,56 @@
       "type": "look-list-1",
       "blocks": {
         "look_HQ3yDL": {
+          "type": "look",
+          "settings": {
+            "image": "shopify://shop_images/1512_CW_2_17b907f5-58c5-4cfb-a7de-55abbf52ef91.jpg",
+            "title": "",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "look_Kn7tmM": {
+          "type": "look",
+          "settings": {
+            "image": "shopify://shop_images/1512_CW_1_3ae37546-5d10-42ec-af90-509aca8ad263.jpg",
+            "title": "Look Title",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "look_ciPPFm": {
+          "type": "look",
+          "settings": {
+            "title": "Look Title",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "look_4yRjMR": {
+          "type": "look",
+          "settings": {
+            "title": "Look Title",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "product_4": "",
+            "product_5": "",
+            "product_6": ""
+          }
+        },
+        "look_NGmdgC": {
           "type": "look",
           "settings": {
             "title": "Look Title",
@@ -46,7 +96,11 @@
         }
       },
       "block_order": [
-        "look_HQ3yDL"
+        "look_HQ3yDL",
+        "look_Kn7tmM",
+        "look_ciPPFm",
+        "look_4yRjMR",
+        "look_NGmdgC"
       ],
       "name": "Look List 1",
       "settings": {
