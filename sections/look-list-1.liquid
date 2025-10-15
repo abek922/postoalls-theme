@@ -1,616 +1,455 @@
-<style>
-  .look-page {
-    position: relative;
-    max-width: 100%;
-    margin: 0 auto;
-  }
+{% style %}
+.look-section-{{ section.id }} {
+  padding-top: 1rem;
+}
 
-  .look-page__navigation {
-    padding: 2rem 0;
-    margin-bottom: 0rem;
-    border-bottom: 1px solid rgba(var(--text-color), 0.1);
-  }
+.look-wrapper-{{ section.id }} {
+  margin-top: {{ section.settings.section_margin_top }}px;
+  margin-bottom: {{ section.settings.section_margin_bottom }}px;
+  margin-left: {{ section.settings.section_margin_left }}px;
+  margin-right: {{ section.settings.section_margin_right }}px;
+}
 
-  .look-page__thumbnails {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    max-width: 100%;
-    overflow-x: auto;
-    padding: 0 2rem;
-  }
+.look-section-{{ section.id }} .top-image {
+  padding: 10px 0;
+}
 
-  .look-page__thumbnail {
-    flex-shrink: 0;
-    width: 60px;
-    height: 60px;
-    border-radius: 0;
-    overflow: hidden;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    border: 1px solid transparent;
-    opacity: 0.6;
-  }
+.look-section-{{ section.id }} .look-list-2 {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 5rem 0 2rem;
+  gap: {{ section.settings.image_gap }}px;
+}
 
-  .look-page__thumbnail.is-active {
-    border-color: rgb(var(--text-color));
-    opacity: 1;
-  }
+.look-section-{{ section.id }} .look-list-2 .look-item {
+  width: calc((100% / {{ section.settings.pc_columns }}) - ({{ section.settings.image_gap }}px * ({{ section.settings.pc_columns }} - 1) / {{ section.settings.pc_columns }}));
+  margin: 0px;
+  text-align: center;
+}
 
-  .look-page__thumbnail:hover {
-    opacity: 1;
-  }
+.look-section-{{ section.id }} .look-list-2 .look-item a img {
+  width: 100%;
+  margin: 0%;
+}
 
-  .look-page__thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+.look-section-{{ section.id }} .look-list-2 .look-item img {
+  width: 100%;
+  margin: 0%;
+}
 
-  .look-page__content {
-    position: relative;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
+.look-section-{{ section.id }} .caption {
+  margin-top: 1rem;
+  text-align: left;
+  font-size: 10px;
+}
 
-  .look-page__look {
+.look-section-{{ section.id }} .scroll {
+  padding: 0 0 10px;
+  position: relative;
+}
+
+.look-section-{{ section.id }} .scroll-images {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  margin: 0 calc(50% - 50vw);
+}
+
+.look-section-{{ section.id }} .scroll-images.collection {
+  margin: 0;
+}
+
+.look-section-{{ section.id }} .scroll-images img {
+  flex: 0 0 auto;
+  width: 30%;
+}
+
+.look-section-{{ section.id }} .scroll-arrow {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.8);
+  padding: 5px;
+  margin: 0 calc(50% - 50vw);
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.look-section-{{ section.id }} .scroll-arrow svg {
+  width: 25px;
+  height: 25px;
+}
+
+.look-section-{{ section.id }} .scroll-arrow.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.look-section-{{ section.id }} .icon--placeholder {
+  width: 100%;
+  height: 300px;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ccc;
+}
+
+@media screen and (min-width: 769px) {
+  .look-section-{{ section.id }} .look-list-2.sp {
     display: none;
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    margin-bottom: 4rem;
   }
-
-  .look-page__look.is-active {
-    display: grid;
-  }
-
-  .look-page__image-container {
-    position: relative;
-    display: flex;
+  .look-section-{{ section.id }} .scroll-images {
     justify-content: center;
-    align-items: center;
-    background: #f8f8f8;
-    border-radius: 0;
-    overflow: hidden;
   }
+}
 
-  .look-page__image {
-    max-width: 100%;
-    height: auto;
-    display: block;
+@media screen and (max-width: 768px) {
+  .look-section-{{ section.id }} .look-list-2.pc {
+    display: none;
   }
-
-  .look-page__nav-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.8);
-    border: none;
-    border-radius: 0;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    z-index: 2;
-    box-shadow: none;
+  
+  .look-section-{{ section.id }} .top-image {
+    width: 100vw;
+    margin: 0 calc(50% - 50vw);
+    padding: 10px 0 20px;
   }
-
-  .look-page__nav-button:hover {
-    background: rgba(255, 255, 255, 0.95);
-    transform: translateY(-50%);
-  }
-
-  .look-page__nav-button--prev {
-    left: 1rem;
-  }
-
-  .look-page__nav-button--next {
-    right: 1rem;
-  }
-
-  .look-page__nav-button svg {
-    width: 12px;
-    height: 12px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    color: #333;
-  }
-
-  .look-page__sidebar {
-    display: grid;
-    gap: 2rem;
-  }
-
-  .look-page__look-title {
-    text-align: center;
-    font-size: 1.25rem;
-    font-weight: 300;
-    letter-spacing: 0.1em;
-    margin: 0;
-    text-transform: uppercase;
-    color: rgb(var(--text-color));
-  }
-
-  .look-page__products {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .look-page__product-card {
-    background: white;
-    border: 1px solid rgba(var(--text-color), 0.08);
-    border-radius: 0;
-    overflow: hidden;
-    transition: all 0.25s ease;
-    text-decoration: none;
-    color: inherit;
-    display: block;
-  }
-
-  .look-page__product-card:hover {
-    border-color: rgba(var(--text-color), 0.2);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .look-page__product-image {
+  
+  .look-section-{{ section.id }} .scroll-images img {
+    flex: 0 0 auto;
     width: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
-    background: #f8f8f8;
   }
-
-  .look-page__product-image.placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgba(var(--text-color), 0.3);
+  
+  .look-section-{{ section.id }} .scroll-images.collection img {
+    width: 85%;
   }
-
-  .look-page__product-info {
-    padding: 1rem;
+  
+  .look-section-{{ section.id }} .scroll-arrow {
+    width: 25px;
+    height: 25px;
   }
-
-  .look-page__product-title {
-    font-size: 0.8rem;
-    font-weight: 400;
-    margin: 0 0 0.5rem 0;
-    line-height: 1.3;
-    color: rgb(var(--text-color));
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+  
+  .look-section-{{ section.id }} .scroll-arrow svg {
+    width: 20px;
+    height: 20px;
   }
+}
+{% endstyle %}
 
-  .look-page__product-price {
-    font-size: 0.8rem;
-    color: rgba(var(--text-color), 0.7);
-    margin: 0;
-  }
-
-  .look-page__product-price .price {
-    font-weight: 500;
-  }
-
-  .look-page__product-price .price--compare {
-    text-decoration: line-through;
-    margin-right: 0.5rem;
-    opacity: 0.6;
-  }
-
-  /* モバイル対応 */
-  @media screen and (max-width: 767px) {
-    .look-page__content {
-      padding: 0 1rem;
-    }
-
-    .look-page__thumbnails {
-      padding: 0 1rem;
-      gap: 0.75rem;
-    }
-
-    .look-page__thumbnail {
-      width: 50px;
-      height: 50px;
-    }
-
-    .look-page__look {
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-
-    .look-page__nav-button {
-      width: 32px;
-      height: 32px;
-    }
-
-    .look-page__nav-button--prev {
-      left: 0.5rem;
-    }
-
-    .look-page__nav-button--next {
-      right: 0.5rem;
-    }
-
-    .look-page__products {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-    }
-
-    .look-page__navigation {
-      padding: 1.5rem 0;
-      margin-bottom: 2rem;
-    }
-  }
-
-  /* タブレット対応 */
-  @media screen and (min-width: 768px) {
-    .look-page__look {
-      grid-template-columns: 2fr 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-
-    .look-page__products {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-
-    .look-page__thumbnails {
-      gap: 1.25rem;
-    }
-
-    .look-page__thumbnail {
-      width: 70px;
-      height: 70px;
-    }
-  }
-
-  /* デスクトップ対応 */
-  @media screen and (min-width: 1024px) {
-    .look-page__products {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .look-page__thumbnail {
-      width: 80px;
-      height: 80px;
-    }
-  }
-
-  @media screen and (min-width: 1200px) {
-    .look-page__look {
-      gap: 5rem;
-    }
-  }
-</style>
-
-<div class="look-page color-scheme color-scheme--{{ section.settings.color_scheme.id }}">
-  {%- assign valid_blocks_count = 0 -%}
-  {%- for block in section.blocks -%}
-    {%- if block.settings.image != blank -%}
-      {%- assign valid_blocks_count = valid_blocks_count | plus: 1 -%}
-    {%- endif -%}
-  {%- endfor -%}
-
-  {%- if valid_blocks_count > 1 -%}
-    <div class="look-page__navigation">
-      <div class="look-page__thumbnails">
-        {%- assign thumbnail_index = 0 -%}
-        {%- for block in section.blocks -%}
-          {%- if block.settings.image != blank -%}
-            <div class="look-page__thumbnail {% if thumbnail_index == 0 %}is-active{% endif %}" 
-                 data-look-index="{{ thumbnail_index }}">
-              {{ block.settings.image | image_url: width: 200 | image_tag: alt: block.settings.title, loading: 'lazy' }}
-            </div>
-            {%- assign thumbnail_index = thumbnail_index | plus: 1 -%}
-          {%- endif -%}
-        {%- endfor -%}
+<div class="look-section-{{ section.id }}">
+  <div class="look-wrapper-{{ section.id }}">
+    <div class="page-width">
+      {% if section.settings.top_image != blank %}
+      <div class="top-image">
+        <img src="{{ section.settings.top_image | image_url: width: 2000 }}" 
+             alt="{{ section.settings.top_image_alt | escape }}"
+             width="{{ section.settings.top_image.width }}"
+             height="{{ section.settings.top_image.height }}"
+             loading="lazy">
       </div>
-    </div>
-  {%- endif -%}
+      {% endif %}
 
-  <div class="look-page__content">
-    {%- assign look_index = 0 -%}
-    {%- for block in section.blocks -%}
-      {%- if block.settings.image != blank -%}
-        <div class="look-page__look {% if look_index == 0 %}is-active{% endif %}" 
-             data-look-index="{{ look_index }}"
-             {{ block.shopify_attributes }}>
-          
-          <div class="look-page__image-container">
-            {%- if valid_blocks_count > 1 -%}
-              <button class="look-page__nav-button look-page__nav-button--prev" 
-                      type="button"
-                      aria-label="Previous look">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <polyline points="14,7 9,12 14,17"></polyline>
-                </svg>
-              </button>
-              <button class="look-page__nav-button look-page__nav-button--next" 
-                      type="button"
-                      aria-label="Next look">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <polyline points="10,7 15,12 10,17"></polyline>
-                </svg>
-              </button>
-            {%- endif -%}
-            
-            {{ block.settings.image | image_url: width: 1200 | image_tag: class: 'look-page__image', alt: block.settings.title, loading: 'lazy' }}
-          </div>
-
-          <div class="look-page__sidebar">
-            {%- if block.settings.title != blank -%}
-              <h2 class="look-page__look-title">{{ block.settings.title }}</h2>
-            {%- endif -%}
-
-            <div class="look-page__products">
-              {%- for i in (1..6) -%}
-                {%- assign product_key = 'product_' | append: i -%}
-                {%- assign product = all_products[block.settings[product_key]] -%}
-                
-                {%- if product and product != empty -%}
-                  <a href="{{ product.url }}" class="look-page__product-card">
-                    {%- if product.featured_image -%}
-                      {{ product.featured_image | image_url: width: 400 | image_tag: class: 'look-page__product-image', alt: product.title, loading: 'lazy' }}
-                    {%- else -%}
-                      <div class="look-page__product-image placeholder">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                          <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
-                          <circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="2"/>
-                          <path d="M21 15L16 10L5 21" stroke="currentColor" stroke-width="2"/>
-                        </svg>
-                      </div>
-                    {%- endif -%}
-                    
-                    <div class="look-page__product-info">
-                      <h3 class="look-page__product-title">{{ product.title }}</h3>
-                      <div class="look-page__product-price">
-                        {%- if product.compare_at_price > product.price -%}
-                          <span class="price price--compare">{{ product.compare_at_price | money }}</span>
-                        {%- endif -%}
-                        <span class="price">{{ product.price | money }}</span>
-                      </div>
-                    </div>
-                  </a>
-                {%- endif -%}
-              {%- endfor -%}
+      <div class="look-list-2 pc">
+        {% for block in section.blocks limit: section.blocks.size %}
+          {% if block.type == 'image' %}
+            {% if block.settings.image != blank %}
+            <div class="look-item" {{ block.shopify_attributes }}>
+              {% if block.settings.link != blank %}
+              <a href="{{ block.settings.link | escape }}" data-size="1200x1500">
+                <img class="gallery__image"
+                     src="{{ block.settings.image | image_url: width: 1200 }}"
+                     width="{{ block.settings.image.width }}"
+                     height="{{ block.settings.image.height }}"
+                     alt="{{ block.settings.image.alt | escape }}"
+                     loading="lazy">
+              </a>
+              {% else %}
+              <img class="gallery__image"
+                   src="{{ block.settings.image | image_url: width: 1200 }}"
+                   width="{{ block.settings.image.width }}"
+                   height="{{ block.settings.image.height }}"
+                   alt="{{ block.settings.image.alt | escape }}"
+                   loading="lazy">
+              {% endif %}
+              <div class="caption">
+                {{ block.settings.custom_html }}
+              </div>
             </div>
-          </div>
-        </div>
-        {%- assign look_index = look_index | plus: 1 -%}
-      {%- endif -%}
-    {%- endfor -%}
+            {% else %}
+            <div class="look-item" {{ block.shopify_attributes }}>
+              <div class="icon--placeholder">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                  <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="2"/>
+                  <path d="M21 15L16 10L5 21" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+            </div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="look-list-2 sp">
+        {% for block in section.blocks limit: section.blocks.size %}
+          {% if block.type == 'scroll' %}
+            <div class="scroll" {{ block.shopify_attributes }}>
+              {% if block.settings.link != blank %}
+              <a href="{{ block.settings.link | escape }}" class="scroll-link">
+              {% endif %}
+                <div class="scroll-images">
+                  {% if block.settings.image_1 != blank %}
+                  <img class="gallery__image"
+                    src="{{ block.settings.image_1 | image_url: width: 1200 }}"
+                    width="{{ block.settings.image_1.width }}"
+                    height="{{ block.settings.image_1.height }}"
+                    alt="{{ block.settings.image_1.alt | escape }}"
+                    loading="lazy">
+                  {% endif %}
+                  {% if block.settings.image_2 != blank %}
+                  <img class="gallery__image"
+                    src="{{ block.settings.image_2 | image_url: width: 1200 }}"
+                    width="{{ block.settings.image_2.width }}"
+                    height="{{ block.settings.image_2.height }}"
+                    alt="{{ block.settings.image_2.alt | escape }}"
+                    loading="lazy">
+                  {% endif %}
+                  {% if block.settings.image_3 != blank %}
+                  <img class="gallery__image"
+                    src="{{ block.settings.image_3 | image_url: width: 1200 }}"
+                    width="{{ block.settings.image_3.width }}"
+                    height="{{ block.settings.image_3.height }}"
+                    alt="{{ block.settings.image_3.alt | escape }}"
+                    loading="lazy">
+                  {% endif %}
+                  {% if block.settings.image_4 != blank %}
+                  <img class="gallery__image"
+                    src="{{ block.settings.image_4 | image_url: width: 1200 }}"
+                    width="{{ block.settings.image_4.width }}"
+                    height="{{ block.settings.image_4.height }}"
+                    alt="{{ block.settings.image_4.alt | escape }}"
+                    loading="lazy">
+                  {% endif %}
+                </div>
+              {% if block.settings.link != blank %}
+              </a>
+              {% endif %}
+              
+              {% if block.settings.show_arrow %}
+              <div class="scroll-arrow">
+                <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9,18 15,12 9,6"></polyline>
+                </svg>
+              </div>
+              {% endif %}
+              
+              <div class="caption">
+                {{ block.settings.custom_html }}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const scrollContainers = document.querySelectorAll('.look-section-{{ section.id }} .scroll');
+        
+          scrollContainers.forEach(container => {
+            const arrow = container.querySelector('.scroll-arrow');
+            const scrollImages = container.querySelector('.scroll-images');
+            
+            if (!scrollImages || !arrow) return;
+        
+            // 初期チェック:矢印が必要かどうかを確認
+            if (scrollImages.scrollWidth <= scrollImages.clientWidth) {
+              arrow.classList.add('hidden');
+            }
+        
+            // スクロール位置を確認して矢印を表示/非表示にする関数
+            const checkScroll = () => {
+              if (scrollImages.scrollLeft + scrollImages.clientWidth >= scrollImages.scrollWidth) {
+                arrow.classList.add('hidden');
+              } else {
+                arrow.classList.remove('hidden');
+              }
+            };
+        
+            // ページロード時にスクロール位置をチェック
+            checkScroll();
+        
+            // スクロールイベントをリッスンしてスクロール位置をチェック
+            scrollImages.addEventListener('scroll', checkScroll);
+        
+            // ウィンドウリサイズ時にもスクロール位置をチェック
+            window.addEventListener('resize', checkScroll);
+          });
+        });    
+      </script>
+    </div>
   </div>
 </div>
 
-<script>
-(function() {
-  function initLookPage() {
-    const lookPageContent = document.querySelector('.look-page__content');
-    if (!lookPageContent) return;
-
-    let currentIndex = 0;
-    const looks = Array.from(document.querySelectorAll('.look-page__look'));
-    const thumbnails = Array.from(document.querySelectorAll('.look-page__thumbnail'));
-    const prevButtons = Array.from(document.querySelectorAll('.look-page__nav-button--prev'));
-    const nextButtons = Array.from(document.querySelectorAll('.look-page__nav-button--next'));
-    const imageContainers = Array.from(document.querySelectorAll('.look-page__image-container'));
-    
-    if (looks.length === 0) return;
-
-    // スワイプ検出用の変数
-    let touchStartX = 0;
-    let touchEndX = 0;
-    let touchStartY = 0;
-    let touchEndY = 0;
-    const minSwipeDistance = 50;
-
-    function showLook(index) {
-      if (index < 0 || index >= looks.length) return;
-      
-      currentIndex = index;
-
-      looks.forEach((look, i) => {
-        if (i === index) {
-          look.classList.add('is-active');
-        } else {
-          look.classList.remove('is-active');
-        }
-      });
-
-      thumbnails.forEach((thumbnail, i) => {
-        if (i === index) {
-          thumbnail.classList.add('is-active');
-        } else {
-          thumbnail.classList.remove('is-active');
-        }
-      });
-
-      if (thumbnails[index]) {
-        thumbnails[index].scrollIntoView({
-          behavior: 'smooth',
-          block: 'nearest',
-          inline: 'center'
-        });
-      }
-    }
-
-    function showPreviousLook() {
-      const newIndex = currentIndex > 0 ? currentIndex - 1 : looks.length - 1;
-      showLook(newIndex);
-    }
-
-    function showNextLook() {
-      const newIndex = currentIndex < looks.length - 1 ? currentIndex + 1 : 0;
-      showLook(newIndex);
-    }
-
-    function handleSwipe() {
-      const diffX = touchEndX - touchStartX;
-      const diffY = touchEndY - touchStartY;
-      
-      // 横方向のスワイプが縦方向より大きい場合のみ処理
-      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > minSwipeDistance) {
-        if (diffX > 0) {
-          // 右スワイプ - 前へ
-          showPreviousLook();
-        } else {
-          // 左スワイプ - 次へ
-          showNextLook();
-        }
-      }
-    }
-
-    // サムネイルクリック
-    thumbnails.forEach((thumbnail) => {
-      thumbnail.addEventListener('click', function(e) {
-        e.preventDefault();
-        const index = parseInt(this.getAttribute('data-look-index'), 10);
-        if (!isNaN(index)) {
-          showLook(index);
-        }
-      });
-    });
-
-    // ナビゲーションボタン
-    prevButtons.forEach((button) => {
-      button.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        showPreviousLook();
-      });
-    });
-
-    nextButtons.forEach((button) => {
-      button.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        showNextLook();
-      });
-    });
-
-    // タッチイベント（各画像コンテナに設定）
-    imageContainers.forEach((container) => {
-      container.addEventListener('touchstart', function(e) {
-        touchStartX = e.changedTouches[0].screenX;
-        touchStartY = e.changedTouches[0].screenY;
-      }, { passive: true });
-
-      container.addEventListener('touchend', function(e) {
-        touchEndX = e.changedTouches[0].screenX;
-        touchEndY = e.changedTouches[0].screenY;
-        handleSwipe();
-      }, { passive: true });
-    });
-
-    // キーボードナビゲーション
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'ArrowLeft') {
-        e.preventDefault();
-        showPreviousLook();
-      } else if (e.key === 'ArrowRight') {
-        e.preventDefault();
-        showNextLook();
-      }
-    });
-
-    showLook(0);
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initLookPage);
-  } else {
-    initLookPage();
-  }
-
-  if (typeof Shopify !== 'undefined' && Shopify.designMode) {
-    document.addEventListener('shopify:section:load', initLookPage);
-  }
-})();
-</script>
-
 {% schema %}
 {
-  "name": "Look-a",
-  "class": "shopify-section--look-page",
-  "tag": "section",
+  "name": "Look",
+  "class": "index-section",
   "settings": [
     {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "Color scheme",
-      "default": "scheme-1"
+      "type": "image_picker",
+      "id": "top_image",
+      "label": "Top Image"
+    },
+    {
+      "type": "text",
+      "id": "top_image_alt",
+      "label": "Top Image Alt Text"
+    },
+    {
+      "type": "header",
+      "content": "Layout Settings"
+    },
+    {
+      "type": "range",
+      "id": "section_margin_top",
+      "label": "Top Margin",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "section_margin_bottom",
+      "label": "Bottom Margin",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "section_margin_left",
+      "label": "Left Margin",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "section_margin_right",
+      "label": "Right Margin",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "image_gap",
+      "label": "Gap Between Images",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "pc_columns",
+      "label": "PC Columns (Desktop)",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4
     }
   ],
+  "max_blocks": 50,
   "blocks": [
     {
-      "type": "look",
-      "name": "Look",
+      "type": "image",
+      "name": "Image",
       "settings": [
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Look Image"
+          "label": "Image"
         },
         {
-          "type": "text",
-          "id": "title",
-          "label": "Look Title",
-          "default": "Look Title"
+          "type": "url",
+          "id": "link",
+          "label": "Image link"
         },
         {
-          "type": "product",
-          "id": "product_1",
-          "label": "Product 1"
+          "type": "html",
+          "id": "custom_html",
+          "label": "Caption",
+          "default": "<p></p>"
+        }
+      ]
+    },
+    {
+      "type": "scroll",
+      "name": "Scroll",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "Image 1"
         },
         {
-          "type": "product",
-          "id": "product_2",
-          "label": "Product 2"
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Image 2"
         },
         {
-          "type": "product",
-          "id": "product_3",
-          "label": "Product 3"
+          "type": "image_picker",
+          "id": "image_3",
+          "label": "Image 3"
         },
         {
-          "type": "product",
-          "id": "product_4",
-          "label": "Product 4"
+          "type": "image_picker",
+          "id": "image_4",
+          "label": "Image 4"
         },
         {
-          "type": "product",
-          "id": "product_5",
-          "label": "Product 5"
+          "type": "url",
+          "id": "link",
+          "label": "Link URL"
         },
         {
-          "type": "product",
-          "id": "product_6",
-          "label": "Product 6"
+          "type": "checkbox",
+          "id": "show_arrow",
+          "label": "Show Arrow",
+          "default": true
+        },
+        {
+          "type": "html",
+          "id": "custom_html",
+          "label": "Caption",
+          "default": "<p></p>"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Look List 1",
+      "name": "Look List 2",
       "category": "POST O'ALLS Look",
       "blocks": [
         {
-          "type": "look",
-          "settings": {
-            "title": "Look Title"
-          }
+          "type": "image"
         }
       ]
     }
