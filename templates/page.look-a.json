@@ -9,26 +9,32 @@
  */
 {
   "sections": {
-    "look_list_1_tRFyPC": {
+    "look_header_HtBb9Q": {
+      "type": "look-header",
+      "name": "Look Header",
+      "settings": {
+        "show_title": true,
+        "title_ja": "タイトル",
+        "title_en": "Title",
+        "heading_tag": "h1",
+        "subtitle_ja": "サブタイトル",
+        "subtitle_en": "Subtitle",
+        "show_text": true,
+        "text_ja": "テキスト",
+        "text_en": "Text",
+        "text_alignment": "center",
+        "background_color": "#F5F5F5",
+        "text_color": "#333333",
+        "padding_top": 80,
+        "padding_bottom": 40
+      }
+    },
+    "look_list_1_GUTQtQ": {
       "type": "look-list-1",
       "blocks": {
-        "look_r7AwNc": {
+        "look_HQ3yDL": {
           "type": "look",
           "settings": {
-            "image": "shopify://shop_images/w-8_0b8c78ef-b36e-4345-a7a4-9d716818317f.jpg",
-            "title": "Look Title",
-            "product_1": "1101-8di",
-            "product_2": "24ss_11018dw",
-            "product_3": "",
-            "product_4": "",
-            "product_5": "",
-            "product_6": ""
-          }
-        },
-        "look_8nxhcE": {
-          "type": "look",
-          "settings": {
-            "image": "shopify://shop_images/w-7_e29c9ae7-2361-4c17-9b46-e9abd073f953.jpg",
             "title": "Look Title",
             "product_1": "",
             "product_2": "",
@@ -40,103 +46,26 @@
         }
       },
       "block_order": [
-        "look_r7AwNc",
-        "look_8nxhcE"
+        "look_HQ3yDL"
       ],
       "name": "Look List 1",
       "settings": {
         "color_scheme": ""
       }
     },
-    "look_list_2_DC7Xy6": {
+    "look_list_2_WKiJMi": {
       "type": "look-list-2",
       "blocks": {
-        "image_9NcXxQ": {
+        "image_QDfAX6": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/w-8_0b8c78ef-b36e-4345-a7a4-9d716818317f.jpg",
-            "link": "https://postoveralls.com/blogs/%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9/2025fw-new-collaboration-with-descendant",
-            "custom_html": "あああ\nいいい\nううう"
-          }
-        },
-        "image_WAEdwL": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/w-7_e29c9ae7-2361-4c17-9b46-e9abd073f953.jpg",
-            "link": "",
-            "custom_html": "<p>あああ</p>\n<p>あああ</p>\n<a href=\"https://postoveralls.com/blogs/news/2025fw-new-collaboration-with-descendant\">リンク</a>"
-          }
-        },
-        "image_wCNX9T": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/w-2_e32e45e3-de31-43dc-9e3e-ac1d06347ad8.jpg",
             "link": "",
             "custom_html": "<p></p>"
-          }
-        },
-        "image_HAatmf": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/w-8_0b8c78ef-b36e-4345-a7a4-9d716818317f.jpg",
-            "link": "",
-            "custom_html": "<p></p>"
-          }
-        },
-        "image_PF4GJr": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/w-10_22961a58-b92b-4197-a994-8b21f90d344e.jpg",
-            "link": "",
-            "custom_html": "<p></p>"
-          }
-        },
-        "image_CitjRi": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/1512_CW_2_17b907f5-58c5-4cfb-a7de-55abbf52ef91.jpg",
-            "link": "",
-            "custom_html": "<p></p>"
-          }
-        },
-        "image_MRq7GC": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/1512_CW_1_3ae37546-5d10-42ec-af90-509aca8ad263.jpg",
-            "link": "",
-            "custom_html": "<p></p>"
-          }
-        },
-        "image_7xWLTY": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/coming_soon_post-o_-alls-lock-up_1_720.jpg",
-            "link": "",
-            "custom_html": "<p></p>"
-          }
-        },
-        "scroll_7DNUkz": {
-          "type": "scroll",
-          "settings": {
-            "image_1": "shopify://shop_images/w-8_0b8c78ef-b36e-4345-a7a4-9d716818317f.jpg",
-            "image_2": "shopify://shop_images/w-7_e29c9ae7-2361-4c17-9b46-e9abd073f953.jpg",
-            "image_3": "shopify://shop_images/w-2_e32e45e3-de31-43dc-9e3e-ac1d06347ad8.jpg",
-            "link": "",
-            "show_arrow": true,
-            "custom_html": "<p>あああ</p>"
           }
         }
       },
       "block_order": [
-        "image_9NcXxQ",
-        "image_WAEdwL",
-        "image_wCNX9T",
-        "image_HAatmf",
-        "image_PF4GJr",
-        "image_CitjRi",
-        "image_MRq7GC",
-        "image_7xWLTY",
-        "scroll_7DNUkz"
+        "image_QDfAX6"
       ],
       "name": "Look List 2",
       "settings": {
@@ -148,63 +77,22 @@
         "section_margin_bottom": 0,
         "section_margin_left": 0,
         "section_margin_right": 0,
-        "image_gap": 20,
+        "image_gap": 0,
         "pc_columns": 4
       }
     },
-    "look_list_3_W8ayND": {
+    "look_list_3_MzniHP": {
       "type": "look-list-3",
       "blocks": {
-        "image_q8eHgM": {
+        "image_bqLDFc": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/1512_CW_2_17b907f5-58c5-4cfb-a7de-55abbf52ef91.jpg",
-            "custom_html": "<p></p>"
-          }
-        },
-        "image_9kAnYV": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/1512_CW_1_3ae37546-5d10-42ec-af90-509aca8ad263.jpg",
-            "custom_html": "<p>あああ</p>\n<p>あああ</p>\n<a href=\"https://postoveralls.com/blogs/news/2025fw-new-collaboration-with-descendant\">リンク</a>"
-          }
-        },
-        "image_4VPzzB": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/w-8_0b8c78ef-b36e-4345-a7a4-9d716818317f.jpg",
-            "custom_html": "<p></p>"
-          }
-        },
-        "image_RaR6wM": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/w-7_e29c9ae7-2361-4c17-9b46-e9abd073f953.jpg",
-            "custom_html": "<p></p>"
-          }
-        },
-        "image_rLCLkn": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/w-2_e32e45e3-de31-43dc-9e3e-ac1d06347ad8.jpg",
-            "custom_html": "<p></p>"
-          }
-        },
-        "image_tg9Pj7": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/w-8_0b8c78ef-b36e-4345-a7a4-9d716818317f.jpg",
             "custom_html": "<p></p>"
           }
         }
       },
       "block_order": [
-        "image_q8eHgM",
-        "image_9kAnYV",
-        "image_4VPzzB",
-        "image_RaR6wM",
-        "image_rLCLkn",
-        "image_tg9Pj7"
+        "image_bqLDFc"
       ],
       "name": "Look List 3",
       "settings": {
@@ -216,15 +104,16 @@
         "section_margin_bottom": 0,
         "section_margin_left": 0,
         "section_margin_right": 0,
-        "image_gap": 10,
+        "image_gap": 0,
         "pc_columns": 4,
         "sp_columns": "2"
       }
     }
   },
   "order": [
-    "look_list_1_tRFyPC",
-    "look_list_2_DC7Xy6",
-    "look_list_3_W8ayND"
+    "look_header_HtBb9Q",
+    "look_list_1_GUTQtQ",
+    "look_list_2_WKiJMi",
+    "look_list_3_MzniHP"
   ]
 }
