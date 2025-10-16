@@ -20,17 +20,34 @@
     },
     "look_header": {
       "type": "look-header",
+      "blocks": {
+        "title_UTaN8P": {
+          "type": "title",
+          "settings": {
+            "title_ja": "2025 F/W COLLECTION",
+            "title_en": "2025 F/W COLLECTION",
+            "heading_tag": "h1",
+            "alignment": "center",
+            "margin_top": 0,
+            "margin_bottom": 20
+          }
+        },
+        "text_9hP44D": {
+          "type": "text",
+          "settings": {
+            "text_ja": "2025FWの Post O’Allsは、2023FW〜2024FWと続いたブランドのスタート地点への回帰を経て、再び通常モードへ戻っています。1993年、歴史に埋もれた1920~40年代のアメリカン・ワークウエアをファッションとして提案・・・その後は、その時に着たいワークウエアやミリタリー／アウトドア・ウエアなどのワークウエアから派生した機能服を着たいムードで提案・・・というスタイルを確立してきました。そして、気が付けば古今東西のフレーバーが交錯するPost O’Allsの世界を作り上げています。今シーズンは、2000年代初期の隠れたブランドの柱でもあったフレア系ボトムスのカムバックもあり、より多彩なミックス感をお楽しみ頂ける設定となっています。Post O’Allsならではのビンテージな着心地を持つパターンワーク、年代やジャンルを超えたクォリティは健全で、レイヤリングの可能性がさらに高まっています。",
+            "text_en": "Post O'Alls for 2025FW is back to the normal mode again after the return to the brand’s starting point during 2023FW to 2024FW. In 1993, Post O'Alls presented vintage American workwear from 1920~40's which were buried in history as a new fashion.... Since then, we have established a style of presenting functional clothes derived from workwear such as workwear and military/outdoor wear that we wanted to wear at that time and in the mood that we wanted to wear. Then, we found ourselves creating the world of Post O'Alls, where the flavors of the East and West, old and new intersect. This season, flared bottoms, which were a hidden pillar of the brand in the early 2000s, are making a comeback, and you can enjoy a more diverse mix of styles. The quality that transcends age and genre is sound, and the possibilities for layering have been further enhanced.",
+            "alignment": "center",
+            "margin_top": 0,
+            "margin_bottom": 20
+          }
+        }
+      },
+      "block_order": [
+        "title_UTaN8P",
+        "text_9hP44D"
+      ],
       "settings": {
-        "show_title": true,
-        "title_ja": "2025 F/W COLLECTION",
-        "title_en": "2025 F/W COLLECTION",
-        "heading_tag": "h1",
-        "subtitle_ja": "",
-        "subtitle_en": "",
-        "show_text": true,
-        "text_ja": "2025FWの Post O’Allsは、2023FW〜2024FWと続いたブランドのスタート地点への回帰を経て、再び通常モードへ戻っています。1993年、歴史に埋もれた1920~40年代のアメリカン・ワークウエアをファッションとして提案・・・その後は、その時に着たいワークウエアやミリタリー／アウトドア・ウエアなどのワークウエアから派生した機能服を着たいムードで提案・・・というスタイルを確立してきました。そして、気が付けば古今東西のフレーバーが交錯するPost O’Allsの世界を作り上げています。今シーズンは、2000年代初期の隠れたブランドの柱でもあったフレア系ボトムスのカムバックもあり、より多彩なミックス感をお楽しみ頂ける設定となっています。Post O’Allsならではのビンテージな着心地を持つパターンワーク、年代やジャンルを超えたクォリティは健全で、レイヤリングの可能性がさらに高まっています。",
-        "text_en": "Post O'Alls for 2025FW is back to the normal mode again after the return to the brand’s starting point during 2023FW to 2024FW. In 1993, Post O'Alls presented vintage American workwear from 1920~40's which were buried in history as a new fashion.... Since then, we have established a style of presenting functional clothes derived from workwear such as workwear and military/outdoor wear that we wanted to wear at that time and in the mood that we wanted to wear. Then, we found ourselves creating the world of Post O'Alls, where the flavors of the East and West, old and new intersect. This season, flared bottoms, which were a hidden pillar of the brand in the early 2000s, are making a comeback, and you can enjoy a more diverse mix of styles. The quality that transcends age and genre is sound, and the possibilities for layering have been further enhanced.",
-        "text_alignment": "left",
         "background_color": "#f5f5f5",
         "text_color": "#333333",
         "padding_top": 80,
