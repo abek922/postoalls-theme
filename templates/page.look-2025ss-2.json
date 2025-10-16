@@ -358,6 +358,35 @@
         "sp_image_height": 250
       }
     },
+    "rich_text_6H6rec": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_HNrP8D": {
+          "type": "subheading",
+          "settings": {
+            "text": "<strong>Katsu Naito</strong>"
+          }
+        },
+        "richtext_rY6KwU": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>ニューヨーク在住。1983年渡米、言葉の不自由さを埋める手立てとしてカメラを取る。1987年、ハーレムに居住し「Once in Harlem」の土台を築く生活を開始。1990年ごろからハーレムでの撮影を開始すると同時に、NYのストリート売春夫の撮影も開始、写真集「West Side Rendezvous」を2011年に発刊、2018年にハーレムの写真集「Once In Harlem」を発刊。現在は雑誌、広告で活動中。</p><p>Based in New York. Moved to the United States in 1983 and picked a camera as a way to bridge the challenges of language barriers.In 1987, began living in Harlem, laying the foundation for Once in Harlem.Around 1990, started to photograph in Harlem while simultaneously documenting street prostitutes in New York.Published the photo book West Side Rendezvous in 2011, followed by Once in Harlem in 2018, which showcase a series of portraits and cityscapes from Harlem.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_HNrP8D",
+        "richtext_rY6KwU"
+      ],
+      "name": "t:sections.rich_text.presets.rich_text.name",
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "content_width": "sm",
+        "text_position": "start",
+        "remove_vertical_spacing": false
+      }
+    },
     "video_9mr9wn": {
       "type": "video",
       "blocks": {
@@ -397,6 +426,7 @@
     "main",
     "video_jKAXJk",
     "look_list_4_BT9Cim",
+    "rich_text_6H6rec",
     "video_9mr9wn"
   ]
 }
