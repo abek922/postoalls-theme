@@ -17,8 +17,8 @@
 .look-section-{{ section.id }} .look-list-4 {
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
-  margin: 1rem 0 2rem;
+  width: {{ section.settings.pc_container_width }}%;
+  margin: 1rem auto 2rem;
   gap: {{ section.settings.pc_image_gap }}px;
 }
 
@@ -44,7 +44,7 @@
 }
 
 .look-section-{{ section.id }} .caption {
-  margin-top: 0rem;
+  margin-top: 1rem;
   text-align: left;
   font-size: 10px;
 }
@@ -68,6 +68,7 @@
   }
   
   .look-section-{{ section.id }} .look-list-4 {
+    width: 100%;
     gap: {{ section.settings.sp_image_gap }}px;
     justify-content: center;
   }
@@ -171,6 +172,16 @@
     {
       "type": "header",
       "content": "PC Layout Settings (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "pc_container_width",
+      "label": "Container Width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "default": 100,
+      "unit": "%"
     },
     {
       "type": "range",
