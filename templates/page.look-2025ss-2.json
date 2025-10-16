@@ -308,11 +308,11 @@
         "top_image_alt": "",
         "section_margin_top": 0,
         "section_margin_bottom": 0,
-        "section_margin_left": 0,
+        "section_margin_left": 20,
         "section_margin_right": 0,
         "image_gap": 10,
-        "pc_image_height": 400,
-        "sp_image_height": 300
+        "pc_image_height": 300,
+        "sp_image_height": 250
       }
     }
   },
