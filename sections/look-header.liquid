@@ -14,7 +14,7 @@
       {% if has_title %}
       <div class="look-header-title-content">
         {% assign title_tag = section.settings.heading_tag | default: 'h1' %}
-        <{{ title_tag }} class="look-header-main-title">
+        <{{ title_tag }} class="look-header-main-title text-{{ section.settings.title_alignment }}">
           {% if request.locale.iso_code == 'ja' %}
             {{ section.settings.title_ja | default: section.settings.title_en }}
           {% else %}
@@ -27,7 +27,7 @@
           {% assign has_subtitle = true %}
         {% endif %}
         {% if has_subtitle %}
-          <p class="look-header-subtitle">
+          <p class="look-header-subtitle text-{{ section.settings.subtitle_alignment }}">
             {% if request.locale.iso_code == 'ja' %}
               {{ section.settings.subtitle_ja | default: section.settings.subtitle_en }}
             {% else %}
@@ -88,7 +88,6 @@
   
   /* Title Styles */
   .look-header-title-content {
-    text-align: center;
     max-width: 800px;
     margin: 0 auto;
   }
@@ -122,6 +121,7 @@
     margin: 0;
   }
   
+  /* Alignment Classes */
   .text-left {
     text-align: left;
   }
@@ -215,6 +215,26 @@
       "default": "h1"
     },
     {
+      "type": "select",
+      "id": "title_alignment",
+      "label": "Title Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center", 
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
       "type": "text", 
       "id": "subtitle_ja",
       "label": "Subtitle (Japanese)",
@@ -225,6 +245,26 @@
       "id": "subtitle_en",
       "label": "Subtitle (English)",
       "default": "Subtitle"
+    },
+    {
+      "type": "select",
+      "id": "subtitle_alignment",
+      "label": "Subtitle Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center", 
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
     },
     {
       "type": "header",
