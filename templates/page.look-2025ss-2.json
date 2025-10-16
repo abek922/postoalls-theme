@@ -18,6 +18,40 @@
         "page_width": "xs"
       }
     },
+    "video_jKAXJk": {
+      "type": "video",
+      "blocks": {
+        "play_9TFTqV": {
+          "type": "play",
+          "disabled": true,
+          "settings": {
+            "icon_color": "#ffffff"
+          }
+        },
+        "heading_fJL8kF": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "text": "Video",
+            "heading_tag": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "play_9TFTqV",
+        "heading_fJL8kF"
+      ],
+      "name": "t:sections.video.presets.video.name",
+      "settings": {
+        "autoplay": false,
+        "show_controls": true,
+        "video_size": "md",
+        "video": "shopify://files/videos/POST SS25 movie color 169_972b6a95-728d-4026-b4c7-44da048bc014.mov",
+        "mobile_video": "shopify://files/videos/POST SS25 movie color 916b_e23a70e0-9724-4ab6-9b5b-c929400e79d6.mov",
+        "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "text_color": "#ffffff"
+      }
+    },
     "look_list_4_BT9Cim": {
       "type": "look-list-4",
       "blocks": {
@@ -304,7 +338,7 @@
         "image_xwjreW"
       ],
       "custom_css": [
-        ".caption {margin-top: 0px}"
+        ".caption {margin-top: 0px;}"
       ],
       "name": "Look List 4",
       "settings": {
@@ -323,10 +357,46 @@
         "pc_image_height": 300,
         "sp_image_height": 250
       }
+    },
+    "video_9mr9wn": {
+      "type": "video",
+      "blocks": {
+        "play_DnphzY": {
+          "type": "play",
+          "disabled": true,
+          "settings": {
+            "icon_color": "#ffffff"
+          }
+        },
+        "heading_GMBwjT": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "text": "Video",
+            "heading_tag": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "play_DnphzY",
+        "heading_GMBwjT"
+      ],
+      "name": "t:sections.video.presets.video.name",
+      "settings": {
+        "autoplay": false,
+        "show_controls": true,
+        "video_size": "md",
+        "video": "shopify://files/videos/POST SS25 movie mono R169.mov",
+        "mobile_video": "shopify://files/videos/POST SS25 movie R916b.mov",
+        "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "text_color": "#ffffff"
+      }
     }
   },
   "order": [
     "main",
-    "look_list_4_BT9Cim"
+    "video_jKAXJk",
+    "look_list_4_BT9Cim",
+    "video_9mr9wn"
   ]
 }
