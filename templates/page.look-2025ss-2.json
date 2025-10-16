@@ -384,33 +384,41 @@
         "sp_image_height": 250
       }
     },
-    "rich_text_6H6rec": {
-      "type": "rich-text",
+    "look_text_Dbd9aj": {
+      "type": "look-text",
       "blocks": {
-        "subheading_HNrP8D": {
-          "type": "subheading",
+        "title_4xpiHY": {
+          "type": "title",
           "settings": {
-            "text": "<strong>Katsu Naito</strong>"
+            "title_ja": "Katsu Naito",
+            "title_en": "Katsu Naito",
+            "heading_tag": "h3",
+            "alignment": "left",
+            "margin_top": 0,
+            "margin_bottom": 20
           }
         },
-        "richtext_rY6KwU": {
-          "type": "richtext",
+        "text_R34QTF": {
+          "type": "text",
           "settings": {
-            "content": "<p>ニューヨーク在住。1983年渡米、言葉の不自由さを埋める手立てとしてカメラを取る。1987年、ハーレムに居住し「Once in Harlem」の土台を築く生活を開始。1990年ごろからハーレムでの撮影を開始すると同時に、NYのストリート売春夫の撮影も開始、写真集「West Side Rendezvous」を2011年に発刊、2018年にハーレムの写真集「Once In Harlem」を発刊。現在は雑誌、広告で活動中。</p><p>Based in New York. Moved to the United States in 1983 and picked a camera as a way to bridge the challenges of language barriers.In 1987, began living in Harlem, laying the foundation for Once in Harlem.Around 1990, started to photograph in Harlem while simultaneously documenting street prostitutes in New York.Published the photo book West Side Rendezvous in 2011, followed by Once in Harlem in 2018, which showcase a series of portraits and cityscapes from Harlem.</p>"
+            "text_ja": "ニューヨーク在住。1983年渡米、言葉の不自由さを埋める手立てとしてカメラを取る。1987年、ハーレムに居住し「Once in Harlem」の土台を築く生活を開始。\n1990年ごろからハーレムでの撮影を開始すると同時に、NYのストリート売春夫の撮影も開始、写真集「West Side Rendezvous」を2011年に発刊、2018年にハーレムの写真集「Once In Harlem」を発刊。\n現在は雑誌、広告で活動中。",
+            "text_en": "Based in New York. Moved to the United States in 1983 and picked a camera as a way to bridge the challenges of language barriers.In 1987, began living in Harlem, laying the foundation for Once in Harlem.Around 1990, started to photograph in Harlem while simultaneously documenting street prostitutes in New York.Published the photo book West Side Rendezvous in 2011, followed by Once in Harlem in 2018, which showcase a series of portraits and cityscapes from Harlem.",
+            "alignment": "left",
+            "margin_top": 0,
+            "margin_bottom": 20
           }
         }
       },
       "block_order": [
-        "subheading_HNrP8D",
-        "richtext_rY6KwU"
+        "title_4xpiHY",
+        "text_R34QTF"
       ],
-      "name": "t:sections.rich_text.presets.rich_text.name",
+      "name": "Look Text",
       "settings": {
-        "color_scheme": "",
-        "separate_section_with_border": true,
-        "content_width": "sm",
-        "text_position": "start",
-        "remove_vertical_spacing": false
+        "background_color": "#F5F5F5",
+        "text_color": "#333333",
+        "padding_top": 80,
+        "padding_bottom": 40
       }
     },
     "video_9mr9wn": {
@@ -446,55 +454,6 @@
         "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "text_color": "#ffffff"
       }
-    },
-    "look_text_Dbd9aj": {
-      "type": "look-text",
-      "blocks": {
-        "title_4xpiHY": {
-          "type": "title",
-          "settings": {
-            "title_ja": "タイトル",
-            "title_en": "Title",
-            "heading_tag": "h1",
-            "alignment": "center",
-            "margin_top": 0,
-            "margin_bottom": 20
-          }
-        },
-        "subtitle_U4gVMY": {
-          "type": "subtitle",
-          "settings": {
-            "subtitle_ja": "サブタイトル",
-            "subtitle_en": "Subtitle",
-            "heading_tag": "p",
-            "alignment": "center",
-            "margin_top": 0,
-            "margin_bottom": 20
-          }
-        },
-        "text_R34QTF": {
-          "type": "text",
-          "settings": {
-            "text_ja": "テキスト",
-            "text_en": "Text",
-            "alignment": "center",
-            "margin_top": 0,
-            "margin_bottom": 20
-          }
-        }
-      },
-      "block_order": [
-        "title_4xpiHY",
-        "subtitle_U4gVMY",
-        "text_R34QTF"
-      ],
-      "name": "Look Text",
-      "settings": {
-        "background_color": "#F5F5F5",
-        "text_color": "#333333",
-        "padding_top": 80,
-        "padding_bottom": 40
-      }
     }
   },
   "order": [
@@ -502,8 +461,7 @@
     "video_jKAXJk",
     "look_text_E7mKcq",
     "look_list_4_BT9Cim",
-    "rich_text_6H6rec",
-    "video_9mr9wn",
-    "look_text_Dbd9aj"
+    "look_text_Dbd9aj",
+    "video_9mr9wn"
   ]
 }
