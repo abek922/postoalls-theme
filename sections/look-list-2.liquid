@@ -184,11 +184,7 @@
             {% else %}
             <div class="look-item" {{ block.shopify_attributes }}>
               <div class="icon--placeholder">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
-                  <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
-                  <circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="2"/>
-                  <path d="M21 15L16 10L5 21" stroke="currentColor" stroke-width="2"/>
-                </svg>
+                {{ 'image' | placeholder_svg_tag: 'icon icon--placeholder' }}
               </div>
             </div>
             {% endif %}
