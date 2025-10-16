@@ -420,6 +420,28 @@
         "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "text_color": "#ffffff"
       }
+    },
+    "look_header_dnp4Qx": {
+      "type": "look-header",
+      "name": "Look Header",
+      "settings": {
+        "show_title": true,
+        "title_ja": "タイトル",
+        "title_en": "Title",
+        "heading_tag": "h1",
+        "title_alignment": "left",
+        "subtitle_ja": "サブタイトル",
+        "subtitle_en": "Subtitle",
+        "subtitle_alignment": "left",
+        "show_text": true,
+        "text_ja": "テキスト",
+        "text_en": "Text",
+        "text_alignment": "left",
+        "background_color": "#F5F5F5",
+        "text_color": "#333333",
+        "padding_top": 80,
+        "padding_bottom": 40
+      }
     }
   },
   "order": [
@@ -427,6 +449,7 @@
     "video_jKAXJk",
     "look_list_4_BT9Cim",
     "rich_text_6H6rec",
-    "video_9mr9wn"
+    "video_9mr9wn",
+    "look_header_dnp4Qx"
   ]
 }
