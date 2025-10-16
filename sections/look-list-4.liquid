@@ -19,7 +19,7 @@
   flex-wrap: wrap;
   width: 100%;
   margin: 1rem 0 2rem;
-  gap: {{ section.settings.image_gap }}px;
+  gap: {{ section.settings.pc_image_gap }}px;
 }
 
 .look-section-{{ section.id }} .look-list-4 .look-item {
@@ -67,6 +67,11 @@
     margin-right: {{ section.settings.sp_section_margin_right }}px;
   }
   
+  .look-section-{{ section.id }} .look-list-4 {
+    gap: {{ section.settings.sp_image_gap }}px;
+    justify-content: center;
+  }
+  
   .look-section-{{ section.id }} .icon--placeholder {
     height: {{ section.settings.sp_image_height }}px;
   }
@@ -75,10 +80,6 @@
     width: 100vw;
     margin: 0 calc(50% - 50vw);
     padding: 10px 0 20px;
-  }
-  
-  .look-section-{{ section.id }} .look-list-4 {
-    justify-content: center;
   }
   
   .look-section-{{ section.id }} .look-list-4 .look-item a {
@@ -256,9 +257,23 @@
       "unit": "px"
     },
     {
+      "type": "header",
+      "content": "Image Gap Settings"
+    },
+    {
       "type": "range",
-      "id": "image_gap",
-      "label": "Gap Between Images",
+      "id": "pc_image_gap",
+      "label": "PC Gap Between Images (Desktop)",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "default": 10,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "sp_image_gap",
+      "label": "SP Gap Between Images (Mobile)",
       "min": 0,
       "max": 50,
       "step": 5,
