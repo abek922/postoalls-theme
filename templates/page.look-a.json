@@ -10,7 +10,7 @@
 {
   "sections": {
     "look_header_HtBb9Q": {
-      "type": "look-header",
+      "type": "look-text",
       "name": "Look Header",
       "settings": {
         "show_title": true,
