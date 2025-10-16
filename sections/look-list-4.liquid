@@ -4,10 +4,10 @@
 }
 
 .look-wrapper-{{ section.id }} {
-  margin-top: {{ section.settings.section_margin_top }}px;
-  margin-bottom: {{ section.settings.section_margin_bottom }}px;
-  margin-left: {{ section.settings.section_margin_left }}px;
-  margin-right: {{ section.settings.section_margin_right }}px;
+  margin-top: {{ section.settings.pc_section_margin_top }}px;
+  margin-bottom: {{ section.settings.pc_section_margin_bottom }}px;
+  margin-left: {{ section.settings.pc_section_margin_left }}px;
+  margin-right: {{ section.settings.pc_section_margin_right }}px;
 }
 
 .look-section-{{ section.id }} .top-image {
@@ -60,6 +60,13 @@
 }
 
 @media screen and (max-width: 768px) {
+  .look-wrapper-{{ section.id }} {
+    margin-top: {{ section.settings.sp_section_margin_top }}px;
+    margin-bottom: {{ section.settings.sp_section_margin_bottom }}px;
+    margin-left: {{ section.settings.sp_section_margin_left }}px;
+    margin-right: {{ section.settings.sp_section_margin_right }}px;
+  }
+  
   .look-section-{{ section.id }} .icon--placeholder {
     height: {{ section.settings.sp_image_height }}px;
   }
@@ -162,11 +169,11 @@
     },
     {
       "type": "header",
-      "content": "Layout Settings"
+      "content": "PC Layout Settings (Desktop)"
     },
     {
       "type": "range",
-      "id": "section_margin_top",
+      "id": "pc_section_margin_top",
       "label": "Top Margin",
       "min": 0,
       "max": 100,
@@ -176,7 +183,7 @@
     },
     {
       "type": "range",
-      "id": "section_margin_bottom",
+      "id": "pc_section_margin_bottom",
       "label": "Bottom Margin",
       "min": 0,
       "max": 100,
@@ -186,7 +193,7 @@
     },
     {
       "type": "range",
-      "id": "section_margin_left",
+      "id": "pc_section_margin_left",
       "label": "Left Margin",
       "min": 0,
       "max": 100,
@@ -196,7 +203,51 @@
     },
     {
       "type": "range",
-      "id": "section_margin_right",
+      "id": "pc_section_margin_right",
+      "label": "Right Margin",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "SP Layout Settings (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "sp_section_margin_top",
+      "label": "Top Margin",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "sp_section_margin_bottom",
+      "label": "Bottom Margin",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "sp_section_margin_left",
+      "label": "Left Margin",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "sp_section_margin_right",
       "label": "Right Margin",
       "min": 0,
       "max": 100,
