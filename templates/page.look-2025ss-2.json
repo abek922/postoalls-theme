@@ -24,13 +24,30 @@
         "image_AdVAT8": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/POST_SS25_A1.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_KDxpDW": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_nBiatD": {
+          "type": "image",
+          "settings": {
             "link": "",
             "custom_html": "<p></p>"
           }
         }
       },
       "block_order": [
-        "image_AdVAT8"
+        "image_AdVAT8",
+        "image_KDxpDW",
+        "image_nBiatD"
       ],
       "name": "Look List 2",
       "settings": {
