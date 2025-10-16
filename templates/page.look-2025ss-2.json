@@ -303,14 +303,23 @@
         "image_HbyKmP",
         "image_xwjreW"
       ],
+      "custom_css": [
+        ".caption {margin-top: 0px}"
+      ],
       "name": "Look List 4",
       "settings": {
         "top_image_alt": "",
-        "section_margin_top": 0,
-        "section_margin_bottom": 0,
-        "section_margin_left": 20,
-        "section_margin_right": 0,
-        "image_gap": 10,
+        "pc_container_width": 85,
+        "pc_section_margin_top": 0,
+        "pc_section_margin_bottom": 0,
+        "pc_section_margin_left": 0,
+        "pc_section_margin_right": 0,
+        "sp_section_margin_top": 0,
+        "sp_section_margin_bottom": 0,
+        "sp_section_margin_left": 0,
+        "sp_section_margin_right": 0,
+        "pc_image_gap": 10,
+        "sp_image_gap": 10,
         "pc_image_height": 300,
         "sp_image_height": 250
       }
