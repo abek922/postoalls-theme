@@ -13,16 +13,6 @@
       "type": "look-text",
       "name": "Look Header",
       "settings": {
-        "show_title": true,
-        "title_ja": "タイトル",
-        "title_en": "Title",
-        "heading_tag": "h1",
-        "subtitle_ja": "サブタイトル",
-        "subtitle_en": "Subtitle",
-        "show_text": true,
-        "text_ja": "テキスト",
-        "text_en": "Text",
-        "text_alignment": "center",
         "background_color": "#f5f5f5",
         "text_color": "#333333",
         "padding_top": 80,
@@ -102,12 +92,45 @@
         "pc_columns": 4,
         "sp_columns": "2"
       }
+    },
+    "look_list_4_rPrWrq": {
+      "type": "look-list-4",
+      "blocks": {
+        "image_GcbEMY": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        }
+      },
+      "block_order": [
+        "image_GcbEMY"
+      ],
+      "name": "Look List 4",
+      "settings": {
+        "top_image_alt": "",
+        "pc_container_width": 100,
+        "pc_section_margin_top": 0,
+        "pc_section_margin_bottom": 0,
+        "pc_section_margin_left": 0,
+        "pc_section_margin_right": 0,
+        "sp_section_margin_top": 0,
+        "sp_section_margin_bottom": 0,
+        "sp_section_margin_left": 0,
+        "sp_section_margin_right": 0,
+        "pc_image_gap": 10,
+        "sp_image_gap": 10,
+        "pc_image_height": 400,
+        "sp_image_height": 300
+      }
     }
   },
   "order": [
     "look_header_HtBb9Q",
     "look_list_1_FzGwRf",
     "look_list_2_hpxLpt",
-    "look_list_3_QheLam"
+    "look_list_3_QheLam",
+    "look_list_4_rPrWrq"
   ]
 }
