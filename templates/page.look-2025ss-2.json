@@ -52,6 +52,32 @@
         "text_color": "#ffffff"
       }
     },
+    "look_text_E7mKcq": {
+      "type": "look-text",
+      "blocks": {
+        "title_VbWpBr": {
+          "type": "title",
+          "settings": {
+            "title_ja": "2025 S/S Images by Katsu Naito",
+            "title_en": "2025 S/S Images by Katsu Naito",
+            "heading_tag": "h1",
+            "alignment": "center",
+            "margin_top": 0,
+            "margin_bottom": 20
+          }
+        }
+      },
+      "block_order": [
+        "title_VbWpBr"
+      ],
+      "name": "Look Text",
+      "settings": {
+        "background_color": "#F5F5F5",
+        "text_color": "#333333",
+        "padding_top": 80,
+        "padding_bottom": 40
+      }
+    },
     "look_list_4_BT9Cim": {
       "type": "look-list-4",
       "blocks": {
@@ -421,50 +447,50 @@
         "text_color": "#ffffff"
       }
     },
-    "look_header_dnp4Qx": {
-      "type": "look-header",
+    "look_text_Dbd9aj": {
+      "type": "look-text",
       "blocks": {
-        "title_pyVMc8": {
+        "title_4xpiHY": {
           "type": "title",
           "settings": {
             "title_ja": "タイトル",
             "title_en": "Title",
             "heading_tag": "h1",
-            "alignment": "left",
+            "alignment": "center",
             "margin_top": 0,
             "margin_bottom": 20
           }
         },
-        "subtitle_AMJaDj": {
+        "subtitle_U4gVMY": {
           "type": "subtitle",
           "settings": {
             "subtitle_ja": "サブタイトル",
             "subtitle_en": "Subtitle",
-            "heading_tag": "h2",
-            "alignment": "left",
+            "heading_tag": "p",
+            "alignment": "center",
             "margin_top": 0,
             "margin_bottom": 20
           }
         },
-        "text_xdPE3H": {
+        "text_R34QTF": {
           "type": "text",
           "settings": {
             "text_ja": "テキスト",
             "text_en": "Text",
-            "alignment": "left",
+            "alignment": "center",
             "margin_top": 0,
             "margin_bottom": 20
           }
         }
       },
       "block_order": [
-        "title_pyVMc8",
-        "subtitle_AMJaDj",
-        "text_xdPE3H"
+        "title_4xpiHY",
+        "subtitle_U4gVMY",
+        "text_R34QTF"
       ],
-      "name": "Look Header",
+      "name": "Look Text",
       "settings": {
-        "background_color": "#f5f5f5",
+        "background_color": "#F5F5F5",
         "text_color": "#333333",
         "padding_top": 80,
         "padding_bottom": 40
@@ -474,9 +500,10 @@
   "order": [
     "main",
     "video_jKAXJk",
+    "look_text_E7mKcq",
     "look_list_4_BT9Cim",
     "rich_text_6H6rec",
     "video_9mr9wn",
-    "look_header_dnp4Qx"
+    "look_text_Dbd9aj"
   ]
 }
