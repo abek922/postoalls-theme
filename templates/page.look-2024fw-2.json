@@ -19,30 +19,6 @@
         "padding_bottom": 40
       }
     },
-    "look_list_1_FzGwRf": {
-      "type": "look-list-1",
-      "blocks": {
-        "look_xbWyEn": {
-          "type": "look",
-          "settings": {
-            "title": "Look Title",
-            "product_1": "",
-            "product_2": "",
-            "product_3": "",
-            "product_4": "",
-            "product_5": "",
-            "product_6": ""
-          }
-        }
-      },
-      "block_order": [
-        "look_xbWyEn"
-      ],
-      "name": "Look List 1",
-      "settings": {
-        "color_scheme": ""
-      }
-    },
     "look_list_2_hpxLp1": {
       "type": "look-list-2",
       "blocks": {
@@ -356,6 +332,7 @@
             "image_1": "shopify://shop_images/0921_0542.jpg",
             "image_2": "shopify://shop_images/0921_0568.jpg",
             "link": "",
+            "show_arrow": true,
             "custom_html": "<p>\n<a href=\"https://postoveralls.com/collections/lr3_introduction\">[Limited Release vol.3]<br>Introduction</a></p>"
           }
         },
@@ -365,6 +342,7 @@
             "image_1": "shopify://shop_images/0921_0460.jpg",
             "image_2": "shopify://shop_images/0921_0517.jpg",
             "link": "",
+            "show_arrow": true,
             "custom_html": "<p>\n<a href=\"https://postoveralls.com/collections/lr3_1267b\">#1267B-NC1 Royal Traveler Shirt-1/2<br>nylon forest camo brown jungle</a><br>\n<br>\n<a href=\"https://postoveralls.com/products/24fw_3221-fp3\">#3221-FP3 NEUTRA 6<br>flannel plaid lavender</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/24fw_1601\">#1601-HBB Engineers' Cap<br>herringbone denim black</a>\n</p>"
           }
         },
@@ -374,6 +352,7 @@
             "image_1": "shopify://shop_images/0921_0418.jpg",
             "image_2": "shopify://shop_images/0921_0452.jpg",
             "link": "",
+            "show_arrow": true,
             "custom_html": "<p>\n<a href=\"https://postoveralls.com/collections/lr3_3109bl\">#3109BL-NC3 POST Chinois DV<br>nylon forest camo grey jungle</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/24ss_3117\">#3117-WTB POST Chinois De Luxe<br>waxy taffeta black</a>\n</p>"
           }
         },
@@ -383,6 +362,7 @@
             "image_1": "shopify://shop_images/0921_0738.jpg",
             "image_2": "shopify://shop_images/0921_0688.jpg",
             "link": "",
+            "show_arrow": true,
             "custom_html": "<p>\n<a href=\"https://postoveralls.com/collections/lr3_3109bl\">#3109BL-NC1 POST Chinois DV<br>nylon forest camo brown jungle</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/lr3_3315l\">#3315L-NC1 E-Z Lax 4<br>nylon forest camo brown jungle</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/lr2-1_3221\">#3221-CC NEUTRA 6<br>classic chambray indigo</a>\n</p>"
           }
         },
@@ -393,6 +373,7 @@
             "image_2": "shopify://shop_images/0921_0635.jpg",
             "image_3": "shopify://shop_images/0921_0660.jpg",
             "link": "",
+            "show_arrow": true,
             "custom_html": "<p>\n<a href=\"https://postoveralls.com/collections/lr3_3123dvl\">#3123DVL-NC1 POST 44 DV<br>nylon forest camo brown jungle</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/24fw_1301\">#1301-FTI ARMY Pants<br>flat twill indigo</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/lr2-1_3220b\">#3220B-8DW NEUTRA 5 Band<br>8oz. denim deep washed indigo</a>\n</p>"
           }
         },
@@ -402,6 +383,7 @@
             "image_1": "shopify://shop_images/0921_0848.jpg",
             "image_2": "shopify://shop_images/0921_0885.jpg",
             "link": "",
+            "show_arrow": true,
             "custom_html": "<p>\n<a href=\"https://postoveralls.com/collections/lr3_3109bl\">#3109BL-NC2 POST Chinois DV<br>nylon forest camo blue jungle</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/24fw_1108\">#1108-12DB Ranchero<br>12oz. selvedge denim black</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/24fw_1301\">#1301-MBI ARMY Pants<br>moleskin black indigo</a>\n</p>"
           }
         },
@@ -411,6 +393,7 @@
             "image_1": "shopify://shop_images/0921_0782.jpg",
             "image_2": "shopify://shop_images/0921_0804.jpg",
             "link": "",
+            "show_arrow": true,
             "custom_html": "<p>\n<a href=\"https://postoveralls.com/collections/lr3_1512\">#1512-NC3 Royal Traveler<br>nylon forest camo grey jungle</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/24fw_1301\">#1301-8DI ARMY Pants<br>blue denim w/OD-yellow stitch indigo</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/lr2-1_3220b\">#3220B-CC NEUTRA 5 Band<br>classic chambray indigo</a>\n</p>"
           }
         },
@@ -422,6 +405,7 @@
             "image_3": "shopify://shop_images/0921_1090.jpg",
             "image_4": "shopify://shop_images/0921_1096.jpg",
             "link": "",
+            "show_arrow": true,
             "custom_html": "<p>\n<a href=\"https://postoveralls.com/collections/lr3_3123dvl\">#3123DVL-NC3 POST 44 DV<br>nylon forest camo grey jungle</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/lr3_3315l\">#3315L-NC3 E-Z Lax 4<br>nylon forest camo grey jungle</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/24fw_1105\">#1105-IC1 NAVY Parka<br>indigo check indigo</a>\n</p>"
           }
         },
@@ -432,6 +416,7 @@
             "image_2": "shopify://shop_images/0921_0930.jpg",
             "image_3": "shopify://shop_images/0921_0967.jpg",
             "link": "",
+            "show_arrow": true,
             "custom_html": "<p>\n<a href=\"https://postoveralls.com/collections/lr3_1267b\">#1267B-NC2 Royal Traveler Shirt-1/2<br>nylon forest camo blue jungle</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/lr3_3315l\">#3315L-NC2 E-Z Lax 4<br>nylon forest camo blue jungle</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/lr2-1_3220w\">#3220W-FCW1 NEUTRA 5-W<br>feather chambray W-ply white</a>\n</p>"
           }
         },
@@ -442,6 +427,7 @@
             "image_2": "shopify://shop_images/0921_1241.jpg",
             "image_3": "shopify://shop_images/0921_1254.jpg",
             "link": "",
+            "show_arrow": true,
             "custom_html": "<p>\n<a href=\"https://postoveralls.com/collections/lr3_1512\">#1512-NC2 Royal Traveler<br>nylon forest camo blue jungle</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/24fw_1204\">#1204-HBI ARMY Shirt<br>herringbone denim double indigo</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/24fw_1301\">#1301-HBI ARMY Pants<br>herringbone denim double indigo</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/24fw_jp510\">JP510-NC1 BAGSINPROGRESS x Post O'Alls FANNYPACK CROSSBODY<br>nylon forest camo brown jungle</a>\n</p>"
           }
         },
@@ -453,6 +439,7 @@
             "image_3": "shopify://shop_images/0921_1176.jpg",
             "image_4": "shopify://shop_images/0921_1182.jpg",
             "link": "",
+            "show_arrow": true,
             "custom_html": "<p></p>"
           }
         },
@@ -463,6 +450,7 @@
             "image_2": "shopify://shop_images/0921_1265.jpg",
             "image_3": "shopify://shop_images/0921_1278.jpg",
             "link": "",
+            "show_arrow": true,
             "custom_html": "<p>\n<a href=\"https://postoveralls.com/collections/lr3_1512\">#1512-NC2 Royal Traveler<br>nylon forest camo blue jungle</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/24fw_1204\">#1204-HBI ARMY Shirt<br>herringbone denim double indigo</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/24fw_1301\">#1301-HBI ARMY Pants<br>herringbone denim double indigo</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/24fw_jp510\">JP510-NC1 BAGSINPROGRESS x Post O'Alls FANNYPACK CROSSBODY<br>nylon forest camo brown jungle</a>\n</p>"
           }
         }
@@ -530,20 +518,21 @@
         "pc_columns": 4
       }
     },
-    "look_list_3_QheLam": {
-      "type": "look-list-3",
+    "look_list_2_UqAmbi": {
+      "type": "look-list-2",
       "blocks": {
-        "image_JNJcyL": {
+        "image_xC3nYW": {
           "type": "image",
           "settings": {
+            "link": "",
             "custom_html": "<p></p>"
           }
         }
       },
       "block_order": [
-        "image_JNJcyL"
+        "image_xC3nYW"
       ],
-      "name": "Look List 3",
+      "name": "Look List 2",
       "settings": {
         "top_image_alt": "",
         "section_margin_top": 0,
@@ -551,15 +540,13 @@
         "section_margin_left": 0,
         "section_margin_right": 0,
         "image_gap": 0,
-        "pc_columns": 4,
-        "sp_columns": "2"
+        "pc_columns": 4
       }
     }
   },
   "order": [
     "look_header_HtBb9Q",
-    "look_list_1_FzGwRf",
     "look_list_2_hpxLp1",
-    "look_list_3_QheLam"
+    "look_list_2_UqAmbi"
   ]
 }
