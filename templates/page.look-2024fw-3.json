@@ -45,348 +45,298 @@
     },
     "look_list_2_hpxLp2": {
       "type": "look-list-2",
-        "blocks": {
-          "carousel_bkJJ8T": {
-            "type": "carousel",
-            "settings": {
-              "title": "LOOK 1",
-              "text_ja": "<p>jacket: 1123R2-MC / BDU-R2<br/>shorts: 3315S-PA / E-Z Lax 4 Shorts</p>",
-              "text_en": "",
-              "image_1": "shopify://shop_images/20240604_76054.jpg",
-              "image_2": "shopify://shop_images/20240604_76085.jpg",
-              "product_url": "http://example.com"
-            }
-          },
-          "carousel_PRiELY": {
-            "type": "carousel",
-            "settings": {
-              "title": "LOOK 2",
-              "text_ja": "<p>日本語のテキスト</p>",
-              "text_en": "<p>English text</p>",
-              "product_url": "http://example.com"
-            }
-          },
-          "carousel_EHXXCM": {
-            "type": "carousel",
-            "settings": {
-              "title": "title",
-              "text_ja": "<p>日本語のテキスト</p>",
-              "text_en": "<p>English text</p>",
-              "product_url": "http://example.com"
-            }
-          },
-          "carousel_xbwNQ9": {
-            "type": "carousel",
-            "settings": {
-              "title": "title",
-              "text_ja": "<p>日本語のテキスト</p>",
-              "text_en": "<p>English text</p>",
-              "product_url": "http://example.com"
-            }
+      "blocks": {
+        "image_FYWU7g": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_001.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
           }
         },
-        "block_order": [
-          "carousel_bkJJ8T",
-          "carousel_PRiELY",
-          "carousel_EHXXCM",
-          "carousel_xbwNQ9"
-        ],
-        "settings": {}
+        "image_jxpdMW": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_002.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_UYLmP7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_003.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_YpdKEB": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_004.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_HUhRYn": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_005.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_t8YtNt": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_006.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_f4MPDX": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_007.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_PKhJnz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_008.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_g7MiUm": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_009.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_thtnm9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_010.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_qHVzip": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_011.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_eA7ENH": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_012.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_jyrbQH": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_013.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_yGQ6GD": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_014.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_4fAAag": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_015.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_cUdEBP": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_016.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_VKCGeb": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_017.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_GYCFTt": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_018.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_dj7XDM": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_019.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_hQDHrj": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_020.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_hXk3Lt": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_021.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_mQkybx": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_022.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_GFBDYz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_023.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_RLrgPY": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_024.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_DzMbXq": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_025.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_KN4bYJ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_026.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_bwBMia": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_027.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_raJNx7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_028.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_CKxjn6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_029.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_j8LdWf": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_030.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_96MdTD": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_031.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_FAwqeH": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/post_2025ss_styling_032.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        }
       },
-      "page-styling-2025-ss": {
-        "type": "page-styling-2025-ss",
-        "blocks": {
-          "image_FYWU7g": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_001.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          },
-          "image_jxpdMW": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_002.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          },
-          "image_UYLmP7": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_003.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          },
-          "image_YpdKEB": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_004.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          },
-          "image_HUhRYn": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_005.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          },
-          "image_t8YtNt": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_006.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          },
-          "image_f4MPDX": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_007.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          },
-          "image_PKhJnz": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_008.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          },
-          "image_g7MiUm": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_009.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          },
-          "image_thtnm9": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_010.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          },
-          "image_qHVzip": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_011.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          },
-          "image_eA7ENH": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_012.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          },
-          "image_jyrbQH": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_013.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          },
-          "image_yGQ6GD": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_014.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          },
-          "image_4fAAag": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_015.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          },
-          "image_cUdEBP": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_016.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          },
-          "image_VKCGeb": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_017.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          },
-          "image_GYCFTt": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_018.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          },
-          "image_dj7XDM": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_019.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          },
-          "image_hQDHrj": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_020.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          },
-          "image_hXk3Lt": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_021.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          },
-          "image_mQkybx": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_022.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          },
-          "image_GFBDYz": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_023.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          },
-          "image_RLrgPY": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_024.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          },
-          "image_DzMbXq": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_025.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          },
-          "image_KN4bYJ": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_026.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          },
-          "image_bwBMia": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_027.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          },
-          "image_raJNx7": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_028.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          },
-          "image_CKxjn6": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_029.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          },
-          "image_j8LdWf": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_030.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          },
-          "image_96MdTD": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_031.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          },
-          "image_FAwqeH": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/post_2025ss_styling_032.jpg",
-              "link": "",
-              "custom_html": "<p></p>"
-            }
-          }
-        },
-        "block_order": [
-          "image_FYWU7g",
-          "image_jxpdMW",
-          "image_UYLmP7",
-          "image_YpdKEB",
-          "image_HUhRYn",
-          "image_t8YtNt",
-          "image_f4MPDX",
-          "image_PKhJnz",
-          "image_g7MiUm",
-          "image_thtnm9",
-          "image_qHVzip",
-          "image_eA7ENH",
-          "image_jyrbQH",
-          "image_yGQ6GD",
-          "image_4fAAag",
-          "image_cUdEBP",
-          "image_VKCGeb",
-          "image_GYCFTt",
-          "image_dj7XDM",
-          "image_hQDHrj",
-          "image_hXk3Lt",
-          "image_mQkybx",
-          "image_GFBDYz",
-          "image_RLrgPY",
-          "image_DzMbXq",
-          "image_KN4bYJ",
-          "image_bwBMia",
-          "image_raJNx7",
-          "image_CKxjn6",
-          "image_j8LdWf",
-          "image_96MdTD",
-          "image_FAwqeH"
-        ],
+      "block_order": [
+        "image_FYWU7g",
+        "image_jxpdMW",
+        "image_UYLmP7",
+        "image_YpdKEB",
+        "image_HUhRYn",
+        "image_t8YtNt",
+        "image_f4MPDX",
+        "image_PKhJnz",
+        "image_g7MiUm",
+        "image_thtnm9",
+        "image_qHVzip",
+        "image_eA7ENH",
+        "image_jyrbQH",
+        "image_yGQ6GD",
+        "image_4fAAag",
+        "image_cUdEBP",
+        "image_VKCGeb",
+        "image_GYCFTt",
+        "image_dj7XDM",
+        "image_hQDHrj",
+        "image_hXk3Lt",
+        "image_mQkybx",
+        "image_GFBDYz",
+        "image_RLrgPY",
+        "image_DzMbXq",
+        "image_KN4bYJ",
+        "image_bwBMia",
+        "image_raJNx7",
+        "image_CKxjn6",
+        "image_j8LdWf",
+        "image_96MdTD",
+        "image_FAwqeH"
+      ],
       "name": "Look List 2",
       "settings": {
         "top_image_alt": "",

@@ -475,16 +475,6 @@
             "link": "",
             "custom_html": "<p>\n<a href=\"https://postoveralls.com/collections/shop-special-24fw-1\">#1103-AMB Polarfleece Jacket (trashed wool version)<br>alpaca mohair (SHOP SPECIAL-2)</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/lr3_1267b\">#1267B-NC1 Royal Traveler Shirt-1/2<br>nylon forest camo brown jungle</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/lr3_3315l\">#3315L-NC1 E-Z Lax 4<br>nylon forest camo brown jungle</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/lr2-1_3220w\">#3220W-FCW2 NEUTRA 5-W<br>feather chambray W-ply blue</a>\n</p>"
           }
-        },
-        "scroll_ALJHTk": {
-          "type": "scroll",
-          "settings": {
-            "image_1": "shopify://shop_images/0921_2110.jpg",
-            "image_2": "shopify://shop_images/0921_2150.jpg",
-            "image_3": "shopify://shop_images/0921_2155.jpg",
-            "link": "",
-            "custom_html": "<p>\n<a href=\"https://postoveralls.com/collections/lr3_1267b\">#1267B-NC3 Royal Traveler Shirt-1/2<br>nylon forest camo grey jungle</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/24fw_1108\">#1108-12DW Ranchero<br>12oz. selvedge deep washed denim indigo</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/limited-release-vol-4-3307-e-z-army-navy-pants\">#3307-HCN E-Z ARMY-NAVY Pants<br>herringbone print corduroy navy</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/lr2-1_3220w\">#3220W-FPW1 NEUTRA 5-W<br>feather chambray plaid W-ply blue</a>\n</p>"
-          }
         }
       },
       "block_order": [
@@ -538,8 +528,7 @@
         "scroll_HzFjWN",
         "scroll_izg7Ae",
         "scroll_gAJ6Hj",
-        "scroll_m7YcB7",
-        "scroll_ALJHTk"
+        "scroll_m7YcB7"
       ],
       "name": "Look List 2",
       "settings": {
