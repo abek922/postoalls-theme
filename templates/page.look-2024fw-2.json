@@ -465,16 +465,6 @@
             "link": "",
             "custom_html": "<p>\n<a href=\"https://postoveralls.com/collections/lr3_1512\">#1512-NC2 Royal Traveler<br>nylon forest camo blue jungle</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/24fw_1204\">#1204-HBI ARMY Shirt<br>herringbone denim double indigo</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/24fw_1301\">#1301-HBI ARMY Pants<br>herringbone denim double indigo</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/24fw_jp510\">JP510-NC1 BAGSINPROGRESS x Post O'Alls FANNYPACK CROSSBODY<br>nylon forest camo brown jungle</a>\n</p>"
           }
-        },
-        "scroll_m7YcB7": {
-          "type": "scroll",
-          "settings": {
-            "image_1": "shopify://shop_images/0921_2203.jpg",
-            "image_2": "shopify://shop_images/0921_2216.jpg",
-            "image_3": "shopify://shop_images/0921_2236.jpg",
-            "link": "",
-            "custom_html": "<p>\n<a href=\"https://postoveralls.com/collections/shop-special-24fw-1\">#1103-AMB Polarfleece Jacket (trashed wool version)<br>alpaca mohair (SHOP SPECIAL-2)</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/lr3_1267b\">#1267B-NC1 Royal Traveler Shirt-1/2<br>nylon forest camo brown jungle</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/lr3_3315l\">#3315L-NC1 E-Z Lax 4<br>nylon forest camo brown jungle</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/lr2-1_3220w\">#3220W-FCW2 NEUTRA 5-W<br>feather chambray W-ply blue</a>\n</p>"
-          }
         }
       },
       "block_order": [
@@ -527,8 +517,7 @@
         "scroll_bVQdKW",
         "scroll_HzFjWN",
         "scroll_izg7Ae",
-        "scroll_gAJ6Hj",
-        "scroll_m7YcB7"
+        "scroll_gAJ6Hj"
       ],
       "name": "Look List 2",
       "settings": {
