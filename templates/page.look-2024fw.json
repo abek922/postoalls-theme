@@ -11,6 +11,33 @@
   "sections": {
     "look_header_HtBb9Q": {
       "type": "look-text",
+      "blocks": {
+        "title_wHWcDW": {
+          "type": "title",
+          "settings": {
+            "title_ja": "2024 F/W COLLECTION",
+            "title_en": "Title",
+            "heading_tag": "h1",
+            "alignment": "center",
+            "margin_top": 0,
+            "margin_bottom": 20
+          }
+        },
+        "text_BPJmz7": {
+          "type": "text",
+          "settings": {
+            "text_ja": "今シーズンのPost O’Allsは、2023FWシーズンと同様に1993FWのデビュー・コレクションを“今”のムードで表現しています。ここしばらくのPost O’Allsの2大メインカラーであるインディゴブルーとチャコールグレーの魅力を引き続き掘り下げ、1トーンでのコーディネートはもちろん、2つのトーンをブレンドさせることにも新しい気分を感じています。2024FWシーズンも“ビンテージ・ワークウエアをその時に着たいムードで提案する”というブランド創業時からのアイデアで、移りゆくブランドの“今”を表現しています。",
+            "text_en": "For this season, Post O’Alls expresses the brand’s current mood through the models of the debut collection from 1993FW as it did for the 2023FW season. Post O’Alls continues to delve deeper into the allure of the two main colors for the brand in recent times, Indigo Blue and Charcoal Grey. Styling options range from monochromatic tone to a blend of both tones, creating a refreshing ambiance. The 2024FW season stays true to the brand's concept (from inception) of proposing \"vintage workwear in the mood at that time,\" reflecting the ever-evolving brand mood.",
+            "alignment": "center",
+            "margin_top": 0,
+            "margin_bottom": 20
+          }
+        }
+      },
+      "block_order": [
+        "title_wHWcDW",
+        "text_BPJmz7"
+      ],
       "name": "Look Header",
       "settings": {
         "background_color": "#f5f5f5",
