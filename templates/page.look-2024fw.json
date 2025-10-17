@@ -241,15 +241,16 @@
         "image_LAjUqN": {
           "type": "image",
           "settings": {
-            "link": "",
+            "image": "shopify://shop_images/look-24fw-13-1_4x_be9b1191-0861-4027-8df6-42719dfecb83.jpg",
+            "link": "shopify://collections/2024fw-look-13",
             "custom_html": "<p></p>"
           }
         },
         "image_zDVytW": {
           "type": "image",
           "settings": {
-            "link": "",
-            "show_arrow": true,
+            "image": "shopify://shop_images/look-24fw-13-4_4x_815d3fdc-4c5e-4b48-96ae-bb484fd399d8.jpg",
+            "link": "shopify://collections/2024fw-look-13",
             "custom_html": "<p></p>"
           }
         },
@@ -376,8 +377,48 @@
         }
       },
       "block_order": [
-        "image_HEjeDa",
-        "scroll_6WyAdz"
+        "image_iEHxHF",
+        "image_GD6ybx",
+        "image_xmLaBX",
+        "image_6cN9QU",
+        "image_nKxyGa",
+        "image_wxbnqw",
+        "image_rkkXLW",
+        "image_rxh36a",
+        "image_C6fhfj",
+        "image_NTeNgm",
+        "image_6aF6qt",
+        "image_7Ehj4y",
+        "image_nKfTTE",
+        "image_JHcwAF",
+        "image_hUjACP",
+        "image_hryR6k",
+        "image_WPCPHg",
+        "image_bnJWCj",
+        "image_ngEcpV",
+        "image_ntr8jC",
+        "image_JDwpdP",
+        "image_wdFpfR",
+        "image_LfncUj",
+        "image_YRAxJN",
+        "image_hFQRDr",
+        "image_zghfAU",
+        "image_crz7ww",
+        "image_LAjUqN",
+        "image_zDVytW",
+        "scroll_eMcDYW",
+        "scroll_4YzHqQ",
+        "scroll_hpRCKd",
+        "scroll_KDjwTc",
+        "scroll_tLGE8V",
+        "scroll_LnLX89",
+        "scroll_U6Wnnh",
+        "scroll_dhQJzm",
+        "scroll_3AGaHB",
+        "scroll_iN6RCU",
+        "scroll_WtALnV",
+        "scroll_GM7Ezi",
+        "scroll_zKzMTa"
       ],
       "name": "Look List 2",
       "settings": {
