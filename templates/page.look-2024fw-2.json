@@ -11,6 +11,33 @@
   "sections": {
     "look_header_HtBb9Q": {
       "type": "look-text",
+      "blocks": {
+        "title_yEFhfM": {
+          "type": "title",
+          "settings": {
+            "title_ja": "[2024FW Limited Release vol.3] <br>nylon forest camo jungle",
+            "title_en": "[2024FW Limited Release vol.3] nylon forest camo jungle",
+            "heading_tag": "h2",
+            "alignment": "center",
+            "margin_top": 0,
+            "margin_bottom": 20
+          }
+        },
+        "text_hnVRhk": {
+          "type": "text",
+          "settings": {
+            "text_ja": "2024年のリミテッド・リリース第三弾は、Post O`Allsの秋冬物としては定番となっているシンサレートの中綿入りのアイテム群になります。Post O`Alls らしいコーディネートのポイントに、またレイヤリング時の潤滑剤としての有効性は間違いのないアイテムと言えるでしょう。今シーズンはナイロン製のフォレスト・カモフラージュ柄を採用、カラーウエイはブラウンジャングル 、ブルージャングル、グレージャングルのエキゾチックな３色展開となっています。インディゴやチャコール系のアイテム群との相性は抜群で、Post O`Allsの2024FWシーズンのムードをマックスまで楽しめるアイテムとなっています。",
+            "text_en": "2024 Limited Release Vol.3 offers a group of items with Thinsulate insulation, which has been a staple of Post O’Alls’ fall / winter lineup. They are proven effective as a lubricant for Post O'Alls layering system and would be a point of coordination. This season's collection features a nylon FOREST camouflage pattern in three exotic colorways: brown jungle, blue jungle, and grey jungle. These are perfect match for indigo and charcoal hues, and you can utilize coordinate ability with Post O'Alls’ 2024FW items to the max.",
+            "alignment": "center",
+            "margin_top": 0,
+            "margin_bottom": 20
+          }
+        }
+      },
+      "block_order": [
+        "title_yEFhfM",
+        "text_hnVRhk"
+      ],
       "name": "Look Header",
       "settings": {
         "background_color": "#f5f5f5",
@@ -386,6 +413,7 @@
           "settings": {
             "image_1": "shopify://shop_images/0921_1498.jpg",
             "link": "",
+            "show_arrow": true,
             "custom_html": "<p>\n<a href=\"https://postoveralls.com/collections/limited-release-vol-4-introduction\">[Limited Release vol.4]<br>Introduction</a></p>"
           }
         },
@@ -395,6 +423,7 @@
             "image_1": "shopify://shop_images/0921_1314.jpg",
             "image_2": "shopify://shop_images/0921_1339.jpg",
             "link": "",
+            "show_arrow": true,
             "custom_html": "<p>\n<a href=\"https://postoveralls.com/collections/limited-release-vol-4-12006-walkabout\">#12006-HCB WALKABOUT<br>herringbone print corduroy brown</a><br><br>\n<a href=\"https://postoveralls.com/collections/lr2-2_3221_flannel\">#3221-FP2 NEAUTRA<br>flannel plaid pale green</a><br><br>\n<a href=\"https://postoveralls.com/collections/limited-release-vol-4-3307-e-z-army-navy-pants\">#3307-HCB E-Z ARMY-NAVY Pants<br>herringbone print corduroy brown</a><br><br>\n<a href=\"https://postoveralls.com/collections/24ss_bip021\">BIP021-PG BAGSINPROGRESS x Post O'Alls Carry-all Beach Bag<br>sunforger cotton canvas pearl grey\n</a></p>"
           }
         },
@@ -405,6 +434,7 @@
             "image_2": "shopify://shop_images/0921_1400.jpg",
             "image_3": "shopify://shop_images/0921_1434.jpg",
             "link": "",
+            "show_arrow": true,
             "custom_html": "<p>\n<a href=\"https://postoveralls.com/collections/limited-release-vol-4-1102-engineers-jacket\">#1102-HCN Engineers' Jacket<br>herringbone print corduroy navy</a><br>\n<br>\n<a href=\"https://postoveralls.com/products/24fw_1204-ic1\">#1204-IC1 ARMY Shirt<br>indigo check indigo</a><br><br>\n<a href=\"https://postoveralls.com/collections/lr2-2_3221_flannel\">#3221-FP4 NEUTRA 6<br>flannel plaid red</a><br><br>\n<a href=\"https://postoveralls.com/collections/limited-release-vol-4-3307-e-z-army-navy-pants\">#3307 E-Z ARMY-NAVY Pants<br>herringbone print corduroy navy\n</a></p>"
           }
         },
@@ -415,6 +445,7 @@
             "image_2": "shopify://shop_images/0921_1574.jpg",
             "image_3": "shopify://shop_images/0921_1596.jpg",
             "link": "",
+            "show_arrow": true,
             "custom_html": "<p>\n<a href=\"https://postoveralls.com/collections/limited-release-vol-4-1102dv-engineers-jacket-dv\">#1102DV-HCN Engineers' Jacket DV<br>herringbone print corduroy navy</a><br><br>\n<a href=\"https://postoveralls.com/collections/lr2-1_3220b\">#3220B-LMB NEUTRA 5 Band<br>light moleskin black</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/24fw_1501\"></a>#1501-VTC 1 Pocket Vest<br>vintage twill w/trashed wool lining charcoal w/base lining<br>\n<br>\n<a href=\"https://postoveralls.com/products/3910-pk2-post-key-chain-2-brass-flat-black\">#3910-PK2 POST Key Chain #2<br>brass flat black</a><br>\n<br>\n<a href=\"https://postoveralls.com/products/3909-pb2-post-bracelet-2-brass-flat-black\">#3909-PB2 POST Bracelet #2<br>brass flat black</a></p>"
           }
         },
@@ -424,6 +455,7 @@
             "image_1": "shopify://shop_images/0921_1630.jpg",
             "image_2": "shopify://shop_images/0921_1697.jpg",
             "link": "",
+            "show_arrow": true,
             "custom_html": "<p>\n<a href=\"https://postoveralls.com/collections/limited-release-vol-4-1102-engineers-jacket\">#1102-HCB Engineers' Jacket<br>herringbone print corduroy brown</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/lr2-1_3220bw\">#3220BW-FCW1 NEUTRA 5 Band-W<br>feather chambray W-ply white</a><br>\n<br>\n<a href=\"https://postoveralls.com/products/24fw_1104-hbb\">#1104-HBB Stoker's Jacket<br>herringbone denim black</a><br>\n<br>\n<a href=\"https://postoveralls.com/products/24fw_1301-hbb\">#1301-HBB ARMY Pants<br>herringbone denim black</a><br>\n<br>\n<a href=\"https://postoveralls.com/products/3912-pk3-post-key-chain-3-brass-flat-black\">#3912-PK3 POST Key Chain #3<br>brass flat black\n</a><br>\n<br>\n</p>"
           }
         },
@@ -433,6 +465,7 @@
             "image_1": "shopify://shop_images/0921_1752.jpg",
             "image_2": "shopify://shop_images/0921_1780.jpg",
             "link": "",
+            "show_arrow": true,
             "custom_html": "<p>\n<a href=\"https://postoveralls.com/collections/limited-release-vol-4-1102dv-engineers-jacket-dv\">#1102DV-HCB Engineers' Jacket DV<br>herringbone print corduroy brown</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/24fw_1105\">#1105-VTI NAVY Parka<br>vintage twill indigo</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/lr2-1_3220w\">#3220W-FCW2 NEUTRA 5-W<br>feather chambray W-ply blue</a><br>\n<br>\n<a href=\"https://postoveralls.com/products/24fw_1382-12dw\">#1382-12DW No.1 Five Pocket<br>12oz. selvedge deep washed denim indigo</a><br>\n<br>\n</p>"
           }
         },
@@ -444,6 +477,7 @@
             "image_3": "shopify://shop_images/0921_1874.jpg",
             "image_4": "shopify://shop_images/0921_1886.jpg",
             "link": "",
+            "show_arrow": true,
             "custom_html": "<p>\n<a href=\"https://postoveralls.com/collections/limited-release-vol-4-3116b-ok-rider-5\">#3116B-HCB OK Rider 5<br>herringbone print corduroy brown</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/24fw_1102\">#1102-HBI Engineers' Jacket<br>herringbone denim double indigo</a><br>\n<br>\n<a href=\"https://postoveralls.com/products/24fw_3220bw-fcw2\">#3220BW-FCW2 NEUTRA 5 Band-W<br>feather chambray W-ply blue</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/limited-release-vol-4-3307-e-z-army-navy-pants\">#3307-HCB E-Z ARMY-NAVY Pants<br>herringbone print corduroy brown</a><br>\n</p>"
           }
         },
@@ -454,6 +488,7 @@
             "image_2": "shopify://shop_images/0921_1924.jpg",
             "image_3": "shopify://shop_images/0921_1938.jpg",
             "link": "",
+            "show_arrow": true,
             "custom_html": "<p>\n<a href=\"https://postoveralls.com/products/24fw_12006_hcn\">#12006-HCN WALKABOUT<br>herringbone print corduroy navy</a><br>\n<br>\n<a href=\"https://postoveralls.com/products/24fw_1204-ctb\">#1204-CTB ARMY Shirt<br>crinkle nylon taffeta black</a><br>\n<br>\n<a href=\"https://postoveralls.com/products/24fw_3220-cc\">#3220-CC NEUTRA 5<br>classic chambray indigo</a><br>\n<br>\n<a href=\"https://postoveralls.com/products/24fw_1601-mbi\">#1601-MBI Engineers' Cap<br>moleskin black indigo</a><br>\n<br>\n<a href=\"https://postoveralls.com/products/3315ctk\">#3315-CTK E-Z Lax 4<br>crinkle taffeta w/Thinsulate khaki</a><br>\n</p>"
           }
         },
@@ -465,6 +500,7 @@
             "image_3": "shopify://shop_images/0921_2011.jpg",
             "image_4": "shopify://shop_images/0921_2034.jpg",
             "link": "",
+            "show_arrow": true,
             "custom_html": "<p>\n<a href=\"https://postoveralls.com/collections/limited-release-vol-4-3116b-ok-rider-5\">#3116B-HCN OK Rider 5<br>herringbone print corduroy navy</a><br>\n<br>\n<a href=\"https://postoveralls.com/products/24fw_1202-gc\">#1202-GC No.2 Shirt<br>grey covert salt &amp; pepper</a><br>\n<br>\n<a href=\"https://postoveralls.com/products/24fw_1502-twg\">#1502-TWG Fleece Vest (trashed wool version)<br>trashed wool green stripe\n</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/limited-release-vol-4-3315-e-z-lax-4\">#3315-HCB E-Z Lax 4<br>herringbone print corduroy brown</a><br>\n</p>"
           }
         },
@@ -475,6 +511,7 @@
             "image_2": "shopify://shop_images/0921_2082.jpg",
             "image_3": "shopify://shop_images/0921_2101.jpg",
             "link": "",
+            "show_arrow": true,
             "custom_html": "<p>\n<a href=\"https://postoveralls.com/products/pre-order-shop-special-1105-amb-navy-parka-shop-special\">#1105-AMB NAVY Parka<br>alpaca mohair (SHOP SPECIAL)</a><br>\n<br>\n<a href=\"https://postoveralls.com/collections/limited-release-vol-4-3315-e-z-lax-4\">#3315-HCN E-Z Lax 4<br>herringbone print corduroy navy\n</a><br>\n</p>"
           }
         }
