@@ -25,6 +25,15 @@
         "image_HEjeDa": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/look-24fw-1-2_4x_05d319e5-e3b2-48ee-a55e-8a0781f3593e.jpg",
+            "link": "",
+            "custom_html": "<p></p>"
+          }
+        },
+        "image_p4GDgK": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/look-24fw-1-1_4x_e004fb9b-8435-45d4-b09a-44be366e22e2.jpg",
             "link": "",
             "custom_html": "<p></p>"
           }
@@ -32,6 +41,7 @@
         "scroll_6WyAdz": {
           "type": "scroll",
           "settings": {
+            "image_1": "shopify://shop_images/look-24fw-1-2_4x_05d319e5-e3b2-48ee-a55e-8a0781f3593e.jpg",
             "link": "",
             "show_arrow": true,
             "custom_html": "<p></p>"
@@ -40,6 +50,7 @@
       },
       "block_order": [
         "image_HEjeDa",
+        "image_p4GDgK",
         "scroll_6WyAdz"
       ],
       "name": "Look List 2",
