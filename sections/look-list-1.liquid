@@ -104,46 +104,6 @@
     color: #ccc;
   }
 
-  .look-page__nav-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.8);
-    border: none;
-    border-radius: 0;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    z-index: 2;
-    box-shadow: none;
-  }
-
-  .look-page__nav-button:hover {
-    background: rgba(255, 255, 255, 0.95);
-    transform: translateY(-50%);
-  }
-
-  .look-page__nav-button--prev {
-    left: 1rem;
-  }
-
-  .look-page__nav-button--next {
-    right: 1rem;
-  }
-
-  .look-page__nav-button svg {
-    width: 12px;
-    height: 12px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    color: #333;
-  }
-
   .look-page__sidebar {
     display: grid;
     gap: 2rem;
@@ -279,19 +239,6 @@
       margin-bottom: 3rem;
     }
 
-    .look-page__nav-button {
-      width: 32px;
-      height: 32px;
-    }
-
-    .look-page__nav-button--prev {
-      left: 0.5rem;
-    }
-
-    .look-page__nav-button--next {
-      right: 0.5rem;
-    }
-
     .look-page__products {
       grid-template-columns: repeat(2, 1fr);
       gap: 1rem;
@@ -375,23 +322,6 @@
            {{ block.shopify_attributes }}>
         
         <div class="look-page__image-container">
-          {%- if section.blocks.size > 1 -%}
-            <button class="look-page__nav-button look-page__nav-button--prev" 
-                    type="button"
-                    aria-label="Previous look">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <polyline points="14,7 9,12 14,17"></polyline>
-              </svg>
-            </button>
-            <button class="look-page__nav-button look-page__nav-button--next" 
-                    type="button"
-                    aria-label="Next look">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <polyline points="10,7 15,12 10,17"></polyline>
-              </svg>
-            </button>
-          {%- endif -%}
-          
           {%- if block.settings.image != blank -%}
             {{ block.settings.image | image_url: width: 1200 | image_tag: class: 'look-page__image', alt: display_title, loading: 'lazy' }}
           {%- else -%}
@@ -494,18 +424,8 @@
     let currentIndex = 0;
     const looks = Array.from(document.querySelectorAll('.look-page__look'));
     const thumbnails = Array.from(document.querySelectorAll('.look-page__thumbnail'));
-    const prevButtons = Array.from(document.querySelectorAll('.look-page__nav-button--prev'));
-    const nextButtons = Array.from(document.querySelectorAll('.look-page__nav-button--next'));
-    const imageContainers = Array.from(document.querySelectorAll('.look-page__image-container'));
     
     if (looks.length === 0) return;
-
-    // スワイプ検出用の変数
-    let touchStartX = 0;
-    let touchEndX = 0;
-    let touchStartY = 0;
-    let touchEndY = 0;
-    const minSwipeDistance = 50;
 
     function showLook(index) {
       if (index < 0 || index >= looks.length) return;
@@ -537,32 +457,6 @@
       }
     }
 
-    function showPreviousLook() {
-      const newIndex = currentIndex > 0 ? currentIndex - 1 : looks.length - 1;
-      showLook(newIndex);
-    }
-
-    function showNextLook() {
-      const newIndex = currentIndex < looks.length - 1 ? currentIndex + 1 : 0;
-      showLook(newIndex);
-    }
-
-    function handleSwipe() {
-      const diffX = touchEndX - touchStartX;
-      const diffY = touchEndY - touchStartY;
-      
-      // 横方向のスワイプが縦方向より大きい場合のみ処理
-      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > minSwipeDistance) {
-        if (diffX > 0) {
-          // 右スワイプ - 前へ
-          showPreviousLook();
-        } else {
-          // 左スワイプ - 次へ
-          showNextLook();
-        }
-      }
-    }
-
     // サムネイルクリック
     thumbnails.forEach((thumbnail) => {
       thumbnail.addEventListener('click', function(e) {
@@ -572,48 +466,6 @@
           showLook(index);
         }
       });
-    });
-
-    // ナビゲーションボタン
-    prevButtons.forEach((button) => {
-      button.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        showPreviousLook();
-      });
-    });
-
-    nextButtons.forEach((button) => {
-      button.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        showNextLook();
-      });
-    });
-
-    // タッチイベント（各画像コンテナに設定）
-    imageContainers.forEach((container) => {
-      container.addEventListener('touchstart', function(e) {
-        touchStartX = e.changedTouches[0].screenX;
-        touchStartY = e.changedTouches[0].screenY;
-      }, { passive: true });
-
-      container.addEventListener('touchend', function(e) {
-        touchEndX = e.changedTouches[0].screenX;
-        touchEndY = e.changedTouches[0].screenY;
-        handleSwipe();
-      }, { passive: true });
-    });
-
-    // キーボードナビゲーション
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'ArrowLeft') {
-        e.preventDefault();
-        showPreviousLook();
-      } else if (e.key === 'ArrowRight') {
-        e.preventDefault();
-        showNextLook();
-      }
     });
 
     showLook(0);
