@@ -9,6 +9,32 @@
  */
 {
   "sections": {
+    "look_text_hwrar9": {
+      "type": "look-text",
+      "blocks": {
+        "title_bEcEa9": {
+          "type": "title",
+          "settings": {
+            "title_ja": "2024 S/S COLLECTION",
+            "title_en": "2024 S/S COLLECTION",
+            "heading_tag": "h1",
+            "alignment": "center",
+            "margin_top": 0,
+            "margin_bottom": 20
+          }
+        }
+      },
+      "block_order": [
+        "title_bEcEa9"
+      ],
+      "name": "Look Text",
+      "settings": {
+        "background_color": "#F5F5F5",
+        "text_color": "#333333",
+        "padding_top": 80,
+        "padding_bottom": 40
+      }
+    },
     "look_list_5_c9whHR": {
       "type": "look-list-5",
       "blocks": {
@@ -109,6 +135,7 @@
     }
   },
   "order": [
+    "look_text_hwrar9",
     "look_list_5_c9whHR"
   ]
 }
