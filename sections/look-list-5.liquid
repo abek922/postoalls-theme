@@ -159,35 +159,35 @@
   }
 
   .look-page__look-title {
-    text-align: center;
     font-size: 1.25rem;
     font-weight: 300;
     letter-spacing: 0.1em;
-    margin: 0;
     text-transform: uppercase;
     color: rgb(var(--text-color));
+    line-height: 1.3;
   }
 
   /* コメント（日本語・英語） */
   .look-page__comments {
-    text-align: center;
-    margin-top: 1rem;
+    line-height: 1.6;
   }
 
   .look-page__comment {
     font-size: 0.9rem;
-    line-height: 1.6;
     color: rgba(var(--text-color), 0.8);
-    margin: 0.5rem 0;
   }
 
-  .look-page__comment--ja {
-    font-weight: 400;
+  /* Alignment Classes */
+  .text-left {
+    text-align: left;
   }
 
-  .look-page__comment--en {
-    font-weight: 300;
-    font-style: italic;
+  .text-center {
+    text-align: center;
+  }
+
+  .text-right {
+    text-align: right;
   }
 
   .look-page__products {
@@ -432,18 +432,42 @@
         </div>
 
         <div class="look-page__sidebar">
-          {%- if block.settings.title != blank -%}
-            <h2 class="look-page__look-title">{{ block.settings.title }}</h2>
+          {%- assign has_title = false -%}
+          {%- if block.settings.title_ja != blank or block.settings.title_en != blank -%}
+            {%- assign has_title = true -%}
+          {%- endif -%}
+          
+          {%- if has_title -%}
+            {%- assign title_tag = block.settings.heading_tag | default: 'h2' -%}
+            <{{ title_tag }} class="look-page__look-title text-{{ block.settings.title_alignment }}" style="
+              margin-top: {{ block.settings.title_margin_top }}px;
+              margin-bottom: {{ block.settings.title_margin_bottom }}px;
+            ">
+              {%- if request.locale.iso_code == 'ja' -%}
+                {{ block.settings.title_ja | default: block.settings.title_en }}
+              {%- else -%}
+                {{ block.settings.title_en | default: block.settings.title_ja }}
+              {%- endif -%}
+            </{{ title_tag }}>
           {%- endif -%}
 
+          {%- assign has_comment = false -%}
           {%- if block.settings.comment_ja != blank or block.settings.comment_en != blank -%}
-            <div class="look-page__comments">
-              {%- if block.settings.comment_ja != blank -%}
-                <p class="look-page__comment look-page__comment--ja">{{ block.settings.comment_ja }}</p>
-              {%- endif -%}
-              {%- if block.settings.comment_en != blank -%}
-                <p class="look-page__comment look-page__comment--en">{{ block.settings.comment_en }}</p>
-              {%- endif -%}
+            {%- assign has_comment = true -%}
+          {%- endif -%}
+          
+          {%- if has_comment -%}
+            <div class="look-page__comments text-{{ block.settings.comment_alignment }}" style="
+              margin-top: {{ block.settings.comment_margin_top }}px;
+              margin-bottom: {{ block.settings.comment_margin_bottom }}px;
+            ">
+              <div class="look-page__comment">
+                {%- if request.locale.iso_code == 'ja' -%}
+                  {{ block.settings.comment_ja | default: block.settings.comment_en | newline_to_br }}
+                {%- else -%}
+                  {{ block.settings.comment_en | default: block.settings.comment_ja | newline_to_br }}
+                {%- endif -%}
+              </div>
             </div>
           {%- endif -%}
 
@@ -706,10 +730,96 @@
       "name": "Look",
       "settings": [
         {
+          "type": "header",
+          "content": "Title Settings"
+        },
+        {
           "type": "text",
-          "id": "title",
-          "label": "Look Title",
+          "id": "title_ja",
+          "label": "Title (Japanese)",
           "default": "Look Title"
+        },
+        {
+          "type": "text",
+          "id": "title_en",
+          "label": "Title (English)",
+          "default": "Look Title"
+        },
+        {
+          "type": "select",
+          "id": "heading_tag",
+          "label": "Heading Style",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            },
+            {
+              "value": "h5",
+              "label": "H5"
+            },
+            {
+              "value": "h6",
+              "label": "H6"
+            }
+          ],
+          "default": "h2"
+        },
+        {
+          "type": "select",
+          "id": "title_alignment",
+          "label": "Title Alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "range",
+          "id": "title_margin_top",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "px",
+          "label": "Title Margin Top",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "title_margin_bottom",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "px",
+          "label": "Title Margin Bottom",
+          "default": 20
+        },
+        {
+          "type": "header",
+          "content": "Comment Settings"
         },
         {
           "type": "textarea",
@@ -722,6 +832,46 @@
           "id": "comment_en",
           "label": "Comment (English)",
           "info": "英語のコメント"
+        },
+        {
+          "type": "select",
+          "id": "comment_alignment",
+          "label": "Comment Alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "range",
+          "id": "comment_margin_top",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "px",
+          "label": "Comment Margin Top",
+          "default": 15
+        },
+        {
+          "type": "range",
+          "id": "comment_margin_bottom",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "px",
+          "label": "Comment Margin Bottom",
+          "default": 20
         },
         {
           "type": "header",
@@ -796,7 +946,7 @@
   ],
   "presets": [
     {
-      "name": "Look List 5",
+      "name": "Look List 1",
       "category": "POST O'ALLS Look",
       "blocks": [
         {
