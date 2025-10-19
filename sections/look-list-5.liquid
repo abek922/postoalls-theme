@@ -159,22 +159,22 @@
   }
 
   .look-page__look-title {
-    font-size: 1.25rem;
     font-weight: 300;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: rgb(var(--text-color));
     line-height: 1.3;
+    margin: 0;
   }
 
   /* コメント（日本語・英語） */
   .look-page__comments {
-    line-height: 1.6;
+    margin: 0;
   }
 
   .look-page__comment {
-    font-size: 0.9rem;
     color: rgba(var(--text-color), 0.8);
+    margin: 0;
   }
 
   /* Alignment Classes */
@@ -442,6 +442,8 @@
           {%- if has_title -%}
             {%- assign title_tag = block.settings.heading_tag | default: 'h2' -%}
             <{{ title_tag }} class="look-page__look-title text-{{ block.settings.title_alignment }}" style="
+              font-size: {{ block.settings.title_font_size }}px;
+              line-height: {{ block.settings.title_line_height }};
               margin-top: {{ block.settings.title_margin_top }}px;
               margin-bottom: {{ block.settings.title_margin_bottom }}px;
             ">
@@ -463,7 +465,10 @@
               margin-top: {{ block.settings.comment_margin_top }}px;
               margin-bottom: {{ block.settings.comment_margin_bottom }}px;
             ">
-              <div class="look-page__comment">
+              <div class="look-page__comment" style="
+                font-size: {{ block.settings.comment_font_size }}px;
+                line-height: {{ block.settings.comment_line_height }};
+              ">
                 {%- if request.locale.iso_code == 'ja' -%}
                   {{ block.settings.comment_ja | default: block.settings.comment_en | newline_to_br }}
                 {%- else -%}
@@ -801,6 +806,25 @@
         },
         {
           "type": "range",
+          "id": "title_font_size",
+          "min": 12,
+          "max": 48,
+          "step": 1,
+          "unit": "px",
+          "label": "Title Font Size",
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "title_line_height",
+          "min": 1.0,
+          "max": 2.0,
+          "step": 0.1,
+          "label": "Title Line Height",
+          "default": 1.3
+        },
+        {
+          "type": "range",
           "id": "title_margin_top",
           "min": 0,
           "max": 100,
@@ -854,6 +878,25 @@
             }
           ],
           "default": "center"
+        },
+        {
+          "type": "range",
+          "id": "comment_font_size",
+          "min": 12,
+          "max": 32,
+          "step": 1,
+          "unit": "px",
+          "label": "Comment Font Size",
+          "default": 14
+        },
+        {
+          "type": "range",
+          "id": "comment_line_height",
+          "min": 1.0,
+          "max": 2.5,
+          "step": 0.1,
+          "label": "Comment Line Height",
+          "default": 1.6
         },
         {
           "type": "range",
