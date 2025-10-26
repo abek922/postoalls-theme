@@ -29,7 +29,7 @@
       ],
       "name": "Look Text",
       "settings": {
-        "background_color": "#f5f5f5",
+        "background_color": "#efefef",
         "text_color": "#333333",
         "padding_top": 80,
         "padding_bottom": 40
@@ -170,7 +170,7 @@
             "title_margin_top": 0,
             "title_margin_bottom": 20,
             "comment_ja": "このNAVYのプルオーバージャケットはフードや襟周りのデザイン性が高く90sのような着こなしにも合う。パンツを派手にし過ぎましたが、ワイドやバギーなどの90sの単色のパンツなどを合わせてもよいでしょう。襟元のストラップを留めると顔が少ししか見えなくなる。そんな風に来てみても楽しい。",
-            "comment_en": "The USN pull over jacket has great design around the hood and collar and matches well with 90’s styling. The pants are quite flashy, but it would also match well with 90’s wide/baggy monotone pants. It’s also fun to close the collar strap so that the face is only shown a little bit. ",
+            "comment_en": "The USN pull over jacket has great design around the hood and collar and matches well with 90’s styling. The pants are quite flashy, but it would also match well with 90’s wide/baggy monotone pants. It’s also fun to close the collar strap so that the face is only shown a little bit.",
             "comment_alignment": "center",
             "comment_font_size": 14,
             "comment_line_height": 1.6,
@@ -320,7 +320,7 @@
             "title_margin_top": 0,
             "title_margin_bottom": 20,
             "comment_ja": "オールシーズン、どんなシーンでも活躍するポストのハンティングベスト。今、ヴィンテージウエアと合わせるなら90sのコットンセーター。色柄と明るいモノが多いのでインナーとして少し色柄隠れるくらいが丁度良い。さらにその下にB.D.シャツなどを合わせると昭和感出るので控えましょう。",
-            "comment_en": "The Post O’Alls DEE Vest stands as an all-year staple, fitting for any occasion. When matching with current vintage wear, I opted for a 90’s cotton sweater. Best to be worn a little hidden since these sweaters usually have vibrant colors and patterns. Also avoid wearing a B.D. shirt underneath since it will become too “showa”<br/>(post-war high-growth period in Japan).",
+            "comment_en": "The Post O’Alls DEE Vest stands as an all-year staple, fitting for any occasion. When matching with current vintage wear, I opted for a 90’s cotton sweater. Best to be worn a little hidden since these sweaters usually have vibrant colors and patterns. Also avoid wearing a B.D. shirt underneath since it will become too “showa”<br>(post-war high-growth period in Japan).",
             "comment_alignment": "center",
             "comment_font_size": 14,
             "comment_line_height": 1.6,
