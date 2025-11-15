@@ -11,6 +11,22 @@
   "sections": {
     "look_header_HtBb9Q": {
       "type": "look-text",
+      "blocks": {
+        "title_hjtwGt": {
+          "type": "title",
+          "settings": {
+            "title_ja": "タイトル",
+            "title_en": "Title",
+            "heading_tag": "h1",
+            "alignment": "center",
+            "margin_top": 0,
+            "margin_bottom": 20
+          }
+        }
+      },
+      "block_order": [
+        "title_hjtwGt"
+      ],
       "name": "Look Header",
       "settings": {
         "background_color": "#f5f5f5",
