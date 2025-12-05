@@ -11,6 +11,33 @@
   "sections": {
     "look_header_HtBb9Q": {
       "type": "look-text",
+      "blocks": {
+        "title_3hRp6j": {
+          "type": "title",
+          "settings": {
+            "title_ja": "2026 S/S COLLECTION",
+            "title_en": "Title",
+            "heading_tag": "h1",
+            "alignment": "center",
+            "margin_top": 0,
+            "margin_bottom": 20
+          }
+        },
+        "text_r6FmpX": {
+          "type": "text",
+          "settings": {
+            "text_ja": "993年の創業以来、ワークウエアというフィルターを通して、その時々の気分を表現し続けるPost O’Alls。2026S/Sシーズンは、“ワークウエアにはワークウエアでないものを組み合わせる”という、ブランド創業当時のムードが大きくなってきました。ワードローブにワークウエアを１、2点取り入れ、そこから生まれるコーディネートの妙やアイテム同士の不協和音を楽しむ・・・そんなレイドバックした自由な気分が、今また新鮮に映っています。2026S/Sコレクションは、そんなムードを反映してより多くの異なるフレーバーがミックスされています。そのため単一ブランドの製品を組み合わせても、広がりが感じられるラインナップとなっています。",
+            "text_en": "ince its founding in 1993, Post O’Alls has continuously expressed the mood of each era through the lens of workwear. For the 2026 Spring/Summer season, the brand is seeing a resurgence of the mood it had at the time of its inception—namely, the idea of mixing non-workwear pieces with workwear. Incorporating just one or two workwear items into your wardrobe, and enjoying the unexpected harmony—or dissonance—that emerges from those combinations... this laid-back, easy-spirited attitude feels fresh once again. The 2026 S/S collection reflects this mood, blending a wider range of different flavors. As a result, even when wearing pieces exclusively from a single brand, the lineup offers a sense of variety and openness.",
+            "alignment": "center",
+            "margin_top": 0,
+            "margin_bottom": 20
+          }
+        }
+      },
+      "block_order": [
+        "title_3hRp6j",
+        "text_r6FmpX"
+      ],
       "name": "Look Header",
       "settings": {
         "background_color": "#f5f5f5",
@@ -25,7 +52,21 @@
         "look_xbWyEn": {
           "type": "look",
           "settings": {
-            "title": "Look Title",
+            "title_ja": "Look Title",
+            "title_en": "Look Title",
+            "heading_tag": "h2",
+            "title_alignment": "center",
+            "title_font_size": 20,
+            "title_line_height": 1.3,
+            "title_margin_top": 0,
+            "title_margin_bottom": 20,
+            "comment_ja": "",
+            "comment_en": "",
+            "comment_alignment": "center",
+            "comment_font_size": 14,
+            "comment_line_height": 1.6,
+            "comment_margin_top": 15,
+            "comment_margin_bottom": 20,
             "product_1": "",
             "product_2": "",
             "product_3": "",
