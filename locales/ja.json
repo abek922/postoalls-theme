@@ -154,7 +154,7 @@
         "one": "在庫{{ count }}個",
         "other": "在庫{{ count }}個"
       },
-      "out_of_stock": "在庫切れ",
+      "out_of_stock": "Out of stock",
       "oversell_stock": "近日中に再入荷予定",
       "incoming_stock": "{{ next_incoming_date }}再入荷予定",
       "low_stock_with_quantity_count": {
@@ -520,11 +520,19 @@
     },
     "checkout": {
       "stock": {
-        "sold_out_label": "Sold out"
+        "sold_out_label": "Sold out",
+        "title": "Out of stock"
       },
       "throttle": {
         "merchandise": {
           "sold_out": "Sold out"
+        }
+      }
+    },
+    "filters": {
+      "availability": {
+        "value": {
+          "out_of_stock": "Out of stock"
         }
       }
     }
