@@ -39,10 +39,40 @@
             "border_color": "",
             "gradient_overlay": ""
           }
+        },
+        "video_hUAp93": {
+          "type": "video",
+          "disabled": true,
+          "settings": {
+            "video": "shopify://files/videos/Post O'alls SS26 video final 1080p.mp4",
+            "mobile_video": "shopify://files/videos/Post O'alls SS26 video final 1080p.mp4",
+            "allow_sound": true,
+            "subheading": "",
+            "title": "",
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "content_max_width": 780,
+            "button_1_text": "",
+            "button_1_link": "",
+            "button_1_style": "solid",
+            "button_1_background": "#ffffff",
+            "button_1_text_color": "#000000",
+            "button_2_text": "",
+            "button_2_link": "",
+            "button_2_style": "outline",
+            "button_2_background": "#ffffff",
+            "button_2_text_color": "#000000",
+            "background": "",
+            "background_opacity": 50,
+            "text_color": "#ffffff",
+            "border_color": "",
+            "gradient_overlay": "linear-gradient(180deg, rgba(54, 54, 54, 0.2), rgba(4, 4, 4, 0.65) 100%)"
+          }
         }
       },
       "block_order": [
-        "video_nV6ebV"
+        "video_nV6ebV",
+        "video_hUAp93"
       ],
       "custom_css": [
         "div {margin-bottom: 40px;}"
@@ -101,10 +131,39 @@
             "border_color": "",
             "gradient_overlay": "linear-gradient(180deg, rgba(NaN, NaN, NaN, 0), rgba(4, 4, 4, 0.65) 100%)"
           }
+        },
+        "image_rhnrHz": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/KDN4821f.jpg",
+            "mobile_image": "shopify://shop_images/KDN4755f.jpg",
+            "subheading": "",
+            "title": "",
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "content_max_width": 780,
+            "button_1_text": "2026 S/S LOOKBOOK",
+            "button_1_link": "shopify://pages/look-2026ss",
+            "button_1_style": "link",
+            "button_1_background": "#ffffff",
+            "button_1_text_color": "#000000",
+            "button_2_text": "",
+            "button_2_link": "",
+            "button_2_style": "outline",
+            "button_2_background": "#ffffff",
+            "button_2_text_color": "#000000",
+            "background": "",
+            "background_opacity": 50,
+            "text_color": "#ffffff",
+            "border_color": "",
+            "gradient_overlay": "linear-gradient(180deg, rgba(54, 54, 54, 0.2), rgba(4, 4, 4, 0.65) 100%)"
+          }
         }
       },
       "block_order": [
-        "image_VBweqx"
+        "image_VBweqx",
+        "image_rhnrHz"
       ],
       "custom_css": [
         ".place-self-end-center {transform: translateY(-4rem);}",
