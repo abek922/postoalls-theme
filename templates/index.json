@@ -14,6 +14,7 @@
       "blocks": {
         "video_nV6ebV": {
           "type": "video",
+          "disabled": true,
           "settings": {
             "video": "shopify://files/videos/top-movie_25fw_pc.mp4",
             "mobile_video": "shopify://files/videos/top-movie_25fw_sp.mp4",
@@ -42,7 +43,6 @@
         },
         "video_hUAp93": {
           "type": "video",
-          "disabled": true,
           "settings": {
             "video": "shopify://files/videos/Post O'alls SS26 video final 720p_pc.mp4",
             "mobile_video": "shopify://files/videos/Post O'alls SS26 video final 1080p.mp4",
@@ -107,6 +107,7 @@
       "blocks": {
         "image_VBweqx": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/banner-look_25fw_pc.jpg",
             "mobile_image": "shopify://shop_images/banner-look_25fw_sp.jpg",
@@ -134,7 +135,6 @@
         },
         "image_rhnrHz": {
           "type": "image",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/KDN4821f.jpg",
             "mobile_image": "shopify://shop_images/KDN4755f.jpg",
@@ -187,6 +187,7 @@
       "blocks": {
         "image_DPfKdr": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/top-banner-look-2-pc.png",
             "mobile_image": "shopify://shop_images/top-banner-look-2-sp.png",
