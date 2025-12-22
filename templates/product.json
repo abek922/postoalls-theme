@@ -92,15 +92,10 @@
           "type": "badges",
           "settings": {}
         },
-        "line_item_property_kbxWn7": {
-          "type": "line_item_property",
+        "more_information_7R3aCR": {
+          "type": "more_information",
           "settings": {
-            "label": "Your label",
-            "type": "text",
-            "required": false,
-            "allow_long_text": false,
-            "checkbox_value": "Yes",
-            "select_values": "Value 1,Value 2,Value 3"
+            "text": "More information"
           }
         }
       },
@@ -117,7 +112,7 @@
         "buy_buttons",
         "complementary_products",
         "badges_D4whHq",
-        "line_item_property_kbxWn7"
+        "more_information_7R3aCR"
       ],
       "custom_css": [
         "h3 {font-size: 12px; line-height: 1.2rem; margin-bottom: 2rem;}"
