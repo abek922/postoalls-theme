@@ -91,12 +91,6 @@
         "badges_D4whHq": {
           "type": "badges",
           "settings": {}
-        },
-        "more_information_7R3aCR": {
-          "type": "more_information",
-          "settings": {
-            "text": "More information"
-          }
         }
       },
       "block_order": [
@@ -111,8 +105,7 @@
         "quantity_selector",
         "buy_buttons",
         "complementary_products",
-        "badges_D4whHq",
-        "more_information_7R3aCR"
+        "badges_D4whHq"
       ],
       "custom_css": [
         "h3 {font-size: 12px; line-height: 1.2rem; margin-bottom: 2rem;}"
