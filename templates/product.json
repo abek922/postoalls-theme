@@ -87,6 +87,10 @@
             "stack_products": false,
             "show_quick_buy": true
           }
+        },
+        "badges_D4whHq": {
+          "type": "badges",
+          "settings": {}
         }
       },
       "block_order": [
@@ -100,7 +104,8 @@
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
-        "complementary_products"
+        "complementary_products",
+        "badges_D4whHq"
       ],
       "custom_css": [
         "h3 {font-size: 12px; line-height: 1.2rem; margin-bottom: 2rem;}"
@@ -116,7 +121,7 @@
         "mobile_controls": "thumbnails",
         "enable_media_autoplay": false,
         "enable_video_looping": true,
-        "enable_image_zoom": false,
+        "enable_image_zoom": true,
         "max_image_zoom_level": 3
       }
     },
