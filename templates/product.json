@@ -87,10 +87,6 @@
             "stack_products": false,
             "show_quick_buy": true
           }
-        },
-        "badges_D4whHq": {
-          "type": "badges",
-          "settings": {}
         }
       },
       "block_order": [
@@ -104,8 +100,7 @@
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
-        "complementary_products",
-        "badges_D4whHq"
+        "complementary_products"
       ],
       "custom_css": [
         "h3 {font-size: 12px; line-height: 1.2rem; margin-bottom: 2rem;}"
