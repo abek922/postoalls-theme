@@ -324,7 +324,7 @@
   },
   "platform_customizations": {
     "custom_css": [
-      ".ruffruff-pre-order-product-message {font-size :12px;}"
+      ".ruffruff-pre-order-product-message p {font-size: 12px;}"
     ]
   }
 }
