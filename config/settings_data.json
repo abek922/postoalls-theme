@@ -321,5 +321,10 @@
       "product_sold_out_badge_background": "#efefef",
       "product_custom_badge_background": "#1c1c1c"
     }
+  },
+  "platform_customizations": {
+    "custom_css": [
+      ".ruffruff-pre-order-product-message {font-size :12px;}"
+    ]
   }
 }
