@@ -12,12 +12,12 @@ Supported variables
 * product: the product to render the badges
 * variant: the specific variant to show the badge from
 * vertical: if set to true, the badges are outputted vertically
-* types: the types of badge to output. Can be "custom", "sold_out", "discount", "coming_soon", "archive", or "new_arrival" (or a combination separated by comma). If nothing is set, all badges are outputted.
+* types: the types of badge to output. Can be "custom", "sold_out", "discount", "coming_soon", "archive", "new_arrival", or "pre_order" (or a combination separated by comma). If nothing is set, all badges are outputted.
 * context: can be "product" or "card"
 {%- endcomment -%}
 
 {%- liquid
-  assign badge_types = types | default: 'custom, coming_soon, archive, new_arrival, sold_out, discount' | split: ','
+  assign badge_types = types | default: 'custom, coming_soon, archive, new_arrival, pre_order, sold_out, discount' | split: ','
   assign variant = variant | default: product.selected_or_first_available_variant
   
   # Coming soon タグの確認
@@ -46,6 +46,16 @@ Supported variables
     assign lowercase_tag = tag | downcase
     if lowercase_tag contains 'new arrival'
       assign has_new_arrival_tag = true
+      break
+    endif
+  endfor
+  
+  # Pre-order タグの確認
+  assign has_pre_order_tag = false
+  for tag in product.tags
+    assign lowercase_tag = tag | downcase
+    if lowercase_tag contains 'pre-order' or lowercase_tag contains 'preorder'
+      assign has_pre_order_tag = true
       break
     endif
   endfor
@@ -81,6 +91,13 @@ Supported variables
         {%- if has_new_arrival_tag -%}
           <span class="badge badge--new-arrival">
             {{- 'product.general.new_arrival_badge' | t -}}
+          </span>
+        {%- endif -%}
+
+      {%- when 'pre_order' -%}
+        {%- if has_pre_order_tag -%}
+          <span class="badge badge--pre-order">
+            {{- 'product.general.pre_order_badge' | t -}}
           </span>
         {%- endif -%}
 
