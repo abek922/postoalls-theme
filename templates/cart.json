@@ -17,7 +17,7 @@
         ".neo-input {padding: 1rem; text-align: center; color: #fff; background-color: #202f55;}",
         ".neo-input::placeholder {color: #fff;}",
         ".neo-input::focus {color: #fff;}",
-        "#delivery-option-div svg {display: none;}"
+        ".ft-options svg {display: none;}"
       ],
       "settings": {
         "color_scheme": "",
