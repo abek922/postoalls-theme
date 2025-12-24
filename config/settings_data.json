@@ -62,6 +62,16 @@
           "input_border_color": "#e3e3e3"
         }
       },
+      "6372134702089524610": {
+        "type": "shopify://apps/pickeasy/blocks/zipcode-checker/7e06b047-cfd1-4df7-add1-81e9a842022c",
+        "disabled": true,
+        "settings": {}
+      },
+      "136652565592430995": {
+        "type": "shopify://apps//blocks/pre-order-app/290ed845-6a31-49a7-a244-443963fc8b13",
+        "disabled": false,
+        "settings": {}
+      },
       "10111608272286102450": {
         "type": "shopify://apps/pickeasy/blocks/app-embed/7e06b047-cfd1-4df7-add1-81e9a842022c",
         "disabled": false,
@@ -79,16 +89,6 @@
           "buttonClickTimeout": 500,
           "additionalJavascriptAndCss": ""
         }
-      },
-      "6372134702089524610": {
-        "type": "shopify://apps/pickeasy/blocks/zipcode-checker/7e06b047-cfd1-4df7-add1-81e9a842022c",
-        "disabled": true,
-        "settings": {}
-      },
-      "136652565592430995": {
-        "type": "shopify://apps//blocks/pre-order-app/290ed845-6a31-49a7-a244-443963fc8b13",
-        "disabled": false,
-        "settings": {}
       }
     },
     "color_schemes": {
@@ -324,7 +324,7 @@
   },
   "platform_customizations": {
     "custom_css": [
-      ".ruffruff-pre-order-product-message p{font-size: 12px !important;}"
+      ".ruffruff-pre-order-product-message p {font-size: 12px !important;}"
     ]
   }
 }
