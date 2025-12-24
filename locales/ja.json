@@ -178,7 +178,7 @@
   },
   "collection": {
     "general": {
-      "empty_collection": "コレクションを空にする",
+      "empty_collection": "空のコレクション",
       "all_collections": "コレクション",
       "no_collections": "このストアにコレクションはありません。",
       "continue_shopping": "ショッピングを開始する"
