@@ -535,6 +535,11 @@
           "out_of_stock": "Out of stock"
         }
       }
+    },
+    "notices": {
+      "cart": {
+        "product_sold_out": "Product sold out"
+      }
     }
   }
 }
