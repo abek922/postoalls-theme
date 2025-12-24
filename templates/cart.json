@@ -14,7 +14,7 @@
       "custom_css": [
         ".ft-options {height: 150px !important;}",
         ".additional-message {margin-top: 20px;}",
-        ".neo-input {padding: 1rem; text-align: center; background-color: #202f55;}",
+        ".neo-input {padding: 1rem; text-align: center; color: #fff; background-color: #202f55;}",
         ".neo-input::placeholder {color: #fff;}",
         ".neo-input::focus {color: #fff;}"
       ],
