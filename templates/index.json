@@ -333,6 +333,37 @@
         "button_text": ""
       }
     },
+    "featured_collections_QYTW87": {
+      "type": "featured-collections",
+      "blocks": {
+        "collection_wEH3UH": {
+          "type": "collection",
+          "settings": {
+            "collection": "2026ss-pre-order",
+            "products_count": 4,
+            "title": "",
+            "link_url": "",
+            "link_text": "View all"
+          }
+        }
+      },
+      "block_order": [
+        "collection_wEH3UH"
+      ],
+      "disabled": true,
+      "name": "t:sections.featured_collections.presets.featured_collections.name",
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "hide_product_information": false,
+        "stack_products": false,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "horizontal_spacing_factor": 1,
+        "vertical_spacing_factor": 1,
+        "subheading": ""
+      }
+    },
     "featured-collections": {
       "type": "featured-collections",
       "blocks": {
@@ -409,6 +440,7 @@
     "multi-column",
     "blog-posts",
     "blog_posts_news_keAKtC",
+    "featured_collections_QYTW87",
     "featured-collections",
     "blog_wordpress_czYcm8",
     "newsletter"
