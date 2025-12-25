@@ -265,7 +265,7 @@
       "email": "メールアドレス",
       "password": "パスワード",
       "submit": "ログイン",
-      "forgot_password": "パスワードをお忘れですか？",
+      "forgot_password": "パスワードをお忘れのお客様はこちら",
       "sign_up": "登録する"
     },
     "recover_password": {
