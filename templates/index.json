@@ -369,7 +369,7 @@
         "collection-1": {
           "type": "collection",
           "settings": {
-            "collection": "all",
+            "collection": "new-arrival",
             "products_count": 4,
             "title": "NEW ARRIVALS",
             "link_url": "shopify://collections/all",
