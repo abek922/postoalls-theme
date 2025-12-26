@@ -355,7 +355,7 @@
         "color_scheme": "",
         "separate_section_with_border": true,
         "hide_product_information": false,
-        "stack_products": false,
+        "stack_products": true,
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 4,
         "horizontal_spacing_factor": 1,
