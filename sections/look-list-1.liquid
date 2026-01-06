@@ -506,13 +506,21 @@
         {%- for block in section.blocks -%}
           {%- assign display_title = block.settings.title_ja | default: block.settings.title_en | default: 'Look' -%}
           {%- assign first_image = blank -%}
-          {%- for i in (1..6) -%}
-            {%- assign image_key = 'image_' | append: i -%}
-            {%- if block.settings[image_key] != blank and first_image == blank -%}
-              {%- assign first_image = block.settings[image_key] -%}
-              {%- break -%}
-            {%- endif -%}
-          {%- endfor -%}
+          
+          {%- comment -%}最初の画像を見つける{%- endcomment -%}
+          {%- if block.settings.image_1 != blank -%}
+            {%- assign first_image = block.settings.image_1 -%}
+          {%- elsif block.settings.image_2 != blank -%}
+            {%- assign first_image = block.settings.image_2 -%}
+          {%- elsif block.settings.image_3 != blank -%}
+            {%- assign first_image = block.settings.image_3 -%}
+          {%- elsif block.settings.image_4 != blank -%}
+            {%- assign first_image = block.settings.image_4 -%}
+          {%- elsif block.settings.image_5 != blank -%}
+            {%- assign first_image = block.settings.image_5 -%}
+          {%- elsif block.settings.image_6 != blank -%}
+            {%- assign first_image = block.settings.image_6 -%}
+          {%- endif -%}
           
           <div class="look-page__thumbnail {% if forloop.index0 == 0 %}is-active{% endif %}" 
                data-look-index="{{ forloop.index0 }}">
@@ -550,14 +558,14 @@
     {%- for block in section.blocks -%}
       {%- assign display_title = block.settings.title_ja | default: block.settings.title_en | default: 'Look' -%}
       
-      {%- comment -%}このLookの画像を配列に収集{%- endcomment -%}
-      {%- assign look_images = '' | split: '' -%}
-      {%- for i in (1..6) -%}
-        {%- assign image_key = 'image_' | append: i -%}
-        {%- if block.settings[image_key] != blank -%}
-          {%- assign look_images = look_images | push: block.settings[image_key] -%}
-        {%- endif -%}
-      {%- endfor -%}
+      {%- comment -%}このLookの画像数をカウント{%- endcomment -%}
+      {%- assign image_count = 0 -%}
+      {%- if block.settings.image_1 != blank -%}{%- assign image_count = image_count | plus: 1 -%}{%- endif -%}
+      {%- if block.settings.image_2 != blank -%}{%- assign image_count = image_count | plus: 1 -%}{%- endif -%}
+      {%- if block.settings.image_3 != blank -%}{%- assign image_count = image_count | plus: 1 -%}{%- endif -%}
+      {%- if block.settings.image_4 != blank -%}{%- assign image_count = image_count | plus: 1 -%}{%- endif -%}
+      {%- if block.settings.image_5 != blank -%}{%- assign image_count = image_count | plus: 1 -%}{%- endif -%}
+      {%- if block.settings.image_6 != blank -%}{%- assign image_count = image_count | plus: 1 -%}{%- endif -%}
       
       <div class="look-page__look {% if look_index == 0 %}is-active{% endif %}" 
            data-look-index="{{ look_index }}"
@@ -565,7 +573,7 @@
         
         <div class="look-page__image-section">
           <div class="look-page__image-container">
-            {%- if look_images.size > 1 -%}
+            {%- if image_count > 1 -%}
               <button class="look-page__nav-button look-page__nav-button--prev" 
                       type="button"
                       aria-label="Previous image">
@@ -582,12 +590,18 @@
               </button>
             {%- endif -%}
             
-            {%- if look_images.size > 0 -%}
-              {%- for image in look_images -%}
-                <div class="look-page__image-wrapper {% if forloop.index0 == 0 %}is-active{% endif %}"
-                     data-image-index="{{ forloop.index0 }}">
-                  {{ image | image_url: width: 1200 | image_tag: class: 'look-page__image', alt: display_title, loading: 'lazy' }}
-                </div>
+            {%- if image_count > 0 -%}
+              {%- assign img_index = 0 -%}
+              {%- for i in (1..6) -%}
+                {%- assign image_key = 'image_' | append: i -%}
+                {%- assign current_image = block.settings[image_key] -%}
+                {%- if current_image != blank -%}
+                  <div class="look-page__image-wrapper {% if img_index == 0 %}is-active{% endif %}"
+                       data-image-index="{{ img_index }}">
+                    {{ current_image | image_url: width: 1200 | image_tag: class: 'look-page__image', alt: display_title, loading: 'lazy' }}
+                  </div>
+                  {%- assign img_index = img_index | plus: 1 -%}
+                {%- endif -%}
               {%- endfor -%}
             {%- else -%}
               <div class="look-page__image-placeholder">
@@ -596,13 +610,19 @@
             {%- endif -%}
           </div>
 
-          {%- if look_images.size > 1 -%}
+          {%- if image_count > 1 -%}
             <div class="look-page__image-thumbnails">
-              {%- for image in look_images -%}
-                <div class="look-page__image-thumbnail {% if forloop.index0 == 0 %}is-active{% endif %}"
-                     data-image-index="{{ forloop.index0 }}">
-                  {{ image | image_url: width: 200 | image_tag: alt: display_title, loading: 'lazy' }}
-                </div>
+              {%- assign img_index = 0 -%}
+              {%- for i in (1..6) -%}
+                {%- assign image_key = 'image_' | append: i -%}
+                {%- assign current_image = block.settings[image_key] -%}
+                {%- if current_image != blank -%}
+                  <div class="look-page__image-thumbnail {% if img_index == 0 %}is-active{% endif %}"
+                       data-image-index="{{ img_index }}">
+                    {{ current_image | image_url: width: 200 | image_tag: alt: display_title, loading: 'lazy' }}
+                  </div>
+                  {%- assign img_index = img_index | plus: 1 -%}
+                {%- endif -%}
               {%- endfor -%}
             </div>
           {%- endif -%}
