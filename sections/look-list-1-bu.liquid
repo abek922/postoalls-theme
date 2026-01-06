@@ -14,34 +14,18 @@
   .look-page__thumbnails {
     display: flex;
     gap: 1rem;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     max-width: 100%;
     overflow-x: auto;
-    overflow-y: hidden;
     padding: 0 2rem;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-  }
-
-  .look-page__thumbnails::-webkit-scrollbar {
-    height: 6px;
-  }
-
-  .look-page__thumbnails::-webkit-scrollbar-track {
-    background: rgba(var(--text-color), 0.05);
-  }
-
-  .look-page__thumbnails::-webkit-scrollbar-thumb {
-    background: rgba(var(--text-color), 0.2);
-    border-radius: 3px;
   }
 
   .look-page__thumbnail {
     flex-shrink: 0;
-    height: 80px;
-    width: auto;
+    width: 60px;
+    height: 60px;
     border-radius: 0;
     overflow: hidden;
     cursor: pointer;
@@ -60,51 +44,9 @@
   }
 
   .look-page__thumbnail img {
+    width: 100%;
     height: 100%;
-    width: auto;
-    object-fit: contain;
-    display: block;
-  }
-
-  /* Look間切り替えボタン（画面の左右） */
-  .look-page__screen-nav-button {
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(var(--text-color), 0.2);
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    z-index: 100;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-
-  .look-page__screen-nav-button:hover {
-    background: rgba(255, 255, 255, 1);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-  }
-
-  .look-page__screen-nav-button--prev {
-    left: 1rem;
-  }
-
-  .look-page__screen-nav-button--next {
-    right: 1rem;
-  }
-
-  .look-page__screen-nav-button svg {
-    width: 16px;
-    height: 16px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    color: #333;
+    object-fit: cover;
   }
 
   .look-page__content {
@@ -125,10 +67,6 @@
     display: grid;
   }
 
-  .look-page__image-section {
-    position: relative;
-  }
-
   .look-page__image-container {
     position: relative;
     display: flex;
@@ -143,15 +81,6 @@
   .look-page__image {
     max-width: 100%;
     height: auto;
-    display: block;
-  }
-
-  .look-page__image-wrapper {
-    display: none;
-    width: 100%;
-  }
-
-  .look-page__image-wrapper.is-active {
     display: block;
   }
 
@@ -175,7 +104,6 @@
     color: #ccc;
   }
 
-  /* Look内画像切り替えボタン（画像の左右） */
   .look-page__nav-button {
     position: absolute;
     top: 50%;
@@ -214,61 +142,6 @@
     stroke: currentColor;
     stroke-width: 2;
     color: #333;
-  }
-
-  /* Look内画像サムネイル */
-  .look-page__image-thumbnails {
-    display: flex;
-    gap: 0.75rem;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: nowrap;
-    margin-top: 1rem;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 0.5rem;
-  }
-
-  .look-page__image-thumbnails::-webkit-scrollbar {
-    height: 4px;
-  }
-
-  .look-page__image-thumbnails::-webkit-scrollbar-track {
-    background: rgba(var(--text-color), 0.05);
-  }
-
-  .look-page__image-thumbnails::-webkit-scrollbar-thumb {
-    background: rgba(var(--text-color), 0.2);
-    border-radius: 2px;
-  }
-
-  .look-page__image-thumbnail {
-    flex-shrink: 0;
-    height: 60px;
-    width: auto;
-    border-radius: 0;
-    overflow: hidden;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    border: 1px solid transparent;
-    opacity: 0.6;
-  }
-
-  .look-page__image-thumbnail.is-active {
-    border-color: rgb(var(--text-color));
-    opacity: 1;
-  }
-
-  .look-page__image-thumbnail:hover {
-    opacity: 1;
-  }
-
-  .look-page__image-thumbnail img {
-    height: 100%;
-    width: auto;
-    object-fit: contain;
-    display: block;
   }
 
   .look-page__sidebar {
@@ -397,10 +270,7 @@
     }
 
     .look-page__thumbnail {
-      height: 60px;
-    }
-
-    .look-page__image-thumbnail {
+      width: 50px;
       height: 50px;
     }
 
@@ -420,24 +290,6 @@
 
     .look-page__nav-button--next {
       right: 0.5rem;
-    }
-
-    .look-page__screen-nav-button {
-      width: 40px;
-      height: 40px;
-    }
-
-    .look-page__screen-nav-button--prev {
-      left: 0.5rem;
-    }
-
-    .look-page__screen-nav-button--next {
-      right: 0.5rem;
-    }
-
-    .look-page__screen-nav-button svg {
-      width: 14px;
-      height: 14px;
     }
 
     .look-page__products {
@@ -469,10 +321,7 @@
     }
 
     .look-page__thumbnail {
-      height: 90px;
-    }
-
-    .look-page__image-thumbnail {
+      width: 70px;
       height: 70px;
     }
   }
@@ -484,10 +333,7 @@
     }
 
     .look-page__thumbnail {
-      height: 100px;
-    }
-
-    .look-page__image-thumbnail {
+      width: 80px;
       height: 80px;
     }
   }
@@ -505,19 +351,10 @@
       <div class="look-page__thumbnails">
         {%- for block in section.blocks -%}
           {%- assign display_title = block.settings.title_ja | default: block.settings.title_en | default: 'Look' -%}
-          {%- assign first_image = blank -%}
-          {%- for i in (1..6) -%}
-            {%- assign image_key = 'image_' | append: i -%}
-            {%- if block.settings[image_key] != blank and first_image == blank -%}
-              {%- assign first_image = block.settings[image_key] -%}
-              {%- break -%}
-            {%- endif -%}
-          {%- endfor -%}
-          
           <div class="look-page__thumbnail {% if forloop.index0 == 0 %}is-active{% endif %}" 
                data-look-index="{{ forloop.index0 }}">
-            {%- if first_image != blank -%}
-              {{ first_image | image_url: width: 200 | image_tag: alt: display_title, loading: 'lazy' }}
+            {%- if block.settings.image != blank -%}
+              {{ block.settings.image | image_url: width: 200 | image_tag: alt: display_title, loading: 'lazy' }}
             {%- else -%}
               <div class="look-page__thumbnail-placeholder">
                 {{ 'image' | placeholder_svg_tag: 'icon icon--placeholder' }}
@@ -527,83 +364,39 @@
         {%- endfor -%}
       </div>
     </div>
-
-    {%- comment -%}画面左右のLook切り替えボタン{%- endcomment -%}
-    <button class="look-page__screen-nav-button look-page__screen-nav-button--prev" 
-            type="button"
-            aria-label="Previous look">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <polyline points="14,7 9,12 14,17"></polyline>
-      </svg>
-    </button>
-    <button class="look-page__screen-nav-button look-page__screen-nav-button--next" 
-            type="button"
-            aria-label="Next look">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <polyline points="10,7 15,12 10,17"></polyline>
-      </svg>
-    </button>
   {%- endif -%}
 
   <div class="look-page__content">
     {%- assign look_index = 0 -%}
     {%- for block in section.blocks -%}
       {%- assign display_title = block.settings.title_ja | default: block.settings.title_en | default: 'Look' -%}
-      
-      {%- comment -%}このLookの画像を配列に収集{%- endcomment -%}
-      {%- assign look_images = '' | split: '' -%}
-      {%- for i in (1..6) -%}
-        {%- assign image_key = 'image_' | append: i -%}
-        {%- if block.settings[image_key] != blank -%}
-          {%- assign look_images = look_images | push: block.settings[image_key] -%}
-        {%- endif -%}
-      {%- endfor -%}
-      
       <div class="look-page__look {% if look_index == 0 %}is-active{% endif %}" 
            data-look-index="{{ look_index }}"
            {{ block.shopify_attributes }}>
         
-        <div class="look-page__image-section">
-          <div class="look-page__image-container">
-            {%- if look_images.size > 1 -%}
-              <button class="look-page__nav-button look-page__nav-button--prev" 
-                      type="button"
-                      aria-label="Previous image">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <polyline points="14,7 9,12 14,17"></polyline>
-                </svg>
-              </button>
-              <button class="look-page__nav-button look-page__nav-button--next" 
-                      type="button"
-                      aria-label="Next image">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <polyline points="10,7 15,12 10,17"></polyline>
-                </svg>
-              </button>
-            {%- endif -%}
-            
-            {%- if look_images.size > 0 -%}
-              {%- for image in look_images -%}
-                <div class="look-page__image-wrapper {% if forloop.index0 == 0 %}is-active{% endif %}"
-                     data-image-index="{{ forloop.index0 }}">
-                  {{ image | image_url: width: 1200 | image_tag: class: 'look-page__image', alt: display_title, loading: 'lazy' }}
-                </div>
-              {%- endfor -%}
-            {%- else -%}
-              <div class="look-page__image-placeholder">
-                {{ 'image' | placeholder_svg_tag }}
-              </div>
-            {%- endif -%}
-          </div>
-
-          {%- if look_images.size > 1 -%}
-            <div class="look-page__image-thumbnails">
-              {%- for image in look_images -%}
-                <div class="look-page__image-thumbnail {% if forloop.index0 == 0 %}is-active{% endif %}"
-                     data-image-index="{{ forloop.index0 }}">
-                  {{ image | image_url: width: 200 | image_tag: alt: display_title, loading: 'lazy' }}
-                </div>
-              {%- endfor -%}
+        <div class="look-page__image-container">
+          {%- if section.blocks.size > 1 -%}
+            <button class="look-page__nav-button look-page__nav-button--prev" 
+                    type="button"
+                    aria-label="Previous look">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <polyline points="14,7 9,12 14,17"></polyline>
+              </svg>
+            </button>
+            <button class="look-page__nav-button look-page__nav-button--next" 
+                    type="button"
+                    aria-label="Next look">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <polyline points="10,7 15,12 10,17"></polyline>
+              </svg>
+            </button>
+          {%- endif -%}
+          
+          {%- if block.settings.image != blank -%}
+            {{ block.settings.image | image_url: width: 1200 | image_tag: class: 'look-page__image', alt: display_title, loading: 'lazy' }}
+          {%- else -%}
+            <div class="look-page__image-placeholder">
+              {{ 'image' | placeholder_svg_tag }}
             </div>
           {%- endif -%}
         </div>
@@ -698,136 +491,26 @@
     const lookPageContent = document.querySelector('.look-page__content');
     if (!lookPageContent) return;
 
-    let currentLookIndex = 0;
+    let currentIndex = 0;
     const looks = Array.from(document.querySelectorAll('.look-page__look'));
-    const lookThumbnails = Array.from(document.querySelectorAll('.look-page__navigation .look-page__thumbnail'));
-    const screenPrevButton = document.querySelector('.look-page__screen-nav-button--prev');
-    const screenNextButton = document.querySelector('.look-page__screen-nav-button--next');
+    const thumbnails = Array.from(document.querySelectorAll('.look-page__thumbnail'));
+    const prevButtons = Array.from(document.querySelectorAll('.look-page__nav-button--prev'));
+    const nextButtons = Array.from(document.querySelectorAll('.look-page__nav-button--next'));
+    const imageContainers = Array.from(document.querySelectorAll('.look-page__image-container'));
     
     if (looks.length === 0) return;
 
-    // 各Lookの画像切り替え機能を初期化
-    looks.forEach((look, lookIndex) => {
-      const imageWrappers = Array.from(look.querySelectorAll('.look-page__image-wrapper'));
-      const imageThumbnails = Array.from(look.querySelectorAll('.look-page__image-thumbnail'));
-      const imagePrevButton = look.querySelector('.look-page__nav-button--prev');
-      const imageNextButton = look.querySelector('.look-page__nav-button--next');
-      const imageContainer = look.querySelector('.look-page__image-container');
-      
-      if (imageWrappers.length === 0) return;
+    // スワイプ検出用の変数
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let touchStartY = 0;
+    let touchEndY = 0;
+    const minSwipeDistance = 50;
 
-      let currentImageIndex = 0;
-
-      // スワイプ検出用の変数
-      let touchStartX = 0;
-      let touchEndX = 0;
-      let touchStartY = 0;
-      let touchEndY = 0;
-      const minSwipeDistance = 50;
-
-      function showImage(index) {
-        if (index < 0 || index >= imageWrappers.length) return;
-        
-        currentImageIndex = index;
-
-        imageWrappers.forEach((wrapper, i) => {
-          if (i === index) {
-            wrapper.classList.add('is-active');
-          } else {
-            wrapper.classList.remove('is-active');
-          }
-        });
-
-        imageThumbnails.forEach((thumbnail, i) => {
-          if (i === index) {
-            thumbnail.classList.add('is-active');
-          } else {
-            thumbnail.classList.remove('is-active');
-          }
-        });
-
-        if (imageThumbnails[index]) {
-          imageThumbnails[index].scrollIntoView({
-            behavior: 'smooth',
-            block: 'nearest',
-            inline: 'center'
-          });
-        }
-      }
-
-      function showPreviousImage() {
-        const newIndex = currentImageIndex > 0 ? currentImageIndex - 1 : imageWrappers.length - 1;
-        showImage(newIndex);
-      }
-
-      function showNextImage() {
-        const newIndex = currentImageIndex < imageWrappers.length - 1 ? currentImageIndex + 1 : 0;
-        showImage(newIndex);
-      }
-
-      function handleImageSwipe() {
-        const diffX = touchEndX - touchStartX;
-        const diffY = touchEndY - touchStartY;
-        
-        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > minSwipeDistance) {
-          if (diffX > 0) {
-            showPreviousImage();
-          } else {
-            showNextImage();
-          }
-        }
-      }
-
-      // 画像サムネイルクリック
-      imageThumbnails.forEach((thumbnail) => {
-        thumbnail.addEventListener('click', function(e) {
-          e.preventDefault();
-          const index = parseInt(this.getAttribute('data-image-index'), 10);
-          if (!isNaN(index)) {
-            showImage(index);
-          }
-        });
-      });
-
-      // 画像左右のナビゲーションボタン
-      if (imagePrevButton) {
-        imagePrevButton.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          showPreviousImage();
-        });
-      }
-
-      if (imageNextButton) {
-        imageNextButton.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          showNextImage();
-        });
-      }
-
-      // タッチイベント（画像エリア）
-      if (imageContainer) {
-        imageContainer.addEventListener('touchstart', function(e) {
-          touchStartX = e.changedTouches[0].screenX;
-          touchStartY = e.changedTouches[0].screenY;
-        }, { passive: true });
-
-        imageContainer.addEventListener('touchend', function(e) {
-          touchEndX = e.changedTouches[0].screenX;
-          touchEndY = e.changedTouches[0].screenY;
-          handleImageSwipe();
-        }, { passive: true });
-      }
-
-      showImage(0);
-    });
-
-    // Look切り替え機能
     function showLook(index) {
       if (index < 0 || index >= looks.length) return;
       
-      currentLookIndex = index;
+      currentIndex = index;
 
       looks.forEach((look, i) => {
         if (i === index) {
@@ -837,7 +520,7 @@
         }
       });
 
-      lookThumbnails.forEach((thumbnail, i) => {
+      thumbnails.forEach((thumbnail, i) => {
         if (i === index) {
           thumbnail.classList.add('is-active');
         } else {
@@ -845,42 +528,43 @@
         }
       });
 
-      if (lookThumbnails[index]) {
-        lookThumbnails[index].scrollIntoView({
+      if (thumbnails[index]) {
+        thumbnails[index].scrollIntoView({
           behavior: 'smooth',
           block: 'nearest',
           inline: 'center'
         });
       }
-
-      // 切り替えたLookの1枚目の画像を表示
-      const newLook = looks[index];
-      if (newLook) {
-        const imageWrappers = Array.from(newLook.querySelectorAll('.look-page__image-wrapper'));
-        const imageThumbnails = Array.from(newLook.querySelectorAll('.look-page__image-thumbnail'));
-        
-        imageWrappers.forEach((wrapper, i) => {
-          wrapper.classList.toggle('is-active', i === 0);
-        });
-        
-        imageThumbnails.forEach((thumbnail, i) => {
-          thumbnail.classList.toggle('is-active', i === 0);
-        });
-      }
     }
 
     function showPreviousLook() {
-      const newIndex = currentLookIndex > 0 ? currentLookIndex - 1 : looks.length - 1;
+      const newIndex = currentIndex > 0 ? currentIndex - 1 : looks.length - 1;
       showLook(newIndex);
     }
 
     function showNextLook() {
-      const newIndex = currentLookIndex < looks.length - 1 ? currentLookIndex + 1 : 0;
+      const newIndex = currentIndex < looks.length - 1 ? currentIndex + 1 : 0;
       showLook(newIndex);
     }
 
-    // Lookサムネイルクリック
-    lookThumbnails.forEach((thumbnail) => {
+    function handleSwipe() {
+      const diffX = touchEndX - touchStartX;
+      const diffY = touchEndY - touchStartY;
+      
+      // 横方向のスワイプが縦方向より大きい場合のみ処理
+      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > minSwipeDistance) {
+        if (diffX > 0) {
+          // 右スワイプ - 前へ
+          showPreviousLook();
+        } else {
+          // 左スワイプ - 次へ
+          showNextLook();
+        }
+      }
+    }
+
+    // サムネイルクリック
+    thumbnails.forEach((thumbnail) => {
       thumbnail.addEventListener('click', function(e) {
         e.preventDefault();
         const index = parseInt(this.getAttribute('data-look-index'), 10);
@@ -890,20 +574,36 @@
       });
     });
 
-    // 画面左右のナビゲーションボタン
-    if (screenPrevButton) {
-      screenPrevButton.addEventListener('click', function(e) {
+    // ナビゲーションボタン
+    prevButtons.forEach((button) => {
+      button.addEventListener('click', function(e) {
         e.preventDefault();
+        e.stopPropagation();
         showPreviousLook();
       });
-    }
+    });
 
-    if (screenNextButton) {
-      screenNextButton.addEventListener('click', function(e) {
+    nextButtons.forEach((button) => {
+      button.addEventListener('click', function(e) {
         e.preventDefault();
+        e.stopPropagation();
         showNextLook();
       });
-    }
+    });
+
+    // タッチイベント（各画像コンテナに設定）
+    imageContainers.forEach((container) => {
+      container.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+      }, { passive: true });
+
+      container.addEventListener('touchend', function(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;
+        handleSwipe();
+      }, { passive: true });
+    });
 
     // キーボードナビゲーション
     document.addEventListener('keydown', function(e) {
@@ -939,7 +639,7 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "【使い方】上部のサムネイルまたは画面左右のボタンで各Lookを切り替えます。各Look内に複数の画像がある場合は、画像下のサムネイルまたは画像左右のボタンで切り替えられます。スワイプ操作、キーボードの矢印キーも使用可能です。"
+      "content": "サムネイルをクリックまたはタップして各ルックに移動します。左右のナビゲーションボタン、スワイプ操作、キーボードの矢印キーでもルックを切り替えられます。"
     },
     {
       "type": "color_scheme",
@@ -954,42 +654,9 @@
       "name": "Look",
       "settings": [
         {
-          "type": "header",
-          "content": "Look Images (最大6枚)"
-        },
-        {
-          "type": "paragraph",
-          "content": "複数の画像を登録できます。上部のLook切り替えサムネイルには1枚目の画像が表示されます。"
-        },
-        {
           "type": "image_picker",
-          "id": "image_1",
-          "label": "Image 1"
-        },
-        {
-          "type": "image_picker",
-          "id": "image_2",
-          "label": "Image 2"
-        },
-        {
-          "type": "image_picker",
-          "id": "image_3",
-          "label": "Image 3"
-        },
-        {
-          "type": "image_picker",
-          "id": "image_4",
-          "label": "Image 4"
-        },
-        {
-          "type": "image_picker",
-          "id": "image_5",
-          "label": "Image 5"
-        },
-        {
-          "type": "image_picker",
-          "id": "image_6",
-          "label": "Image 6"
+          "id": "image",
+          "label": "Look Image"
         },
         {
           "type": "header",
