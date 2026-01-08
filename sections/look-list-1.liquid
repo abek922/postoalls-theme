@@ -715,6 +715,15 @@
               {%- assign custom_price_key = 'custom_price_' | append: i -%}
               {%- assign custom_url_key = 'custom_url_' | append: i -%}
               
+              {%- comment -%}変数を毎回リセット{%- endcomment -%}
+              {%- assign product_handle = blank -%}
+              {%- assign product = blank -%}
+              {%- assign custom_image = blank -%}
+              {%- assign custom_title = blank -%}
+              {%- assign custom_price = blank -%}
+              {%- assign custom_url = blank -%}
+              
+              {%- comment -%}設定値を取得{%- endcomment -%}
               {%- assign product_handle = block.settings[product_key] -%}
               {%- assign custom_image = block.settings[custom_image_key] -%}
               {%- assign custom_title = block.settings[custom_title_key] -%}
@@ -722,20 +731,18 @@
               {%- assign custom_url = block.settings[custom_url_key] -%}
               
               {%- comment -%}Shopify商品が設定されている場合{%- endcomment -%}
-              {%- if product_handle != blank -%}
+              {%- if product_handle != blank and product_handle != '' -%}
                 {%- assign product = all_products[product_handle] -%}
                 
-                {%- comment -%}デバッグ: 商品の取得状態を確認{%- endcomment -%}
+                {%- comment -%}商品の取得状態を確認{%- endcomment -%}
                 {%- assign product_exists = false -%}
                 {%- if product.id != blank -%}
                   {%- assign product_exists = true -%}
                 {%- elsif product.title != blank -%}
                   {%- assign product_exists = true -%}
-                {%- elsif product.url != blank -%}
-                  {%- assign product_exists = true -%}
                 {%- endif -%}
                 
-                {%- if product_exists -%}
+                {%- if product_exists == true -%}
                   {%- comment -%}商品が正常に取得できた場合{%- endcomment -%}
                   <a href="{{ product.url }}" class="look-page__product-card">
                     {%- if product.featured_image -%}
@@ -762,27 +769,62 @@
                   </a>
                 
                 {%- else -%}
-                  {%- comment -%}商品が取得できなかった場合（all_products制限またはその他の理由）{%- endcomment -%}
-                  {%- comment -%}デバッグモード: Shopifyテーマエディタで確認できるようにメッセージを表示{%- endcomment -%}
-                  <div class="look-page__product-card" style="border: 2px dashed #ff6b6b; cursor: default;">
-                    <div class="look-page__product-image placeholder" style="background: #fff3f3;">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
-                        <circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="2"/>
-                        <path d="M21 15L16 10L5 21" stroke="currentColor" stroke-width="2"/>
-                      </svg>
-                    </div>
-                    <div class="look-page__product-info">
-                      <h3 class="look-page__product-title" style="color: #ff6b6b; font-size: 0.7rem;">
-                        商品読み込みエラー
-                      </h3>
-                      <div class="look-page__product-price" style="font-size: 0.65rem; opacity: 0.7;">
-                        Handle: {{ product_handle }}<br>
-                        Look {{ look_index | plus: 1 }} / Product {{ i }}<br>
-                        カスタム情報で代替してください
+                  {%- comment -%}商品が取得できなかった場合{%- endcomment -%}
+                  {%- if custom_title != blank or custom_image != blank -%}
+                    {%- comment -%}カスタム情報で表示{%- endcomment -%}
+                    {%- if custom_url != blank -%}
+                      <a href="{{ custom_url }}" class="look-page__product-card">
+                    {%- else -%}
+                      <a href="/products/{{ product_handle }}" class="look-page__product-card">
+                    {%- endif -%}
+                      
+                      {%- if custom_image != blank -%}
+                        {{ custom_image | image_url: width: 400 | image_tag: class: 'look-page__product-image', alt: custom_title, loading: 'lazy' }}
+                      {%- else -%}
+                        <div class="look-page__product-image placeholder">
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="2"/>
+                            <path d="M21 15L16 10L5 21" stroke="currentColor" stroke-width="2"/>
+                          </svg>
+                        </div>
+                      {%- endif -%}
+                      
+                      <div class="look-page__product-info">
+                        {%- if custom_title != blank -%}
+                          <h3 class="look-page__product-title">{{ custom_title }}</h3>
+                        {%- else -%}
+                          <h3 class="look-page__product-title">{{ product_handle | replace: '-', ' ' | capitalize }}</h3>
+                        {%- endif -%}
+                        {%- if custom_price != blank -%}
+                          <div class="look-page__product-price">
+                            <span class="price">{{ custom_price }}</span>
+                          </div>
+                        {%- endif -%}
+                      </div>
+                    </a>
+                  {%- else -%}
+                    {%- comment -%}カスタム情報もない場合は警告表示{%- endcomment -%}
+                    <div class="look-page__product-card" style="border: 2px dashed #ff6b6b; cursor: default;">
+                      <div class="look-page__product-image placeholder" style="background: #fff3f3;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                          <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+                          <circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="2"/>
+                          <path d="M21 15L16 10L5 21" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                      </div>
+                      <div class="look-page__product-info">
+                        <h3 class="look-page__product-title" style="color: #ff6b6b; font-size: 0.7rem;">
+                          商品読み込みエラー
+                        </h3>
+                        <div class="look-page__product-price" style="font-size: 0.65rem; opacity: 0.7;">
+                          Handle: {{ product_handle }}<br>
+                          Look {{ look_index | plus: 1 }} / Product {{ i }}<br>
+                          カスタム情報で代替してください
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  {%- endif -%}
                 {%- endif -%}
               
               {%- comment -%}Shopify商品が未設定で、カスタム情報が設定されている場合{%- endcomment -%}
