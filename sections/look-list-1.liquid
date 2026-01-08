@@ -295,16 +295,6 @@
     margin: 0;
   }
 
-  /* コメント2（画像サムネイルの下） */
-  .look-page__comments-2 {
-    margin: 0;
-  }
-
-  .look-page__comment-2 {
-    color: rgba(var(--text-color), 0.8);
-    margin: 0;
-  }
-
   /* Alignment Classes */
   .text-left {
     text-align: left;
@@ -636,30 +626,6 @@
               {%- endfor -%}
             </div>
           {%- endif -%}
-
-          {%- comment -%}Comment 2（画像サムネイルの下）{%- endcomment -%}
-          {%- assign has_comment_2 = false -%}
-          {%- if block.settings.comment_2_ja != blank or block.settings.comment_2_en != blank -%}
-            {%- assign has_comment_2 = true -%}
-          {%- endif -%}
-          
-          {%- if has_comment_2 -%}
-            <div class="look-page__comments-2 text-{{ block.settings.comment_2_alignment }}" style="
-              margin-top: {{ block.settings.comment_2_margin_top }}px;
-              margin-bottom: {{ block.settings.comment_2_margin_bottom }}px;
-            ">
-              <div class="look-page__comment-2" style="
-                font-size: {{ block.settings.comment_2_font_size }}px;
-                line-height: {{ block.settings.comment_2_line_height }};
-              ">
-                {%- if request.locale.iso_code == 'ja' -%}
-                  {{ block.settings.comment_2_ja | default: block.settings.comment_2_en | newline_to_br }}
-                {%- else -%}
-                  {{ block.settings.comment_2_en | default: block.settings.comment_2_ja | newline_to_br }}
-                {%- endif -%}
-              </div>
-            </div>
-          {%- endif -%}
         </div>
 
         <div class="look-page__sidebar">
@@ -715,15 +681,14 @@
               {%- assign custom_price_key = 'custom_price_' | append: i -%}
               {%- assign custom_url_key = 'custom_url_' | append: i -%}
               
-              {%- assign product_handle = block.settings[product_key] -%}
-              {%- assign product = all_products[product_handle] -%}
+              {%- assign product = all_products[block.settings[product_key]] -%}
               {%- assign custom_image = block.settings[custom_image_key] -%}
               {%- assign custom_title = block.settings[custom_title_key] -%}
               {%- assign custom_price = block.settings[custom_price_key] -%}
               {%- assign custom_url = block.settings[custom_url_key] -%}
               
               {%- comment -%}Shopify商品が設定されている場合{%- endcomment -%}
-              {%- if product_handle != blank and product != empty -%}
+              {%- if product and product != empty -%}
                 <a href="{{ product.url }}" class="look-page__product-card">
                   {%- if product.featured_image -%}
                     {{ product.featured_image | image_url: width: 400 | image_tag: class: 'look-page__product-image', alt: product.title, loading: 'lazy' }}
@@ -1273,81 +1238,6 @@
           "step": 5,
           "unit": "px",
           "label": "Comment Margin Bottom",
-          "default": 20
-        },
-        {
-          "type": "header",
-          "content": "Comment 2 Settings (画像サムネイル下)"
-        },
-        {
-          "type": "textarea",
-          "id": "comment_2_ja",
-          "label": "Comment 2 (Japanese)",
-          "info": "画像サムネイル下に表示する日本語のコメント"
-        },
-        {
-          "type": "textarea",
-          "id": "comment_2_en",
-          "label": "Comment 2 (English)",
-          "info": "画像サムネイル下に表示する英語のコメント"
-        },
-        {
-          "type": "select",
-          "id": "comment_2_alignment",
-          "label": "Comment 2 Alignment",
-          "options": [
-            {
-              "value": "left",
-              "label": "Left"
-            },
-            {
-              "value": "center",
-              "label": "Center"
-            },
-            {
-              "value": "right",
-              "label": "Right"
-            }
-          ],
-          "default": "center"
-        },
-        {
-          "type": "range",
-          "id": "comment_2_font_size",
-          "min": 12,
-          "max": 32,
-          "step": 1,
-          "unit": "px",
-          "label": "Comment 2 Font Size",
-          "default": 14
-        },
-        {
-          "type": "range",
-          "id": "comment_2_line_height",
-          "min": 1.0,
-          "max": 2.5,
-          "step": 0.1,
-          "label": "Comment 2 Line Height",
-          "default": 1.6
-        },
-        {
-          "type": "range",
-          "id": "comment_2_margin_top",
-          "min": 0,
-          "max": 100,
-          "step": 5,
-          "unit": "px",
-          "label": "Comment 2 Margin Top",
-          "default": 15
-        },
-        {
-          "type": "range",
-          "id": "comment_2_margin_bottom",
-          "min": 0,
-          "max": 100,
-          "step": 5,
-          "unit": "px",
-          "label": "Comment 2 Margin Bottom",
           "default": 20
         },
         {
