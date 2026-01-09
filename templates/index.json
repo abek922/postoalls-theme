@@ -281,6 +281,35 @@
         "button_text": ""
       }
     },
+    "featured-collections": {
+      "type": "featured-collections",
+      "blocks": {
+        "collection-1": {
+          "type": "collection",
+          "settings": {
+            "collection": "new-arrival",
+            "products_count": 4,
+            "title": "NEW ARRIVALS",
+            "link_url": "shopify://collections/all",
+            "link_text": "ONLINE STORE"
+          }
+        }
+      },
+      "block_order": [
+        "collection-1"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": false,
+        "hide_product_information": false,
+        "stack_products": true,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "horizontal_spacing_factor": 1,
+        "vertical_spacing_factor": 1,
+        "subheading": ""
+      }
+    },
     "featured_collections_QYTW87": {
       "type": "featured-collections",
       "blocks": {
@@ -302,35 +331,6 @@
       "settings": {
         "color_scheme": "",
         "separate_section_with_border": true,
-        "hide_product_information": false,
-        "stack_products": true,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 4,
-        "horizontal_spacing_factor": 1,
-        "vertical_spacing_factor": 1,
-        "subheading": "2025.12.26 11:00 START"
-      }
-    },
-    "featured-collections": {
-      "type": "featured-collections",
-      "blocks": {
-        "collection-1": {
-          "type": "collection",
-          "settings": {
-            "collection": "new-arrival",
-            "products_count": 4,
-            "title": "NEW ARRIVALS",
-            "link_url": "shopify://collections/all",
-            "link_text": "ONLINE STORE"
-          }
-        }
-      },
-      "block_order": [
-        "collection-1"
-      ],
-      "settings": {
-        "color_scheme": "",
-        "separate_section_with_border": false,
         "hide_product_information": false,
         "stack_products": true,
         "products_per_row_mobile": "2",
@@ -374,7 +374,6 @@
       "block_order": [
         "image_DPfKdr"
       ],
-      "disabled": true,
       "custom_css": [
         ".place-self-end-center {transform: translateY(-4rem);}",
         ".h6 {display: inline-block; border-bottom: 1px solid #fff; padding-bottom: 4px; transform: translateY(1rem);}"
@@ -438,8 +437,8 @@
     "multi-column",
     "blog-posts",
     "blog_posts_news_keAKtC",
-    "featured_collections_QYTW87",
     "featured-collections",
+    "featured_collections_QYTW87",
     "slideshow_zpNhbA",
     "blog_wordpress_czYcm8",
     "newsletter"
