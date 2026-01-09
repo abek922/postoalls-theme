@@ -261,6 +261,8 @@
           "type": "look",
           "settings": {
             "image_1": "shopify://shop_images/5_2240c9cf-f7d1-48b5-9af1-13f8a03eeff2.jpg",
+            "image_2": "shopify://shop_images/post_12479.jpg",
+            "image_3": "shopify://shop_images/post_12490.jpg",
             "title_ja": "",
             "title_en": "",
             "heading_tag": "h2",
@@ -314,6 +316,8 @@
           "type": "look",
           "settings": {
             "image_1": "shopify://shop_images/6_92ab7c1e-8a34-4b31-a712-733ba2556136.jpg",
+            "image_2": "shopify://shop_images/post_12612.jpg",
+            "image_3": "shopify://shop_images/post_12622.jpg",
             "title_ja": "",
             "title_en": "",
             "heading_tag": "h2",
