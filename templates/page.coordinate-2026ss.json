@@ -42,6 +42,8 @@
           "type": "look",
           "settings": {
             "image_1": "shopify://shop_images/1_e707908a-7d8a-4ad1-b811-172ddcad34d3.jpg",
+            "image_2": "shopify://shop_images/post_11885.jpg",
+            "image_3": "shopify://shop_images/post_11900.jpg",
             "title_ja": "",
             "title_en": "",
             "heading_tag": "h2",
