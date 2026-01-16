@@ -949,14 +949,6 @@
             thumbnail.classList.remove('is-active');
           }
         });
-
-        if (imageThumbnails[index]) {
-          imageThumbnails[index].scrollIntoView({
-            behavior: 'smooth',
-            block: 'nearest',
-            inline: 'center'
-          });
-        }
       }
 
       function showPreviousImage() {
@@ -1048,14 +1040,6 @@
           thumbnail.classList.remove('is-active');
         }
       });
-
-      if (lookThumbnails[index]) {
-        lookThumbnails[index].scrollIntoView({
-          behavior: 'smooth',
-          block: 'nearest',
-          inline: 'center'
-        });
-      }
 
       // 切り替えたLookの1枚目の画像を表示
       const newLook = looks[index];
