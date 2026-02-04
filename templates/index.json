@@ -219,8 +219,8 @@
       "disabled": true,
       "name": "t:sections.slideshow.presets.slideshow.name",
       "settings": {
-        "allow_transparent_header": true,
-        "show_next_section_button": true,
+        "allow_transparent_header": false,
+        "show_next_section_button": false,
         "media_size": "auto",
         "show_initial_transition": false,
         "autoplay": true,
@@ -228,84 +228,6 @@
         "cycle_speed": 5,
         "background": "#000000",
         "controls_color": "#ffffff"
-      }
-    },
-    "multi-column": {
-      "type": "multi-column",
-      "blocks": {
-        "column-2": {
-          "type": "image_with_text",
-          "settings": {
-            "title": "Column title",
-            "heading_tag": "h3",
-            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_url": "",
-            "link_text": ""
-          }
-        },
-        "image_with_text_LXCizD": {
-          "type": "image_with_text",
-          "settings": {
-            "title": "Column title",
-            "heading_tag": "h3",
-            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_url": "",
-            "link_text": ""
-          }
-        },
-        "image_with_text_fJJCkk": {
-          "type": "image_with_text",
-          "settings": {
-            "title": "Column title",
-            "heading_tag": "h3",
-            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_url": "",
-            "link_text": ""
-          }
-        }
-      },
-      "block_order": [
-        "column-2",
-        "image_with_text_LXCizD",
-        "image_with_text_fJJCkk"
-      ],
-      "disabled": true,
-      "settings": {
-        "color_scheme": "",
-        "separate_section_with_border": true,
-        "columns_per_row": 3,
-        "stack_on_mobile": true,
-        "overlap_image": false,
-        "content_alignment": "center",
-        "text_alignment": "center",
-        "spacing": "md",
-        "subheading": "",
-        "title": "",
-        "content": ""
-      }
-    },
-    "blog-posts": {
-      "type": "blog-posts",
-      "disabled": true,
-      "custom_css": [
-        ".blog-post-card__title {font-size: 0.8rem;}",
-        ".blog-post-card {gap: 0.5rem;}"
-      ],
-      "settings": {
-        "color_scheme": "",
-        "separate_section_with_border": true,
-        "blog": "news",
-        "posts_count": 3,
-        "stack_on_mobile": true,
-        "show_category": false,
-        "show_date": false,
-        "show_excerpt": false,
-        "show_read_more": false,
-        "subheading": "",
-        "title": "NEWS",
-        "content": "",
-        "button_link": "",
-        "button_text": "View all"
       }
     },
     "blog_posts_news_keAKtC": {
@@ -483,8 +405,6 @@
     "custom_liquid_7LqEDK",
     "slideshow_qCX6Up",
     "slideshow_Btjky6",
-    "multi-column",
-    "blog-posts",
     "blog_posts_news_keAKtC",
     "featured-collections",
     "featured_collections_QYTW87",
