@@ -402,6 +402,10 @@ Supported variables
                   assign show_coming_soon = true
                   assign show_buy_buttons = false
                   break
+                elsif tag_downcase == 'shibuya sp'
+                  assign show_shibuya_sp = true
+                  assign show_buy_buttons = false
+                  break
                 endif
               endfor
             -%}
@@ -422,22 +426,38 @@ Supported variables
                   opacity: 0.8;
                 }
               </style>
-            {%- elsif show_coming_soon -%}
-              {%- comment -%}Coming Soon ボタンを表示{%- endcomment -%}
-              <div class="buy-buttons v-stack gap-4">
-                <button type="button" class="button w-full coming-soon-button" disabled>
-                  Coming Soon
-                </button>
-              </div>
-              <style>
-                .coming-soon-button {
-                  background-color: #e0e0e0 !important;
-                  color: #666 !important;
-                  cursor: not-allowed !important;
-                  opacity: 0.7;
-                }
-              </style>
-            {%- else -%}
+              {%- elsif show_coming_soon -%}
+                {%- comment -%}Coming Soon ボタンを表示{%- endcomment -%}
+                <div class="buy-buttons v-stack gap-4">
+                  <button type="button" class="button w-full coming-soon-button" disabled>
+                    Coming Soon
+                  </button>
+                </div>
+                <style>
+                  .coming-soon-button {
+                    background-color: #e0e0e0 !important;
+                    color: #666 !important;
+                    cursor: not-allowed !important;
+                    opacity: 0.7;
+                  }
+                </style>
+              {%- else -%}
+              {%- elsif show_shibuya_sp -%}
+                {%- comment -%}SHIBUYA SP ボタンを表示{%- endcomment -%}
+                <div class="buy-buttons v-stack gap-4">
+                  <button type="button" class="button w-full shibuya-sp-button" disabled>
+                    SHIBUYA SP
+                  </button>
+                </div>
+                <style>
+                  .shibuya-sp-button {
+                    background-color: #e0e0e0 !important;
+                    color: #666 !important;
+                    cursor: not-allowed !important;
+                    opacity: 0.7;
+                  }
+                </style>
+              {%- else -%}
               {%- comment -%}通常の購入ボタン{%- endcomment -%}
               {%- render 'buy-buttons',
                   product: product,
