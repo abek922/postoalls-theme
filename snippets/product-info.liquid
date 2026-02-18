@@ -387,6 +387,7 @@ Supported variables
 
           {%- when 'buy_buttons' -%}
             {%- comment -%}タグに基づく購入ボタンの表示制御{%- endcomment -%}
+             <!-- DEBUG: {{ product.tags | join: ', ' }} -->
             {%- liquid
               assign show_buy_buttons = true
               assign show_coming_soon = false
