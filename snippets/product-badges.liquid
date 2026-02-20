@@ -17,7 +17,7 @@ Supported variables
 {%- endcomment -%}
 
 {%- liquid
-  assign badge_types = types | default: 'custom, coming_soon, archive, new_arrival, pre_order, sold_out, discount' | split: ','
+  assign badge_types = types | default: 'custom, coming_soon, archive, new_arrival, pre_order, shibuya_sp, shop_sp, sold_out, discount' | split: ','
   assign variant = variant | default: product.selected_or_first_available_variant
   
   # Coming soon タグの確認
@@ -60,6 +60,16 @@ Supported variables
     endif
   endfor
 
+  # shop sp タグの確認
+  assign has_shop_sp_tag = false
+  for tag in product.tags
+    assign lowercase_tag = tag | downcase
+    if lowercase_tag contains 'shop sp' or lowercase_tag contains 'shop special'
+      assign has_shop_sp_tag = true
+      break
+    endif
+  endfor
+
   # shibuya sp タグの確認
   assign has_shibuya_sp_tag = false
   for tag in product.tags
@@ -70,15 +80,6 @@ Supported variables
     endif
   endfor
 
-  # shop sp タグの確認
-  assign has_shop_sp_tag = false
-  for tag in product.tags
-    assign lowercase_tag = tag | downcase
-    if lowercase_tag contains 'shop sp' or lowercase_tag contains 'shop special'
-      assign has_shop_sp_tag = true
-      break
-    endif
-  endfor
 -%}
 
 {%- capture badges -%}
@@ -118,6 +119,20 @@ Supported variables
         {%- if has_pre_order_tag -%}
           <span class="badge badge--pre-order">
             {{- 'product.general.pre_order_badge' | t -}}
+          </span>
+        {%- endif -%}
+
+      {%- when 'shop_sp' -%}
+        {%- if has_shop_sp_tag -%}
+          <span class="badge badge--shop_sp">
+            {{- 'product.general.shop_sp_badge' | t -}}
+          </span>
+        {%- endif -%}
+
+      {%- when 'shibuya_sp' -%}
+        {%- if has_shibuya_sp_tag -%}
+          <span class="badge badge--shibuya_sp">
+            {{- 'product.general.shibuya_sp_badge' | t -}}
           </span>
         {%- endif -%}
 
