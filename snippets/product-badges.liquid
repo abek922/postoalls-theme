@@ -59,6 +59,26 @@ Supported variables
       break
     endif
   endfor
+
+  # shibuya sp タグの確認
+  assign has_shibuya_sp_tag = false
+  for tag in product.tags
+    assign lowercase_tag = tag | downcase
+    if lowercase_tag contains 'shibuya sp' or lowercase_tag contains 'shibuya special'
+      assign has_shibuya_sp_tag = true
+      break
+    endif
+  endfor
+
+  # shop sp タグの確認
+  assign has_shop_sp_tag = false
+  for tag in product.tags
+    assign lowercase_tag = tag | downcase
+    if lowercase_tag contains 'shop sp' or lowercase_tag contains 'shop special'
+      assign has_shop_sp_tag = true
+      break
+    endif
+  endfor
 -%}
 
 {%- capture badges -%}
