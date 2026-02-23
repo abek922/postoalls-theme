@@ -323,7 +323,7 @@
             "mobile_text_position": "place-self-end-center text-center",
             "desktop_text_position": "sm:place-self-end-center sm:text-center",
             "content_max_width": 780,
-            "button_1_text": "SHIBUYA SPECIAL",
+            "button_1_text": "SHIBUYA SPECIAL ITEM",
             "button_1_link": "shopify://collections/shibuya-special",
             "button_1_style": "link",
             "button_1_background": "#ffffff",
@@ -344,7 +344,6 @@
       "block_order": [
         "image_JA4kMj"
       ],
-      "disabled": true,
       "name": "t:sections.slideshow.presets.slideshow.name",
       "settings": {
         "allow_transparent_header": false,
