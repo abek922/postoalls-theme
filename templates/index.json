@@ -166,8 +166,7 @@
         "image_rhnrHz"
       ],
       "custom_css": [
-        ".place-self-end-center {transform: translateY(-4rem);}",
-        ".h6 {display: inline-block; border-bottom: 1px solid #fff; padding-bottom: 4px; transform: translateY(1rem);}"
+        "div {margin-bottom: 40px;}"
       ],
       "name": "t:sections.slideshow.presets.slideshow.name",
       "settings": {
@@ -232,6 +231,7 @@
     },
     "custom_liquid_fKHaWc": {
       "type": "custom-liquid",
+      "disabled": true,
       "name": "t:sections.custom_liquid.presets.custom_liquid.name",
       "settings": {
         "color_scheme": "",
