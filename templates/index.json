@@ -238,7 +238,7 @@
         "separate_section_with_border": true,
         "remove_vertical_spacing": false,
         "remove_horizontal_spacing": false,
-        "liquid": "<div style=\"height: px;\"></div>",
+        "liquid": "<div style=height:1rem;></div>",
         "text_alignment": "center"
       }
     },
