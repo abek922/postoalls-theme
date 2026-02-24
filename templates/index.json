@@ -230,6 +230,18 @@
         "controls_color": "#ffffff"
       }
     },
+    "custom_liquid_fKHaWc": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom_liquid.presets.custom_liquid.name",
+      "settings": {
+        "color_scheme": "",
+        "separate_section_with_border": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "liquid": "<div style=\"height: px;\"></div>",
+        "text_alignment": "center"
+      }
+    },
     "slideshow_XXBPdr": {
       "type": "slideshow",
       "blocks": {
@@ -452,6 +464,7 @@
     "custom_liquid_7LqEDK",
     "slideshow_qCX6Up",
     "slideshow_Btjky6",
+    "custom_liquid_fKHaWc",
     "slideshow_XXBPdr",
     "blog_posts_news_keAKtC",
     "featured-collections",
