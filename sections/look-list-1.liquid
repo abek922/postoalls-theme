@@ -11,13 +11,15 @@
     border-bottom: 1px solid rgba(var(--text-color), 0.1);
   }
 
-  /* サムネイルグリッド：N列 × 自動折り返し + 横スクロール */
   .look-page__thumbnails {
-    display: grid;
-    grid-template-columns: repeat(var(--thumbnails-per-row, 20), min-content);
+    display: flex;
     gap: 0.5rem;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    max-width: 100%;
     overflow-x: auto;
-    overflow-y: visible;
+    overflow-y: hidden;
     padding: 0 2rem;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
@@ -303,6 +305,16 @@
     margin: 0;
   }
 
+  /* コメント2（画像サムネイルの下） */
+  .look-page__comments-2 {
+    margin: 0;
+  }
+
+  .look-page__comment-2 {
+    color: rgba(var(--text-color), 0.8);
+    margin: 0;
+  }
+
   /* Alignment Classes */
   .text-left {
     text-align: left;
@@ -519,14 +531,8 @@
 
 <div class="look-page color-scheme color-scheme--{{ section.settings.color_scheme.id }}">
   {%- if section.blocks.size > 1 -%}
-    {%- assign thumbnails_per_row = section.settings.thumbnails_per_row | default: 20 -%}
     <div class="look-page__navigation">
-      {%- comment -%}
-        --thumbnails-per-row を CSS カスタムプロパティとして渡す。
-        各サムネイルの flex-basis がこの値から自動計算される。
-      {%- endcomment -%}
-      <div class="look-page__thumbnails"
-           style="--thumbnails-per-row: {{ thumbnails_per_row }};">
+      <div class="look-page__thumbnails">
         {%- for block in section.blocks -%}
           {%- assign display_title = block.settings.title_ja | default: block.settings.title_en | default: 'Look' -%}
           {%- assign first_image = blank -%}
@@ -1128,20 +1134,6 @@
       "id": "color_scheme",
       "label": "Color scheme",
       "default": "scheme-1"
-    },
-    {
-      "type": "header",
-      "content": "サムネイル表示設定"
-    },
-    {
-      "type": "range",
-      "id": "thumbnails_per_row",
-      "min": 5,
-      "max": 30,
-      "step": 1,
-      "label": "1行あたりのサムネイル最大数",
-      "info": "この数を超えると自動的に次の行に折り返されます",
-      "default": 20
     }
   ],
   "blocks": [
@@ -1208,12 +1200,30 @@
           "id": "heading_tag",
           "label": "Heading Style",
           "options": [
-            { "value": "h1", "label": "H1" },
-            { "value": "h2", "label": "H2" },
-            { "value": "h3", "label": "H3" },
-            { "value": "h4", "label": "H4" },
-            { "value": "h5", "label": "H5" },
-            { "value": "h6", "label": "H6" }
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            },
+            {
+              "value": "h5",
+              "label": "H5"
+            },
+            {
+              "value": "h6",
+              "label": "H6"
+            }
           ],
           "default": "h2"
         },
@@ -1222,37 +1232,57 @@
           "id": "title_alignment",
           "label": "Title Alignment",
           "options": [
-            { "value": "left",   "label": "Left" },
-            { "value": "center", "label": "Center" },
-            { "value": "right",  "label": "Right" }
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
           ],
           "default": "center"
         },
         {
           "type": "range",
           "id": "title_font_size",
-          "min": 12, "max": 48, "step": 1, "unit": "px",
+          "min": 12,
+          "max": 48,
+          "step": 1,
+          "unit": "px",
           "label": "Title Font Size",
           "default": 20
         },
         {
           "type": "range",
           "id": "title_line_height",
-          "min": 1.0, "max": 2.0, "step": 0.1,
+          "min": 1.0,
+          "max": 2.0,
+          "step": 0.1,
           "label": "Title Line Height",
           "default": 1.3
         },
         {
           "type": "range",
           "id": "title_margin_top",
-          "min": 0, "max": 100, "step": 5, "unit": "px",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "px",
           "label": "Title Margin Top",
           "default": 0
         },
         {
           "type": "range",
           "id": "title_margin_bottom",
-          "min": 0, "max": 100, "step": 5, "unit": "px",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "px",
           "label": "Title Margin Bottom",
           "default": 20
         },
@@ -1277,37 +1307,57 @@
           "id": "comment_alignment",
           "label": "Comment Alignment",
           "options": [
-            { "value": "left",   "label": "Left" },
-            { "value": "center", "label": "Center" },
-            { "value": "right",  "label": "Right" }
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
           ],
           "default": "center"
         },
         {
           "type": "range",
           "id": "comment_font_size",
-          "min": 12, "max": 32, "step": 1, "unit": "px",
+          "min": 12,
+          "max": 32,
+          "step": 1,
+          "unit": "px",
           "label": "Comment Font Size",
           "default": 14
         },
         {
           "type": "range",
           "id": "comment_line_height",
-          "min": 1.0, "max": 2.5, "step": 0.1,
+          "min": 1.0,
+          "max": 2.5,
+          "step": 0.1,
           "label": "Comment Line Height",
           "default": 1.6
         },
         {
           "type": "range",
           "id": "comment_margin_top",
-          "min": 0, "max": 100, "step": 5, "unit": "px",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "px",
           "label": "Comment Margin Top",
           "default": 15
         },
         {
           "type": "range",
           "id": "comment_margin_bottom",
-          "min": 0, "max": 100, "step": 5, "unit": "px",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "px",
           "label": "Comment Margin Bottom",
           "default": 20
         },
@@ -1332,37 +1382,57 @@
           "id": "comment_2_alignment",
           "label": "Comment 2 Alignment",
           "options": [
-            { "value": "left",   "label": "Left" },
-            { "value": "center", "label": "Center" },
-            { "value": "right",  "label": "Right" }
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
           ],
           "default": "center"
         },
         {
           "type": "range",
           "id": "comment_2_font_size",
-          "min": 12, "max": 32, "step": 1, "unit": "px",
+          "min": 12,
+          "max": 32,
+          "step": 1,
+          "unit": "px",
           "label": "Comment 2 Font Size",
           "default": 14
         },
         {
           "type": "range",
           "id": "comment_2_line_height",
-          "min": 1.0, "max": 2.5, "step": 0.1,
+          "min": 1.0,
+          "max": 2.5,
+          "step": 0.1,
           "label": "Comment 2 Line Height",
           "default": 1.6
         },
         {
           "type": "range",
           "id": "comment_2_margin_top",
-          "min": 0, "max": 100, "step": 5, "unit": "px",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "px",
           "label": "Comment 2 Margin Top",
           "default": 15
         },
         {
           "type": "range",
           "id": "comment_2_margin_bottom",
-          "min": 0, "max": 100, "step": 5, "unit": "px",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "px",
           "label": "Comment 2 Margin Bottom",
           "default": 20
         },
