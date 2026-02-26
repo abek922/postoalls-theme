@@ -17,6 +17,10 @@
           "disabled": true,
           "settings": {}
         },
+        "badges_RrWgwt": {
+          "type": "badges",
+          "settings": {}
+        },
         "title": {
           "type": "title",
           "settings": {
@@ -91,6 +95,7 @@
       },
       "block_order": [
         "vendor",
+        "badges_RrWgwt",
         "title",
         "price",
         "payment_terms",
