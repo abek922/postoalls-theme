@@ -40,7 +40,6 @@
       "blocks": {
         "look_py34xJ": {
           "type": "look",
-          "disabled": true,
           "settings": {
             "image_1": "shopify://shop_images/LOOK1.jpg",
             "image_2": "shopify://shop_images/LOOK1_e6c81f9f-372d-423d-a3ee-a575891fe17f.jpg",
@@ -95,7 +94,6 @@
         },
         "look_8drdzq": {
           "type": "look",
-          "disabled": true,
           "settings": {
             "image_1": "shopify://shop_images/LOOK2_b5cb3da2-d5d5-45e6-b042-257f8fc45f6a.jpg",
             "image_2": "shopify://shop_images/LOOK2.jpg",
@@ -150,7 +148,6 @@
         },
         "look_qB3b3W": {
           "type": "look",
-          "disabled": true,
           "settings": {
             "image_1": "shopify://shop_images/LOOK3_a424bed9-10dc-42ad-96ef-6fc05d85c30d.jpg",
             "image_2": "shopify://shop_images/LOOK3.jpg",
@@ -205,7 +202,6 @@
         },
         "look_C8bGrE": {
           "type": "look",
-          "disabled": true,
           "settings": {
             "image_1": "shopify://shop_images/LOOK4_14ef9196-16b3-431a-bdb9-d1f76eeffe40.jpg",
             "image_2": "shopify://shop_images/LOOK4.jpg",
@@ -260,7 +256,6 @@
         },
         "look_EycdCn": {
           "type": "look",
-          "disabled": true,
           "settings": {
             "image_1": "shopify://shop_images/LOOK5_9baf6e72-1e0b-47dc-9e19-c4242031f8e9.jpg",
             "image_2": "shopify://shop_images/LOOK5.jpg",
@@ -315,7 +310,6 @@
         },
         "look_Gkrazb": {
           "type": "look",
-          "disabled": true,
           "settings": {
             "image_1": "shopify://shop_images/LOOK6.jpg",
             "image_2": "shopify://shop_images/LOOK6_61445cb3-0130-4450-b9ea-3c4275f74e2a.jpg",
@@ -370,7 +364,6 @@
         },
         "look_abWedj": {
           "type": "look",
-          "disabled": true,
           "settings": {
             "image_1": "shopify://shop_images/LOOK7_cd82d799-695b-452f-b9b8-e54b02b2bda7.jpg",
             "image_2": "shopify://shop_images/LOOK7.jpg",
@@ -425,7 +418,6 @@
         },
         "look_wbRdXj": {
           "type": "look",
-          "disabled": true,
           "settings": {
             "image_1": "shopify://shop_images/LOOK8_c2183ae6-dba2-47da-94d9-e1bf01452fed.jpg",
             "image_2": "shopify://shop_images/LOOK8.jpg",
@@ -480,7 +472,6 @@
         },
         "look_d9GL8z": {
           "type": "look",
-          "disabled": true,
           "settings": {
             "image_1": "shopify://shop_images/LOOK9_464d1e77-72af-42b9-89ed-7b7da42ab66f.jpg",
             "image_2": "shopify://shop_images/LOOK9.jpg",
@@ -535,7 +526,6 @@
         },
         "look_hQV8BA": {
           "type": "look",
-          "disabled": true,
           "settings": {
             "image_1": "shopify://shop_images/LOOK10_bed6d3a1-4e4e-48f2-bc25-ed730ce542bf.jpg",
             "image_2": "shopify://shop_images/LOOK10.jpg",
@@ -590,7 +580,6 @@
         },
         "look_6nV96Q": {
           "type": "look",
-          "disabled": true,
           "settings": {
             "image_1": "shopify://shop_images/LOOK11_fbd1e020-19f5-43be-9395-6a0ac54370b7.jpg",
             "image_2": "shopify://shop_images/LOOK11_cd2c9ce8-4f48-4742-85c3-16693d3889ee.jpg",
@@ -645,7 +634,6 @@
         },
         "look_ftQ6MU": {
           "type": "look",
-          "disabled": true,
           "settings": {
             "image_1": "shopify://shop_images/LOOK12_bdaa4a5f-9b69-4dfd-882b-ffcba045abc9.jpg",
             "image_2": "shopify://shop_images/LOOK12.jpg",
@@ -700,7 +688,6 @@
         },
         "look_tkRptt": {
           "type": "look",
-          "disabled": true,
           "settings": {
             "image_1": "shopify://shop_images/LOOK13_fac24549-f249-42e0-9e74-83632d6c9cc0.jpg",
             "image_2": "shopify://shop_images/LOOK13.jpg",
@@ -755,7 +742,6 @@
         },
         "look_ji7zXa": {
           "type": "look",
-          "disabled": true,
           "settings": {
             "image_1": "shopify://shop_images/LOOK14_6433e0a8-7bdd-4f13-a209-609e61276425.jpg",
             "image_2": "shopify://shop_images/LOOK14_83d86f2b-8832-432b-917e-0ba6692e52d3.jpg",
@@ -810,7 +796,6 @@
         },
         "look_67yVcn": {
           "type": "look",
-          "disabled": true,
           "settings": {
             "image_1": "shopify://shop_images/LOOK15_4c25d32b-acab-43a2-837d-750348aeac6d.jpg",
             "image_2": "shopify://shop_images/LOOK15.jpg",
@@ -865,7 +850,6 @@
         },
         "look_UzTyLk": {
           "type": "look",
-          "disabled": true,
           "settings": {
             "image_1": "shopify://shop_images/LOOK16_31383a49-9164-4c43-9ba9-606d59886729.jpg",
             "image_2": "shopify://shop_images/LOOK16.jpg",
@@ -920,7 +904,6 @@
         },
         "look_Rt7G4z": {
           "type": "look",
-          "disabled": true,
           "settings": {
             "image_1": "shopify://shop_images/LOOK17_631c907e-195e-4364-818c-cfb292567b93.jpg",
             "image_2": "shopify://shop_images/LOOK17.jpg",
@@ -975,7 +958,6 @@
         },
         "look_Xwftbt": {
           "type": "look",
-          "disabled": true,
           "settings": {
             "image_1": "shopify://shop_images/LOOK18_8ab25c3a-7474-4315-a5ab-5045875635e5.jpg",
             "image_2": "shopify://shop_images/LOOK18.jpg",
@@ -1030,7 +1012,6 @@
         },
         "look_NwPdCb": {
           "type": "look",
-          "disabled": true,
           "settings": {
             "image_1": "shopify://shop_images/LOOK19_6d1d8358-bad0-4c44-b804-c88c2a5565f8.jpg",
             "image_2": "shopify://shop_images/LOOK19.jpg",
@@ -1085,7 +1066,6 @@
         },
         "look_wMDaWy": {
           "type": "look",
-          "disabled": true,
           "settings": {
             "image_1": "shopify://shop_images/LOOK20_8d908706-99dc-4ebf-9640-ab61d8b18b62.jpg",
             "image_2": "shopify://shop_images/LOOK20.jpg",
