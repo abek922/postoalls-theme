@@ -1032,6 +1032,9 @@
           "type": "look",
           "disabled": true,
           "settings": {
+            "image_1": "shopify://shop_images/LOOK19_6d1d8358-bad0-4c44-b804-c88c2a5565f8.jpg",
+            "image_2": "shopify://shop_images/LOOK19.jpg",
+            "image_3": "shopify://shop_images/LOOK19_802f48ae-be67-444c-baa9-f5877aebb15f.jpg",
             "title_ja": "Look Title",
             "title_en": "Look Title",
             "heading_tag": "h2",
@@ -1084,6 +1087,9 @@
           "type": "look",
           "disabled": true,
           "settings": {
+            "image_1": "shopify://shop_images/LOOK20_8d908706-99dc-4ebf-9640-ab61d8b18b62.jpg",
+            "image_2": "shopify://shop_images/LOOK20.jpg",
+            "image_3": "shopify://shop_images/LOOK20_6d48d6c2-7a29-4bac-92dc-fe5b69a4b2fb.jpg",
             "title_ja": "Look Title",
             "title_en": "Look Title",
             "heading_tag": "h2",
