@@ -757,6 +757,9 @@
           "type": "look",
           "disabled": true,
           "settings": {
+            "image_1": "shopify://shop_images/LOOK14_6433e0a8-7bdd-4f13-a209-609e61276425.jpg",
+            "image_2": "shopify://shop_images/LOOK14_83d86f2b-8832-432b-917e-0ba6692e52d3.jpg",
+            "image_3": "shopify://shop_images/LOOK14.jpg",
             "title_ja": "Look Title",
             "title_en": "Look Title",
             "heading_tag": "h2",
@@ -809,6 +812,9 @@
           "type": "look",
           "disabled": true,
           "settings": {
+            "image_1": "shopify://shop_images/LOOK15_4c25d32b-acab-43a2-837d-750348aeac6d.jpg",
+            "image_2": "shopify://shop_images/LOOK15.jpg",
+            "image_3": "shopify://shop_images/LOOK15_0c9e29ce-5804-4edb-b062-9cee84f504c6.jpg",
             "title_ja": "Look Title",
             "title_en": "Look Title",
             "heading_tag": "h2",
@@ -861,6 +867,9 @@
           "type": "look",
           "disabled": true,
           "settings": {
+            "image_1": "shopify://shop_images/LOOK16_31383a49-9164-4c43-9ba9-606d59886729.jpg",
+            "image_2": "shopify://shop_images/LOOK16.jpg",
+            "image_3": "shopify://shop_images/LOOK16_306e9310-69a9-43cb-a252-b7a20bccf67f.jpg",
             "title_ja": "Look Title",
             "title_en": "Look Title",
             "heading_tag": "h2",
@@ -913,6 +922,9 @@
           "type": "look",
           "disabled": true,
           "settings": {
+            "image_1": "shopify://shop_images/LOOK17_631c907e-195e-4364-818c-cfb292567b93.jpg",
+            "image_2": "shopify://shop_images/LOOK17.jpg",
+            "image_3": "shopify://shop_images/LOOK17_9333d57b-0eb8-44a0-bda1-e6b56965867b.jpg",
             "title_ja": "Look Title",
             "title_en": "Look Title",
             "heading_tag": "h2",
@@ -965,6 +977,9 @@
           "type": "look",
           "disabled": true,
           "settings": {
+            "image_1": "shopify://shop_images/LOOK18_8ab25c3a-7474-4315-a5ab-5045875635e5.jpg",
+            "image_2": "shopify://shop_images/LOOK18.jpg",
+            "image_3": "shopify://shop_images/LOOK18_07177ea0-f5ae-4828-86fa-da4cc98969c2.jpg",
             "title_ja": "Look Title",
             "title_en": "Look Title",
             "heading_tag": "h2",
