@@ -17,7 +17,7 @@ Supported variables
 {%- endcomment -%}
 
 {%- liquid
-  assign badge_types = types | default: 'custom, coming_soon, archive, new_arrival, pre_order, shibuya_sp, shop_sp, sold_out, discount' | split: ','
+  assign badge_types = types | default: 'custom, coming_soon, archive, new_arrival, pre_order, shibuya_sp, nakameguro_sp, shop_sp, sold_out, discount' | split: ','
   assign variant = variant | default: product.selected_or_first_available_variant
   
   # Coming soon タグの確認
@@ -80,6 +80,16 @@ Supported variables
     endif
   endfor
 
+  # nakameguro sp タグの確認
+  assign has_nakameguro_sp_tag = false
+  for tag in product.tags
+    assign lowercase_tag = tag | downcase
+    if lowercase_tag contains 'nakameguro sp' or lowercase_tag contains 'nakameguro special'
+      assign has_nakameguro_sp_tag = true
+      break
+    endif
+  endfor
+
 -%}
 
 {%- capture badges -%}
@@ -133,6 +143,13 @@ Supported variables
         {%- if has_shibuya_sp_tag -%}
           <span class="badge badge--shibuya-sp">
             {{- 'product.general.shibuya_sp_badge' | t -}}
+          </span>
+        {%- endif -%}
+
+      {%- when 'nakameguro_sp' -%}
+        {%- if has_nakameguro_sp_tag -%}
+          <span class="badge badge--nakameguro-sp">
+            {{- 'product.general.nakameguro_sp_badge' | t -}}
           </span>
         {%- endif -%}
 
