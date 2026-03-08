@@ -247,6 +247,7 @@
       "blocks": {
         "image_JA4kMj": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/shibuya_96c6c4b9-bc6a-439d-b82a-cafdae3d33fd.jpg",
             "mobile_image": "shopify://shop_images/shibuya_sp.jpg",
